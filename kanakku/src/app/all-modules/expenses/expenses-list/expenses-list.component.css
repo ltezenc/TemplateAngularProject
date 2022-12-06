@@ -1,0 +1,53 @@
+.subir {      
+    background: #0d6efd;
+    width: 120px;
+    position: relative;
+    border-color:#0d6efd;
+    color: #F4F4F4;  
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  .btn-progress {
+    width: 500px;
+    color: transparent;
+    
+  }
+  
+  .btn-fill:after {
+  
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #0b5ed7;
+    height: 100%;
+    animation: fill 3.2s linear forwards;
+  }
+  
+  .fa-check {
+    margin: 0;
+    padding: 0;
+    width: 42px;
+    color: transparent;
+    pointer-events: none;
+  }
+  
+  .fa-check::after {
+    font-family: "Font Awesome 6 Free"; font-weight: 900; content: "\2714";
+    color: #F4F4F4;
+    margin: -18px 0px;
+    position: absolute;
+    display: block;
+  }
+  
+  @keyframes fill {
+    from { width: 0; }
+    to { width: 100%; }
+  }

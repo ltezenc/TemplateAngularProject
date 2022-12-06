@@ -1,0 +1,107 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+      <!-- Page Header -->
+      <div class="page-header">
+          <div class="row align-items-center">
+              <div class="col">
+                  <h3 class="page-title">Payments</h3>
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
+                      <li class="breadcrumb-item active">Payments</li>
+                  </ul>
+              </div>
+              <div class="col-auto">
+                  <a [routerLink]="'/payments/add-payment'" class="btn btn-primary me-2">
+                      <i class="fas fa-plus"></i>
+                  </a>
+                  <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+                      <i class="fas fa-filter"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <!-- /Page Header -->
+
+      <!-- Search Filter -->
+      <div id="filter_inputs" class="card filter-card">
+          <div class="card-body pb-0">
+              <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Customer</label>
+                          <input type="text" class="form-control">
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Price</label>
+                          <input type="text" class="form-control">
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Payment Mode</label>
+                          <select class="form-select">
+                              <option>Payment Mode</option>
+                              <option>Cash</option>
+                              <option>Cheque</option>
+                              <option>Card</option>
+                              <option>Online</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /Search Filter -->
+
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card card-table">
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table datatable class="table table-center table-hover">
+                              <thead class="thead-light">
+                                  <tr>
+                                    <th>Id</th>
+                                    <th>Suministro</th>
+                                    <th>Cliente</th>
+                                    <th>Tarifa cliente</th>					
+                                    <th class="text-end">total facturado</th>
+                                    <th class="text-end">Pfactura</th>
+                                      <th class="text-end">Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody *ngFor="let payments of cadena">
+                                  <tr *ngFor="let payment of payments">
+                                      <td><a href="javascript:void(0);">{{payment.facturacionId}}</a></td>
+                                     
+                                      <td>{{payment.suministro}}</td>
+                                      <td>{{payment.razonSocial}}</td>
+                                      <td>{{payment.tarifa}}</td>
+                                      <td class="text-end">{{payment.total}}</td>
+                                      <td class="text-end">{{payment.pfactura}}</td>
+                                      <td class="text-end">
+                                          <a class="btn btn-sm btn-white me-2" href="javascript:void(0);">
+                                              <i class="fas fa-download me-1"></i> PDF
+                                          </a>
+                                           <a class="btn btn-sm btn-white" [routerLink]="['/invoices/view-invoice/',payment.clienteId]">
+                                         <!--<a class="btn btn-sm btn-white" [routerLink]="['/invoices/template-invoice/',payment.clienteId]">--> 
+
+                                          
+                                              <i class="far fa-eye me-1"></i> View
+                                          </a>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- /Page Wrapper -->

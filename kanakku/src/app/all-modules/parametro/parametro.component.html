@@ -1,0 +1,141 @@
+<!-- Parametros -->
+<div *ngFor="let row of cadena" >
+    <div class="row" *ngFor="let col of row" >
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon1.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.uit}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">UIT </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header" >
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon2.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.fose}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">FOSE</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon3.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.alicuota}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">Alicuota</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon4.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.ppi}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">PPI </p>
+                </div>
+            </div>
+        </div>    
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon1.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.pgn}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">PGN </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon2.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.tipoCambio}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">Tipo Cambio</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon3.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.precioEnergiahp}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">Precio Energia HP</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon4.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">S/{{col.precioEnergiafhp}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">Precio Energia FHP</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 col-12">
+            <div class="card inovices-card">
+                <div class="card-body">
+                    <div class="inovices-widget-header">
+                        <span class="inovices-widget-icon">
+                            <img src="assets/img/icons/invoices-icon4.svg" alt="">
+                        </span>
+                        <div class="inovices-dash-count">
+                            <div class="inovices-amount">{{col.dia}}-{{col.hora}}</div>
+                        </div>
+                    </div>
+                    <p class="inovices-all">SEIN</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Parametros-->

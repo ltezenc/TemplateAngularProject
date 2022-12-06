@@ -1,0 +1,208 @@
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Apex Charts</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
+									<li class="breadcrumb-item active">Charts</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+					
+						<!-- Chart -->
+						<div class="col-md-6">	
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Apex Simple</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions.series"
+                                          [chart]="chartOptions.chart"
+                                          [xaxis]="chartOptions.xaxis"
+                                          [dataLabels]="chartOptions.dataLabels"
+                                          [grid]="chartOptions.grid"
+                                          [stroke]="chartOptions.stroke"
+                                          [title]="chartOptions.title"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+							
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Area Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions1.series"
+                                          [chart]="chartOptions1.chart"
+                                          [xaxis]="chartOptions1.xaxis"
+                                          [stroke]="chartOptions1.stroke"
+                                          [dataLabels]="chartOptions.dataLabels"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+							
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Column Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions2.series"
+                                          [chart]="chartOptions2.chart"
+                                          [dataLabels]="chartOptions2.dataLabels"
+                                          [plotOptions]="chartOptions2.plotOptions"
+                                          [yaxis]="chartOptions2.yaxis"
+                                          [legend]="chartOptions2.legend"
+                                          [fill]="chartOptions2.fill"
+                                          [stroke]="chartOptions2.stroke"
+                                          [tooltip]="chartOptions2.tooltip"
+                                          [xaxis]="chartOptions2.xaxis"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Column Stacked Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions3.series"
+                                          [chart]="chartOptions3.chart"
+                                          [dataLabels]="chartOptions3.dataLabels"
+                                          [plotOptions]="chartOptions3.plotOptions"
+                                          [responsive]="chartOptions3.responsive"
+                                          [xaxis]="chartOptions3.xaxis"
+                                          [legend]="chartOptions3.legend"
+                                          [fill]="chartOptions3.fill"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+						
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Bar Chart</h5>
+								</div>
+								<div class="card-body">
+                                    <div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions4.series"
+                                          [chart]="chartOptions4.chart"
+                                          [dataLabels]="chartOptions4.dataLabels"
+                                          [plotOptions]="chartOptions4.plotOptions"
+                                          [xaxis]="chartOptions4.xaxis"
+                                        ></apx-chart>
+                                      </div>
+                                    
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Mixed Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions5.series"
+                                          [chart]="chartOptions5.chart"
+                                          [yaxis]="chartOptions5.yaxis"
+                                          [xaxis]="chartOptions5.xaxis"
+                                          [labels]="chartOptions5.labels"
+                                          [stroke]="chartOptions5.stroke"
+                                          [title]="chartOptions5.title"
+                                          [dataLabels]="chartOptions5.dataLabels"
+                                          [fill]="chartOptions5.fill"
+                                          [tooltip]="chartOptions5.tooltip"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Donut Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions6.series"
+                                          [chart]="chartOptions6.chart"
+                                          [labels]="chartOptions6.labels"
+                                          [responsive]="chartOptions6.responsive"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+						<!-- Chart -->
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Radial Chart</h5>
+								</div>
+								<div class="card-body">
+									<div id="chart">
+                                        <apx-chart
+                                          [series]="chartOptions7.series"
+                                          [chart]="chartOptions7.chart"
+                                          [plotOptions]="chartOptions7.plotOptions"
+                                          [labels]="chartOptions7.labels"
+                                        ></apx-chart>
+                                      </div>
+								</div>
+							</div>
+						</div>
+						<!-- /Chart -->
+						
+					</div>
+				
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->

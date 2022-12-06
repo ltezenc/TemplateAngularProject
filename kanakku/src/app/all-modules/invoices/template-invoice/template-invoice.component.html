@@ -1,0 +1,122 @@
+<div class="card">
+    <div class="card-body">
+      <div class="container mb-5 mt-3" *ngFor="let row of cadena">
+        <div class="row d-flex align-items-baseline" > 
+          <div class="col-xl-9">
+            <p style="color: #7e8d9f;font-size: 20px;">Facturacion <strong> Mes </strong></p>
+          </div>
+          <div class="col-xl-3 float-end">
+            <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i
+                class="fas fa-print text-primary"></i> Print</a>
+            <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i
+                class="far fa-file-pdf text-danger"></i> Export</a>
+          </div>
+          <hr>
+        </div>
+  
+        <div class="container" *ngFor="let col of row">
+          <div class="col-md-12">
+            <div class="text-center">
+              <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
+              <h6 class="pt-0">{{col.razonSocial}}</h6>
+            </div>
+  
+          </div>
+  
+  
+          <div class="row" >
+            <div class="col-xl-8" >
+              <ul class="list-unstyled">
+                <li class="text-muted">Suministro: <span style="color:#5d9fc5 ;">{{col.suministro}}</span></li>
+                <li class="text-muted">Codigo: {{col.codigo}}</li>
+                <li class="text-muted">{{col.direccion}}, Ciudad</li>             
+              </ul>
+            </div>
+            <div class="col-xl-4">
+              <p class="text-muted">Invoice</p>
+              <ul class="list-unstyled">
+                <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                    class="fw-bold">ID:</span>{{col.idfacturacion}}</li>         
+              
+              </ul>
+            </div>
+          </div>
+  
+          <div class="row my-2 mx-1 justify-content-center" >
+            <table class="table table-striped table-borderless" >
+              <thead style="background-color:#84B0CA ;" class="text-white">
+                <tr>              
+                  <th scope="col">Barra final de Entrega</th>
+                  <th scope="col">Consumos</th>
+                  <th scope="col">Precios</th>
+                  <th scope="col">Monto S/</th>
+                </tr>
+              </thead>            
+              <tbody>
+                  <tr scope="row"><td>PHP(Generacion)</td><td>{{col.phpgConsumo}}</td><td>{{col.phpgPrecio}}</td> <td>{{col.phpg}}</td> 
+                  <tr><td>PHP(Transmision)</td><td>{{col.phptConsumo}}</td> <td>{{col.phptPrecio}}</td> <td>{{col.phpt}}</td> 
+                  <tr><td>Pot. Uso Redes Distrib. HP</td><td>{{col.potreddisthpConsumo}}</td><td>{{col.potreddisthpPrecio}}</td> <td>{{col.potreddisthp}}</td></tr>
+                  <!--<tr>Exc. Uso Redes Distrib. HP</tr>-->
+                   <tr><td>Peaje del SST y SCT en Energía</td><td>{{col.peajesstsctConsumo}}</td><td>{{col.peajesstsctPrecio}}</td> <td>{{col.peajesstsct}}</td></tr>
+                  <tr><td>Exceso de Potencia Contratada</td><td>{{col.excpotreddistfhpConsumo}}</td><td>{{col.excpotreddistfhpPrecio}}</td> <td>{{col.excpotreddistfhp}}</td></tr>
+                  <tr><td>EAHP</td><td>{{col.eahpConsumo}}</td><td>{{col.eahpPrecio}}</td> <td>{{col.eahp}}</td></tr>
+                  <tr><td>EAHFP</td><td>{{col.eahfpConsumo}}</td><td>{{col.eahfpPrecio}}</td> <td>{{col.eahfp}}</td></tr>
+                  <tr><td>Energía Reactiva</td><td>{{col.enerReactConsumo}}</td><td>{{col.enerReactPrecio}}</td> <td>{{col.enerReact}}</td></tr>
+                  <tr><td>Comercializacion</td><td>{{col.comercializacionConsumo}}</td><td>{{col.comercializacionPrecio}}</td> <td>{{col.comercializacion}}</td></tr>
+                              
+              </tbody>
+  
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-xl-7">
+              <p class="ms-3"></p>
+  
+            </div>
+            <div class="col-xl-3">
+              <ul class="list-unstyled">
+                <li class="text-muted ms-1"><span class="text-black me-4">Subtotal G-T-D-C (Afecto al IGV)</span>{{col.subtotalgtdc}}</li>             
+              </ul>
+             </div>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-xl-7">
+                  <ul class="list-unstyled">
+                      <li>Otros cargos:</li>
+                      <li>Cargo Fijo</li>
+                      <li>Alumbrado Público</li>
+                      <li>Cargo de Reposición y Mantenimiento de la Conexión</li>
+                      <li>Aporte Ley</li>
+                      <li>Monto FISE a Facturar</li>
+                  </ul>                
+              </div>
+              <div class="col-xl-3">   
+              <div class="float-end">      
+                  <div class="">
+                  <u class="list-unstyled">  
+                    <br>    
+                      <li >{{col.cargofijo}}</li>
+                      <li >{{col.alpub}}</li>
+                      <li>{{col.cargrepomantconex}}</li>  
+                      <li>{{col.aporteley}}</li>
+                      <li>{{col.montofise}}</li>
+                            </u>
+                </div>  
+                </div>   
+          </div>
+          <div class="row">
+              <div class="col-xl-9">     
+              </div>
+              <div class="col-xl-3">              
+                <p class="text-black float-start"><span class="text-black me-3"> Total</span><span
+                    style="font-size: 25px;">{{col.total}}</span></p>
+              </div>
+            </div> 
+          
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
