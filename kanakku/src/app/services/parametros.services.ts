@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { parametrosI } from '../model/parametros';
 
 @Injectable({
@@ -12,8 +13,8 @@ export class ParametrosService {
   constructor(private http:HttpClient) { }
 
   getparametrosbyfactura():Observable<parametrosI[]>{
-    
-    return this.http.get<parametrosI[]>("http://localhost:8080/clienteslibres/parametros/1/listar")
-    
+
+    return this.http.get<parametrosI[]>(environment.url_global+"/clienteslibres/parametros/1/listar")
+
   }
 }

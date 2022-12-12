@@ -10,28 +10,28 @@ import { FicheroListI } from '../model/ficherolist.interface';
 export class DataService {
 
   constructor(private http:HttpClient) { }
-  
+
   sendPost(body:FormData):Observable<any>{
     return this.http.post(environment.postexcel,body)
-    
+
   }
   suministroexist(nombre:string){
     let nom=nombre.substring(0,8);
-    let resp=this.http.get("http://localhost:8080/clienteslibres/suministro/buscar-suministro/"+nom)
+    let resp=this.http.get(environment.url_global+"/clienteslibres/suministro/buscar-suministro/"+nom)
     return resp
      }
 
      delete(id:number){
-      let resp=this.http.delete("http://localhost:8080/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
+      let resp=this.http.delete(environment.url_global+"/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
       return resp
        }
 
   getFichero():Observable<FicheroListI[]>{
-    
-    return this.http.get<FicheroListI[]>("http://localhost:8080/clienteslibres/documentos/1/1/documentodepulsosbyusuarioidandempresaid")
-    
+
+    return this.http.get<FicheroListI[]>(environment.url_global+"/clienteslibres/documentos/1/1/documentodepulsosbyusuarioidandempresaid")
+
   }
-  
+
 
       customers = [
       {
@@ -41,7 +41,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-02.jpg",
           amount_due : "$8295",
-          registered_on : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Customer"
       },
@@ -52,7 +52,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-03.jpg",
           amount_due : "$1750",
-          registered_on : "Wed May 08 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed May 08 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Inactive",
           role: "Customer"
       },
@@ -63,7 +63,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-04.jpg",
           amount_due : "$8295",
-          registered_on : "Wed Oct 24 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Oct 24 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Admin"
       },
@@ -74,7 +74,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-05.jpg",
           amount_due : "$3000",
-          registered_on : "Wed Oct 11 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Oct 11 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Inctive",
           role: "Customer"
       },
@@ -85,7 +85,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-06.jpg",
           amount_due : "-",
-          registered_on : "Wed Sep 29 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Sep 29 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Inctive",
           role: "Admin"
       },
@@ -96,7 +96,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-07.jpg",
           amount_due : "$50",
-          registered_on : "Wed Aug 13 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Aug 13 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Customer"
       },
@@ -107,7 +107,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-08.jpg",
           amount_due : "-",
-          registered_on : "Wed Jul 02 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Jul 02 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Inctive",
           role: "Customer"
       },
@@ -118,7 +118,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-09.jpg",
           amount_due : "$480",
-          registered_on : "Wed Sep 29 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Sep 29 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Customer"
       },
@@ -129,7 +129,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-10.jpg",
           amount_due : "$600",
-          registered_on : "Wed May 16 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed May 16 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Customer"
       },
@@ -140,7 +140,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-11.jpg",
           amount_due : "-",
-          registered_on : "Wed Sep 17 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Sep 17 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Admin"
       },
@@ -151,7 +151,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-12.jpg",
           amount_due : "-",
-          registered_on : "Wed Mar 30 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Mar 30 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Customer"
       },
@@ -162,7 +162,7 @@ export class DataService {
           phone : "9876543210",
           img : "assets/img/profiles/avatar-13.jpg",
           amount_due : "$7500",
-          registered_on : "Wed Mar 22 2020 09:41:48 GMT+0530 (India Standard Time)",            
+          registered_on : "Wed Mar 22 2020 09:41:48 GMT+0530 (India Standard Time)",
           status : "Active",
           role: "Admin"
       }
@@ -174,9 +174,9 @@ export class DataService {
       number: 'EST-17ER281',
       customer_name : "Marie Canales",
       customer_img : "assets/img/profiles/avatar-03.jpg",
-      estimate_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",     
-      expiry_date : "Wed Nov 22 2020 09:41:48 GMT+0530 (India Standard Time)",    
-      amount : "$100",      
+      estimate_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",
+      expiry_date : "Wed Nov 22 2020 09:41:48 GMT+0530 (India Standard Time)",
+      amount : "$100",
       status : "Accepted",
   },
     {
@@ -184,9 +184,9 @@ export class DataService {
         number: 'EST-26AS699',
         customer_name : "Barbara Moore",
         customer_img : "assets/img/profiles/avatar-04.jpg",
-        estimate_date : "Wed Nov 5 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$75",      
+        estimate_date : "Wed Nov 5 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$75",
         status : "Declined",
     },
     {
@@ -194,9 +194,9 @@ export class DataService {
         number: 'EST-11KI214',
         customer_name : "Greg Lynch",
         customer_img : "assets/img/profiles/avatar-05.jpg",
-        estimate_date : "Wed Nov 1 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Nov 5 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$175",      
+        estimate_date : "Wed Nov 1 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Nov 5 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$175",
         status : "Sent",
     },
     {
@@ -204,9 +204,9 @@ export class DataService {
         number: 'EST-98HJ687',
         customer_name : "Karlene Chaidez",
         customer_img : "assets/img/profiles/avatar-06.jpg",
-        estimate_date : "Wed Nov 12 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Oct 17 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$1500",      
+        estimate_date : "Wed Nov 12 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Oct 17 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$1500",
         status : "Expired",
     },
     {
@@ -214,9 +214,9 @@ export class DataService {
         number: 'EST-71DR001',
         customer_name : "John Blair",
         customer_img : "assets/img/profiles/avatar-07.jpg",
-        estimate_date : "Wed Oct 2 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Oct 8 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$1890",      
+        estimate_date : "Wed Oct 2 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Oct 8 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$1890",
         status : "Accepted",
     },
     {
@@ -224,9 +224,9 @@ export class DataService {
         number: 'EST-68MN425',
         customer_name : "Russell Copeland",
         customer_img : "assets/img/profiles/avatar-08.jpg",
-        estimate_date : "Wed Oct 2 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Oct 8 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$1890",      
+        estimate_date : "Wed Oct 2 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Oct 8 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$1890",
         status : "Accepted",
     },
     {
@@ -234,9 +234,9 @@ export class DataService {
         number: 'EST-86YU963',
         customer_name : "Leatha Bailey",
         customer_img : "assets/img/profiles/avatar-09.jpg",
-        estimate_date : "Wed Sep 25 2020 09:41:48 GMT+0530 (India Standard Time)",     
-        expiry_date : "Wed Sep 30 2020 09:41:48 GMT+0530 (India Standard Time)",    
-        amount : "$785",      
+        estimate_date : "Wed Sep 25 2020 09:41:48 GMT+0530 (India Standard Time)",
+        expiry_date : "Wed Sep 30 2020 09:41:48 GMT+0530 (India Standard Time)",
+        amount : "$785",
         status : "Accepted",
     }
 ]
@@ -247,10 +247,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Barbara Moore",
     customer_img : "assets/img/profiles/avatar-04.jpg",
-    created_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$100",      
+    created_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$100",
     status : "Paid",
   },
   {
@@ -258,10 +258,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Karlene Chaidez",
     customer_img : "assets/img/profiles/avatar-05.jpg",
-    created_date : "Wed Nov 14 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 20 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$222",      
+    created_date : "Wed Nov 14 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 20 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$222",
     status : "Sent",
   },
   {
@@ -269,10 +269,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Russell Copeland",
     customer_img : "assets/img/profiles/avatar-06.jpg",
-    created_date : "Wed Nov 7 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 13 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$347",      
+    created_date : "Wed Nov 7 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 13 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$347",
     status : "Partially Paid",
   },
   {
@@ -280,10 +280,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Joseph Collins",
     customer_img : "assets/img/profiles/avatar-07.jpg",
-    created_date : "Wed Nov 24 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 25 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 27 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$826",      
+    created_date : "Wed Nov 24 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 25 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 27 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$826",
     status : "Overdue",
   },
   {
@@ -291,10 +291,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Jennifer Floyd",
     customer_img : "assets/img/profiles/avatar-08.jpg",
-    created_date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 19 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$826",      
+    created_date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 19 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$826",
     status : "Paid",
   },
 ]
@@ -305,8 +305,8 @@ payments = [
     ref_id: '#158790',
     customer_name : "Leatha Bailey",
     customer_img : "assets/img/profiles/avatar-09.jpg",
-    date : "Wed Sep 17 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$444",          
+    date : "Wed Sep 17 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$444",
     payment_method : "Visa 9632",
   },
   {
@@ -314,8 +314,8 @@ payments = [
     ref_id: '#248960',
     customer_name : "Joseph Collins",
     customer_img : "assets/img/profiles/avatar-10.jpg",
-    date : "Wed Sep 12 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$657",          
+    date : "Wed Sep 12 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$657",
     payment_method : "Visa 1254",
   },
   {
@@ -323,8 +323,8 @@ payments = [
     ref_id: '#368230',
     customer_name : "Marie Canales",
     customer_img : "assets/img/profiles/avatar-03.jpg",
-    date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$717",          
+    date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$717",
     payment_method : "Visa 4321",
   },
   {
@@ -332,8 +332,8 @@ payments = [
     ref_id: '#45268',
     customer_name : "Russell Copeland",
     customer_img : "assets/img/profiles/avatar-04.jpg",
-    date : "Wed Oct 11 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$120",          
+    date : "Wed Oct 11 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$120",
     payment_method : "Visa 5689",
   },
   {
@@ -341,8 +341,8 @@ payments = [
     ref_id: '#542187',
     customer_name : "John Blair",
     customer_img : "assets/img/profiles/avatar-05.jpg",
-    date : "Wed Oct 25 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$657",          
+    date : "Wed Oct 25 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$657",
     payment_method : "Visa 4523",
   },
   {
@@ -350,8 +350,8 @@ payments = [
     ref_id: '#635489',
     customer_name : "Karlene Chaidez",
     customer_img : "assets/img/profiles/avatar-06.jpg",
-    date : "Wed Nov 1 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$698",          
+    date : "Wed Nov 1 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$698",
     payment_method : "Visa 8795",
   },
   {
@@ -359,8 +359,8 @@ payments = [
     ref_id: '#875642',
     customer_name : "Greg Lynch",
     customer_img : "assets/img/profiles/avatar-07.jpg",
-    date : "Wed Oct 7 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$582",          
+    date : "Wed Oct 7 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$582",
     payment_method : "	Visa 3654",
   },
 ]
@@ -372,8 +372,8 @@ expenses = [
     customer_name : "Barbara Moore",
     customer_img : "assets/img/profiles/avatar-04.jpg",
     expense_date : "Wed Sep 15 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$145",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$145",
     status : "Approved",
   },
   {
@@ -382,8 +382,8 @@ expenses = [
     customer_name : "Russell Copeland",
     customer_img : "assets/img/profiles/avatar-05.jpg",
     expense_date : "Wed Sep 19 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$214",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$214",
     status : "Pending",
   },
   {
@@ -392,8 +392,8 @@ expenses = [
     customer_name : "Brian Johnson",
     customer_img : "assets/img/profiles/avatar-06.jpg",
     expense_date : "Wed Nov 11 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$254",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$254",
     status : "Pending",
   },
   {
@@ -402,8 +402,8 @@ expenses = [
     customer_name : "Marie Canales",
     customer_img : "assets/img/profiles/avatar-08.jpg",
     expense_date : "Wed Oct 3 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$60",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$60",
     status : "Approved",
   },
   {
@@ -412,8 +412,8 @@ expenses = [
     customer_name : "Greg Lynch",
     customer_img : "assets/img/profiles/avatar-09.jpg",
     expense_date : "Wed Oct 23 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$145",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$145",
     status : "Approved",
   },
   {
@@ -422,8 +422,8 @@ expenses = [
     customer_name : "John Blair",
     customer_img : "assets/img/profiles/avatar-10.jpg",
     expense_date : "Wed Sep 29 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$154",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$154",
     status : "Pending",
   },
   {
@@ -432,8 +432,8 @@ expenses = [
     customer_name : "Karlene Chaidez",
     customer_img : "assets/img/profiles/avatar-11.jpg",
     expense_date : "Wed Oct 9 2020 09:41:48 GMT+0530 (India Standard Time)",
-    notes: "Lorem ipsum dollar..",    
-    amount : "$75",          
+    notes: "Lorem ipsum dollar..",
+    amount : "$75",
     status : "Approved",
   },
 ];
@@ -509,5 +509,5 @@ public ManageUsers: BehaviorSubject<any> = new BehaviorSubject(this.blogs);
     //   payments: payments,
     //   expenses: expenses,
     // };
-  
+
 }

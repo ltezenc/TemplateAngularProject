@@ -43,7 +43,7 @@ export class AllModulesService {
 
 
   modalSwitch:boolean
-  private url:string="http://localhost:8080/clienteslibres/clientes/crear"
+  private url:string=environment.url_global+"/clienteslibres/clientes/crear"
   constructor(private http:HttpClient) { }
 
 
@@ -54,14 +54,14 @@ export class AllModulesService {
   crearsuministro(suministro:Suministro):Observable<Suministro>{
     return this.http.post<Suministro>(environment.postsumunistro,suministro)
   }
-  getTarifa():Observable<tarifaI[]>{    
-    return this.http.get<tarifaI[]>("http://localhost:8080/clienteslibres/tarifa/listar")
-    
+  getTarifa():Observable<tarifaI[]>{
+    return this.http.get<tarifaI[]>(environment.url_global+"/clienteslibres/tarifa/listar")
+
   }
   getCliente():Observable<Cliente[]>{
-    
-    return this.http.get<Cliente[]>("http://localhost:8080/clienteslibres/clientes/listar")
-    
+
+    return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
+
   }
 
 
@@ -384,17 +384,17 @@ export class AllModulesService {
       status : "Approved",
     },
   ]
-  
+
 invoices = [
   {
     id : 1,
     number: 'INV-65ZTE15',
     customer_name : "Barbara Moore",
     customer_img : "assets/img/profiles/avatar-04.jpg",
-    created_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$100",      
+    created_date : "Wed Nov 16 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 23 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$100",
     status : "Paid",
   },
   {
@@ -402,10 +402,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Karlene Chaidez",
     customer_img : "assets/img/profiles/avatar-05.jpg",
-    created_date : "Wed Nov 14 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 20 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$222",      
+    created_date : "Wed Nov 14 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 20 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$222",
     status : "Sent",
   },
   {
@@ -413,10 +413,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Russell Copeland",
     customer_img : "assets/img/profiles/avatar-06.jpg",
-    created_date : "Wed Nov 7 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 13 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$347",      
+    created_date : "Wed Nov 7 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 10 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 13 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$347",
     status : "Partially Paid",
   },
   {
@@ -424,10 +424,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Joseph Collins",
     customer_img : "assets/img/profiles/avatar-07.jpg",
-    created_date : "Wed Nov 24 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 25 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 27 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$826",      
+    created_date : "Wed Nov 24 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 25 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 27 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$826",
     status : "Overdue",
   },
   {
@@ -435,10 +435,10 @@ invoices = [
     number: 'INV-65ZTE15',
     customer_name : "Jennifer Floyd",
     customer_img : "assets/img/profiles/avatar-08.jpg",
-    created_date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",     
-    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    paid_on : "Wed Nov 19 2020 09:41:48 GMT+0530 (India Standard Time)",    
-    amount : "$826",      
+    created_date : "Wed Nov 17 2020 09:41:48 GMT+0530 (India Standard Time)",
+    due_date : "Wed Nov 18 2020 09:41:48 GMT+0530 (India Standard Time)",
+    paid_on : "Wed Nov 19 2020 09:41:48 GMT+0530 (India Standard Time)",
+    amount : "$826",
     status : "Paid",
   },
 ]

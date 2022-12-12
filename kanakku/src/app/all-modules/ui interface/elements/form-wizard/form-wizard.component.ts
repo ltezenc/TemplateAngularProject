@@ -24,7 +24,7 @@ export class FormWizardComponent implements OnInit {
     document.body.appendChild(script);
   }
   loadformwizardprettify(js: string) {
-    var script = document.createElement('script'); 
+    var script = document.createElement('script');
     script.src = js;
     script.async = false;
     document.body.appendChild(script);

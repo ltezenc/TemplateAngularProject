@@ -47,6 +47,29 @@ export class AddCustomerComponent implements OnInit {
       customerShippingZip: ["", [Validators.required]],
     });
   }
+  ngAfterViewInit() {
+    this.loadformwizardbootstrap("assets/plugins/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js")
+    this.loadformwizardprettify("assets/plugins/twitter-bootstrap-wizard/prettify.js")
+    this.loadformwizard("assets/plugins/twitter-bootstrap-wizard/form-wizard.js")
+  }
+  loadformwizardbootstrap(js: string) {
+    var script = document.createElement('script');
+    script.src = js;
+    script.async = false;
+    document.body.appendChild(script);
+  }
+  loadformwizardprettify(js: string) {
+    var script = document.createElement('script');
+    script.src = js;
+    script.async = false;
+    document.body.appendChild(script);
+  }
+  loadformwizard(js: string) {
+    var script = document.createElement('script');
+    script.src = js;
+    script.async = false;
+    document.body.appendChild(script);
+  }
   private markFormGroupTouched(formGroup: FormGroup) {
     (<any>Object).values(formGroup.controls).forEach((control:any) => {
       control.markAsTouched();
