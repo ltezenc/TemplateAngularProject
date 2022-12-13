@@ -133,87 +133,9 @@ const routes: Routes = [
               (m) => m.BlankPageModule
             ),
         },
-        {
-          path: 'maps-vector',
-          loadChildren: () =>
-            import('./mapvector/mapvector.module').then(
-              (m) => m.MapvectorModule
-            ),
-          canActivate: [AuthenticationGuard],
+  
 
-        },
-        {
-          path: 'basic-input',
-          loadChildren: () =>
-            import('./ui interface/forms/basic-inputs/basic-inputs.module').then(
-              (m) => m.BasicInputsModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'form-mask',
-          loadChildren: () =>
-            import('./ui interface/forms/form-mask/form-mask.module').then(
-              (m) => m.FormMaskModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'form-validation',
-          loadChildren: () =>
-            import(
-              './ui interface/forms/form-validation/form-validation.module'
-            ).then((m) => m.FormValidationModule),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'horizondal-form',
-          loadChildren: () =>
-            import(
-              './ui interface/forms/horizondal-form/horizondal-form.module'
-            ).then((m) => m.HorizondalFormModule),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'input-groups',
-          loadChildren: () =>
-            import('./ui interface/forms/input-groups/input-groups.module').then(
-              (m) => m.InputGroupsModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'vertical-form',
-          loadChildren: () =>
-            import(
-              './ui interface/forms/vertical-form/vertical-form.module'
-            ).then((m) => m.VerticalFormModule),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'basic-tables',
-          loadChildren: () =>
-            import('./ui interface/tables/basic-tables/basic-tables.module').then(
-              (m) => m.BasicTablesModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'admin-data-table',
-          loadChildren: () =>
-            import(
-              './ui interface/tables/admin-data-table/admin-data-table.module'
-            ).then((m) => m.AdminDataTableModule),
-          canActivate: [AuthenticationGuard],
-
-        },
+  
         {
           path: 'transactions',
           loadChildren: () =>
@@ -223,51 +145,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-        { 
-          path: 'base-ui', 
-          loadChildren: () => 
-            import('./ui interface/base-ui/base-ui.module').then(
-              (m) => m.BaseUiModule
-            ), 
-            canActivate: [AuthenticationGuard],
-        },
-        { 
-          path: 'icons', 
-          loadChildren: () => 
-            import('./ui interface/icons/icons.module').then(
-              (m) => m.IconsModule
-              ),
-              canActivate: [AuthenticationGuard], 
-        },
-        { 
-          path: 'charts', 
-          loadChildren: () => 
-            import('./ui interface/charts/charts.module').then(
-              (m) => m.ChartsModule
-              ),
-              canActivate: [AuthenticationGuard], 
-        },
-        { 
-          path: 'elements', 
-          loadChildren: () => 
-            import('./ui interface/elements/elements.module').then(
-              (m) => m.ElementsModule
-              ),
-              canActivate: [AuthenticationGuard], 
-        },
-    
-        { 
-          path: 'form-fileupload', 
-          loadChildren: () => 
-            import('./ui interface/forms/form-fileupload/form-fileupload.module').then(
-              (m) => m.FormFileuploadModule) 
-        },
-        { 
-          path: 'form-select2', 
-          loadChildren: () => 
-            import('./ui interface/forms/form-select2/form-select2.module').then(
-              (m) => m.FormSelect2Module) 
-        },
+
     ]
   },
   

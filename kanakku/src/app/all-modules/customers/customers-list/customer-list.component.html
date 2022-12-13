@@ -85,6 +85,7 @@
                     <th>Nombre</th>
                     <th>Tarifa</th>
                     <th>potenciaContratada</th>
+                    <th>suministro</th>
                     <th>Estado</th>
                     <th class="text-end">Acciones</th>
                     <th></th>
@@ -93,11 +94,27 @@
                 <tbody>
                   <ng-container *ngFor="let row of cadena">
                     <tr *ngFor="let col of row">
-                      <td>{{ col.id }}</td>
+                      <td #messageEl [attr.data-message-id]="col.id">{{ col.id }}</td>
                       <td>{{ col.razonSocial }}</td>
                       <td>{{ col.prefijotarifa }}</td>
                       <td>{{ col.potenciaContratada }}</td>
-                    
+                      <td *ngIf="col.suministro == null">
+                        <span
+                          [ngClass]="
+                            col.suministro === null
+                              ? 'badge badge-pill bg-success-light'
+                              : 'badge badge-pill bg-danger-light'
+                          "
+                          (click)="tempId = col.id"
+                          data-bs-toggle="modal"
+                          data-bs-target="#suministroModal"
+                          (click)="logMessageId(messageEl)" 
+                          >--</span
+                        >
+                      </td>
+                      <td *ngIf="col.suministro != null">
+                       {{ col.suministro }}
+                      </td>
                       <td *ngIf="col.estadoId == 1">
                         <span
                           [ngClass]="
@@ -132,6 +149,7 @@
                           class="btn btn-sm btn-white text-danger me-2"
                           ><i class="far fa-trash-alt me-1"></i>Delete</a
                         >
+                 
                       </td>
                     </tr>
                   </ng-container>
@@ -175,6 +193,36 @@
   </div>
 </div>
 <!-- /Delete Tax Modal -->
+<!-- Modal suministro -->
+<div class="modal fade" id="suministroModal" tabindex="-1" aria-labelledby="suministroModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="suministroModalLabel">Crear Suministro</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body edit-content">
+              <div class="mb-3">
+                  <input type="hidden" id="suministroId" name="suministroId"  [(ngModel)]="suministro.clienteId"/>
+                  <label for="recipient-name" class="form-control-label">N° Suministro:</label>
+                  <input type="text" class="form-control"  [(ngModel)]="suministro.suministro" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                  <label for="recipient-name" class="form-control-label" >Codigo CL:</label>
+                  <input type="text" class="form-control" [(ngModel)]="suministro.codigo" id="recipient-codigo">
+              </div>
+              <div class="mb-3">
+                  <label for="recipient-name" class="form-control-label"  >Factor:</label>
+                  <input type="text" class="form-control" [(ngModel)]="suministro.factor" id="recipient-factor">
+              </div>
+          </div>                   
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="crearSuministro()" data-bs-dismiss="modal" >Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
 
 <!-- Page Wrapper -
 <div class="page-wrapper">

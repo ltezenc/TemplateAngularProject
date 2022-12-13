@@ -4,6 +4,8 @@ import { Cliente } from 'src/app/model/cliente';
 import { AllModulesService } from 'src/app/services/all-modules.service';
 import { DataTableDirective } from 'angular-datatables';
 import { HttpClient } from '@angular/common/http';
+import { Suministro } from 'src/app/model/suministro';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -11,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomerListComponent implements OnInit {
   listclientes:Cliente[];
+  suministro: Suministro= new Suministro();
   cadena=[];
   errorMessage: any;
   public tempId: any;
@@ -94,14 +97,45 @@ export class CustomerListComponent implements OnInit {
      
       let i = 0;
       for (let prop of keys ) { 
+        this.cadena=[],
       this.cadena.push(res[prop]);
       this.cadena[i]['name'] = prop;
       i++;
   } console.log(this.cadena)
+
      },
       )
      
       this.dtTrigger.next();
+  }
+
+  logMessageId(el){
+
+    let messageId = el.getAttribute('data-message-id');
+    //let messageId = el.dataset.messageId;
+    this.suministro.clienteId=messageId
+
+    console.log("Message Id: ", messageId);
+
+  }
+  confirmText() {
+    Swal.fire(
+      'suministro agregado!',
+      'has clic para continuar!',
+      'success'
+    )
+  }
+  crearSuministro():void{
+    
+    console.log(this.suministro)
+    this.srvModuleService.crearsuministro(this.suministro).subscribe(res=>{this.getCustomers()
+    }, err => {
+      console.log(err.message);
+    }, () => {
+      this.confirmText();
+      
+      console.log('completed');
+    })
   }
 
   filter() {}

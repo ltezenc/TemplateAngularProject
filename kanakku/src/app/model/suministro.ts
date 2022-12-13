@@ -1,5 +1,5 @@
 export class Suministro{
-    idCliente: number;
+    clienteId: number;
     suministro: string;
     codigo:string;
     factor:number;

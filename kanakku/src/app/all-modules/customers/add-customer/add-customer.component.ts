@@ -1,11 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { CommonServiceService } from '../../../services/common-service.service';
+import Swal from 'sweetalert2';
 import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AllModulesService } from '../../../services/all-modules.service';
 import { DatePipe } from "@angular/common";
 import { ToastrService } from 'ngx-toastr';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { Cliente } from 'src/app/model/cliente';
+import { tarifaI } from 'src/app/model/tarifa.interface';
 
 @Component({
   selector: 'app-add-customer',
@@ -13,17 +16,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-customer.component.css']
 })
 export class AddCustomerComponent implements OnInit {
+  cliente:Cliente= new Cliente();
+ tarifa:tarifaI[];
+ apitarifa=[];
   public id:any
   public url: any = "customers";
   page = 'Add Customer';
   public pipe = new DatePipe("en-US");
   myDate = new Date();
   public addCustomerForm!: FormGroup;
-  constructor(public router: Router, location: Location, private allModulesService: AllModulesService,private formBuilder: FormBuilder,private route: ActivatedRoute,private toastr: ToastrService) {
+  constructor(public router: Router, location: Location,private clienteService:ClienteService ,private allModulesService: AllModulesService,private formBuilder: FormBuilder,private route: ActivatedRoute,private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-
+    this.obtenerTarifa()
     this.addCustomerForm = this.formBuilder.group({
       customerName: ["", [Validators.required]],
       customerEmail: ["", [Validators.required]],
@@ -104,5 +110,39 @@ export class AddCustomerComponent implements OnInit {
     this.toastr.success("Customer added sucessfully...!", "Success");
     }
   }
+  obtenerTarifa(){
+    //obtiene lista de tarifa
+    this.clienteService.getTarifa().subscribe(res=>{
+      this.tarifa=res;
+      let keys= Object.keys(res);
+     
+      let i = 0;
+      for (let prop of keys ) { 
+      this.apitarifa.push(res[prop]);
+      this.apitarifa[i]['name'] = prop;
+      i++;
+  } console.log(this.apitarifa)
+     },
+      )
+  }
+  confirmText() {
+    Swal.fire(
+      'Cliente creado!',
+      'has clic para continuar!',
+      'success'
+    )
+  }
 
+    crearCliente():void{
+      console.log(this.cliente)
+      this.clienteService.create(this.cliente).subscribe(response => this.router.navigate(['/customers/customers-list']),
+       err => {
+        console.log(err.message);
+      }, () => {
+       
+        console.log('completed');
+      })
+      this.confirmText();
+    }
+ 
 }

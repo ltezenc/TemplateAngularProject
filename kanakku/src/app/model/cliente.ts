@@ -13,6 +13,7 @@ export class Cliente{
     precioFHP:number;
     precioHP:number;
     tipoCambio:number;
+    suministro:string;
     empresaID:number=1;
 
 }

@@ -60,7 +60,12 @@ export class AllModulesService {
   }
   getCliente():Observable<Cliente[]>{
 
-    return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
+    return this.http.get<Cliente[]>("http://localhost:8080/clienteslibres/clientes/listar")
+
+  }
+  getsuministroCliente(id:number):Observable<Suministro[]>{
+
+    return this.http.get<Suministro[]>("http://localhost:8080/clienteslibres/suministro/suministro-cliente/"+id)
 
   }
 
