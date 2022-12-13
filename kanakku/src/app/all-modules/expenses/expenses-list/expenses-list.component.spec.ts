@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExpensesListComponent } from './expenses-list.component';
 
 describe('ExpensesListComponent', () => {
+
+  console.log("Hola mundo")
   let component: ExpensesListComponent;
   let fixture: ComponentFixture<ExpensesListComponent>;
 
