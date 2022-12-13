@@ -1,170 +1,171 @@
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-	<div class="content container-fluid">
+  <div class="content container-fluid">
 
-		<!-- Page Header -->
-		<div class="page-header">
-			<div class="row align-items-center">
-				<div class="col">
-					<h3 class="page-title">Importacion de Archivos</h3>
-					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
-						<li class="breadcrumb-item active">Importacion de Archivos</li>
-					</ul>
-				</div>
-				<div class="col-auto">
-					<a  type="button" data-bs-toggle="modal" data-bs-target="#top-modal" class="btn btn-primary me-1">
-						<i class="fas fa-plus"></i>
-					</a>
-					<a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
-						<i class="fas fa-filter"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-		<!-- /Page Header -->
-<!-- Top modal content -->
-<div id="top-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-top">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="topModalLabel">Cargar archivo</h4>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<div class="file-loading">
-					<input id="input-21" name="input-21[]" multiple type="file" (change)="selectFile($event)">                                                 
-					
-				  </div>
-				  <div id="kartik-file-errors"></div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="subir" (click)="sendFile()">subir archivo</button>
-			  </div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Importacion de Archivos</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
+            <li class="breadcrumb-item active">Importacion de Archivos</li>
+          </ul>
+        </div>
+        <div class="col-auto">
+          <a type="button" data-bs-toggle="modal" data-bs-target="#top-modal" class="btn btn-primary me-1">
+            <i class="fas fa-plus"></i>
+          </a>
+          <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+            <i class="fas fa-filter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Header -->
+    <!-- Top modal content -->
+    <div id="top-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-top">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="topModalLabel">Cargar archivo</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="file-loading">
+              <input id="input-21" name="input-21[]" multiple type="file" (change)="selectFile($event)">
 
-		<!-- Search Filter -->
-		<div id="filter_inputs" class="card filter-card">
-			<div class="card-body pb-0">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>Customer:</label>
-							<input type="text" class="form-control">
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>Category:</label>
-							<select class="form-select">
-								<option>Select Category</option>
-								<option>Advertising</option>
-								<option>Marketing</option>
-								<option>Software</option>
-								<option>Travel</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>From</label>
-							<div class="cal-icon">
-								<input type="text" class="form-control" name="dp">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-							<label>To</label>
-							<div class="cal-icon">
-								<input type="text" class="form-control" name="dp">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /Search Filter -->
-		<app-parametro></app-parametro>
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card card-table">
-					<div class="card-body">
-						<div class="table-responsive">
-							<table datatable class="table table-center table-hover">
-								<thead class="thead-light">
-									<tr>
-										<th>Id</th>
-										<th>Nombre</th>
-										<th>FechaImportacion</th>					
-										<th>Cantidad Lecturas</th>
-										<th class="text-end">estado</th>   
-										<th class="text-end">Action</th>
-									</tr>
-								</thead>
-								<tbody *ngFor="let expeses of cadena;let i = index">
-									<tr *ngFor="let expese of expeses;let i = index">
-										<td>{{expese.id}}</td>
-										<td>{{expese.nombre}}</td>
-										<td>{{expese.fechaImportacion | date : 'dd MMM yyyy'}}</td>
-										<td>{{expese.cantLect}}</td>
-									
-										<td class="text-end" *ngIf="expese.estado == 1">
-											<span
-											  [ngClass]="
+            </div>
+            <div id="kartik-file-errors"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="subir" (click)="sendFile()">subir archivo</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Search Filter -->
+    <div id="filter_inputs" class="card filter-card">
+      <div class="card-body pb-0">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Customer:</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Category:</label>
+              <select class="form-select">
+                <option>Select Category</option>
+                <option>Advertising</option>
+                <option>Marketing</option>
+                <option>Software</option>
+                <option>Travel</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>From</label>
+              <div class="cal-icon">
+                <input type="text" class="form-control" name="dp">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>To</label>
+              <div class="cal-icon">
+                <input type="text" class="form-control" name="dp">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Search Filter -->
+
+
+    <app-parametro></app-parametro>
+    <hr>
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable class="table table-center table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>FechaImportacion</th>
+                    <th>Cantidad Lecturas</th>
+                    <th class="text-end">estado</th>
+                    <th class="text-end">Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let expeses of cadena;let i = index">
+                  <tr *ngFor="let expese of expeses;let i = index">
+                    <td>{{expese.id}}</td>
+                    <td>{{expese.nombre}}</td>
+                    <td>{{expese.fechaImportacion | date : 'dd MMM yyyy'}}</td>
+                    <td>{{expese.cantLect}}</td>
+
+                    <td class="text-end" *ngIf="expese.estado == 1">
+                      <span [ngClass]="
 											  expese.estado === 1
 												  ? 'badge badge-pill bg-success-light'
 												  : 'badge badge-pill bg-danger-light'
-											  "
-											  >Procesado</span
-											>
-										  </td>
-										  <td class="text-end" *ngIf="expese.estado == 0">
-											<span
-											  [ngClass]="
+											  ">Procesado</span>
+                    </td>
+                    <td class="text-end" *ngIf="expese.estado == 0">
+                      <span [ngClass]="
 											  expese.estado === 1
 												  ? 'badge badge-pill bg-success-light'
 												  : 'badge badge-pill bg-danger-light'
-											  "
-											  >Pendiente</span
-											>
-										  </td>
-										  <td class="text-end">
-											<a (click)="tempId = expese.id" data-bs-toggle="modal" data-bs-target="#delete_Expenses" href="javascript:void(0);" class="btn btn-sm btn-white text-danger"><i class="far fa-trash-alt me-1"></i>Delete</a>
-										</td>
-  	
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+											  ">Pendiente</span>
+                    </td>
+                    <td class="text-end">
+                      <a (click)="tempId = expese.id" data-bs-toggle="modal" data-bs-target="#delete_Expenses"
+                        href="javascript:void(0);" class="btn btn-sm btn-white text-danger"><i
+                          class="far fa-trash-alt me-1"></i>Delete</a>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- /Page Wrapper -->
 <!-- Delete Tax Modal -->
 <div class="modal custom-modal fade" id="delete_Expenses" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="modal-icon text-center mb-3">
-                    <i class="fas fa-trash-alt text-danger"></i>
-                </div>
-                <div class="modal-text text-center">
-                    <h2>Delete Expenses</h2>
-                    <p>Are you sure want to delete?</p>
-                </div>
-            </div>
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
-            </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-icon text-center mb-3">
+          <i class="fas fa-trash-alt text-danger"></i>
         </div>
+        <div class="modal-text text-center">
+          <h2>Delete Expenses</h2>
+          <p>Are you sure want to delete?</p>
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Delete</button>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /Delete Tax Modal -->
