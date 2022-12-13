@@ -133,15 +133,7 @@ const routes: Routes = [
               (m) => m.BlankPageModule
             ),
         },
-        {
-          path: 'maps-vector',
-          loadChildren: () =>
-            import('./mapvector/mapvector.module').then(
-              (m) => m.MapvectorModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
+  
 
   
         {
