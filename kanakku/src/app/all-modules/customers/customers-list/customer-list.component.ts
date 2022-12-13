@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/model/cliente';
 import { AllModulesService } from 'src/app/services/all-modules.service';
 import { DataTableDirective } from 'angular-datatables';
 import { HttpClient } from '@angular/common/http';
+import { Suministro } from 'src/app/model/suministro';
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomerListComponent implements OnInit {
   listclientes:Cliente[];
+  suministro:Suministro[];
   cadena=[];
   errorMessage: any;
   public tempId: any;
@@ -98,10 +100,24 @@ export class CustomerListComponent implements OnInit {
       this.cadena[i]['name'] = prop;
       i++;
   } console.log(this.cadena)
+
      },
       )
      
       this.dtTrigger.next();
+  }
+  getSuministro(id){
+    this.srvModuleService.getsuministroCliente(id).subscribe(res=>{
+      this.suministro=res;
+    }) 
+  }
+  logMessageId(el){
+
+    let messageId = el.getAttribute('data-message-id');
+    //let messageId = el.dataset.messageId;
+    
+    console.log("Message Id: ", messageId);
+
   }
 
   filter() {}

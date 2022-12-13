@@ -85,6 +85,7 @@
                     <th>Nombre</th>
                     <th>Tarifa</th>
                     <th>potenciaContratada</th>
+                    <th>suministro</th>
                     <th>Estado</th>
                     <th class="text-end">Acciones</th>
                     <th></th>
@@ -97,7 +98,19 @@
                       <td>{{ col.razonSocial }}</td>
                       <td>{{ col.prefijotarifa }}</td>
                       <td>{{ col.potenciaContratada }}</td>
-                    
+                      <td *ngIf="col.suministro == null">
+                        <span
+                          [ngClass]="
+                            col.suministro === null
+                              ? 'badge badge-pill bg-success-light'
+                              : 'badge badge-pill bg-danger-light'
+                          "
+                          >--</span
+                        >
+                      </td>
+                      <td *ngIf="col.suministro != null">
+                       {{ col.suministro }}
+                      </td>
                       <td *ngIf="col.estadoId == 1">
                         <span
                           [ngClass]="
