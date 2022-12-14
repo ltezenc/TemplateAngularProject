@@ -101,13 +101,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-        {
-          path: 'application',
-          loadChildren: () =>
-            import('./application/application.module').then((m) => m.ApplicationModule),
-          canActivate: [AuthenticationGuard],
-
-        },
+   
         {
           path: 'profile',
           loadChildren: () =>
