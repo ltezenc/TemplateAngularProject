@@ -33,7 +33,6 @@ export class ParametroComponent implements OnInit {
       this.service.getparametrosbyfactura().subscribe(res=>{
       this.parametros=res;
       let keys= Object.keys(res);
-      console.log("obteniendovalor :",res["parametrosResponses"][0])
       this.enviodatos.push(res["parametrosResponses"][0]);
 
       let i = 0;

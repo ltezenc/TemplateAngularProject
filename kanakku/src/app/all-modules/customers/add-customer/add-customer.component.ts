@@ -115,9 +115,9 @@ export class AddCustomerComponent implements OnInit {
     this.clienteService.getTarifa().subscribe(res=>{
       this.tarifa=res;
       let keys= Object.keys(res);
-     
+
       let i = 0;
-      for (let prop of keys ) { 
+      for (let prop of keys ) {
       this.apitarifa.push(res[prop]);
       this.apitarifa[i]['name'] = prop;
       i++;
@@ -134,15 +134,230 @@ export class AddCustomerComponent implements OnInit {
   }
 
     crearCliente():void{
-      console.log(this.cliente)
-      this.clienteService.create(this.cliente).subscribe(response => this.router.navigate(['/customers/customers-list']),
-       err => {
-        console.log(err.message);
-      }, () => {
-       
-        console.log('completed');
-      })
-      this.confirmText();
+
+      let tarifa =<HTMLInputElement> document.getElementById('txttarifa');
+      let potenciaconcentrada =<HTMLInputElement> document.getElementById('txtpotenciaContratada');
+      let tipocambio =<HTMLInputElement> document.getElementById('txttipodecambio');
+      let precioporhora =<HTMLInputElement> document.getElementById('txtprecioporhorapunta');
+      let preciofuerahorapunta =<HTMLInputElement> document.getElementById('txtpreciofuerahorapunta');
+      let estado =<HTMLInputElement> document.getElementById('shred-info');
+
+      console.log(tarifa.value)
+      console.log(potenciaconcentrada.value)
+      console.log(tipocambio.value)
+      console.log(precioporhora.value)
+      console.log(preciofuerahorapunta.value)
+      console.log(estado.value)
+
+      if (tarifa.value == "" && potenciaconcentrada.value == "" && tipocambio.value == "" && precioporhora.value == "" && preciofuerahorapunta.value == "" && estado.value == "") {
+        document.querySelector(".sv_tf").innerHTML = "* Debe seleccionar una opción."
+        document.querySelector(".sv_pc").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_tc").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_hp").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_fpc").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_est").innerHTML = "* Debe seleccionar una opción."
+
+      } else if (
+        (tarifa.value == "" || potenciaconcentrada.value == "" || tipocambio.value == "" || precioporhora.value == "" || preciofuerahorapunta.value == "" || estado.value == "") ||
+        (potenciaconcentrada.value.length < 2 || tipocambio.value.length < 2 || precioporhora.value.length < 2 || preciofuerahorapunta.value.length < 2)
+      ) {
+
+        if (tarifa.value == "") {
+          document.querySelector(".sv_tf").innerHTML = "* Debe seleccionar una opción."
+        }else {
+          document.querySelector(".sv_tf").innerHTML = ""
+        }
+
+        if (estado.value == "") {
+          document.querySelector(".sv_est").innerHTML = "* Debe seleccionar una opción."
+        }else {
+          document.querySelector(".sv_est").innerHTML = ""
+        }
+
+        if (potenciaconcentrada.value == "") {
+          document.querySelector(".sv_pc").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (potenciaconcentrada.value.length < 2) {
+          document.querySelector(".sv_pc").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".sv_pc").innerHTML = ""
+        }
+
+        if (tipocambio.value == "") {
+          document.querySelector(".sv_tc").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (tipocambio.value.length < 2) {
+          document.querySelector(".sv_tc").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".sv_tc").innerHTML = ""
+        }
+
+        if (precioporhora.value == "") {
+          document.querySelector(".sv_hp").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (precioporhora.value.length < 2) {
+          document.querySelector(".sv_hp").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".sv_hp").innerHTML = ""
+        }
+
+        if (preciofuerahorapunta.value == "") {
+          document.querySelector(".sv_fpc").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (preciofuerahorapunta.value.length < 2) {
+          document.querySelector(".sv_fpc").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".sv_fpc").innerHTML = ""
+        }
+
+
+      }else{
+
+        document.querySelector(".sv_tf").innerHTML = ""
+        document.querySelector(".sv_pc").innerHTML = ""
+        document.querySelector(".sv_tc").innerHTML = ""
+        document.querySelector(".sv_hp").innerHTML = ""
+        document.querySelector(".sv_fpc").innerHTML = ""
+        document.querySelector(".sv_est").innerHTML = ""
+
+        console.log(this.cliente)
+        this.clienteService.create(this.cliente).subscribe(response => this.router.navigate(['/customers/customers-list']),
+        err => {
+          console.log(err.message);
+        }, () => {
+
+          console.log('completed');
+        })
+        this.confirmText();
+
+      }
+
+
     }
- 
+
+    verificarNombre($n) {
+      var ExpRegular_Nombre = /^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ]+((?:[\s{1}][A-Za-zÑñÁÉÍÓÚáéíóúüÜ]+)+)?$/;
+      return ExpRegular_Nombre.test($n);
+    }
+
+    verificarCorreo($n) {
+      var ExpRegular_Correo = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      return ExpRegular_Correo.test($n);
+    }
+
+    verificarNumCel($m) {
+      var ExpRegular_Num = /^[\d]+$/;
+      return ExpRegular_Num.test($m);
+    }
+
+    nextTab()
+    {
+      let razonsocial =<HTMLInputElement> document.getElementById('txtrazonsocial');
+      let ruc =<HTMLInputElement> document.getElementById('txtruc');
+      let direccion =<HTMLInputElement> document.getElementById('txtdireccion');
+      let responsablelegal =<HTMLInputElement> document.getElementById('txtresponsablelegal');
+      let email =<HTMLInputElement> document.getElementById('txtemail');
+      let telefono =<HTMLInputElement> document.getElementById('txttelefono');
+
+      if (razonsocial.value == "" && ruc.value == "" && direccion.value == "" && responsablelegal.value == "" && email.value == "" && telefono.value == "") {
+
+        document.querySelector(".co_rs").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".co_rc").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".co_dir").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".co_de").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".co_em").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".co_tl").innerHTML = "* Este campo no puede quedar vacío."
+
+      } else if (
+        (razonsocial.value == "" || ruc.value == "" || direccion.value == "" || responsablelegal.value == "" || email.value == "" || telefono.value == "") ||
+        (razonsocial.value.length < 2 || ruc.value.length != 11 || direccion.value.length < 2 || responsablelegal.value.length < 2 || email.value.length < 2 || telefono.value.length != 9) ||
+        (!this.verificarNombre(responsablelegal.value) || !this.verificarNumCel(ruc.value) || !this.verificarNumCel(telefono.value) || !this.verificarCorreo(email.value))
+      ) {
+
+        if (email.value == "") {
+          document.querySelector(".co_em").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (email.value.length < 2) {
+          document.querySelector(".co_em").innerHTML = "* Debe tener 6 o más caractéres."
+        } else if (!this.verificarCorreo(email.value)) {
+          document.querySelector(".co_em").innerHTML = "* Debe incluir @ en la dirección de correo electrónico."
+        } else {
+          document.querySelector(".co_em").innerHTML = ""
+        }
+
+        if (ruc.value == "") {
+          document.querySelector(".co_rc").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (ruc.value.length != 9 && !this.verificarNumCel(ruc.value)) {
+          document.querySelector(".co_rc").innerHTML = "* Debe ingresar solo números."
+        } else if (ruc.value.length != 11) {
+          document.querySelector(".co_rc").innerHTML = "* Debe tener 11 dígitos."
+        } else if (!this.verificarNumCel(ruc.value)) {
+          document.querySelector(".co_rc").innerHTML = "* Ingreso de datos inválidos."
+        } else {
+          document.querySelector(".co_rc").innerHTML = ""
+        }
+
+        if (telefono.value == "") {
+          document.querySelector(".co_tl").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (telefono.value.length != 9 && !this.verificarNumCel(telefono.value)) {
+          document.querySelector(".co_tl").innerHTML = "* Debe ingresar solo números."
+        } else if (telefono.value.length != 9) {
+          document.querySelector(".co_tl").innerHTML = "* Debe tener 9 dígitos."
+        } else if (!this.verificarNumCel(telefono.value)) {
+          document.querySelector(".co_tl").innerHTML = "* Ingreso de datos inválidos."
+        } else {
+          document.querySelector(".co_tl").innerHTML = ""
+        }
+
+        if (razonsocial.value == "") {
+          document.querySelector(".co_rs").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (razonsocial.value.length < 2) {
+          document.querySelector(".co_rs").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".co_rs").innerHTML = ""
+        }
+
+        if (direccion.value == "") {
+          document.querySelector(".co_dir").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (direccion.value.length < 2) {
+          document.querySelector(".co_dir").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".co_dir").innerHTML = ""
+        }
+
+        if (responsablelegal.value == "") {
+          document.querySelector(".co_de").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (responsablelegal.value.length < 2) {
+          document.querySelector(".co_de").innerHTML = "* Debe tener 2 o más caractéres."
+        }else {
+          document.querySelector(".co_de").innerHTML = ""
+        }
+
+        document.getElementById("progress-seller-details").className = "tab-pane active show";  //No continua
+
+      } else {
+
+        document.querySelector(".co_rs").innerHTML = ""
+        document.querySelector(".co_rc").innerHTML = ""
+        document.querySelector(".co_dir").innerHTML = ""
+        document.querySelector(".co_de").innerHTML = ""
+        document.querySelector(".co_em").innerHTML = ""
+        document.querySelector(".co_tl").innerHTML = ""
+
+        document.getElementById("progress-seller-details").className = "tab-pane"; //continua
+        document.getElementById("porcentajenext").style.width = "100%" //barra al 100%
+        document.querySelector(".viewsave").className = "tab-pane viewsave active show";  //Activo la última vista
+
+        document.querySelector(".pre__v").className = "pre__v nav-link";
+        document.querySelector(".nex__t").className = "nex__t nav-link active";
+
+      }
+
+    }
+
+    prevTab(){
+      document.querySelector(".viewsave").className = "tab-pane viewsave"; //continua
+      document.getElementById("progress-seller-details").className = "tab-pane active show"; //continua
+      document.getElementById("porcentajenext").style.width = "50%" //barra al 100%
+
+      document.querySelector(".pre__v").className = "pre__v nav-link active";
+      document.querySelector(".nex__t").className = "nex__t nav-link";
+
+    }
+
 }
