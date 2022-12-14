@@ -60,12 +60,12 @@ export class AllModulesService {
   }
   getCliente():Observable<Cliente[]>{
 
-    return this.http.get<Cliente[]>("http://localhost:8080/clienteslibres/clientes/listar")
+    return this.http.get<Cliente[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/clientes/listar")
 
   }
   getsuministroCliente(id:number):Observable<Suministro[]>{
 
-    return this.http.get<Suministro[]>("http://localhost:8080/clienteslibres/suministro/suministro-cliente/"+id)
+    return this.http.get<Suministro[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/suministro/suministro-cliente/"+id)
 
   }
 
