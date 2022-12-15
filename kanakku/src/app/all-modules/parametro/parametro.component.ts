@@ -8,6 +8,7 @@ import { ParametrosService } from 'src/app/services/parametros.services';
   styleUrls: ['./parametro.component.css']
 })
 export class ParametroComponent implements OnInit {
+  parametro:parametrosI= new parametrosI
   ngAfterViewInit() {
     this.loadcauroselbootstrap("assets/plugins/swiper-bundle/swiper-bundle.min.js");
     this.loaddbootstrapcaurosel("assets/plugins/swiper-bundle/script_carusel.js")
@@ -45,7 +46,15 @@ export class ParametroComponent implements OnInit {
       )
     }
 
-
-
+UpdateParametro(){
+  console.log(this.parametro)
+  this.service.updateparametro(this.parametro).subscribe(response => {
+    //do something with response
+  }, err => {
+    console.log(err.message);
+  }, () => {
+    console.log('completed');
+  })
+}
 
 }

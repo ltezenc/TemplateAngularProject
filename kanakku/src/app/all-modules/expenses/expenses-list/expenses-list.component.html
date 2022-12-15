@@ -116,7 +116,20 @@
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd MMM yyyy'}}</td>
                     <td>{{expese.cantLect}}</td>
-
+                    <td class="text-end" *ngIf="expese.estado == 2">
+                      <span [ngClass]="
+											  expese.estado === 1
+												  ? 'badge badge-pill bg-success-light'
+												  : 'badge badge-pill bg-danger-light'
+											  ">Error2</span>
+                    </td>
+                    <td class="text-end" *ngIf="expese.estado == 3">
+                      <span [ngClass]="
+											  expese.estado === 1
+												  ? 'badge badge-pill bg-success-light'
+												  : 'badge badge-pill bg-danger-light'
+											  ">Error3</span>
+                    </td>
                     <td class="text-end" *ngIf="expese.estado == 1">
                       <span [ngClass]="
 											  expese.estado === 1

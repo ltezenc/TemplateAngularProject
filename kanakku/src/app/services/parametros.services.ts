@@ -17,4 +17,8 @@ export class ParametrosService {
     return this.http.get<parametrosI[]>(environment.url_global+"/clienteslibres/parametros/1/listar")
 
   }
+
+  updateparametro(parametro:parametrosI):Observable<parametrosI>{
+    return this.http.post<parametrosI>("http://localhost:8080/clienteslibres/parametros/1/actualizar",parametro)
+  }
 }

@@ -8,12 +8,14 @@ export class Cliente{
     email:string;
     tarifa:string;
     potenciaContratada:number;
-    empresaId:number;
-    estado:number;
+    empresaId:number=1;
+    estadoId:number;
     precioFHP:number;
     precioHP:number;
     tipoCambio:number;
     suministro:string;
-    empresaID:number=1;
-
-}
+    ppi0:number;
+    pgn0:number;
+    comercializacion:number;
+    cargoFijo:number;
+   }

@@ -137,15 +137,9 @@
                             <div class="col-lg-6">
                               <div class="mb-3" >
                                 <label for="txttarifa" class="form-label">Tarifa*:</label>
-                                  <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="cliente.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
-                                    <option selected value="" disabled>Selecciona una Tarifa</option>
+                                  <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="cliente.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">                                  
                                     <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
-                                  </select>
-                                  <!-- <select name="miselect" class="form-select form-select-sm" [(ngModel)]="cliente.tarifa" aria-label=".form-select-sm example" id="txttarifa">
-                                    <option selected value="">Selecciona una Tarifa</option>
-                                    <option value="1">opt01</option>
-                                    <option value="2">opt02</option>
-                                  </select> -->
+                                  </select>                       
                                   <span class="text-danger sv_tf"></span>
 
                               </div>
@@ -213,9 +207,61 @@
                             <div class="col-lg-3"></div>
                             <div class="col-lg-6">
                               <div class="mb-3">
+                                <label for="txtpreciofuerahorapunta" class="form-label">Ppi0*:</label>
+                                <input type="text" class="form-control" name="txtpreciofuerahorapunta" [(ngModel)]="cliente.ppi0">
+                              </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+  
+                          </div>
+  
+  
+                          <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6">
+                              <div class="mb-3">
+                                <label for="txtpreciofuerahorapunta" class="form-label">Pgn0*:</label>
+                                <input type="text" class="form-control" name="txtpreciofuerahorapunta" [(ngModel)]="cliente.pgn0">
+                              </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+  
+                          </div>
+  
+  
+                          <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6">
+                              <div class="mb-3">
+                                <label for="txtpreciofuerahorapunta" class="form-label">Comercializacion*:</label>
+                                <input type="text" class="form-control" name="txtpreciofuerahorapunta" [(ngModel)]="cliente.comercializacion">
+                              </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+  
+                          </div>
+  
+  
+                          <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6">
+                              <div class="mb-3">
+                                <label for="txtpreciofuerahorapunta" class="form-label">CargoFijo*:</label>
+                                <input type="text" class="form-control" name="txtpreciofuerahorapunta" [(ngModel)]="cliente.cargoFijo">
+                              </div>
+                            </div>
+                            <div class="col-lg-3"></div>
+  
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-6">
+                              <div class="mb-3">
                                 <label for="txtestado" class="form-label">Estado*:</label>
                                 <div class="select mb-3" >
-                                  <select name="shred-info" id="shred-info" [(ngModel)]="cliente.estado" class="form-control" >
+                                  <select name="shred-info" id="shred-info" [(ngModel)]="cliente.estadoId" class="form-control" >
                                         <option selected disabled value="">Selecciona una opción</option>
                                       <option [value]=1>Activo</option>
                                       <option [value]=0>Inactivo</option>

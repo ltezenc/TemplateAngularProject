@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExpensesListComponent } from './expenses-list.component';
 
 const routes: Routes = [
-  {path:'',component:ExpensesListComponent}
+  {path:'',component:ExpensesListComponent
+  }
 ];
 
 @NgModule({

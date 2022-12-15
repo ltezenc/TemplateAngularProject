@@ -1,4 +1,4 @@
-export interface parametrosI{
+export class parametrosI{
     uit:number;
     fose:number;        
     alicuota:number;
@@ -8,4 +8,5 @@ export interface parametrosI{
     precioEnergiahp:number;    
     precioEnergiafhp:number;        
     pfactura:string;
+    empresaId:number=1;
 }

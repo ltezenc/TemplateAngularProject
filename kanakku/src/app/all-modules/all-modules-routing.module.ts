@@ -50,6 +50,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
+ 
         {
           path: 'estimates',
           loadChildren: () =>
@@ -73,6 +74,14 @@ const routes: Routes = [
           loadChildren: () =>
             import('./payments/payments.module').then(
               (m) => m.PaymentsModule
+            ),
+          canActivate: [AuthenticationGuard],
+        },
+        {
+          path: 'parametro',
+          loadChildren: () =>
+            import('./parametro/parametro.module').then(
+              (m) => m.ParametroModule
             ),
           canActivate: [AuthenticationGuard],
         },

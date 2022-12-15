@@ -1,144 +1,3 @@
-<!-- Parametros -->
-<!-- <div *ngFor="let row of cadena">
-  <div class="row" *ngFor="let col of row">
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon1.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.uit}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">UIT </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon2.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.fose}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">FOSE</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon3.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.alicuota}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">Alicuota</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon4.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.ppi}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">PPI </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon1.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.pgn}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">PGN </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon2.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.tipoCambio}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">Tipo Cambio</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon3.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.precioEnergiahp}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">Precio Energia HP</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon4.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">S/{{col.precioEnergiafhp}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">Precio Energia FHP</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-2 col-sm-6 col-12">
-      <div class="card inovices-card">
-        <div class="card-body">
-          <div class="inovices-widget-header">
-            <span class="inovices-widget-icon">
-              <img src="assets/img/icons/invoices-icon4.svg" alt="">
-            </span>
-            <div class="inovices-dash-count">
-              <div class="inovices-amount">{{col.dia}}-{{col.hora}}</div>
-            </div>
-          </div>
-          <p class="inovices-all">SEIN</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="slide-container swiper">
   <div class="slide-content">
     <div class="card-wrapper swiper-wrapper">
@@ -267,5 +126,72 @@
   <div class="swiper-button-prev swiper-navBtn"></div> -->
   <div class="swiper-pagination"></div>
 </div>
+<div><a   data-bs-toggle="modal"
+  data-bs-target="#suministroModal"
+  class="btn btn-sm btn-white text-danger me-2">presiona</a></div>
 
+
+<div class="modal fade" id="suministroModal" tabindex="-1" aria-labelledby="suministroModalLabel" aria-hidden="true" *ngFor="let nombre of cadena">
+  <div class="modal-dialog" *ngFor="let datos of nombre">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="suministroModalLabel">Actualizar parametros</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body edit-content">
+              <div class="mb-3">
+                  <label for="recipient-name" class="form-control-label">UIT:</label>
+                  <input type="text" class="form-control"  id="recipient-name" value="{{datos.uit}}" >
+              </div>
+              <div class="mb-3">
+                  <label for="recipient-name" class="form-control-label" >FOse:</label>
+                  <input type="text" class="form-control"  id="recipient-codigo" value="{{datos.fose}}">
+              </div>
+              <div class="mb-3">
+                  <label for="recipient-name" class="form-control-label" >Alicuota:</label>
+                  <input type="text" class="form-control"  id="recipient-factor" value="{{datos.alicuota}}" >
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.ppi}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.hora}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.dia}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.tipoCambio}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.pgn}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.precioEnergiahp}}">
+               </div>
+               <div class="mb-3">
+                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.precioEnergiafhp}}">
+               
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="form-control-label"  >Ppi:</label>
+            <input type="text" class="form-control"  id="recipient-factor" value="{{datos.id}}">
+           
+      </div>
+      
+          </div>                   
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">cancelar</button>
+              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="UpdateParametro()" >Actualizar</button>
+          </div>
+      </div>
+  </div>
+</div>
 <!--/Parametros-->
