@@ -7,8 +7,9 @@ import { ParametrosService } from 'src/app/services/parametros.services';
   templateUrl: './parametro.component.html',
   styleUrls: ['./parametro.component.css']
 })
+
 export class ParametroComponent implements OnInit {
-  parametro:parametrosI= new parametrosI
+  parametro:parametrosI= new parametrosI()
   ngAfterViewInit() {
     this.loadcauroselbootstrap("assets/plugins/swiper-bundle/swiper-bundle.min.js");
     this.loaddbootstrapcaurosel("assets/plugins/swiper-bundle/script_carusel.js")
@@ -26,7 +27,7 @@ export class ParametroComponent implements OnInit {
     document.body.appendChild(script);
   }
   constructor(private service:ParametrosService) { }
-  parametros:parametrosI[];
+  parametros:parametrosI;
   cadena=[]
   enviodatos = []
   ngOnInit(): void {
@@ -46,15 +47,24 @@ export class ParametroComponent implements OnInit {
       )
     }
 
+
+
 UpdateParametro(){
-  console.log(this.parametro)
-  this.service.updateparametro(this.parametro).subscribe(response => {
-    //do something with response
-  }, err => {
-    console.log(err.message);
-  }, () => {
-    console.log('completed');
+  this.service.getparametrosbyfactura().subscribe(res=>{
+    this.parametro=res;
   })
+  console.log(this.parametro)
+  // this.service.updateparametro(this.parametro).subscribe(response => {
+  //   //do something with response
+  // }, err => {
+  //   console.log(err.message);
+  // }, () => {
+  //   console.log('completed');
+  // })
 }
+
+
+
+
 
 }

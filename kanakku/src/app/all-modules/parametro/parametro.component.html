@@ -126,72 +126,169 @@
   <div class="swiper-button-prev swiper-navBtn"></div> -->
   <div class="swiper-pagination"></div>
 </div>
-<div><a   data-bs-toggle="modal"
-  data-bs-target="#suministroModal"
-  class="btn btn-sm btn-white text-danger me-2">presiona</a></div>
 
 
-<div class="modal fade" id="suministroModal" tabindex="-1" aria-labelledby="suministroModalLabel" aria-hidden="true" *ngFor="let nombre of cadena">
+
+<div class="modal fade" id="con-close-modal" tabindex="-1" aria-labelledby="con-close-modalLabel" aria-hidden="true"
+  *ngFor="let nombre of cadena">
   <div class="modal-dialog" *ngFor="let datos of nombre">
-      <div class="modal-content">
-          <div class="modal-header">
-          <h1 class="modal-title fs-5" id="suministroModalLabel">Actualizar parametros</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body edit-content">
-              <div class="mb-3">
-                  <label for="recipient-name" class="form-control-label">UIT:</label>
-                  <input type="text" class="form-control"  id="recipient-name" value="{{datos.uit}}" >
-              </div>
-              <div class="mb-3">
-                  <label for="recipient-name" class="form-control-label" >FOse:</label>
-                  <input type="text" class="form-control"  id="recipient-codigo" value="{{datos.fose}}">
-              </div>
-              <div class="mb-3">
-                  <label for="recipient-name" class="form-control-label" >Alicuota:</label>
-                  <input type="text" class="form-control"  id="recipient-factor" value="{{datos.alicuota}}" >
-              </div>
-              <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.ppi}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.hora}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.dia}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.tipoCambio}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.pgn}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.precioEnergiahp}}">
-               </div>
-               <div class="mb-3">
-                <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-                <input type="text" class="form-control"  id="recipient-factor" value="{{datos.precioEnergiafhp}}">
-               
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="form-control-label"  >Ppi:</label>
-            <input type="text" class="form-control"  id="recipient-factor" value="{{datos.id}}">
-           
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="con-close-modalLabel">Actualizar parametros</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
-          </div>                   
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">cancelar</button>
-              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="UpdateParametro()" >Actualizar</button>
-          </div>
+      <div class="modal-body edit-content">
+        <div class="mb-3">
+          <label for="uit" class="form-control-label">UIT:</label>
+          <input type="text" class="form-control" id="uit" name="uit" [(ngModel)]="parametro.uit">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">FOse:</label>
+          <input type="text" class="form-control" id="recipient-codigo" value="{{datos.fose}}" [(ngModel)]="parametro.fose">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Alicuota:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.alicuota}}" [(ngModel)]="parametro.alicuota">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.ppi}}" [(ngModel)]="parametro.ppi">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.hora}}" [(ngModel)]="parametro.hora">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.dia}}" [(ngModel)]="parametro.dia">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.tipoCambio}}" [(ngModel)]="parametro.tipoCambio">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.pgn}}" [(ngModel)]="parametro.pgn">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.precioEnergiahp}}" [(ngModel)]="parametro.precioEnergiahp">
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.precioEnergiafhp}}" [(ngModel)]="parametro.precioEnergiafhp">
+
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="form-control-label">Ppi:</label>
+          <input type="text" class="form-control" id="recipient-factor" value="{{datos.id}}" [(ngModel)]="parametro.empresaId">
+
+        </div>
+
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Actualizar</button>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+<div id="suministroModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">Actualizar parametros</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="row" *ngFor="let item of enviodatos">
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">UIT</label>
+              <input type="text" class="form-control" value="{{item.uit}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">FOSE</label>
+              <input type="text" class="form-control" value="{{item.fose}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">Alicuota</label>
+              <input type="text" class="form-control" value="{{item.alicuota}}">
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">PPI</label>
+              <input type="text" class="form-control" value="{{item.ppi}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">PGN</label>
+              <input type="text" class="form-control" value="{{item.pgn}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">Tipo cambio</label>
+              <input type="text" class="form-control" value="{{item.tipoCambio}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">Precio Energía HP</label>
+              <input type="text" class="form-control" value="{{item.precioEnergiahp}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">Precio Energía FHP</label>
+              <input type="text" class="form-control" value="{{item.precioEnergiafhp}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">HORA</label>
+              <input type="text" class="form-control" value="{{item.hora}}">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="mb-3 mt-0">
+              <label for="field-2" class="form-label">Día</label>
+              <input type="text" class="form-control" value="{{item.dia}}">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info waves-effect waves-light" (click)="UpdateParametro()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--/Parametros-->

@@ -1,7 +1,7 @@
 export class Cliente{
     id: number;
     ruc: string;
-    razonsocial:string;    
+    razonsocial:string;
     direccion:string;
     telefono:string;
     nombreResponsable:string;

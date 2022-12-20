@@ -34,19 +34,19 @@ export class ExpensesListComponent implements OnInit {
   listarFichero(){
     this.commonService.getFichero().subscribe(res=>{
       this.ficheros=res;
-      let keys= Object.keys(res);    
+      let keys= Object.keys(res);
       let i = 0;
-      for (let prop of keys ) { 
+      for (let prop of keys ) {
         this.cadena=[],
         this.cadena.push(res[prop]);
         this.cadena[i]['name'] = prop;
         i++;
-      } 
+      }
     console.log(this.cadena)
    })
   }
-  
-    selectFile(event){    
+
+    selectFile(event){
       const[file] = event.target.files;
       console.log(event.target.files.length)
       this.FileSelect={
@@ -56,13 +56,13 @@ export class ExpensesListComponent implements OnInit {
       let nombre=this.FileSelect.fileName
       this.commonService.suministroexist(nombre).subscribe(res=>console.log(res)
       )
-      
+
     }
-  
+
     eliminarFichero(documen:FicheroListI):void{
       console.log(documen.id)
       this.commonService.delete(documen.id).subscribe(res=>{
-        
+
         this.listarFichero()},
        err => {
         console.log(err.message);
@@ -70,19 +70,19 @@ export class ExpensesListComponent implements OnInit {
         console.log('completed');
       })
     }
-  
-  
-  
+
+
+
     sendFile():void{
-      
+
       const  body= new FormData();
       console.log(this.FileSelect.length)
-      body.append('file',this.FileSelect.fileRaw,this.FileSelect.fileName); 
+      body.append('file',this.FileSelect.fileRaw,this.FileSelect.fileName);
       this.commonService.sendPost(body).subscribe(res=>this.listarFichero()
       );
      // body.append('usuario','1')
      // body.append('empresa','1')
-      
+
     }
-    
+
 }

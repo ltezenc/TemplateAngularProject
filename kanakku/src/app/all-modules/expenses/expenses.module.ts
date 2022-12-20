@@ -7,7 +7,7 @@ import { ExpensesListComponent } from './expenses-list/expenses-list.component';
 import { RouterModule } from '@angular/router';
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { ParametroComponent } from '../parametro/parametro.component';
 
@@ -26,7 +26,8 @@ import { ParametroComponent } from '../parametro/parametro.component';
     ExpensesRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    FormsModule
   ]
 })
 export class ExpensesModule { }

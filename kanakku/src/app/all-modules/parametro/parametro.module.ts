@@ -11,12 +11,12 @@ import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
-
+    
 
   ],
   imports: [
     CommonModule,
-    
+
     FormsModule,
     RouterModule,
     ReactiveFormsModule,

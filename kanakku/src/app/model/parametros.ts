@@ -1,12 +1,14 @@
 export class parametrosI{
     uit:number;
-    fose:number;        
+    fose:number;
     alicuota:number;
+    hora:string;
+    dia:number;
     ppi:number;
-    pgn:number;        
+    pgn:number;
     tipoCambio:number;
-    precioEnergiahp:number;    
-    precioEnergiafhp:number;        
+    precioEnergiahp:number;
+    precioEnergiafhp:number;
     pfactura:string;
-    empresaId:number=1;
+    empresaId:number=5;
 }

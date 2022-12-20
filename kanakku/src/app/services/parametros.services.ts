@@ -12,9 +12,10 @@ export class ParametrosService {
 
   constructor(private http:HttpClient) { }
 
-  getparametrosbyfactura():Observable<parametrosI[]>{
+  getparametrosbyfactura():Observable<parametrosI>{
 
-    return this.http.get<parametrosI[]>(environment.url_global+"/clienteslibres/parametros/1/listar")
+    //return this.http.get<parametrosI[]>(environment.url_global+"/clienteslibres/parametros/1/listar")
+    return this.http.get<parametrosI>("http://localhost:8080/clienteslibres/parametros/1/listar")
 
   }
 
