@@ -15,19 +15,8 @@ export class EstimatesListComponent implements OnInit {
   constructor(private srvModuleService: AllModulesService) { }
 
   ngOnInit(): void {
-    this.getEstimates();
   }
 
-  getEstimates() {
-    this.estimates = this.srvModuleService.estimates;
-  //   this.srvModuleService.get(this.url).subscribe((res) => {
-  //     this.estimates = res;
-  //   },
-  // );
-  }
-  deleteEstimates() {
-    this.srvModuleService.delete(this.tempId, this.url).subscribe((data) => {
-        this.getEstimates();
-    });
-  }
+
+
 }

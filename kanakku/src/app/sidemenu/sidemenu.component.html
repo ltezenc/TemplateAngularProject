@@ -72,15 +72,7 @@
 				<li [class.active]="base === 'customers'">
 					<a [routerLink]="'/customers/customers-list'"><i data-feather="users"></i> <span>Clientes</span></a>
 				</li>				
-				<li class="submenu" [class.active]="page === 'invoices'">
-					<a href="javascript:void(0)"><i data-feather="clipboard"></i> <span> Invoices</span> <span class="menu-arrow"></span></a>
-					<ul>
 						
-						<li><a [routerLink]="'invoices/invoice-grid'" [class.active]="page === 'invoice-grid'">Invoices Grid</a></li>
-					
-						<li><a [routerLink]="'invoices/invoices-settings'" [class.active]="page === 'invoices-settings'">Invoices Settings</a></li>
-					</ul>
-				</li>			
 				<li [class.active]="base === 'payments'">
 					<a [routerLink]="'/payments/payments-list'"><i data-feather="credit-card"></i> <span>Facturas</span></a>
 				</li>
@@ -89,39 +81,12 @@
 				</li>
 			
 				
-				<li [class.active]="base === 'setting'">
-					<a [routerLink]="'setting/settings'"><i data-feather="settings"></i> <span>Settings</span></a>
-				</li>
+			
 		
-				<li class="menu-title">
-					<span>Pages</span>
-				</li>
-				<li [class.active]="base === 'profile'">
-					<a [routerLink]="'/profile'"><i data-feather="user-plus"></i> <span>Profile</span></a>
-				</li>
-				<li class="submenu" [class.active]="base === 'login-form' || base === 'register' || base === 'forgot-pass' || base === 'lock-screen'">
-					<a href="javascript:void(0)"><i data-feather="lock"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-					<ul>
-						<li><a [routerLink]="'login-form'" [class.active]="base === 'login-form'"> Login </a></li>
-						<li><a [routerLink]="'register'" [class.active]="base === 'register'"> Register </a></li>
-						<li><a [routerLink]="'forgot-pass'" [class.active]="base === 'forgot-pass'"> Forgot Password </a></li>
-						<li><a [routerLink]="'lock-screen'" [class.active]="base === 'lock-screen'"> Lock Screen </a></li>
-					</ul>
-				</li>
-				<li class="submenu" [class.active]="base === 'error-first' || base === 'error-second'">
-					<a href="javascript:void(0)"><i data-feather="alert-octagon"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
-					<ul>
-						<li><a [routerLink]="'error-first'" [class.active]="base === 'error-first'">404 Error </a></li>
-						<li><a [routerLink]="'error-second'" [class.active]="base === 'error-second'">500 Error </a></li>
-					</ul>
-				</li>
-				<li [class.active]="base === 'users'">
-					<a [routerLink]="'/users/users-list'"><i data-feather="user"></i> <span>Users</span></a>
-				</li>
-				<li [class.active]="base === 'blank-page'">
-					<a [routerLink]="'blank-page'"><i data-feather="file"></i> <span>Blank Page</span></a>
-				</li>
-				
+			
+	
+			
+					
 	
 				
 			</ul>

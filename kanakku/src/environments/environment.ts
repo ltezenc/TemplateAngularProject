@@ -5,7 +5,7 @@
 export const environment = {
   url_global: "http://ms-clienteslibres.gescom.cloud",
   production: false,
-  postexcel:'http://ms-clienteslibres.gescom.cloud/clienteslibres/documentos/1/1/importar-documentodepulsos',
+  postexcel:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos',
   postsumunistro:'http://ms-clienteslibres.gescom.cloud/clienteslibres/suministro/crear'
 
 };

@@ -32,20 +32,7 @@ const routes: Routes = [
         (m) => m.LockScreenModule
       ),
   },
-  {
-    path: 'error-first',
-    loadChildren: () =>
-      import('./pages/error-pages/error-first/error-first.module').then(
-        (m) => m.ErrorFirstModule
-      ),
-  },
-  {
-    path: 'error-second',
-    loadChildren: () =>
-      import('./pages/error-pages/error-second/error-second.module').then(
-        (m) => m.ErrorSecondModule
-      ),
-  },
+ 
   {
     path: 'invoice-reports',
     loadChildren: () =>

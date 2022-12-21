@@ -13,36 +13,21 @@ const routes: Routes = [
     path:"",
     component:AllModulesComponent,
     children:[
-      {
+     /* {
         path: 'index',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
         canActivate: [AuthenticationGuard],
 
       },
-  {
-    path: 'dashboard-two',
-    loadChildren: () =>
-    import('./dashboards/dashboard-two/dashboard-two.module').then(m => m.DashboardTwoModule),
-    canActivate: [AuthenticationGuard],
-  },
-  {
-    path: 'dashboard-three',
-    loadChildren: () => import('./dashboards/dashboard-three/dashboard-three.module').then(m => m.DashboardThreeModule),
-    canActivate: [AuthenticationGuard],
-  },
-  {
-    path: 'dashboard-four',
-    loadChildren: () =>
-    import('./dashboards/dashboard-four/dashboard-four.module').then(m => m.DashboardFourModule),
-    canActivate: [AuthenticationGuard],
-  },
-  {
-    path: 'dashboard-five',
-    loadChildren: () =>
-    import('./dashboards/dashboard-five/dashboard-five.module').then(m => m.DashboardFiveModule),
-    canActivate: [AuthenticationGuard],
-  },
+*/
+      {
+        path: 'index',
+        loadChildren: () =>
+          import('./expenses/expenses-list/expenses-list.module').then((m)=>m.ExpensesListModule),
+                  canActivate: [AuthenticationGuard],
+
+      },
       {
           path: 'customers',
           loadChildren: () =>
@@ -63,12 +48,7 @@ const routes: Routes = [
             import('./invoices/invoices.module').then((m) => m.InvoicesModule),
           canActivate: [AuthenticationGuard],
         },
-        {
-          path: 'items',
-          loadChildren: () =>
-            import('./items/items.module').then((m) => m.ItemsModule),
-          canActivate: [AuthenticationGuard],
-        },
+   
         {
           path: 'payments',
           loadChildren: () =>
@@ -120,23 +100,6 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-        {
-          path: 'users',
-          loadChildren: () =>
-            import('./users/users.module').then(
-              (m) => m.UsersModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
-        {
-          path: 'blank-page',
-          loadChildren: () =>
-            import('./blank-page/blank-page.module').then(
-              (m) => m.BlankPageModule
-            ),
-        },
-  
 
   
         {
@@ -151,9 +114,6 @@ const routes: Routes = [
 
     ]
   },
-  
- 
-  
   
   
   

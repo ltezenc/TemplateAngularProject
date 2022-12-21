@@ -24,12 +24,9 @@ export class ExpensesListComponent implements OnInit {
   constructor(public commonService: DataService) { }
 
   ngOnInit(): void {
-    this.getExpenses();
     this.listarFichero()
   }
-  getExpenses() {
-    this.expeses = this.commonService.expenses;
-  }
+
 
   listarFichero(){
     this.commonService.getFichero().subscribe(res=>{

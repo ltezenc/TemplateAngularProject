@@ -14,7 +14,6 @@ export class PaymentsListComponent implements OnInit {
   constructor(public commonService: CommonServiceService) { }
 
   ngOnInit(): void {
-    this.getPayments();
     this.listarFacturas();
   }
 
@@ -32,15 +31,6 @@ export class PaymentsListComponent implements OnInit {
      },
     )
   }
-  getPayments() {
 
-    this.payments = this.commonService.payments
-    // this.commonService.getPayments().subscribe(
-    //   (res) => {
-    //     this.payments = res;
-    //   },
-    //   (error) => (this.errorMessage = <any>error)
-    // );
-  }
 
 }

@@ -84,12 +84,7 @@ export class CustomerListComponent implements OnInit {
 
   }
 
-  getCustomers() {
-    this.customers = this.srvModuleService.customers;
-    // this.srvModuleService.get(this.url).subscribe((res) => {
-    //     this.customers = res;
-    //   },
-    // );
+  getCustomers() {    
 
     this.srvModuleService.getCliente().subscribe(res=>{
       this.listclientes=res;

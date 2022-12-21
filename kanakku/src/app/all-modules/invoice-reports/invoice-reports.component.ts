@@ -23,15 +23,8 @@ export class InvoiceReportsComponent implements OnInit {
   constructor(private srvModuleService: AllModulesService) {}
 
   ngOnInit(): void {
-    this.getInvoices();
   }
 
-  getInvoices() {
-    this.invoices = this.srvModuleService.invoices;
-  }
-  deleteInvoice() {
-    this.srvModuleService.delete(this.tempId, this.url).subscribe((data) => {
-        this.getInvoices();
-    });
-  }
+ 
+ 
 }
