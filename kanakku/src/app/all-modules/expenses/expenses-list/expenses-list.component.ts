@@ -14,6 +14,7 @@ export class ExpensesListComponent implements OnInit {
   url: any = "expenses";
   public tempId: any;
   FileSelect;
+  FileSelectAll = [];
   ficheros:FicheroListI[];
    cadena=[];
     Object = Object;
@@ -39,20 +40,37 @@ export class ExpensesListComponent implements OnInit {
         this.cadena[i]['name'] = prop;
         i++;
       }
-    console.log(this.cadena)
+    // console.log(this.cadena)
    })
   }
 
     selectFile(event){
       const[file] = event.target.files;
-      console.log(event.target.files.length)
+      let total_registros = event.target.files;
+      //Almaceno todo los ficheros
+      for (let i = 0; i < total_registros.length; i++) {
+        const item = total_registros[i];
+
+        let dataenviar = {
+          fileRaw:item,
+          fileName:item.name
+        }
+
+        this.FileSelectAll.push(dataenviar)
+
+
+      }
+      // console.log(event.target.files.length)
       this.FileSelect={
         fileRaw:file,
         fileName:file.name
       }
       let nombre=this.FileSelect.fileName
-      this.commonService.suministroexist(nombre).subscribe(res=>console.log(res)
-      )
+      let all_file = this.FileSelectAll
+      all_file.forEach(row => {
+        let no___mbre=row.fileName
+        this.commonService.suministroexist(no___mbre).subscribe(res=>console.log(res))
+      });
 
     }
 
@@ -68,15 +86,14 @@ export class ExpensesListComponent implements OnInit {
       })
     }
 
-
-
     sendFile():void{
 
-      const  body= new FormData();
-      console.log(this.FileSelect.length)
-      body.append('file',this.FileSelect.fileRaw,this.FileSelect.fileName);
-      this.commonService.sendPost(body).subscribe(res=>this.listarFichero()
-      );
+      let all_filereg = this.FileSelectAll
+      all_filereg.forEach(row_reg => {
+        const  body= new FormData();
+        body.append('file',row_reg.fileRaw,row_reg.fileName);
+        this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
+      });
      // body.append('usuario','1')
      // body.append('empresa','1')
 
