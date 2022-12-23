@@ -142,24 +142,27 @@ export class AddCustomerComponent implements OnInit {
       let preciofuerahorapunta =<HTMLInputElement> document.getElementById('txtpreciofuerahorapunta');
       let estado =<HTMLInputElement> document.getElementById('shred-info');
 
-      console.log(tarifa.value)
-      console.log(potenciaconcentrada.value)
-      console.log(tipocambio.value)
-      console.log(precioporhora.value)
-      console.log(preciofuerahorapunta.value)
-      console.log(estado.value)
 
-      if (tarifa.value == "" && potenciaconcentrada.value == "" && tipocambio.value == "" && precioporhora.value == "" && preciofuerahorapunta.value == "" && estado.value == "") {
+      let ppi =<HTMLInputElement> document.getElementById('txtppi');
+      let pgn =<HTMLInputElement> document.getElementById('txtpgn');
+      let comercializacion =<HTMLInputElement> document.getElementById('txtcomercializacion');
+      let cargofijo =<HTMLInputElement> document.getElementById('txtcargofijo');
+
+      if (tarifa.value == "" && potenciaconcentrada.value == "" && tipocambio.value == "" && precioporhora.value == "" && preciofuerahorapunta.value == "" && estado.value == "" && ppi.value == ""&& pgn.value == ""&& comercializacion.value == ""&& cargofijo.value == "") {
         document.querySelector(".sv_tf").innerHTML = "* Debe seleccionar una opción."
         document.querySelector(".sv_pc").innerHTML = "* Este campo no puede quedar vacío."
         document.querySelector(".sv_tc").innerHTML = "* Este campo no puede quedar vacío."
         document.querySelector(".sv_hp").innerHTML = "* Este campo no puede quedar vacío."
         document.querySelector(".sv_fpc").innerHTML = "* Este campo no puede quedar vacío."
         document.querySelector(".sv_est").innerHTML = "* Debe seleccionar una opción."
+        document.querySelector(".sv_ppi").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_pgn").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_cmr").innerHTML = "* Este campo no puede quedar vacío."
+        document.querySelector(".sv_cf").innerHTML = "* Este campo no puede quedar vacío."
 
       } else if (
         (tarifa.value == "" || potenciaconcentrada.value == "" || tipocambio.value == "" || precioporhora.value == "" || preciofuerahorapunta.value == "" || estado.value == "") ||
-        (potenciaconcentrada.value.length < 2 || tipocambio.value.length < 2 || precioporhora.value.length < 2 || preciofuerahorapunta.value.length < 2)
+        (potenciaconcentrada.value.length < 2 || tipocambio.value.length < 2 || precioporhora.value.length < 2 || preciofuerahorapunta.value.length < 2) || (!this.validateDecimal(potenciaconcentrada.value)) || (!this.validateDecimal(ppi.value)) || (!this.validateDecimal(pgn.value))
       ) {
 
         if (tarifa.value == "") {
@@ -176,32 +179,62 @@ export class AddCustomerComponent implements OnInit {
 
         if (potenciaconcentrada.value == "") {
           document.querySelector(".sv_pc").innerHTML = "* Este campo no puede quedar vacío."
-        } else if (potenciaconcentrada.value.length < 2) {
-          document.querySelector(".sv_pc").innerHTML = "* Debe tener 2 o más caractéres."
-        }else {
+        } else if (!this.validateDecimal(potenciaconcentrada.value)) {
+          document.querySelector(".sv_pc").innerHTML = "* Debe ingresar solo números."
+        } else {
           document.querySelector(".sv_pc").innerHTML = ""
+        }
+
+
+        if (ppi.value == "") {
+          document.querySelector(".sv_ppi").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (!this.validateDecimal(ppi.value)) {
+          document.querySelector(".sv_ppi").innerHTML = "* Debe ingresar solo números."
+        } else {
+          document.querySelector(".sv_ppi").innerHTML = ""
+        }
+
+
+
+        if (pgn.value == "") {
+          document.querySelector(".sv_pgn").innerHTML = "* Este campo no puede quedar vacío."
+        } else if (!this.validateDecimal(pgn.value)) {
+          document.querySelector(".sv_pgn").innerHTML = "* Debe ingresar solo números."
+        } else {
+          document.querySelector(".sv_pgn").innerHTML = ""
+        }
+
+        if (comercializacion.value == "") {
+          document.querySelector(".sv_cmr").innerHTML = "* Debe seleccionar una opción."
+        }else {
+          document.querySelector(".sv_cmr").innerHTML = ""
+        }
+        if (cargofijo.value == "") {
+          document.querySelector(".sv_cf").innerHTML = "* Debe seleccionar una opción."
+        }else {
+          document.querySelector(".sv_cf").innerHTML = ""
         }
 
         if (tipocambio.value == "") {
           document.querySelector(".sv_tc").innerHTML = "* Este campo no puede quedar vacío."
-        } else if (tipocambio.value.length < 2) {
-          document.querySelector(".sv_tc").innerHTML = "* Debe tener 2 o más caractéres."
+        } else if (!this.validateDecimal(tipocambio.value)) {
+          document.querySelector(".sv_tc").innerHTML = "* Debe ingresar solo números."
         }else {
           document.querySelector(".sv_tc").innerHTML = ""
         }
 
         if (precioporhora.value == "") {
           document.querySelector(".sv_hp").innerHTML = "* Este campo no puede quedar vacío."
-        } else if (precioporhora.value.length < 2) {
-          document.querySelector(".sv_hp").innerHTML = "* Debe tener 2 o más caractéres."
+        } else if (!this.validateDecimal(precioporhora.value)) {
+          document.querySelector(".sv_hp").innerHTML = "* Debe ingresar solo números."
         }else {
           document.querySelector(".sv_hp").innerHTML = ""
         }
 
         if (preciofuerahorapunta.value == "") {
           document.querySelector(".sv_fpc").innerHTML = "* Este campo no puede quedar vacío."
-        } else if (preciofuerahorapunta.value.length < 2) {
-          document.querySelector(".sv_fpc").innerHTML = "* Debe tener 2 o más caractéres."
+        } else if (!this.validateDecimal(preciofuerahorapunta.value)) {
+          document.querySelector(".sv_fpc").innerHTML = "* Debe ingresar solo números."
         }else {
           document.querySelector(".sv_fpc").innerHTML = ""
         }
@@ -245,6 +278,15 @@ export class AddCustomerComponent implements OnInit {
       var ExpRegular_Num = /^[\d]+$/;
       return ExpRegular_Num.test($m);
     }
+
+    validateDecimal(valor) {
+      var RE = /^\d*\,?\d*$/;
+      if (RE.test(valor)) {
+          return true;
+      } else {
+          return false;
+      }
+  }
 
     nextTab()
     {
