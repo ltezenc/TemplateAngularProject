@@ -132,6 +132,14 @@ export class AddCustomerComponent implements OnInit {
       'success'
     )
   }
+  ErrorText(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ocurrio un Error!',
+      footer: '<a href="">Verifica si los Parametros son correctos?</a>'
+    })
+  }
 
     crearCliente():void{
 
@@ -252,6 +260,7 @@ export class AddCustomerComponent implements OnInit {
         console.log(this.cliente)
         this.clienteService.create(this.cliente).subscribe(response => this.router.navigate(['/customers/customers-list']),
         err => {
+          this.ErrorText()
           console.log(err.message);
         }, () => {
 

@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { loginI } from 'src/app/model/login.interface';
+import { ResponseI } from 'src/app/model/reponse.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +12,10 @@ export class WebStorage {
   public Loginvalue = new BehaviorSubject<any>(0);
   public Createaccountvalue = new BehaviorSubject<any>(0);
   public Forgotpasswordvalue = new BehaviorSubject<any>(0);
-  constructor(private router: Router) {}
+url:string="http://localhost:8080/clienteslibres/usuarios/verificar-usuario"
 
+  constructor(private router: Router,private http:HttpClient) {}
+ 
   /**
    * Create account Function call from Registerpage
    * @param uservalue from user form value
@@ -26,43 +31,21 @@ export class WebStorage {
         Pdata.push(uservalue);
         const jsonData = JSON.stringify(Pdata);
         localStorage.setItem('Loginusers', jsonData);
-        this.Login(uservalue);
+    //    this.Login(uservalue);
       }
   }
 
-  /**
-   * Login Functionality call from Login
-   * @param uservalue from login page
-   */
-  public Login(uservalue: any): void {
-    let returndata={message:'',status:''}
-    let data:any = localStorage.getItem('Loginusers');
-    let Pdata: [] = JSON.parse(data);
-    const Eresult: any = Pdata.find(({ email }) => email === uservalue.email);
-    if (Eresult) {
-      if (Eresult.password === uservalue.password) {
-        this.Createtoken(uservalue);
-        this.Loginvalue.next('Login success');
-        this.router.navigate(['/index']);
-        this.Loginvalue.next(0);
-      } else {
-        returndata.message='Incorrect password'
-        returndata.status='password'
-        this.Loginvalue.next(returndata);
-      }
-    } else {
-      returndata.message='Email is  not valid'
-      returndata.status='email'
-      this.Loginvalue.next(returndata);
-    }
-  }
 
-  /**
-   * Create Token function for authendication
-   * @param uservalue recived from login function
-   */
-  public Createtoken(uservalue:any) {
-    var result = 'ABCDEFGHI' + uservalue.email + 'ghijklmnopqrs' + 'z01234567';
+    loginby(form:loginI):Observable<ResponseI>{
+
+      let direccion = this.url //+ "auth"  
+       return this.http.post<ResponseI>(direccion,form); 
+          }
+  
+
+  
+  public Createtoken(form:loginI) {
+    var result = 'ABCDEFGHI' + form.usuario + 'ghijklmnopqrs' + 'z01234567';
     localStorage.setItem('LoginData', result);
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FicheroListI } from 'src/app/model/ficherolist.interface';
 import { DataService } from '../../../services/data.service'
-
+declare var $:any;
 @Component({
   selector: 'app-expenses-list',
   templateUrl: './expenses-list.component.html',
@@ -26,9 +26,49 @@ export class ExpensesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarFichero()
+    this.animaciones()
+
   }
 
-
+  animaciones(){
+    //carga de archivos
+    $(function() {
+      var btn = $(".subir");
+      btn.on("click", function() {        
+        $(this).addClass('btn-progress');
+        setTimeout(function() {
+          btn.addClass('btn-fill')
+        }, 500);
+        
+        setTimeout(function() {
+          btn.removeClass('btn-fill')
+        }, 4100);        
+        setTimeout(function() {
+          btn.addClass('fa-check')
+        }, 4400);
+        setTimeout(function() {
+          btn.removeClass('fa-check')
+        }, 5500);
+        setTimeout(function() {
+          btn.removeClass('btn-progress')
+        }, 5700);
+      });    
+    })
+  
+  //plugin input
+    $("#input-21").fileinput({
+      previewFileIconSettings: { // configure your icon file extensions
+        'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+        'xls': '<i class="fas fa-file-excel text-success"></i>',
+      },
+      showPreview: true,
+      showUpload: false,
+      elErrorContainer: '#kartik-file-errors',
+      allowedFileExtensions: ["xls", "xlsx","xlsm"],
+     // uploadUrl: 'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos'
+      
+  });
+   }
   listarFichero(){
     this.commonService.getFichero().subscribe(res=>{
       this.ficheros=res;
@@ -58,7 +98,6 @@ export class ExpensesListComponent implements OnInit {
 
         this.FileSelectAll.push(dataenviar)
 
-
       }
       // console.log(event.target.files.length)
       this.FileSelect={
@@ -74,9 +113,9 @@ export class ExpensesListComponent implements OnInit {
 
     }
 
-    eliminarFichero(documen:FicheroListI):void{
-      console.log(documen.id)
-      this.commonService.delete(documen.id).subscribe(res=>{
+    eliminarFichero(id):void{
+      console.log(id)
+      this.commonService.delete(id).subscribe(res=>{
 
         this.listarFichero()},
        err => {
@@ -94,6 +133,7 @@ export class ExpensesListComponent implements OnInit {
         body.append('file',row_reg.fileRaw,row_reg.fileName);
         this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
       });
+
      // body.append('usuario','1')
      // body.append('empresa','1')
 

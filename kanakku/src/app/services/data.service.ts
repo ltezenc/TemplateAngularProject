@@ -22,7 +22,7 @@ export class DataService {
      }
 
      delete(id:number){
-      let resp=this.http.delete(environment.url_global+"/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
+      let resp=this.http.delete("http://localhost:8080/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
       return resp
        }
 

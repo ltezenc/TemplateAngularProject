@@ -631,16 +631,16 @@ button.bg-danger:hover {
 	color: #757575 !important;
 }
 .btn-primary {
-	background-color: #7638ff;
-	border: 1px solid #7638ff;
+	background-color: #1562d6f7;
+	border: 1px solid #3a11ce;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-	background-color: #621aff;
-	border: 1px solid #621aff;
+	background-color: #0336c7ea;
+	border: 1px solid #3b10d8e8;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -651,14 +651,14 @@ button.bg-danger:hover {
 .open > .dropdown-toggle.btn-primary.focus,
 .open > .dropdown-toggle.btn-primary:focus,
 .open > .dropdown-toggle.btn-primary:hover {
-	background-color: #621aff;
-	border: 1px solid #621aff;
+	background-color: #0f12d8;
+	border: 1px solid #200ec2;
 }
 .btn-primary.active:not(:disabled):not(.disabled),
 .btn-primary:active:not(:disabled):not(.disabled),
 .show > .btn-primary.dropdown-toggle {
-	background-color: #621aff;
-	border-color: #621aff;
+	background-color: #0d6efd;
+	border-color: #120edb;
 	color: #fff;
 }
 .btn-primary.active:focus:not(:disabled):not(.disabled),
@@ -667,9 +667,10 @@ button.bg-danger:hover {
 	box-shadow: unset;
 }
 .btn-primary.disabled,
+
 .btn-primary:disabled {
-	background-color: #7638ff;
-	border-color: #7638ff;
+	background-color: #0d6efd;
+	border-color: #1b36d3;
 	color: #fff;
 }
 .btn-secondary.active:focus:not(:disabled):not(.disabled),
@@ -2756,12 +2757,12 @@ html.menu-opened body {
 	color: #7638ff;
 }
 .sidebar-menu > ul > li > a:hover {
-	background-color: rgba(118, 56, 255, 0.05);
-    color: #7638ff; 
+	background-color: rgba(33, 77, 201, 0.05);
+    color: #244febf0; 
 }
 .sidebar-menu li.active > a {
-	background-color: rgba(118, 56, 255, 0.05);
-    color: #7638ff;
+	background-color: rgba(18, 68, 161, 0.05);
+    color: #1b39cbed;
 	position: relative;
 }
 .sidebar-menu li.active > a::before {
@@ -2771,7 +2772,7 @@ html.menu-opened body {
     position: absolute;
     left: 0;
     top: 0;
-    background: #7638ff;
+    background: #2339d7;
     -webkit-transition: all 0.5s;
     -ms-transition: all 0.5s;
     transition: all 0.5s;
@@ -6750,7 +6751,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 .inovices-widget-header .inovices-amount {
 	font-weight: 600;
 	font-size: 24px;
-	color: #7638FF;
+	color: #1d6ebf;
 }
 .inovices-all {
 	font-weight: 600;
@@ -7362,7 +7363,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 .invoice-total-footer h4 {
 	font-size: 20px;
 	margin-bottom: 0;
-	color: #7638FF;
+	color: #387efff2;
 }
 .invoice-total-footer h4 span {
 	float: right;

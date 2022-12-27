@@ -12,37 +12,29 @@
           <div class="login-right-wrap">
             <h1>Inicia Sesion</h1>
             
-
-            <form [formGroup]="form" (ngSubmit)="submit()">
+            <form [formGroup]="form" (ngSubmit)="submit(form.value)">
               <div class="form-group">
-                <label class="form-control-label">Usuario</label>
+                <label class="form-control-label">usuario</label>
                 <input
                   class="form-control"
                   type="text"
-                  formControlName="email"
-                  id="email"
+                  formControlName="usuarioLogin"
+                  id="usuarioLogin"
                   [ngClass]="{
-                    'is-invalid': f['email'].touched && f['email'].invalid
+                    'is-invalid': f['usuarioLogin'].touched && f['usuarioLogin'].invalid
                   }"
                 />
+               
+
                 <div
-                  class="invalid-feedback"
-                  *ngIf="CustomControler?.status === 'email'"
-                >
-                  {{ CustomControler.message }}
-                </div>
-                <div
-                  *ngIf="f['email'].touched && f['email'].invalid"
+                  *ngIf="f['usuarioLogin'].touched && f['usuarioLogin'].invalid"
                   class="invalid-feedback"
                 >
                   <div
-                    *ngIf="f['email'].errors && f['email'].errors['required']"
+                    *ngIf="f['usuarioLogin'].errors && f['usuarioLogin'].errors['required']"
                   >
-                    Email is required.
-                  </div>
-                  <div *ngIf="f['email'].errors && f['email'].errors['email']">
-                    Please, enter valid email address.
-                  </div>
+                    usuarioLogin es requerido.
+                  </div>               
                 </div>
               </div>
               <div class="form-group">
@@ -72,15 +64,10 @@
                         f['password'].errors && f['password'].errors['required']
                       "
                     >
-                      Password is required.
+                      Password es requerido.
                     </div>
                   </div>
-                  <div
-                    class="invalid-feedback"
-                    *ngIf="CustomControler?.status === 'password'"
-                  >
-                    {{ CustomControler.message }}
-                  </div>
+                  <span class="text-danger log_rch"></span>
                 </div>
               </div>
               <div class="form-group">
@@ -93,13 +80,13 @@
                         id="cb1"
                       />
                       <label class="custom-control-label ms-1" for="cb1"
-                        >Remember me</label
+                        >Recuerdame </label
                       >
                     </div>
                   </div>
                   <div class="col-6 text-end">
                     <a class="forgot-link" [routerLink]="'/forgot-pass'"
-                      >Forgot Password ?</a
+                      >¿olvidaste tu contraseña?</a
                     >
                   </div>
                 </div>
@@ -107,7 +94,7 @@
               <button
                 [disabled]="form.invalid"
                 class="btn btn-lg btn-block btn-primary w-100"
-                type="submit"
+                type="submit"               
               >
                 Login
               </button>

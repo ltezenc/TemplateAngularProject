@@ -45,8 +45,10 @@
     margin: -18px 0px;
     position: absolute;
     display: block;
+
   }
-  
+
+
   @keyframes fill {
     from { width: 0; }
     to { width: 100%; }
