@@ -32,7 +32,7 @@ const routes: Routes = [
         (m) => m.LockScreenModule
       ),
   },
- 
+
   {
     path: 'invoice-reports',
     loadChildren: () =>

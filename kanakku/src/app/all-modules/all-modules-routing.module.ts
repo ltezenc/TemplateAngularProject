@@ -35,7 +35,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
- 
+
         {
           path: 'estimates',
           loadChildren: () =>
@@ -48,7 +48,7 @@ const routes: Routes = [
             import('./invoices/invoices.module').then((m) => m.InvoicesModule),
           canActivate: [AuthenticationGuard],
         },
-   
+
         {
           path: 'payments',
           loadChildren: () =>
@@ -90,7 +90,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-   
+
         {
           path: 'profile',
           loadChildren: () =>
@@ -101,7 +101,7 @@ const routes: Routes = [
 
         },
 
-  
+
         {
           path: 'transactions',
           loadChildren: () =>
@@ -112,12 +112,21 @@ const routes: Routes = [
 
         },
 
+        {
+          path: 'close-process',
+          loadChildren: () =>
+            import('./close-process/close.module').then((m) => m.CustomersModule),
+          canActivate: [AuthenticationGuard],
+
+
+      },
+
     ]
   },
-  
-  
-  
-  
+
+
+
+
 ];
 
 @NgModule({

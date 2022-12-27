@@ -1,0 +1,100 @@
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Cerrar proceso</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/index'">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Cerrar proceso</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-10">
+
+
+
+        <div class="profile-cover">
+          <div class="profile-cover-wrap">
+            <img class="profile-cover-img" >
+
+            <div class="cover-content">
+              <div class="custom-file-btn">
+                <input type="file" class="custom-file-btn-input" id="cover_upload">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="text-center mb-5">
+          <label class="avatar avatar-xxl profile-cover-avatar" for="avatar_upload">
+            <img class="avatar-img" src="assets/img/profiles/avatar-03.jpg" alt="Profile Image">
+          </label>
+          <h2>Cerrar proceso de lectura
+                                                                                                                                                    <!-- <i class="fas fa-certificate text-primary small" data-toggle="tooltip" data-placement="top"
+                                                                                                                                                      title="" data-original-title="Verified"></i> -->
+            </h2>
+          <ul class="list-inline">
+            <li class="list-inline-item" style="text-align:left">
+              <span>Al cerrar el proceso la data actual se pasará al histórico </span><br>
+              <span>y dará incio a un nuevo mes proceso.</span> <br>
+              <span>Este procedimiento sólo cerrará la actividad de lectura</span>
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-body">
+              <h5>Número de lectura</h5>
+              <div class="d-flex justify-content-between ">
+                <span class="badge bg-primary-light">932</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-body">
+              <h5>Número de pendientes</h5>
+              <div class="d-flex justify-content-between ">
+                <span class="badge bg-success-light">0</span>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-body">
+              <h5>Número de inconsistentes</h5>
+              <div class="d-flex justify-content-between ">
+                <span class="badge bg-info-light">0</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <a href="index.html" class="btn btn-info" style="position: absolute;right: 43%;border-radius: 0;color: #fff;padding: 15px;">Cerrar proceso    <i class="fa fa-arrow-right" style="margin-left: 25px;"></i></a>
+
+<br><br><br>
+        <hr>
+
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-circle"></i> <strong> Información!</strong> Estás cerrando el proceso fuera de las horas sugeridas (6pm y 8am).
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <i class="fas fa-exclamation-circle"></i> <strong> Recuerda que</strong> Este proceso es inversible y no podrá detenerse ni volver a un estado anterior una vez indicado.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+<br><br>
+      </div>
+    </div>
+  </div>
+</div>

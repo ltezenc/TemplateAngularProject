@@ -38,7 +38,7 @@
 
 				<!-- Header Menu -->
 				<ul class="nav nav-tabs user-menu">
-				
+
 
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow main-drop" id="dropdown">
@@ -71,24 +71,27 @@
 				<li class="menu-title"><span>Main</span></li>
 				<li [class.active]="base === 'customers'">
 					<a [routerLink]="'/customers/customers-list'"><i data-feather="users"></i> <span>Clientes</span></a>
-				</li>				
-						
+				</li>
+
 				<li [class.active]="base === 'payments'">
 					<a [routerLink]="'/payments/payments-list'"><i data-feather="credit-card"></i> <span>Facturas</span></a>
 				</li>
 				<li [class.active]="base === 'expenses'">
 					<a [routerLink]="'/expenses/expenses-list'"><i data-feather="package"></i> <span>Ficheros</span></a>
 				</li>
-			
-				
-			
-		
-			
-	
-			
-					
-	
-				
+        <li [class.active]="base === 'close-process'">
+          <a [routerLink]="'/close-process'" ><i data-feather="check-circle"></i> <span>Cerrar proceso</span></a>
+        </li>
+
+
+
+
+
+
+
+
+
+
 			</ul>
 		</div>
 	</div>
