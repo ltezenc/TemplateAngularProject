@@ -1,0 +1,104 @@
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">Gestión de usuario</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a [routerLink]="'/index'">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Gestión usuarios</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Crear nuevo usuario</h4>
+          </div>
+          <div class="card-body">
+            <form action="#">
+              <div class="form-group mb-3">
+                <label>Nombre</label>
+                <input type="text" id="usnombre" class="form-control">
+              </div>
+              <div class="form-group mb-3">
+                <label>Empresa</label>
+                <input type="text" id="usempresa" class="form-control">
+              </div>
+              <div class="form-group mb-3">
+                <label>DNI</label>
+                <input type="text" id="usdni" class="form-control">
+                <span class="form-text text-muted">Ejm. 70785412</span>
+              </div>
+              <div class="form-group mb-3">
+                <label>Usuario.</label>
+                <input type="text" id="ususuario" class="form-control">
+              </div>
+              <div class="form-group mb-3">
+                <label>Contraseña</label>
+                <input type="text" id="uspass" class="form-control">
+              </div>
+              <div class="form-group mb-3">
+                <label>Confirmar contraseña</label>
+                <input type="text" id="uspass_pass" class="form-control">
+              </div>
+              <div class="form-group mb-3">
+                <label>Estado</label>
+                <select class="form-select">
+                  <option>-- Select --</option>
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                  </select>
+              </div>
+
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Lista de usuarios</h5>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped mb-0">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Empresa</th>
+                    <th>DNI</th>
+                    <th>Usuario</th>
+                    <th>Pass</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Anthony H.O</td>
+                    <td>Gescom</td>
+                    <td>7777777</td>
+                    <td>******</td>
+                    <td>ahernandez</td>
+                    <td><span class="badge bg-success">Activo</span></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -117,9 +117,14 @@ const routes: Routes = [
           loadChildren: () =>
             import('./close-process/close.module').then((m) => m.CustomersModule),
           canActivate: [AuthenticationGuard],
+        },
 
-
-      },
+        {
+          path: 'users',
+          loadChildren: () =>
+            import('./users/users.module').then((m) => m.UersModule),
+          canActivate: [AuthenticationGuard],
+        },
 
     ]
   },
