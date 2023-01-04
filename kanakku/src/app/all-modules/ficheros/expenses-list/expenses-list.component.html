@@ -119,33 +119,24 @@
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd MMM yyyy'}}</td>
                     <td>{{expese.cantLect}}</td>
-                    <td class="text-end" *ngIf="expese.estado == 2">
-                      <span [ngClass]="
-											  expese.estado === 1
-												  ? 'badge badge-pill bg-success-light'
-												  : 'badge badge-pill bg-danger-light'
-											  ">Error2</span>
-                    </td>
-                    <td class="text-end" *ngIf="expese.estado == 3">
-                      <span [ngClass]="
-											  expese.estado === 1
-												  ? 'badge badge-pill bg-success-light'
-												  : 'badge badge-pill bg-danger-light'
-											  ">CLIENTE NO REGISTRADO</span>
-                    </td>
-                    <td class="text-end" *ngIf="expese.estado == 1">
-                      <span [ngClass]="
-											  expese.estado === 1
-												  ? 'badge badge-pill bg-success-light'
-												  : 'badge badge-pill bg-danger-light'
-											  ">Procesado</span>
-                    </td>
-                    <td class="text-end" *ngIf="expese.estado == 0">
-                      <span [ngClass]="
-											  expese.estado === 1
-												  ? 'badge badge-pill bg-success-light'
-												  : 'badge badge-pill bg-danger-light'
-											  ">Pendiente</span>
+                    <td class="text-end" [ngSwitch]="expese.estado" >                      
+                      <span *ngSwitchCase="2" 
+                      class="badge badge-pill bg-danger-light" >Error2</span>               
+                    
+                      <span *ngSwitchCase="5" 
+                      class="badge badge-pill bg-success-light" >Procesado</span>
+                                     
+                      <span *ngSwitchCase="4" 
+                      class="badge badge-pill bg-danger-light" >Archivo ya ha sido procesado</span>
+                                      
+                      <span *ngSwitchCase="3" 
+                        class="badge badge-pill bg-danger-light" >CLIENTE NO REGISTRADO</span>
+
+                      <span *ngSwitchCase="1" 
+                          class="badge badge-pill bg-warning-light"  >Procesando Calculos</span>
+                   
+                      <span *ngSwitchCase="0" 
+                            class="badge badge-pill bg-danger-light"  >Pendiente</span>
                     </td>
                     <td class="text-end">
                       <a (click)="tempId = expese.id" data-bs-toggle="modal" data-bs-target="#delete_Expenses"
@@ -173,13 +164,13 @@
           <i class="fas fa-trash-alt text-danger"></i>
         </div>
         <div class="modal-text text-center">
-          <h2>Delete Expenses</h2>
-          <p>Are you sure want to delete?</p>
+          <h2>Eliminar Fichero</h2>
+          <p>¿Estas seguro de eliminar el fichero?</p>
         </div>
       </div>
       <div class="modal-footer text-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarFichero(tempId)">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarFichero(tempId)">Eliminar</button>
       </div>
     </div>
   </div>

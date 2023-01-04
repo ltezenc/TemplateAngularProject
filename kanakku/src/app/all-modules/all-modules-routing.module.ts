@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path: 'index',
         loadChildren: () =>
-          import('./expenses/expenses-list/expenses-list.module').then((m)=>m.ExpensesListModule),
+          import('./ficheros/expenses-list/expenses-list.module').then((m)=>m.ExpensesListModule),
                   canActivate: [AuthenticationGuard],
 
       },
@@ -66,9 +66,9 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
         },
         {
-          path: 'expenses',
+          path: 'ficheros',
           loadChildren: () =>
-            import('./expenses/expenses.module').then(
+            import('./ficheros/ficheros.module').then(
               (m) => m.ExpensesModule
             ),
           canActivate: [AuthenticationGuard],

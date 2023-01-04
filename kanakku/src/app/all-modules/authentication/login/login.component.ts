@@ -38,22 +38,24 @@ export class LoginComponent implements OnInit {
     this.storage.Checkuser();
   }
   public Createtoken(form:loginI) {
-    var result = 'ABCDEFGHI' + form.usuario + 'ghijklmnopqrs' + 'z01234567';
+    var result = 'ABCDEFGHI' + form.usuarioLogin + 'ghijklmnopqrs' + 'z01234567';
     localStorage.setItem('LoginData', result);
+   
+ 
   }
+ 
   submit(form) {
-
+    localStorage.setItem("usuario",form.usuarioLogin)
+    localStorage.setItem("password",form.password)
+   
     this.storage.loginby(form).subscribe(data =>{
-      console.log(data);
       if(Boolean(data)==true){
-       
            this.router.navigate(['/index']);
+           
       this.Createtoken(form);
       }else {
         document.querySelector(".log_rch").innerHTML = "* Usuario o contraseña incorrectos."
         
-
-
       }
   })
 }

@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Event, Router, NavigationStart, NavigationEnd } from '@angular/router';
-import { DataService } from '../services/data.service';
+import { Component, ENVIRONMENT_INITIALIZER, OnInit,  } from '@angular/core';
+import { Event, Router,  NavigationEnd } from '@angular/router';
+import { WebStorage } from '../core/storage/web.storage';
 declare var $: any;
 
 @Component({
@@ -18,10 +17,11 @@ export class SidemenuComponent implements OnInit {
   splitVal:any
   base = '';
   page = '';
+  nombre=[];
 
   constructor(
     public router: Router,
-    private commonService: DataService
+    private storage: WebStorage
   ) {
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -33,6 +33,7 @@ export class SidemenuComponent implements OnInit {
     });
 
   }
+  
   ngOnInit(): void {
     $(document).on('click', '#filter_search', function() {
       $('#filter_inputs').slideToggle("slow");
@@ -51,8 +52,25 @@ export class SidemenuComponent implements OnInit {
           return false;
       }
   });
+
+  let user=localStorage.getItem("usuario");
+  let pass=localStorage.getItem("password");
+  this.nombreusuario(user,pass)
   }
 
+
+  nombreusuario(user,pass){  
+    this.storage.NombrebyLogin(user,pass).subscribe(data=>{
+      let keys= Object.keys(data);
+      let i = 0;
+      for (let prop of keys ) {
+        this.nombre=[],
+        this.nombre.push(data[prop]);
+        this.nombre[i]['name'] = prop;
+        i++;
+      }
+    })
+  }
   ngAfterViewInit() {
     this.loadDynmicallyScript('./../../../assets/js/script.js');
   }

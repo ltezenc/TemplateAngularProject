@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-expenses',
-  templateUrl: './expenses.component.html',
-  styleUrls: ['./expenses.component.css']
+  templateUrl: './ficheros.component.html',
+  styleUrls: ['./ficheros.component.css']
 })
 export class ExpensesComponent implements OnInit {
 

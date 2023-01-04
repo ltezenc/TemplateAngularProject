@@ -13,10 +13,8 @@ export class ViewExpensesComponent implements OnInit {
   constructor(public commonService: DataService) {}
 
   ngOnInit(): void {
-    this.getExpenses();
   }
   getExpenses() {    
-      this.expeses = this.commonService.expenses;
   }
 
 }
