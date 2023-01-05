@@ -16,7 +16,7 @@ export class WebStorage {
 url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
 
   constructor(private router: Router,private http:HttpClient) {}
- 
+
   /**
    * Create account Function call from Registerpage
    * @param uservalue from user form value
@@ -39,18 +39,18 @@ url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
 
     loginby(form:loginI):Observable<ResponseI>{
 
-      let direccion = this.url //+ "auth"  
-       return this.http.post<ResponseI>(direccion,form); 
+      let direccion = this.url //+ "auth"
+       return this.http.post<ResponseI>(direccion,form);
           }
 
     NombrebyLogin(user:string,pass:string):Observable<loginI>{
-        let direccion = "http://localhost:8080/clienteslibres/usuarios/nombre/"+user+"/"+pass;
-        return this.http.get<loginI>(direccion); 
+        let direccion = "http://ms-clienteslibres.gescom.cloud/clienteslibres/usuarios/nombre/"+user+"/"+pass;
+        return this.http.get<loginI>(direccion);
          }
-    
-  
 
-  
+
+
+
   public Createtoken(form:loginI) {
     var result = 'ABCDEFGHI' + form.usuarioLogin + 'ghijklmnopqrs' + 'z01234567';
     localStorage.setItem('LoginData', result);

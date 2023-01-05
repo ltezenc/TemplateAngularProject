@@ -96,5 +96,5 @@ export class AllModulesService {
       .delete<id>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
- 
+
 }
