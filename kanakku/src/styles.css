@@ -1,5 +1,5 @@
-@import "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fontawesome.css";
-@import "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/solid.css";
 .dataTables_empty{
     display: none !important;
 
