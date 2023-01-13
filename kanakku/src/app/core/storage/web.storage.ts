@@ -43,8 +43,8 @@ url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
        return this.http.post<ResponseI>(direccion,form);
           }
 
-    NombrebyLogin(user:string,pass:string):Observable<loginI>{
-        let direccion = "http://ms-clienteslibres.gescom.cloud/clienteslibres/usuarios/nombre/"+user+"/"+pass;
+    NombrebyLogin(user:string):Observable<loginI>{
+        let direccion = "http://localhost:8080/clienteslibres/usuarios/nombre/"+user;
         return this.http.get<loginI>(direccion);
          }
 

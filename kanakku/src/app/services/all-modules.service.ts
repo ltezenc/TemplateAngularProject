@@ -37,7 +37,7 @@ export class AllModulesService {
     return this.http.post<Cliente>(this.url,cliente)
   }
   crearsuministro(suministro:Suministro):Observable<Suministro>{
-    return this.http.post<Suministro>(environment.postsumunistro,suministro)
+    return this.http.post<Suministro>(environment.url_global+"/clienteslibres/suministro/crear",suministro)
   }
   getTarifa():Observable<tarifaI[]>{
     return this.http.get<tarifaI[]>(environment.url_global+"/clienteslibres/tarifa/listar")
@@ -45,12 +45,12 @@ export class AllModulesService {
   }
   getCliente():Observable<Cliente[]>{
 
-    return this.http.get<Cliente[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/clientes/listar")
+    return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
 
   }
   getsuministroCliente(id:number):Observable<Suministro[]>{
 
-    return this.http.get<Suministro[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/suministro/suministro-cliente/"+id)
+    return this.http.get<Suministro[]>(environment.url_global+"/clienteslibres/suministro/suministro-cliente/"+id)
 
   }
 

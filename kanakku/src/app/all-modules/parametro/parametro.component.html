@@ -127,7 +127,7 @@
   <div class="swiper-pagination"></div>
 </div>
 
-
+<!--
 
 <div class="modal fade" id="con-close-modal" tabindex="-1" aria-labelledby="con-close-modalLabel" aria-hidden="true"
   *ngFor="let nombre of cadena">
@@ -193,7 +193,7 @@
     </div>
   </div>
 </div>
-
+-->
 
 
 
@@ -211,7 +211,7 @@
           <div class="col-md-12">
             <div class="mb-3 mt-0">
               <label for="field-2" class="form-label">UIT</label>
-              <input type="text" class="form-control" value="{{item.uit}}">
+              <input type="text" class="form-control"  [(ngModel)]="item.uit">
             </div>
           </div>
 
@@ -284,7 +284,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info waves-effect waves-light" (click)="UpdateParametro()">Save changes</button>
+        <button type="button" class="btn btn-info waves-effect waves-light" (click)="UpdateParametro(enviodatos)">Save changes</button>
       </div>
     </div>
   </div>

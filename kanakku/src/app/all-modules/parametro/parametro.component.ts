@@ -49,11 +49,12 @@ export class ParametroComponent implements OnInit {
 
 
 
-UpdateParametro(){
-  this.service.getparametrosbyfactura().subscribe(res=>{
+UpdateParametro(parametro){
+  this.service.updateparametro(parametro[0]).subscribe(res=>{
     this.parametro=res;
+    console.log(this.parametro)
   })
-  console.log(this.parametro)
+  //console.log(this.parametro)
   // this.service.updateparametro(this.parametro).subscribe(response => {
   //   //do something with response
   // }, err => {

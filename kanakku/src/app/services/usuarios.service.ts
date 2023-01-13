@@ -9,11 +9,10 @@ import { Usuarios } from '../model/usuarios';
 })
 export class UsuariosService {
   modalSwitch:boolean
-  private url:string="http://localhost:8080/clienteslibres/usuarios/crear"
   constructor(private http:HttpClient) { }
 
   create(usuarios:Usuarios):Observable<Usuarios>{
-    return this.http.post<Usuarios>(this.url,usuarios)
+    return this.http.post<Usuarios>(environment.url_global+"/clienteslibres/usuarios/crear",usuarios)
   }
   // crearsuministro(suministro:Suministro):Observable<Suministro>{
   //   return this.http.post<Suministro>(environment.postsumunistro,suministro)
@@ -24,7 +23,7 @@ export class UsuariosService {
   // }
   getUsuarios():Observable<Usuarios[]>{
 
-    return this.http.get<Usuarios[]>("http://localhost:8080/clienteslibres/usuarios/listar-usuarios")
+    return this.http.get<Usuarios[]>(environment.url_global+"/clienteslibres/usuarios/listar-usuarios")
 
   }
   // delete(cliente:Cliente):Observable<Cliente>{

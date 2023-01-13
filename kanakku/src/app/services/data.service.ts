@@ -12,8 +12,8 @@ export class DataService {
   constructor(private http:HttpClient) { }
 
   sendPost(body:FormData):Observable<any>{
-    return this.http.post(environment.postexcel,body)
-
+   // return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
+   return this.http.post("http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
   }
   suministroexist(nombre:string){
     let nom=nombre.substring(0,8);
@@ -22,7 +22,7 @@ export class DataService {
      }
 
      delete(id:number){
-      let resp=this.http.delete("http://localhost:8080/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
+      let resp=this.http.delete(environment.url_global+"/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
       return resp
        }
 

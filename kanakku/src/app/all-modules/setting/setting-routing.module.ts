@@ -22,21 +22,13 @@ const routes: Routes = [
             (m) => m.DeleteAccountModule
           ),
       },
-      {
-        path: 'expense-category',
-        loadChildren: () =>
-          import('./expense-category/expese-category.module').then((m) => m.ExpenseCategoryModule),
-      },
+      
       {
         path: 'notifications',
         loadChildren: () =>
           import('./notifications/notifications.module').then((m) => m.NotificationsModule),
       },
-      {
-        path: 'preferences',
-        loadChildren: () =>
-          import('./preferences/preferences.module').then((m) => m.PreferencesModule),
-      },
+  
       {
         path: 'settings',
         loadChildren: () =>

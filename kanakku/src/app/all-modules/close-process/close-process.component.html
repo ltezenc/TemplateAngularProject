@@ -7,7 +7,7 @@
           <h3 class="page-title">Cerrar proceso</h3>
           <ul class="breadcrumb">
             <li class="breadcrumb-item">
-              <a [routerLink]="'/index'">Dashboard</a>
+              <a [routerLink]="'/index'">index</a>
             </li>
             <li class="breadcrumb-item active">Cerrar proceso</li>
           </ul>
@@ -21,7 +21,7 @@
           <h1 class="main-heading" style="transform: translate(0px, 0px); opacity: 1;">
             Proceso de <span>facturación.</span>
             <br>
-            (2022/12)
+            (202212)
           </h1>
           <p class="info-text" style="transform: translate(0px, 0px); opacity: 1;">
             Al cerrar el proceso la data actual se pasará al histórico
@@ -29,22 +29,12 @@ y dará inicio a un nuevo mes del proceso comercial.
           </p>
 
           <div class="btn_wrapper" style="transform: translate(0px, 0px); opacity: 1;">
-            <button class="btn view_more_btn">
+            <button class="btn view_more_btn" (click)="cerrarproceso()">
               CERRAR PROCESO <i class="fa fa-arrow-right"></i>
             </button>
 
             <!-- <button class="btn documentation_btn">documentation</button> -->
           </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
