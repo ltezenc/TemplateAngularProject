@@ -34,30 +34,5 @@ export class CommonServiceService {
     this.message.next(data);
   }
 
-
-  // Kanakku services
-  getCustomers() {
-    return this.http.get(this.SERVER_URL + 'customers');
-  }
-
-  getEstimates() {
-    return this.http.get(this.SERVER_URL + 'estimates');
-  }
-
-  getInvoices() {
-    return this.http.get(this.SERVER_URL + 'invoices');
-  }
-
-  getPayments() {
-    return this.http.get(this.SERVER_URL + 'payments');
-  }
-
-  getExpenses() {
-    return this.http.get(this.SERVER_URL + 'expenses');
-  }
-  getCategories() {
-    return this.http.get(this.SERVER_URL + 'categories');
-  }
-
  
 }

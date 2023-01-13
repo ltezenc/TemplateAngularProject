@@ -36,12 +36,7 @@ const routes: Routes = [
 
         },
 
-        {
-          path: 'estimates',
-          loadChildren: () =>
-            import('./estimates/estimates.module').then((m) => m.EstimatesModule),
-          canActivate: [AuthenticationGuard],
-        },
+       
         {
           path: 'invoices',
           loadChildren: () =>
@@ -74,15 +69,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-        {
-          path: 'reports',
-          loadChildren: () =>
-            import('./reports/reports.module').then(
-              (m) => m.ReportsModule
-            ),
-          canActivate: [AuthenticationGuard],
-
-        },
+      
         {
           path: 'setting',
           loadChildren: () =>

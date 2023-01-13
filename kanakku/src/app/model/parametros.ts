@@ -10,5 +10,5 @@ export class parametrosI{
     precioEnergiahp:number;
     precioEnergiafhp:number;
     pfactura:string;
-    empresaId:number=5;
+    empresaId:number=6;
 }

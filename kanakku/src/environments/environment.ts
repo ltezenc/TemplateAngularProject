@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  url_global: "http://ms-clienteslibres.gescom.cloud",
+  //url_global: "http://ms-clienteslibres.gescom.cloud",
+  url_global: "http://localhost:8080",
+
   production: false,
-  postexcel:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos',
-  postsumunistro:'http://ms-clienteslibres.gescom.cloud/clienteslibres/suministro/crear'
 
 };
 

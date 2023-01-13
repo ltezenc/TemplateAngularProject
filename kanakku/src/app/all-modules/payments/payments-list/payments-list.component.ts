@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FacturaListI } from 'src/app/model/facturalist.interface';
-import { CommonServiceService } from 'src/app/services/common-service.service';
+import { ListarFacturaService } from 'src/app/services/listar-factura.service';
 @Component({
   selector: 'app-payments-list',
   templateUrl: './payments-list.component.html',
@@ -11,14 +11,14 @@ export class PaymentsListComponent implements OnInit {
   errorMessage: any;
   cadena=[]
   facturas:FacturaListI[];
-  constructor(public commonService: CommonServiceService) { }
+  constructor(public facturaService: ListarFacturaService) { }
 
   ngOnInit(): void {
     this.listarFacturas();
   }
 
   listarFacturas(){
-    this.commonService.getFacturacion().subscribe(res=>{
+    this.facturaService.getFacturacion().subscribe(res=>{
       this.facturas=res;
       let keys= Object.keys(res);
      

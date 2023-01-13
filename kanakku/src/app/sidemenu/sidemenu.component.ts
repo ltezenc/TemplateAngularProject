@@ -54,13 +54,12 @@ export class SidemenuComponent implements OnInit {
   });
 
   let user=localStorage.getItem("usuario");
-  let pass=localStorage.getItem("password");
-  this.nombreusuario(user,pass)
+  this.nombreusuario(user)
   }
 
 
-  nombreusuario(user,pass){  
-    this.storage.NombrebyLogin(user,pass).subscribe(data=>{
+  nombreusuario(user){  
+    this.storage.NombrebyLogin(user).subscribe(data=>{
       let keys= Object.keys(data);
       let i = 0;
       for (let prop of keys ) {

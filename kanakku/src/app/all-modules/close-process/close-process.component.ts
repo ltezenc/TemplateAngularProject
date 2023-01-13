@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CerrarprocesoService } from 'src/app/services/cerrarproceso.service';
 
 @Component({
   selector: 'app-close-process',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CloseProcessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private close:CerrarprocesoService) { }
 
   ngOnInit(): void {
   }
 
+  cerrarproceso(){
+    this.close.cerrarproceso().subscribe(response => {
+         //do something with response
+       }, err => {
+         console.log(err.message);
+       }, () => {
+         console.log('completed');
+    }) 
+
+  }
 }

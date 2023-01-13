@@ -11,26 +11,25 @@ import { tarifaI } from '../model/tarifa.interface';
 })
 export class ClienteService {
   modalSwitch:boolean
-  private url:string="http://localhost:8080/clienteslibres/clientes/crear"
   constructor(private http:HttpClient) { }
 
   create(cliente:Cliente):Observable<Cliente>{
-    return this.http.post<Cliente>(this.url,cliente)
+    return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/crear",cliente)
   }
   crearsuministro(suministro:Suministro):Observable<Suministro>{
-    return this.http.post<Suministro>(environment.postsumunistro,suministro)
+    return this.http.post<Suministro>(environment.url_global+"/clienteslibres/suministro/crear",suministro)
   }
   getTarifa():Observable<tarifaI[]>{
-    return this.http.get<tarifaI[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/tarifa/listar")
+    return this.http.get<tarifaI[]>(environment.url_global+"/clienteslibres/tarifa/listar")
 
   }
   getCliente():Observable<Cliente[]>{
 
-    return this.http.get<Cliente[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/clientes/listar")
+    return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
 
   }
   delete(cliente:Cliente):Observable<Cliente>{
-    return this.http.post<Cliente>(this.url,cliente)
+    return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/eliminar-clientesandsuministro",cliente)
   }
 
 }
