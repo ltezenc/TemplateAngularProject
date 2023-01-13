@@ -41,6 +41,8 @@
             </div>
             <div id="kartik-file-errors"></div>
           </div>
+
+          <span class="msm_alert"></span>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="subir" (click)="sendFile()">subir archivo</button>
@@ -119,23 +121,23 @@
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd MMM yyyy'}}</td>
                     <td>{{expese.cantLect}}</td>
-                    <td class="text-end" [ngSwitch]="expese.estado" >                      
-                      <span *ngSwitchCase="2" 
-                      class="badge badge-pill bg-danger-light" >Error2</span>               
-                    
-                      <span *ngSwitchCase="5" 
+                    <td class="text-end" [ngSwitch]="expese.estado" >
+                      <span *ngSwitchCase="2"
+                      class="badge badge-pill bg-danger-light" >Error2</span>
+
+                      <span *ngSwitchCase="5"
                       class="badge badge-pill bg-success-light" >Procesado</span>
-                                     
-                      <span *ngSwitchCase="4" 
+
+                      <span *ngSwitchCase="4"
                       class="badge badge-pill bg-danger-light" >Archivo ya ha sido procesado</span>
-                                      
-                      <span *ngSwitchCase="3" 
+
+                      <span *ngSwitchCase="3"
                         class="badge badge-pill bg-danger-light" >CLIENTE NO REGISTRADO</span>
 
-                      <span *ngSwitchCase="1" 
+                      <span *ngSwitchCase="1"
                           class="badge badge-pill bg-warning-light"  >Procesando Calculos</span>
-                   
-                      <span *ngSwitchCase="0" 
+
+                      <span *ngSwitchCase="0"
                             class="badge badge-pill bg-danger-light"  >Pendiente</span>
                     </td>
                     <td class="text-end">

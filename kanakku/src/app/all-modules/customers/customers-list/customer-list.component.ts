@@ -55,14 +55,14 @@ export class CustomerListComponent implements OnInit {
       },
       {
         title: 'Acciones',
-        defaultContent:""       
+        defaultContent:""
       } ],
 
       ajax: (dataTablesParameters: any, callback) => {
               this.http
           .get(
             'http://localhost:8080/clienteslibres/clientes/listar',
-            
+
           )
           .subscribe((resp:any) => {
             console.log(resp)
@@ -72,26 +72,26 @@ export class CustomerListComponent implements OnInit {
               recordsTotal: resp.clienteResponses['length'],
               recordsFiltered: resp.clienteResponses['length'],
               data: resp.clienteResponses
-              
+
             });
           });
       }
     };*/
- 
+
 }
   ngAfterViewInit(): void {
     this.dtTrigger.next();
 
   }
 
-  getCustomers() {    
+  getCustomers() {
 
     this.srvModuleService.getCliente().subscribe(res=>{
       this.listclientes=res;
       let keys= Object.keys(res);
-     
+
       let i = 0;
-      for (let prop of keys ) { 
+      for (let prop of keys ) {
         this.cadena=[],
       this.cadena.push(res[prop]);
       this.cadena[i]['name'] = prop;
@@ -100,7 +100,7 @@ export class CustomerListComponent implements OnInit {
 
      },
       )
-     
+
       this.dtTrigger.next();
   }
 
@@ -121,14 +121,14 @@ export class CustomerListComponent implements OnInit {
     )
   }
   crearSuministro():void{
-    
+
     console.log(this.suministro)
     this.srvModuleService.crearsuministro(this.suministro).subscribe(res=>{this.getCustomers()
     }, err => {
       console.log(err.message);
     }, () => {
       this.confirmText();
-      
+
       console.log('completed');
     })
   }

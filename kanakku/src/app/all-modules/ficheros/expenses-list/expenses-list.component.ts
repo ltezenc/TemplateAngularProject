@@ -34,15 +34,15 @@ export class ExpensesListComponent implements OnInit {
     //carga de archivos
     $(function() {
       var btn = $(".subir");
-      btn.on("click", function() {        
+      btn.on("click", function() {
         $(this).addClass('btn-progress');
         setTimeout(function() {
           btn.addClass('btn-fill')
         }, 500);
-        
+
         setTimeout(function() {
           btn.removeClass('btn-fill')
-        }, 4100);        
+        }, 4100);
         setTimeout(function() {
           btn.addClass('fa-check')
         }, 4400);
@@ -52,9 +52,9 @@ export class ExpensesListComponent implements OnInit {
         setTimeout(function() {
           btn.removeClass('btn-progress')
         }, 5700);
-      });    
+      });
     })
-  
+
   //plugin input
     $("#input-21").fileinput({
       previewFileIconSettings: { // configure your icon file extensions
@@ -66,7 +66,7 @@ export class ExpensesListComponent implements OnInit {
       elErrorContainer: '#kartik-file-errors',
       allowedFileExtensions: ["xls", "xlsx","xlsm"],
      // uploadUrl: 'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos'
-      
+
   });
    }
   listarFichero(){
@@ -128,10 +128,23 @@ export class ExpensesListComponent implements OnInit {
     sendFile():void{
 
       let all_filereg = this.FileSelectAll
+
+
+
+
       all_filereg.forEach(row_reg => {
-        const  body= new FormData();
-        body.append('file',row_reg.fileRaw,row_reg.fileName);
-        this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
+      let tamanio =row_reg.fileRaw.size;
+      console.log("all_filereg :",tamanio)
+
+      if(tamanio > 2000000){
+        document.querySelector(".msm_alert").innerHTML = "API I"
+      }else{
+        document.querySelector(".msm_alert").innerHTML = "API II"
+      }
+
+        // const  body= new FormData();
+        // body.append('file',row_reg.fileRaw,row_reg.fileName);
+        // this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
       });
 
      // body.append('usuario','1')

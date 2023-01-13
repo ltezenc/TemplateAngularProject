@@ -92,7 +92,7 @@ const routes: Routes = [
         },
 
         {
-          path: 'profile',
+          path: 'historio-customers',
           loadChildren: () =>
             import('./profile/profile.module').then(
               (m) => m.ProfileModule
@@ -118,6 +118,15 @@ const routes: Routes = [
             import('./close-process/close.module').then((m) => m.CustomersModule),
           canActivate: [AuthenticationGuard],
         },
+
+
+        {
+          path: 'historico',
+          loadChildren: () =>
+            import('./invoices/invoices.module').then((m) => m.InvoicesModule),
+          canActivate: [AuthenticationGuard],
+        },
+
 
         {
           path: 'users',
