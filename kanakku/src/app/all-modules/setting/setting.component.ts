@@ -19,7 +19,7 @@ export class SettingComponent implements OnInit {
   animaciones(){
     //carga de pliego
     $(function() {
-      var btn = $(".subirpliego");
+      var btn = $(".subircargo");
       btn.on("click", function() {        
         $(this).addClass('btn-progress');
         setTimeout(function() {
@@ -41,7 +41,7 @@ export class SettingComponent implements OnInit {
       });    
     })
   
-    $("#input-pliego[]").fileinput({
+    $("#input-cargo[]").fileinput({
         previewFileIconSettings: { // configure your icon file extensions
           'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
           'xls': '<i class="fas fa-file-excel text-success"></i>',

@@ -6,7 +6,7 @@ export const environment = {
   url_global: "http://localhost:8080",
   production: false,
   postexcel:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos',
-  postexcelCRCM:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos',
+  postexcelCRCM:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodecrcm',
   postsumunistro:'http://localhost:8080/clienteslibres/suministro/crear'
 
 };

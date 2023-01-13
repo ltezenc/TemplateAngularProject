@@ -50,13 +50,13 @@
                     </div>
                     <div class="modal-body">
                         <div class="file-loading">
-                            <input id="input-pliego[]" name="input-pliego[]" multiple type="file" (change)="selectFile($event)">
+                            <input id="input-pliego[]" name="input-pliego[]" multiple type="file">
                         </div>
                         <div id="kartik-file-errors"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="subirpliego" (click)="sendFileCRCM()">subir archivo</button>
+                        <button type="button" class="subirpliego">subir archivo</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -70,14 +70,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="file-loading">
-                            <input id="input-21" name="input-21-cargo[]" multiple type="file">
+                            <input id="input-cargo[]" name="input-cargo[]" multiple type="file" (change)="selectFile($event)">
 
                         </div>
                         <div id="kartik-file-errors"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="subir">subir archivo</button>
+                        <button type="button" class="subircargo" (click)="sendFileCRCM()">subir archivo</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
