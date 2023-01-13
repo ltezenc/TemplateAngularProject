@@ -15,6 +15,10 @@ export class DataService {
     return this.http.post(environment.postexcel,body)
 
   }
+  sendPostCRCRM(body:FormData):Observable<any>{
+    return this.http.post(environment.postexcelCRCM,body)
+
+  }
   suministroexist(nombre:string){
     let nom=nombre.substring(0,8);
     let resp=this.http.get(environment.url_global+"/clienteslibres/suministro/buscar-suministro/"+nom)

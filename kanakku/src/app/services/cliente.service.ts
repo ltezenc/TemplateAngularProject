@@ -21,12 +21,12 @@ export class ClienteService {
     return this.http.post<Suministro>(environment.postsumunistro,suministro)
   }
   getTarifa():Observable<tarifaI[]>{
-    return this.http.get<tarifaI[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/tarifa/listar")
+    return this.http.get<tarifaI[]>("http://localhost:8080/clienteslibres/tarifa/listar")
 
   }
   getCliente():Observable<Cliente[]>{
 
-    return this.http.get<Cliente[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/clientes/listar")
+    return this.http.get<Cliente[]>("http://localhost:8080/clienteslibres/clientes/listar")
 
   }
   delete(cliente:Cliente):Observable<Cliente>{

@@ -1,29 +1,87 @@
-
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-  <div class="content container-fluid">
-      <div class="page-header">
-          <div class="row">
-              <div class="col-sm-6">
-                  <h3 class="page-title">Settings</h3>
-                  <ul class="breadcrumb">
-                      <li class="breadcrumb-item"><a  [routerLink]="'/index'">Dashboard</a>
-                      </li>
-                      <li class="breadcrumb-item active">{{page | titlecase}}</li>
-                  </ul>
-              </div>
-          </div>
-      </div>
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="page-title">Settings</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active">{{page | titlecase}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-lg-center">
+            <div class="row">
+                <h5 class="sub-heading">Selecciona un Servicio</h5>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="card" style="align-items: center;">
+                        <div>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#top-modal-pliego">
+                                <img class="icon icon1" width="50" class="my-4" src="https://i.imgur.com/vZxfo9x.png">
+                            </a>
+                        </div>
+                        <p class="sub-desc">Importar pliego tarifario</p>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card" style="align-items: center;">
+                        <div>
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#top-modal-corte">
+                                <img class="icon icon1" width="50" class="my-4" src="https://i.imgur.com/vZxfo9x.png">
+                            </a>
+                        </div>
+                        <p class="sub-desc">Importar cmr</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top modal content -->
+        <div id="top-modal-pliego" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-top">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="topModalLabel">Cargar pliego tarifario</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="file-loading">
+                            <input id="input-pliego[]" name="input-pliego[]" multiple type="file" (change)="selectFile($event)">
+                        </div>
+                        <div id="kartik-file-errors"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="subirpliego" (click)="sendFileCRCM()">subir archivo</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <div id="top-modal-corte" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-top">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="topModalLabel">Cargar costos de cargo</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="file-loading">
+                            <input id="input-21" name="input-21-cargo[]" multiple type="file">
 
-      <div class="row">
-          <div class="col-xl-3 col-md-4">
-              <app-sidemenu></app-sidemenu>
-          </div>
-
-          <div class="col-xl-9 col-md-8">
-              <router-outlet></router-outlet>
-          </div>
-      </div>
-  </div>
+                        </div>
+                        <div id="kartik-file-errors"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="subir">subir archivo</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
 </div>
 <!-- /Page Wrapper -->

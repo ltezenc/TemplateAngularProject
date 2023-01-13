@@ -19,7 +19,6 @@ export class UsuariosService {
   //   return this.http.post<Suministro>(environment.postsumunistro,suministro)
   // }
   // getTarifa():Observable<tarifaI[]>{
-  //   return this.http.get<tarifaI[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/tarifa/listar")
 
   // }
   getUsuarios():Observable<Usuarios[]>{

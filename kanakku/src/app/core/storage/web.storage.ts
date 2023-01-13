@@ -13,7 +13,7 @@ export class WebStorage {
   public Loginvalue = new BehaviorSubject<any>(0);
   public Createaccountvalue = new BehaviorSubject<any>(0);
   public Forgotpasswordvalue = new BehaviorSubject<any>(0);
-url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
+url:string="http://localhost:8080/clienteslibres/usuarios/verificar-usuario"
 
   constructor(private router: Router,private http:HttpClient) {}
 
@@ -44,7 +44,7 @@ url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
           }
 
     NombrebyLogin(user:string,pass:string):Observable<loginI>{
-        let direccion = "http://ms-clienteslibres.gescom.cloud/clienteslibres/usuarios/nombre/"+user+"/"+pass;
+        let direccion = "http://localhost:8080/clienteslibres/usuarios/nombre/"+user+"/"+pass;
         return this.http.get<loginI>(direccion);
          }
 
