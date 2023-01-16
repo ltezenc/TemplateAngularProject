@@ -12,8 +12,13 @@ export class DataService {
   constructor(private http:HttpClient) { }
 
   sendPost(body:FormData):Observable<any>{
-   // return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
-   return this.http.post("http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
+    return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
+
+  }
+  sendPostCRCRM(body:FormData):Observable<any>{
+    return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodecrcm",body)
+
+
   }
   suministroexist(nombre:string){
     let nom=nombre.substring(0,8);
@@ -32,15 +37,5 @@ export class DataService {
 
   }
 
-
-
-
-    // return {
-    //   customers: customers,
-    //   estimates: estimates,
-    //   invoices: invoices,
-    //   payments: payments,
-    //   expenses: expenses,
-    // };
 
 }

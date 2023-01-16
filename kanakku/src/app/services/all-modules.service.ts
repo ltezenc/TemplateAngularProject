@@ -60,23 +60,6 @@ export class AllModulesService {
     return throwError(error);
   }
 
-  // Get Method Api
-  get(type: any): Observable<[]> {
-    this.apiurl = `api/${type}`;
-
-    return this.http
-      .get<[]>(this.apiurl)
-      .pipe(tap(), catchError(this.handleError));
-  }
-
-  // Post Method Api
-  add(user: any, type: any): Observable<any> {
-    this.apiurl = `api/${type}`;
-    user.id = null;
-    return this.http
-      .post<any>(this.apiurl, user, this.httpOptions)
-      .pipe(tap(), catchError(this.handleError));
-  }
 
   // Update Method Api
   update(user: any, type: any): Observable<any> {
