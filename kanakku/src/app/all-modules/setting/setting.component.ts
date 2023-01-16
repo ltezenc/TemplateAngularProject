@@ -86,7 +86,15 @@ export class SettingComponent implements OnInit {
     all_filereg.forEach(row_reg => {
       const  body= new FormData();
       body.append('file',row_reg.fileRaw,row_reg.fileName);
-      this.commonService.sendPostCRCRM(body).subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE"));
+      this.commonService.sendPostCRCRM(body).subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE CMR"));
+    });
+  }
+  sendFilepliegoTarifario():void{
+    let all_filereg = this.FileSelectAll
+    all_filereg.forEach(row_reg => {
+      const  body= new FormData();
+      body.append('file',row_reg.fileRaw,row_reg.fileName);
+      this.commonService.sendPostPliegoTarifario(body).subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE PLIEGO"));
     });
   }
 

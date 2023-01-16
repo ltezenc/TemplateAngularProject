@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   postexcel:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepulsos',
   postexcelCRCM:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodecrcm',
+  postexcelPliegoTarifario:'http://localhost:8080/clienteslibres/documentos/1/1/importar-documentodepliegotarifario',
   postsumunistro:'http://localhost:8080/clienteslibres/suministro/crear'
 
 };
