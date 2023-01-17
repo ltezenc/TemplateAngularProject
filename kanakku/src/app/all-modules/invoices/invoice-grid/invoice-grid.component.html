@@ -12,60 +12,54 @@
             <li class="breadcrumb-item active">Historicos</li>
           </ul>
         </div>
-        <div class="col-auto">
-          <a [routerLink]="'/invoices/invoice-grid'" class="invoices-links active">
-            <i data-feather="grid"></i>
-          </a>
-        </div>
       </div>
     </div>
     <!-- /Page Header -->
     <div class="row">
-      <ng-container *ngFor="let row of cadena">
-
-        <div *ngFor="let col of row" class="col-sm-6 col-lg-4 col-xl-3 d-flex">
-          <div class="card invoices-grid-card w-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-              <h6 class="invoice-grid-link">{{ col.suministro }}</h6>
-              <div class="dropdown dropdown-action">
-                <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
-                  aria-expanded="false">{{ col.id }}</a>
-              </div>
-            </div>
-            <div class="card-middle">
-              <h2 class="card-middle-avatar">
-
-                <a routerLink="/historio-customers"[queryParams]="{ id: col.suministro }"> {{ col.razonSocial }}</a>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="row align-items-center">
-                <div class="col">
-                  <span><i class="fas  fa-cube"></i> {{ col.prefijotarifa }}</span>
-                </div>
-                <div class="col-auto">
-                  <span><i class="fas  fa-hourglass-end"></i> {{ col.potenciaContratada }}</span>
+        <ng-container *ngFor="let row of cadena">
+          <div *ngFor="let col of row" class="col-sm-6 col-lg-4 col-xl-3 d-flex">
+            <div class="card invoices-grid-card w-100 card__sel">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="invoice-grid-link"><a routerLink="/historio-customers"[queryParams]="{ id: col.suministro }">{{ col.suministro }}</a></h6>
+                <div class="dropdown dropdown-action">
+                  <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">{{ col.id }}</a>
                 </div>
               </div>
-            </div>
-            <div class="card-footer">
-              <div class="row align-items-center">
-                <div class="col-auto">
-                  <span
-                          [ngClass]="
-                            col.estadoId === 1
-                              ? 'badge badge-pill bg-success-light'
-                              : 'badge badge-pill bg-danger-light'
-                          "
-                          >Activo</span
-                        >
+              <div class="card-middle">
+                <h2 class="card-middle-avatar">
+
+                  <a routerLink="/historio-customers"[queryParams]="{ id: col.suministro }"> {{ col.razonSocial }}</a>
+                  <!-- <a [routerLink]="['/historio-customers/',col.suministro]">{{ col.razonSocial }}</a> -->
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <span><i class="fas  fa-cube"></i> {{ col.prefijotarifa }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <span><i class="fas  fa-hourglass-end"></i> {{ col.potenciaContratada }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="row align-items-center">
+                  <div class="col-auto">
+                    <span
+                            [ngClass]="
+                              col.estadoId === 1
+                                ? 'badge badge-pill bg-success-light'
+                                : 'badge badge-pill bg-danger-light'
+                            "
+                            >Activo</span
+                          >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-      </ng-container>
+        </ng-container>
 
 
 

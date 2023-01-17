@@ -30,25 +30,25 @@ export class ViewInvoiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
     let id= +this._route.snapshot.paramMap.get("id");
-    
+
     //obtiene valores de la factura
       this.service.getFacturacionCliente(id).subscribe(res=>{
       this.facturas=res;
       let keys= Object.keys(res);
-     
+
       let i = 0;
-      for (let prop of keys ) { 
+      for (let prop of keys ) {
       this.cadena.push(res[prop]);
       this.cadena[i]['name'] = prop;
       i++;
-  } console.log(this.cadena)
+        } console.log(this.cadena)
      },
       )
-    
+
   }
 
 
-  
+
 }

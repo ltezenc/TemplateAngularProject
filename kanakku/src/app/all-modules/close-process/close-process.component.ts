@@ -20,7 +20,7 @@ export class CloseProcessComponent implements OnInit {
          console.log(err.message);
        }, () => {
          console.log('completed');
-    }) 
+    })
 
   }
 }

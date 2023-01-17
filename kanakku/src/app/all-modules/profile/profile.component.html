@@ -12,7 +12,7 @@
                                         <h3 class="page-title">Histórico Customers</h3>
                                         <ul class="breadcrumb">
                                             <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
-                                            <li class="breadcrumb-item active">Profile</li>
+                                            <li class="breadcrumb-item active">Histórico</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -20,10 +20,10 @@
                             <!-- /Page Header -->
 
                             <div class="text-center mb-5">
-                                <h2>Charles Hafner</h2>
+                                <h2>{{rs}}</h2>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <span>COMPLEJO AGROINDUSTRIAL BETA - 2</span>
+                                        <span class="badge bg-success-light">Activo</span>
                                     </li>
                                 </ul>
                             </div>
@@ -33,36 +33,30 @@
                                     <div class="card">
                                         <div class="card-header">
                                             <h5 class="card-title d-flex justify-content-between">
-                                                <span>Perfil</span>
+                                                <span>Datos</span>
                                             </h5>
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-unstyled mb-0">
                                                 <li class="py-0">
-                                                    <small class="text-dark">Suministro</small>
+                                                    <small class="text-dark"><b>Suministro</b></small>
                                                 </li>
                                                 <li>
-                                                    4256889565
+                                                  {{suministro}}
                                                 </li>
                                                 <li class="pt-2 pb-0">
-                                                    <small class="text-dark">Dirección</small>
+                                                    <small class="text-dark"><b>Dirección</b></small>
                                                 </li>
                                                 <li>
-                                                   MZ. Z 0002 Pblo Moche
+                                                  {{dir}}
                                                 </li>
                                                 <li class="pt-2 pb-0">
-                                                    <small class="text-dark">Direción postal</small>
+                                                    <small class="text-dark"><b>Tarifa</b></small>
                                                 </li>
                                                 <li>
+                                                  {{tar}}
                                                 </li>
 
-                                                <li class="pt-2 pb-0">
-                                                    <small class="text-dark">Nombre</small>
-                                                </li>
-                                                <li>
-                                                    Agriculture Lane,<br>
-
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -76,42 +70,15 @@
                                         </div>
                                         <div class="card-body card-body-height">
                                             <ul class="activity-feed">
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Enero 16</div>
-                                                    <span class="feed-text"><a [routerLink]="'/profile'">Brian Johnson</a> has paid the invoice <a [routerLink]="'/invoices/view-invoice'">"#DF65485"</a></span>
+
+                                              <ng-container *ngFor="let row of cadena">
+                                                <li class="feed-item" *ngFor="let col of row" >
+                                                    <div class="feed-date">{{ col.pfactura }}</div>
+                                                    <span class="feed-text"><b>{{ col.razonSocial }}</b> con un total de <a routerLink="/view-historico-cliente"[queryParams]="{ sum: col.suministro,fact: col.pfactura}">S/{{ col.total }}</a></span>
+
                                                 </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Febrero 7</div>
-                                                    <span class="feed-text"><a [routerLink]="'/profile'">Marie Canales</a>  has accepted your estimate <a [routerLink]="'/view-estimate'">#GTR458789</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Marzo 24</div>
-                                                    <span class="feed-text">New expenses added <a [routerLink]="'/expenses/expenses-list'">"#TR018756</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Abril 24</div>
-                                                    <span class="feed-text">New expenses added <a [routerLink]="'/expenses/expenses-list'">"#TR018756</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Mayo 24</div>
-                                                    <span class="feed-text">New expenses added <a [routerLink]="'/expenses/expenses-list'">"#TR018756</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Junio 24</div>
-                                                    <span class="feed-text">New expenses added <a [routerLink]="'/expenses/expenses-list'">"#TR018756</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Julio 24</div>
-                                                    <span class="feed-text">New expenses added <a [routerLink]="'/expenses/expenses-list'">"#TR018756</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Agosto 27</div>
-                                                    <span class="feed-text"><a [routerLink]="'/profile'">Robert Martin</a> gave a review for <a [routerLink]="'/product-details'">"Dell Laptop"</a></span>
-                                                </li>
-                                                <li class="feed-item">
-                                                    <div class="feed-date">Septiembre 14</div>
-                                                    <span class="feed-text">New customer registered <a [routerLink]="'/profile'">"Tori Carter"</a></span>
-                                                </li>
+                                              </ng-container>
+
                                             </ul>
                                         </div>
                                     </div>

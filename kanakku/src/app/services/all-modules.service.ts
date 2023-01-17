@@ -8,6 +8,7 @@ import { Cliente } from '../model/cliente';
 import { Suministro } from '../model/suministro';
 import { environment } from 'src/environments/environment';
 import { tarifaI } from '../model/tarifa.interface';
+import { FacturaListI } from '../model/facturalist.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -54,6 +55,13 @@ export class AllModulesService {
 
   }
 
+  getHistoricoSuministroFactura(id:string,fact:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/suministro/buscar-suministro-historico/"+id+"/"+fact)
+  }
+
+  getHistoricoSuministro(id:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/clientes/listarhistorio/"+id)
+  }
 
   // Handling Errors
   private handleError(error: any) {

@@ -36,7 +36,7 @@ const routes: Routes = [
 
         },
 
-       
+
         {
           path: 'invoices',
           loadChildren: () =>
@@ -69,7 +69,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-      
+
         {
           path: 'setting',
           loadChildren: () =>
@@ -111,6 +111,14 @@ const routes: Routes = [
           path: 'historico',
           loadChildren: () =>
             import('./invoices/invoices.module').then((m) => m.InvoicesModule),
+          canActivate: [AuthenticationGuard],
+        },
+
+
+        {
+          path: 'view-historico-cliente',
+          loadChildren: () =>
+            import('./view-historico/view-historico.module').then((m) => m.ViewHistoricModule),
           canActivate: [AuthenticationGuard],
         },
 
