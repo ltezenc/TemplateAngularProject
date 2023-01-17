@@ -20,6 +20,6 @@ export class ParametrosService {
   }
 
   updateparametro(parametro:parametrosI):Observable<parametrosI>{
-    return this.http.post<parametrosI>("http://localhost:8080/clienteslibres/parametros/1/actualizar",parametro)
+    return this.http.post<parametrosI>(environment.url_global+"/clienteslibres/parametros/1/actualizar",parametro)
   }
 }

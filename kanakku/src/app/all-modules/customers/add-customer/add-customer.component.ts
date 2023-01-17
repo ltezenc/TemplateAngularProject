@@ -103,9 +103,7 @@ export class AddCustomerComponent implements OnInit {
       status : "Active",
       role: "Customer"
     };
-    this.allModulesService.add(obj, this.url).subscribe((data) => {
 
-    });
     this.router.navigate(["/customers"]);
     this.toastr.success("Customer added sucessfully...!", "Success");
     }

@@ -69,9 +69,7 @@ export class AddPaymentsComponent implements OnInit {
         amount : this.addPaymentForm.value.paymentAmount,
         payment_method : this.addPaymentForm.value.paymentMode,
       };
-      this.allModulesService.add(obj, this.url).subscribe((data) => {
 
-      });
       this.router.navigate(["/payments"]);
       this.toastr.success("Payments added sucessfully...!", "Success");
     }

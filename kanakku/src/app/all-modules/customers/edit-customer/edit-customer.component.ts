@@ -19,7 +19,6 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.queryParams["id"]);
-    this.getCustomer();
     this.editCustomerForm = this.formBuilder.group({
       customerName: ["", [Validators.required]],
       customerEmail: ["", [Validators.required]],
@@ -56,16 +55,7 @@ export class EditCustomerComponent implements OnInit {
     });
   }
 
-  // get method for estimate
-  getCustomer() {
-    this.allModulesService.get("customers").subscribe((res) => {
-      this.allCustomers = res;
-      //passing edit id
 
-      this.edit(this.id);
-    });
-
-}
 editCustomer() {
   if (this.editCustomerForm.valid) {
     let obj = {

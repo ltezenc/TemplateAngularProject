@@ -4,7 +4,6 @@ import { ExpensesRoutingModule } from './ficheros-routing.module';
 import { ExpensesComponent } from './ficheros.component';
 import { ExpensesListComponent } from './expenses-list/expenses-list.component';
 import { RouterModule } from '@angular/router';
-import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { ParametroComponent } from '../parametro/parametro.component';
@@ -15,7 +14,7 @@ import { ParametroComponent } from '../parametro/parametro.component';
   declarations: [
     ExpensesComponent,
     ExpensesListComponent,
-    EditExpensesComponent,
+
     ParametroComponent
   ],
   imports: [
