@@ -13,6 +13,8 @@ import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
 import { DataTablesModule } from 'angular-datatables';
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
 
+import { ReportEComponent } from './report-e/report-e.component';
+
 @NgModule({
   declarations: [
     InvoicesComponent,
@@ -20,7 +22,8 @@ import { TemplateInvoiceComponent } from './template-invoice/template-invoice.co
     InvoiceGridComponent,
     ViewInvoiceComponent,
 
-    TemplateInvoiceComponent
+    TemplateInvoiceComponent,
+      ReportEComponent
   ],
   imports: [
     CommonModule,

@@ -134,17 +134,17 @@ export class ExpensesListComponent implements OnInit {
 
       all_filereg.forEach(row_reg => {
       let tamanio =row_reg.fileRaw.size;
-      console.log("all_filereg :",tamanio)
+      // console.log("all_filereg :",tamanio)
 
-      if(tamanio > 2000000){
-        document.querySelector(".msm_alert").innerHTML = "API I"
-      }else{
-        document.querySelector(".msm_alert").innerHTML = "API II"
-      }
+      // if(tamanio > 2000000){
+      //   document.querySelector(".msm_alert").innerHTML = "API I"
+      // }else{
+      //   document.querySelector(".msm_alert").innerHTML = "API II"
+      // }
 
-        // const  body= new FormData();
-        // body.append('file',row_reg.fileRaw,row_reg.fileName);
-        // this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
+        const  body= new FormData();
+        body.append('file',row_reg.fileRaw,row_reg.fileName);
+        this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
       });
 
      // body.append('usuario','1')

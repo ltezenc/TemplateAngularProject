@@ -15,9 +15,12 @@ export class DataService {
     return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
 
   }
+  sendPostPliegoTarifario(body:FormData):Observable<any>{
+    return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepliegotarifario",body)
+
+  }
   sendPostCRCRM(body:FormData):Observable<any>{
     return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodecrcm",body)
-
 
   }
   suministroexist(nombre:string){

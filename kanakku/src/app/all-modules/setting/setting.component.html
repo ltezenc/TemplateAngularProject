@@ -13,7 +13,57 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-lg-center">
+        <div class="card bg-white">
+            <div class="card-header">
+                <h5 class="card-title"> Subida de archivos</h5>
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-tabs-top nav-justified">
+                    <li class="nav-item">
+                        <a type="button" class="nav-link active" data-bs-toggle="tab" data-bs-target="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#vad_ensa">Paso 01: IMPORTAR VAD ENSA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#corte">Paso 02: Importar Costos de Conexion CMR</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent" aria-hidden="true">
+                    <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+                        <div class="card-body">
+                           <p>Para iniciar el proceso de subida debe tener a la mano los siguientes documentos:</p>
+                           <ul class="list-group">
+                            <li>PASO 01: MOV ENSA : Mes a actual</li>
+                            <li>PASO 01: MOV ENSA : Mes a anterior</li>
+                            <li>PASO 02: COSTO DE CONEXION CMR: Mes a actual</li>
+                            <li>PASO 02: COSTO DE CONEXION CMR: Mes a anterior</li>
+                           </ul>
+                           
+                        </div>
+                            
+                    </div>
+                    <div class="tab-pane fade" id="vad_ensa" role="tabpanel" aria-labelledby="vad_ensa-tab">
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input id="input-pliego" name="input-pliego" multiple type="file" class="form-control" (change)="selectFile($event)">
+                            </div>
+                            <button type="button" class="subirpliego" (click)="sendFilepliegoTarifario()">subir archivo</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="corte" role="tabpanel" aria-labelledby="corte-tab">
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input id="input-cargo" name="input-cargo" multiple type="file" (change)="selectFileCMR($event)">
+                            </div>
+                            <button type="button" class="subircargo" (click)="sendFileCRCM()">subir archivo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="row justify-content-lg-center">
             <div class="row">
                 <h5 class="sub-heading">Selecciona un Servicio</h5>
             </div>
@@ -39,9 +89,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Top modal content -->
-        <div id="top-modal-pliego" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        </div> -->
+        <!-- <div id="top-modal-pliego" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-top">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -50,18 +99,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="file-loading">
-                            <input id="input-pliego[]" name="input-pliego[]" multiple type="file">
+                            <input id="input-pliego" name="input-pliego" multiple type="file" (change)="selectFile($event)">
                         </div>
                         <div id="kartik-file-errors"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="subirpliego">subir archivo</button>
+                        <button type="button" class="subirpliego" (click)="sendFilepliegoTarifario()">subir archivo</button>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <div id="top-modal-corte" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                </div>
+            </div>
+        </div> -->
+        <!-- <div id="top-modal-corte" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-top">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -70,7 +119,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="file-loading">
-                            <input id="input-cargo[]" name="input-cargo[]" multiple type="file" (change)="selectFile($event)">
+                            <input id="input-cargo" name="input-cargo" multiple type="file" (change)="selectFile($event)">
 
                         </div>
                         <div id="kartik-file-errors"></div>
@@ -79,9 +128,9 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="subircargo" (click)="sendFileCRCM()">subir archivo</button>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                </div>
+            </div>
+        </div> -->
     </div>
 </div>
 <!-- /Page Wrapper -->

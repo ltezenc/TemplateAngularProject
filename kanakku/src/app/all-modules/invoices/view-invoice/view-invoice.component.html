@@ -1,40 +1,40 @@
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-  <div class="content container-fluid">
+    <div class="content container-fluid">
 
-    <div class="row justify-content-center">
-      <div class="col-xl-10">
-        <div class="card invoice-info-card" *ngFor="let row of cadena">
-          <div class="card-body" *ngFor="let col of row">
-            <div class="invoice-item invoice-item-one">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="invoice-logo">
-                    <img src="assets/img/gescom logo1.png" alt="logo">
-                  </div>
-                  <div class="invoice-head">
-                    <h2>Facturacion</h2>
-                    <p>Facturacion ID :{{col.idfacturacion}}</p>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="invoice-info">
-                    <strong class="customer-text-one">Facturado a</strong>
-                    <h6 class="invoice-name">{{col.razonSocial}}</h6>
-                    <p class="invoice-details">
-                      Suministro: {{col.suministro}} <br>
-                      Codigo: {{col.codigo}} <br>
-                      {{col.direccion}} <br>
-
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-            <!-- Invoice Item
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+                <div class="card invoice-info-card" *ngFor="let row of cadena">
+                    <div class="card-body" *ngFor="let col of row">
+                        <div class="invoice-item invoice-item-one" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="invoice-logo">
+                                        <img src="assets/img/gescom logo1.png" alt="logo">
+                                    </div>
+                                    <div class="invoice-head">
+                                        <h2>Facturacion</h2>
+                                        <p>Facturacion ID :{{col.idfacturacion}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="invoice-info">
+                                        <strong class="customer-text-one">Facturado a</strong>
+                                        <h6 class="invoice-name">{{col.razonSocial}}</h6>
+                                        <p class="invoice-details">
+                                            Suministro: {{col.suministro}} <br>
+                                            Codigo: {{col.codigo}}  <br>
+                                            {{col.direccion}} <br>                                            
+                                           
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                
+                        
+                        <!-- Invoice Item 
                         <div class="invoice-issues-box">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
@@ -56,122 +56,97 @@
                         </div>
                          /Invoice Item -->
 
-            <!-- Invoice Item -->
-            <div class="invoice-item invoice-table-wrap">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="table-responsive">
-                    <table class="invoice-table table table-center mb-0">
-                      <thead>
-                        <tr>
-                          <th>Barra final de Entrega</th>
-                          <th>Consumos</th>
-                          <th>Precios</th>
+                        <!-- Invoice Item -->
+                        <div class="invoice-item invoice-table-wrap">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="invoice-table table table-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Barra final de Entrega</th>
+                                                    <th>Consumos</th>
+                                                    <th>Precios</th>
+                                               
+                                                    <th class="text-end">Monto</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr scope="row">
+                                                    <td>PHP(Generacion)</td>
+                                                    <td>{{col.phpgConsumo}}</td>
+                                                    <td>{{col.phpgPrecio}}</td> 
+                                                    <td class="text-end">{{col.phpg}}</td> 
+                                                    <tr>
+                                                        <td>PHP(Transmision)</td>
+                                                        <td>{{col.phptConsumo}}</td>
+                                                        <td>{{col.phptPrecio}}</td>
+                                                        <td class="text-end">{{col.phpt}}</td> 
+                                                    <tr>
+                                                        <td>Pot. Uso Redes Distrib. HP</td>
+                                                        <td>{{col.potreddisthpConsumo}}</td>
+                                                        <td>{{col.potreddisthpPrecio}}</td>
+                                                        <td class="text-end">{{col.potreddisthp}}</td>
+                                                    </tr>
+                                                    <!--<tr>Exc. Uso Redes Distrib. HP</tr>-->
+                                                    <tr>
+                                                        <td>Peaje del SST y SCT en Energía</td>
+                                                        <td>{{col.peajesstsctConsumo}}</td>
+                                                        <td>{{col.peajesstsctPrecio}}</td>
+                                                        <td class="text-end">{{col.peajesstsct}}</td>
+                                                    </tr>
+                                                    <tr><td>Exceso de Potencia Contratada</td><td>{{col.excpotreddistfhpConsumo}}</td><td>{{col.excpotreddistfhpPrecio}}</td> <td class="text-end">{{col.excpotreddistfhp}}</td></tr>
+                                                    <tr><td>EAHP</td><td>{{col.eahpConsumo}}</td><td>{{col.eahpPrecio}}</td> <td class="text-end">{{col.eahp}}</td></tr>
+                                                    <tr><td>EAHFP</td><td>{{col.eahfpConsumo}}</td><td>{{col.eahfpPrecio}}</td> <td class="text-end">{{col.eahfp}}</td></tr>
+                                                    <tr><td>Energía Reactiva</td><td>{{col.enerReactConsumo}}</td><td>{{col.enerReactPrecio}}</td> <td class="text-end">{{col.enerReact}}</td></tr>
+                                                    <tr><td>Comercializacion</td><td>{{col.comercializacionConsumo}}</td><td>{{col.comercializacionPrecio}}</td> <td class="text-end">{{col.comercializacion}}</td></tr>
+                                                         
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Invoice Item -->
 
-                          <th class="text-end">Monto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr scope="row">
-                          <td>PHP(Generacion)</td>
-                          <td>{{col.phpgConsumo}}</td>
-                          <td>{{col.phpgPrecio}}</td>
-                          <td class="text-end">{{col.phpg}}</td>
-                        <tr>
-                          <td>PHP(Transmision)</td>
-                          <td>{{col.phptConsumo}}</td>
-                          <td>{{col.phptPrecio}}</td>
-                          <td class="text-end">{{col.phpt}}</td>
-                        <tr>
-                          <td>Pot. Uso Redes Distrib. HP</td>
-                          <td>{{col.potreddisthpConsumo}}</td>
-                          <td>{{col.potreddisthpPrecio}}</td>
-                          <td class="text-end">{{col.potreddisthp}}</td>
-                        </tr>
-                        <!--<tr>Exc. Uso Redes Distrib. HP</tr>-->
-                        <tr>
-                          <td>Peaje del SST y SCT en Energía</td>
-                          <td>{{col.peajesstsctConsumo}}</td>
-                          <td>{{col.peajesstsctPrecio}}</td>
-                          <td class="text-end">{{col.peajesstsct}}</td>
-                        </tr>
-                        <tr>
-                          <td>Exceso de Potencia Contratada</td>
-                          <td>{{col.excpotreddistfhpConsumo}}</td>
-                          <td>{{col.excpotreddistfhpPrecio}}</td>
-                          <td class="text-end">{{col.excpotreddistfhp}}</td>
-                        </tr>
-                        <tr>
-                          <td>EAHP</td>
-                          <td>{{col.eahpConsumo}}</td>
-                          <td>{{col.eahpPrecio}}</td>
-                          <td class="text-end">{{col.eahp}}</td>
-                        </tr>
-                        <tr>
-                          <td>EAHFP</td>
-                          <td>{{col.eahfpConsumo}}</td>
-                          <td>{{col.eahfpPrecio}}</td>
-                          <td class="text-end">{{col.eahfp}}</td>
-                        </tr>
-                        <tr>
-                          <td>Energía Reactiva</td>
-                          <td>{{col.enerReactConsumo}}</td>
-                          <td>{{col.enerReactPrecio}}</td>
-                          <td class="text-end">{{col.enerReact}}</td>
-                        </tr>
-                        <tr>
-                          <td>Comercializacion</td>
-                          <td>{{col.comercializacionConsumo}}</td>
-                          <td>{{col.comercializacionPrecio}}</td>
-                          <td class="text-end">{{col.comercializacion}}</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /Invoice Item -->
-
-            <div class="row align-items-center justify-content-center">
-              <div class="col-lg-6 col-md-6">
-                <div class="invoice-terms">
-                  <h6>Notes:</h6>
-                  <p class="mb-0">Enter customer notes or any other details</p>
-                </div>
-                <div class="invoice-terms">
-                  <h6>Terms and Conditions:</h6>
-                  <p class="mb-0">Enter customer notes or any other details</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6">
-                <div class="invoice-total-card">
-                  <div class="invoice-total-box">
-                    <div class="invoice-total-inner">
-                      <p>Subtotal G-T-D-C (Afecto al IGV) <span>S/ {{col.subtotalgtdc}}</span></p>
-                      <p>Cargo Fijo <span>{{col.cargofijo}}</span></p>
-                      <p>Alubrado Publico <span>{{col.alpub}}</span></p>
-                      <p>Cargo de Reposición y Mantenimiento de la Conexión
-                        <span>{{col.cargrepomantconex}}</span></p>
-                      <p>Aporte Ley <span>{{col.aporteley}}</span></p>
-                      <p class="mb-0">Monto FISE a Facturar <span> S/ {{col.montofise}}</span></p>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="invoice-terms">
+                                    <h6>Notes:</h6>
+                                    <p class="mb-0">Enter customer notes or any other details</p>
+                                </div>
+                                <div class="invoice-terms">
+                                    <h6>Terms and Conditions:</h6>
+                                    <p class="mb-0">Enter customer notes or any other details</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="invoice-total-card">
+                                    <div class="invoice-total-box">
+                                        <div class="invoice-total-inner">
+                                            <p >Subtotal G-T-D-C (Afecto al IGV) <span>S/ {{col.subtotalgtdc}}</span></p>
+                                            <p>Cargo Fijo <span>{{col.cargofijo}}</span></p>
+                                            <p>Alubrado Publico <span>{{col.alpub}}</span></p>
+                                            <p>Cargo de Reposición y Mantenimiento de la Conexión
+                                                <span>{{col.cargrepomantconex}}</span></p>
+                                            <p>Aporte Ley <span>{{col.aporteley}}</span></p>
+                                                    <p class="mb-0">Monto FISE a Facturar <span> S/ {{col.montofise}}</span></p>
+                                        </div>
+                                        <div class="invoice-total-footer">
+                                            <h4>Monto Total <span>S/ {{col.total}}</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-sign text-end">
+                            <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
+                            <span class="d-block">Harristemp</span>
+                        </div>
                     </div>
-                    <div class="invoice-total-footer">
-                      <h4>Monto Total <span>S/ {{col.total}}</span></h4>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="invoice-sign text-end">
-              <img class="img-fluid d-inline-block" src="assets/img/signature.png" alt="sign">
-              <span class="d-block">Harristemp</span>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <!-- /Page Wrapper -->

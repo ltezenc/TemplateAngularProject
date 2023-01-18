@@ -9,15 +9,36 @@ declare var $:any;
 export class SettingComponent implements OnInit {
   [x: string]: any;
   FileSelectAll = [];
+  FileSelectAllCMR = [];
 
   constructor(public commonService: DataService) { }
 
   ngOnInit(): void {
-    this.animaciones()
+    // this.animaciones()
   }
-
   animaciones(){
     //carga de pliego
+    $(function() {
+      var btn = $(".subirpliego");
+      btn.on("click", function() {        
+        $(this).addClass('btn-progress');
+        setTimeout(function() {
+          btn.addClass('btn-fill')
+        }, 500);
+        setTimeout(function() {
+          btn.removeClass('btn-fill')
+        }, 4100);        
+        setTimeout(function() {
+          btn.addClass('fa-check')
+        }, 4400);
+        setTimeout(function() {
+          btn.removeClass('fa-check')
+        }, 5500);
+        setTimeout(function() {
+          btn.removeClass('btn-progress')
+        }, 5700);
+      });    
+    })
     $(function() {
       var btn = $(".subircargo");
       btn.on("click", function() {        
@@ -25,7 +46,6 @@ export class SettingComponent implements OnInit {
         setTimeout(function() {
           btn.addClass('btn-fill')
         }, 500);
-        
         setTimeout(function() {
           btn.removeClass('btn-fill')
         }, 4100);        
@@ -41,18 +61,32 @@ export class SettingComponent implements OnInit {
       });    
     })
   
-    $("#input-cargo[]").fileinput({
+    $("#input-pliego").fileinput({
         previewFileIconSettings: { // configure your icon file extensions
           'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
           'xls': '<i class="fas fa-file-excel text-success"></i>',
+          'xlsm': '<i class="fas fa-file-excel text-success"></i>',
         },
         showPreview: true,
         showUpload: false,
         elErrorContainer: '#kartik-file-errors',
         allowedFileExtensions: ["xls", "xlsx","xlsm"],      
     });
-   }
 
+    $("#input-cargo").fileinput({
+      previewFileIconSettings: { // configure your icon file extensions
+          'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+          'xls': '<i class="fas fa-file-excel text-success"></i>',
+          'xlsm': '<i class="fas fa-file-excel text-success"></i>',
+        },
+        showPreview: true,
+        showUpload: false,
+        elErrorContainer: '#kartik-file-errors',
+        allowedFileExtensions: ["xls", "xlsx","xlsm"],      
+    });
+    
+   }
+  
   selectFile(event){
     const[file] = event.target.files;
     let total_registros = event.target.files;
@@ -64,29 +98,40 @@ export class SettingComponent implements OnInit {
         fileRaw:item,
         fileName:item.name
       }
-
       this.FileSelectAll.push(dataenviar)
-
     }
-    // console.log(event.target.files.length)
-    this.FileSelect={
-      fileRaw:file,
-      fileName:file.name
-    }
-    let nombre=this.FileSelect.fileName
-    let all_file = this.FileSelectAll
-    all_file.forEach(row => {
-      let no___mbre=row.fileName
-      this.commonService.suministroexist(no___mbre).subscribe(res=>console.log(res))
-    });
+  }
+  selectFileCMR(event){
+    const[filecmr] = event.target.files;
+    let total_registros_cmr = event.target.files;
+    //Almaceno todo los ficheros
+    for (let i = 0; i < total_registros_cmr.length; i++) {
+      const itemcmr = total_registros_cmr[i];
 
+      let dataenviarcmr = {
+        fileRaw:itemcmr,
+        fileName:itemcmr.name
+      }
+      this.FileSelectAllCMR.push(dataenviarcmr)
+    }
   }
   sendFileCRCM():void{
+    let all_filereg = this.FileSelectAllCMR
+    all_filereg.forEach(row_reg_cmr => {
+      const  bodyCMR= new FormData();
+      bodyCMR.append('file',row_reg_cmr.fileRaw,row_reg_cmr.fileName);
+      this.commonService.sendPostCRCRM(bodyCMR).subscribe(res=>alert("ARCHIVO SUBIDO CORRECTAMENTE CMR"));
+    });
+  }
+  sendFilepliegoTarifario():void{
     let all_filereg = this.FileSelectAll
     all_filereg.forEach(row_reg => {
       const  body= new FormData();
       body.append('file',row_reg.fileRaw,row_reg.fileName);
-      this.commonService.sendPostCRCRM(body).subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE"));
+      this.commonService.sendPostPliegoTarifario(body).subscribe(
+        res=>alert("ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO")
+        );
+      // .subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE PLIEGO"));
     });
   }
 

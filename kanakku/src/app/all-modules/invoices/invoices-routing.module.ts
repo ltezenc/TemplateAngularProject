@@ -6,7 +6,10 @@ import { InvoiceGridComponent } from './invoice-grid/invoice-grid.component';
 
 import { InvoicesComponent } from './invoices.component';
 
+import { ReportEComponent } from './report-e/report-e.component';
+
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
+
 import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
 
 const routes: Routes = [
@@ -20,7 +23,9 @@ const routes: Routes = [
     
       { path: "view-invoice/:id", component: ViewInvoiceComponent },
 
-      { path: "template-invoice/:id", component: TemplateInvoiceComponent }
+      { path: "template-invoice/:id", component: TemplateInvoiceComponent },
+      
+      { path: "report-e/:id", component:  ReportEComponent}
     ]
   },
 ];
