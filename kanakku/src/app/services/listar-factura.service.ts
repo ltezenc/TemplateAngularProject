@@ -25,4 +25,10 @@ export class ListarFacturaService {
     return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/facturacion/listar")
 
   }
+  getFacturacionClienteNgc(id:number):Observable<FacturaListI[]>{
+    const url= environment.url_global+"/clienteslibres/facturacion/ngc/"+id+"/listar"
+    console.log(this.http.get<FacturaListI[]>(url))
+
+    return this.http.get<FacturaListI[]>(url)
+  }
 }

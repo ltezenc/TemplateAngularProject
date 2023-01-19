@@ -17,70 +17,179 @@
         <div class="row justify-content-center">
             <div class="col-xl-10">
                 <div class="card invoice-info-card">
-                    <div class="card-body">
-                        <div class="invoice-item invoice-item-one">
-                          <div class="row">
+                    <div class="card-body" *ngFor="let row of cadena">
+                        <div class="invoice-item invoice-item-one"*ngFor="let col of row">
+                          <div class="row" >
                             <div class="col-auto">
-                                <a [routerLink]="" class="btn btn-primary me-2">
+                                <!-- <a [routerLink]="" class="btn btn-primary me-2">
                                   <i class="fas fa-plus"></i>
-                                </a>
+                                </a> -->
                             </div>
                           </div>
-                          <div class="row">
-                            <h4>REPORTE DE FACTURA : 282822_TONGORRAPE_202208</h4>
+                          <div class="row" >
+                            <div class="col-md-6">
+                              <div class="invoice-logo">
+                                  <img src="assets/img/gescom logo1.png" alt="logo" style="max-height: 115px;">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="invoice-info">
+                                    <strong class="customer-text-one">Reporte a</strong>
+                                    <h6 class="invoice-name">{{col.razonSocial}}</h6>
+                                    <p class="invoice-details">
+                                        Suministro: {{col.suministro}} <br>
+                                        Periodo: {{col.pfactura}}  <br>                                           
+                                      
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- <h4>{{col.razonSocial}}</h4>
+                            <h4>REPORTE: {{col.suministro+"_"+col.pfactura}}</h4> -->
                           </div>
-                          <div class="row">
+                          <div class="row" >
                               <table class="table table-sm">
                                   <thead>
                                   </thead>
                                   <tbody>
                                     <tr>
                                       <th scope="row">1</th><td>Energía Activa</td>
-                                      <td>173445.45</td><td>0</td><td>0</td>
+                                      <td>{{(col.eahpConsumo+col.eahfpConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">15</th><td>Energia Activa HP</td>
-                                      <td>23329.81</td><td>0</td><td>0</td>
+                                      <td>{{(col.eahpConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">16</th><td>Energia Activa FP</td>
-                                      <td>150115.64</td><td>0</td><td>0</td>
+                                      <td>{{(col.eahfpConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">17</th><td>Energia Reactiva</td>
-                                    <td>35673.99</td><td>0</td><td>0</td>
+                                    <td>{{(col.sumEnergiaInductivaConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">24</th><td>Pot. Activa Generación HP</td>
-                                      <td>470.41</td><td>0</td><td>0</td>
+                                      <td>{{(col.maxPotHoraPuntaConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">25</th><td>Pot. Activa Generación FP</td>
-                                      <td>518.96</td><td>0</td><td>0</td>
+                                      <td>{{(col.maxPotFPuntaConsumo).toFixed(2)}}</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">351</th><td>Gener-Energía Activa Hp</td>
-                                      <td>173445.45</td><td>0</td><td>0</td>
+                                      <td>{{(col.eahpConsumo).toFixed(2)}}</td><td>{{(col.precEahpPrecioFinal).toFixed(4)}}</td><td>{{(col.eahpConsumo*col.precEahpPrecioFinal).toFixed(2)}}</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">352</th><td>Gener-Energía Activa Fp</td>
-                                      <td>23329.81</td><td>0</td><td>0</td>
+                                      <td>{{(col.eahfpConsumo).toFixed(2)}}</td><td>{{(col.precEahfpPrecioFinal).toFixed(4)}}</td><td>{{(col.eahfpConsumo*col.precEahfpPrecioFinal).toFixed(2)}}</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">349</th><td>Generación-Potencia en Hp</td>
-                                      <td>150115.64</td><td>0</td><td>0</td>
+                                      <td>{{(col.phpGConsumo).toFixed(2)}}</td><td>{{(col.precPhpGPrecioFinal).toFixed(4)}}</td><td>{{(col.phpGConsumo*col.precPhpGPrecioFinal).toFixed(2)}}</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">350</th><td>Generación-Potencia en Fp</td>
-                                    <td>35673.99</td><td>0</td><td>0</td>
+                                    <td>0.00</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">354</th><td>Gener-Exc Potenc Fp</td>
-                                      <td>470.41</td><td>0</td><td>0</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">353</th><td>Gener-Exc Potenc Hp</td>
-                                      <td>518.96</td><td>0</td><td>0</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">333</th><td>Peaje de Conexión Sistema Principal</td>
+                                      <td>{{(col.phpGConsumo).toFixed(2)}}</td><td>{{(col.precPhpTPrecioFinal).toFixed(4)}}</td><td>{{(col.phpGConsumo*col.precPhpTPrecioFinal).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">234</th><td>Peaje Transmisión Secundaria</td>
+                                      <td>{{(col.eahpConsumo+col.eahfpConsumo).toFixed(2)}}</td><td>{{(col.precPeajestsctPrecioFinal/100).toFixed(2)}}</td><td>{{((col.eahpConsumo+col.eahfpConsumo)*(col.precPeajestsctPrecioFinal/100)).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">355</th><td>VAD_MT Potenc en Hp</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">356</th><td>VAD_MT Potenc en Fp</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">22</th><td>Pot.Uso Redes Distrib.HP</td>
+                                      <td>{{(col.potRedDistHpConsumo).toFixed(2)}}</td><td>{{(col.precPotRedDistHpPrecioFinal)}}</td><td>{{(col.potRedDistHpConsumo*col.precPotRedDistHpPrecioFinal).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">23</th><td>Pot.Uso Redes Distrib.FP</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">91</th><td>Exc.Pot.Uso Redes Dist.FP</td>
+                                      <td>{{(col.excPotRedDistFhpConsumo).toFixed(2)}}</td><td>{{col.precExcPotRedDistFhpPrecioFinal}}</td><td>{{((col.excPotRedDistFhpConsumo)*(col.precExcPotRedDistFhpPrecioFinal)).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">338</th><td>Energía Reactiva Inductiva</td>
+                                      <td>{{(col.enerReactConsumo).toFixed(2)}}</td><td>{{(col.precEnerReactPrecioFinal/100).toFixed(2)}}</td><td>{{((col.enerReactConsumo)*((col.precEnerReactPrecioFinal/100))).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">337</th><td>Cargo mensual de Comercialización</td>
+                                      <td>{{(col.comercializacionConsumo).toFixed(2)}}</td><td>{{(col.precComercializacionPrecioFinal).toFixed(2)}}</td><td>{{((col.comercializacionConsumo)*((col.precComercializacionPrecioFinal))).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">3</th><td>Cargo por Alumbrado Público</td>
+                                      <td>0.00</td><td>0</td><td>{{col.alPubFacturacion}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">2</th><td>Cargo fijo</td>
+                                      <td>0.00</td><td>0</td><td>{{col.cargoFijoFacturacion}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">13</th><td>Cargo por mantenimiento</td>
+                                      <td>0.00</td><td>0</td><td>{{(col.cmMesActual.toFixed(2))}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">12</th><td>Cargo por reposición</td>
+                                      <td>0.00</td><td>0</td><td>{{(col.crMesActual.toFixed(2))}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">639</th><td>Dev CASE-Ley 30543-T1</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">320</th><td>Ajuste Tarifario</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">6</th><td>Interes Compensatorio</td>
+                                      <td>0.00</td><td>0</td><td>(0.18*sumatoria)</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">4</th><td>Imp. Gral. a las Ventas</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">230</th><td>Otros conceptos</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">7</th><td>Interés Moratorio</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">362</th><td>FISE-Ley 29852</td>
+                                      <td>{{(col.eahpConsumo+col.eahfpConsumo).toFixed(2)}}</td><td>{{col.cargoFise}}</td><td>{{(((col.eahpConsumo+col.eahfpConsumo)*(col.cargoFise))/100).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">638</th><td>Dev. CASE-Ley N° 30543</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">142</th><td>Ley Elec.Rural N° 28749</td>
+                                      <td>{{(col.eahpConsumo+col.eahfpConsumo).toFixed(2)}}</td><td>{{(2/1000*col.uit/1000).toFixed(4)}}</td><td>{{((col.eahpConsumo+col.eahfpConsumo)*(2/1000*col.uit/1000)).toFixed(2)}}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">384</th><td>Ajuste FISE</td>
+                                      <td>0.00</td><td>0</td><td>0</td>
                                     </tr>
                                   </tbody>
                                 </table>
