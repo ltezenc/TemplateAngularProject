@@ -10,9 +10,11 @@ import { AllModulesService } from 'src/app/services/all-modules.service';
 export class ViewHistoricoComponent implements OnInit {
 
   get_url:any
+  fecha:any
   cadena=[]
   constructor(public service:AllModulesService,private Router: Router) {
     this.get_url = this.Router.parseUrl(this.Router.url);
+    this.fecha = this.get_url.queryParams['fact'];
   }
 
   // sum=26433035&fact=2022-08-01

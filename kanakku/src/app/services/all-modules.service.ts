@@ -59,8 +59,8 @@ export class AllModulesService {
     return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/suministro/buscar-suministro-historico/"+id+"/"+fact)
   }
 
-  getHistoricoSuministro(id:string):Observable<FacturaListI[]>{
-    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/clientes/listarhistorio/"+id)
+  getHistoricoSuministro(suministro:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/clientes/listarhistorico/"+suministro)
   }
 
   // Handling Errors

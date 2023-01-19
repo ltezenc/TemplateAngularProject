@@ -1,12 +1,12 @@
 export class Cliente{
-    id: number;
+    clienteId: number;
     ruc: string;
     razonsocial:string;
     direccion:string;
     telefono:string;
     nombreResponsable:string;
     email:string;
-    tarifa:string;
+    tarifa:number;
     potenciaContratada:number;
     empresaId:number=1;
     estadoId:number;
@@ -18,4 +18,4 @@ export class Cliente{
     pgn0:number;
     comercializacion:number;
     cargoFijo:number;
-   }
+  }

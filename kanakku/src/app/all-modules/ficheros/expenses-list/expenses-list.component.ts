@@ -13,6 +13,7 @@ export class ExpensesListComponent implements OnInit {
   errorMessage: any;
   url: any = "expenses";
   public tempId: any;
+  tamaniototal:any;  //Convertido a MB
   FileSelect;
   FileSelectAll = [];
   ficheros:FicheroListI[];
@@ -108,6 +109,17 @@ export class ExpensesListComponent implements OnInit {
       let all_file = this.FileSelectAll
       all_file.forEach(row => {
         let no___mbre=row.fileName
+        //enviar el tamaño
+        let tamanio =row.fileRaw.size;
+        const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        let l = 0, n = parseInt(tamanio, 10) || 0;
+        while(n >= 1024 && ++l){
+            n = n/1024;
+        }
+        this.tamaniototal = n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + units[l];
+        // console.log("rpta :",n + ' ' + units[l])
+        console.log("rpta :",n.toFixed(n < 10 && l > 0 ? 1 : 0) + ' ' + units[l])
+
         this.commonService.suministroexist(no___mbre).subscribe(res=>console.log(res))
       });
 
@@ -130,26 +142,17 @@ export class ExpensesListComponent implements OnInit {
       let all_filereg = this.FileSelectAll
 
 
-
-
       all_filereg.forEach(row_reg => {
-      let tamanio =row_reg.fileRaw.size;
-      console.log("all_filereg :",tamanio)
-
-      if(tamanio > 2000000){
-        document.querySelector(".msm_alert").innerHTML = "API I"
-      }else{
-        document.querySelector(".msm_alert").innerHTML = "API II"
-      }
-
-        // const  body= new FormData();
-        // body.append('file',row_reg.fileRaw,row_reg.fileName);
-        // this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
+        const  body= new FormData();
+        body.append('file',row_reg.fileRaw,row_reg.fileName);
+        this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
       });
 
      // body.append('usuario','1')
      // body.append('empresa','1')
 
     }
+
+
 
 }

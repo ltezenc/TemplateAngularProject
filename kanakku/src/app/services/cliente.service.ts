@@ -28,6 +28,21 @@ export class ClienteService {
     return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
 
   }
+
+  // getClienteId(cliente:Cliente):Observable<Cliente>{
+  //   return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/crear",cliente)
+  // }
+
+
+  getClienteById(id:number):Observable<Cliente[]>{
+
+    return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar/"+id)
+
+  }
+  update(cliente:Cliente):Observable<Cliente>{
+    return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/actualizar",cliente)
+  }
+
   delete(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/eliminar-clientesandsuministro",cliente)
   }
