@@ -297,6 +297,7 @@ export class AddCustomerComponent implements OnInit {
 
     nextTab()
     {
+
       let razonsocial =<HTMLInputElement> document.getElementById('txtrazonsocial');
       let ruc =<HTMLInputElement> document.getElementById('txtruc');
       let direccion =<HTMLInputElement> document.getElementById('txtdireccion');

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Cliente } from '../model/cliente';
 import { Suministro } from '../model/suministro';
 import { tarifaI } from '../model/tarifa.interface';
+import { FacturaListI } from '../model/facturalist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,7 @@ export class ClienteService {
   delete(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/eliminar-clientesandsuministro",cliente)
   }
+
+
 
 }

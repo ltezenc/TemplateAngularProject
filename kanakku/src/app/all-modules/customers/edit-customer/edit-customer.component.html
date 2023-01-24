@@ -60,7 +60,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Tarifa</label>
-                                        <input type="text" class="form-control" name="txt_tarifa" [(ngModel)]="row.tarifa">
+                                        <!-- <input type="text" class="form-control" name="txt_tarifa" [(ngModel)]="row.tarifa"> -->
+                                        <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="row.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
+                                          <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Tipo de cambio inicio</label>

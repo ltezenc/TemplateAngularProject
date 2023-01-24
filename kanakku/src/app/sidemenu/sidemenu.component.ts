@@ -1,6 +1,7 @@
 import { Component, ENVIRONMENT_INITIALIZER, OnInit,  } from '@angular/core';
 import { Event, Router,  NavigationEnd } from '@angular/router';
 import { WebStorage } from '../core/storage/web.storage';
+import { AllModulesService } from 'src/app/services/all-modules.service';
 declare var $: any;
 
 @Component({
@@ -20,6 +21,7 @@ export class SidemenuComponent implements OnInit {
   nombre=[];
 
   constructor(
+    public service:AllModulesService,
     public router: Router,
     private storage: WebStorage
   ) {
@@ -33,7 +35,7 @@ export class SidemenuComponent implements OnInit {
     });
 
   }
-  
+
   ngOnInit(): void {
     $(document).on('click', '#filter_search', function() {
       $('#filter_inputs').slideToggle("slow");
@@ -58,7 +60,7 @@ export class SidemenuComponent implements OnInit {
   }
 
 
-  nombreusuario(user){  
+  nombreusuario(user){
     this.storage.NombrebyLogin(user).subscribe(data=>{
       let keys= Object.keys(data);
       let i = 0;
@@ -111,5 +113,45 @@ export class SidemenuComponent implements OnInit {
   Logout(){
     localStorage.removeItem('LoginData')
     this.router.navigate(["/login-form"]);
+  }
+
+  onKeyUp(x) { // appending the updated value to the variable
+    var URLactual = window.location;
+    let suministro = x.target.value;
+    console.log("rpta :",suministro)
+    if(suministro != ""){
+
+      document.getElementById("show_rpta").style.display = 'block'
+      document.getElementById("rpta__a").innerHTML = `
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status"></div>
+      </div>`
+      let html = "";
+      this.service.getBuscarHistoricoSuministro(suministro).subscribe(res=>{
+          let validar_rpta = res["buscarHistoricoResponses"].length;
+          if(validar_rpta !=0){
+            res["buscarHistoricoResponses"].forEach(it__em => {
+              html += `<a href="${URLactual.origin}/historio-customers?id=${it__em.suministro}"><span>${it__em.razonSocial} - ${it__em.suministro}</span></a> <hr>`
+              document.getElementById("rpta__a").innerHTML = html
+            });
+          }else{
+            document.getElementById("rpta__a").innerHTML = `No se encontró resultados`
+          }
+
+
+        },
+      )
+
+
+    }else{
+      document.getElementById("show_rpta").style.display = 'none'
+      console.log("campo vacío")
+    }
+
+
+
+
+
+
   }
 }

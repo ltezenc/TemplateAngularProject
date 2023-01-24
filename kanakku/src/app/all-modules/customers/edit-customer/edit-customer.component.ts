@@ -25,6 +25,7 @@ import {
 import {
   Cliente
 } from 'src/app/model/cliente';
+import { tarifaI } from 'src/app/model/tarifa.interface';
 @Component({
   selector: 'app-edit-customer',
   templateUrl: './edit-customer.component.html',
@@ -32,11 +33,13 @@ import {
 })
 export class EditCustomerComponent implements OnInit {
   listclientes: Cliente[];
+  tarifa:tarifaI[];
   clienteall: Cliente = new Cliente();
   public id: any
   public obj: any
   public allCustomers: any
   public editId: any;
+  apitarifa=[];
   lstCustomers!: any[];
   public url: any = "customers";
   public editCustomerForm!: FormGroup;
@@ -46,6 +49,7 @@ export class EditCustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.obtenerTarifa()
     let id = this.id
     this.editCustomerForm = this.formBuilder.group({
       customerName: ["", [Validators.required]],
@@ -78,6 +82,22 @@ export class EditCustomerComponent implements OnInit {
       this.cadena.push(res["clientebyIdResponses"][0]);
     })
 
+  }
+
+  obtenerTarifa(){
+    //obtiene lista de tarifa
+    this.cliente.getTarifa().subscribe(res=>{
+      this.tarifa=res;
+      let keys= Object.keys(res);
+
+      let i = 0;
+      for (let prop of keys ) {
+      this.apitarifa.push(res[prop]);
+      this.apitarifa[i]['name'] = prop;
+      i++;
+  } console.log(this.apitarifa)
+     },
+      )
   }
   private markFormGroupTouched(formGroup: FormGroup) {
     ( < any > Object).values(formGroup.controls).forEach((control: any) => {
