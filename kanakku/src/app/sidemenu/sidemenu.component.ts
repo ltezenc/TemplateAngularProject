@@ -2,6 +2,8 @@ import { Component, ENVIRONMENT_INITIALIZER, OnInit,  } from '@angular/core';
 import { Event, Router,  NavigationEnd } from '@angular/router';
 import { WebStorage } from '../core/storage/web.storage';
 import { AllModulesService } from 'src/app/services/all-modules.service';
+import { UsuariosService } from '../services/usuarios.service';
+import { loginI } from 'src/app/model/login.interface';
 declare var $: any;
 
 @Component({
@@ -19,8 +21,12 @@ export class SidemenuComponent implements OnInit {
   base = '';
   page = '';
   nombre=[];
+  pass:any;
+  datapass:any;
+  userid:any;
 
   constructor(
+    public lg:UsuariosService,
     public service:AllModulesService,
     public router: Router,
     private storage: WebStorage
@@ -62,6 +68,9 @@ export class SidemenuComponent implements OnInit {
 
   nombreusuario(user){
     this.storage.NombrebyLogin(user).subscribe(data=>{
+      console.log("my data :",data)
+      this.pass = data["nombreusuariobyLoginResponses"][0]["password"];
+      this.userid = data["nombreusuariobyLoginResponses"][0]["usuarioId"];
       let keys= Object.keys(data);
       let i = 0;
       for (let prop of keys ) {
@@ -115,10 +124,9 @@ export class SidemenuComponent implements OnInit {
     this.router.navigate(["/login-form"]);
   }
 
-  onKeyUp(x) { // appending the updated value to the variable
+  fn_shear(suministro){  //Con esta función nos permitirá buscar en dos formas (Escribiendo y con click)
+
     var URLactual = window.location;
-    let suministro = x.target.value;
-    console.log("rpta :",suministro)
     if(suministro != ""){
 
       document.getElementById("show_rpta").style.display = 'block'
@@ -148,10 +156,51 @@ export class SidemenuComponent implements OnInit {
       console.log("campo vacío")
     }
 
+  }
+  onKeyUp(x) { // appending the updated value to the variable
+    let suministro = x.target.value;
+    this.fn_shear(suministro)
+  }
+
+  buscarSum(){
+    let input = <HTMLInputElement> document.querySelector('#buscarsumn');
+    this.fn_shear(input.value)
+  }
+
+  updatepass(){
+    let btn = <HTMLInputElement> document.querySelector('.btnupdatepass');
+    let msm = <HTMLInputElement> document.querySelector('.msm__pss');
 
 
+    let old_pass =<HTMLInputElement> document.getElementById('pass_old');
+    let new_pass =<HTMLInputElement> document.getElementById('new_old');
+
+    if(old_pass.value != this.pass){
+      document.querySelector("#msm_pass").innerHTML = "La contraseña ingresada no coincide con la actual."
+    }else{
+      document.querySelector("#msm_pass").innerHTML = ""
+      btn.disabled = true;
+      btn.innerHTML = `Guardando... <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>`
+
+      this.datapass =
+        {
+            "usuarioId": this.userid,
+            "password": new_pass.value
+        }
+
+        this.lg.updatepass(this.datapass).subscribe(response => {
+          // this.ErrorText()
+
+          msm.style.display = "block";
+          btn.innerHTML = `Guardar`
+          btn.disabled = false;
 
 
+        }, () => {
+          console.log(this.datapass);
+        })
+
+    }
 
   }
 }

@@ -20,11 +20,10 @@
           <div *ngFor="let col of row" class="col-sm-6 col-lg-4 col-xl-3 d-flex">
             <div class="card invoices-grid-card w-100 card__sel">
               <div class="card-header d-flex justify-content-between align-items-center">
-                <h6 class="invoice-grid-link"><a routerLink="/historio-customers"[queryParams]="{ id: col.suministro }">{{ col.suministro }}</a></h6>
-                <div class="dropdown dropdown-action">
-                  <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
-                    aria-expanded="false">{{ col.id }}</a>
-                </div>
+                <div class="ribbon ribbon-secondary"><a style="color: #ffff;" routerLink="/historio-customers"[queryParams]="{ id: col.suministro }"> Sum.: {{ col.suministro }}</a></div>
+                <div class="ribbon ribbon-primary ribbon-vertical-right" style="height: 55px;line-height: 60px;top: -1px;right: 0px;border-top-right-radius: 10px;">{{ col.id }}</div>
+                <br>
+
               </div>
               <div class="card-middle">
                 <h2 class="card-middle-avatar">

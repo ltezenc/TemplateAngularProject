@@ -24,10 +24,10 @@
   <!-- Search -->
   <div class="top-nav-search">
     <form>
-      <input type="text" class="form-control" placeholder="Buscar por suministro" (keyup)="onKeyUp($event)">
-      <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+      <input type="text" class="form-control" placeholder="Buscar por suministro" id="buscarsumn" (keyup)="onKeyUp($event)">
+      <button class="btn" type="button" (click)="buscarSum()"><i class="fas fa-search"></i></button>
       <div class="card">
-        <div class="card-body" id="show_rpta" style="display: none" >
+        <div class="card-body" id="show_rpta" style="display: none">
           <p>Resultados de la busqueda:</p>
           <!-- <button class="btn btn-danger" style="border: none;position: absolute;top: 35px;right: 25px;border-radius: 50%;font-size: 10px;">X</button> -->
           <hr>
@@ -68,7 +68,9 @@
         <a class="dropdown-item" [routerLink]="'/profile'"><i data-feather="user" class="me-1"></i> Profile</a>
         <a class="dropdown-item" [routerLink]="'/setting/settings'"><i data-feather="settings" class="me-1"></i>
           Settings</a>
-        <a class="dropdown-item" (click)="Logout()"><i data-feather="log-out" class="me-1"></i> Logout</a>
+        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cambiarpassmdl"><i class="fa fa-unlock-alt"
+            class="me-1"></i> Cambiar contraseña</a>
+        <a class="dropdown-item" href="#" (click)="Logout()"><i data-feather="log-out" class="me-1"></i> Logout</a>
       </div>
     </li>
     <!-- /User Menu -->
@@ -113,3 +115,47 @@
   </div>
 </div>
 <!-- /Sidebar -->
+
+
+<div class="modal fade" id="cambiarpassmdl" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="mycambiarpassmdlLabel">Cambiar contraseña</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="alert alert-success alert-dismissible fade show msm__pss" style="display: none" role="alert">
+          Tu contraseña se actualizó <strong>correctamente!</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="form-group">
+          <label>Actual contraseña</label>
+          <input type="password" class="form-control" placeholder="Ingresa tu contraseña actual" id="pass_old"
+            name="pass_old">
+          <span class="text-danger"><i id="msm_pass"></i></span>
+        </div>
+        <div class="form-group">
+          <label>Nueva contraseña</label>
+          <input type="password" class="form-control" placeholder="Ingresa tu nueva contraseña" id="new_old"
+            name="new_old">
+        </div>
+        <div class="text-end">
+
+          <!-- <button type="button" (click)="updatepass()" class="btn btn-primary">Guardando <div class="spinner-grow" role="status"></div></button> -->
+          <div class="button-list mb-1 mb-sm-0">
+            <button class="btn btn-primary btnupdatepass" (click)="updatepass()"  type="button">
+              Guardar
+              <!-- <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> -->
+            </button>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

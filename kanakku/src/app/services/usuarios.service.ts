@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuarios } from '../model/usuarios';
+import { loginI } from '../model/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,7 @@ export class UsuariosService {
   //   return this.http.post<Cliente>(this.url,cliente)
   // }
 
+  updatepass(usuario:loginI):Observable<loginI>{
+    return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/actualizar-password",usuario)
+  }
 }
