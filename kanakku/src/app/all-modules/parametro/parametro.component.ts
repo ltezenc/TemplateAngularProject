@@ -30,11 +30,13 @@ export class ParametroComponent implements OnInit {
   parametros:parametrosI;
   cadena=[]
   enviodatos = []
+  pfactura:any
   ngOnInit(): void {
     //obtiene lista de fichero
       this.service.getparametrosbyfactura().subscribe(res=>{
       this.parametros=res;
       let keys= Object.keys(res);
+      this.pfactura=res["parametrosResponses"][0].pfactura
       this.enviodatos.push(res["parametrosResponses"][0]);
 
       let i = 0;

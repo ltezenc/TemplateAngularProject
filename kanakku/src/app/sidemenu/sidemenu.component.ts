@@ -22,8 +22,10 @@ export class SidemenuComponent implements OnInit {
   page = '';
   nombre=[];
   pass:any;
+  username:any;
+  rptavalid:any;
   datapass:any;
-  userid:any;
+  iduser:any;
 
   constructor(
     public lg:UsuariosService,
@@ -68,9 +70,9 @@ export class SidemenuComponent implements OnInit {
 
   nombreusuario(user){
     this.storage.NombrebyLogin(user).subscribe(data=>{
-      console.log("my data :",data)
-      this.pass = data["nombreusuariobyLoginResponses"][0]["password"];
-      this.userid = data["nombreusuariobyLoginResponses"][0]["usuarioId"];
+      console.log("uuuuuuus: ",data["nombreusuariobyLoginResponses"][0])
+      this.username = data["nombreusuariobyLoginResponses"][0].usuario;
+      this.iduser = data["nombreusuariobyLoginResponses"][0].id;
       let keys= Object.keys(data);
       let i = 0;
       for (let prop of keys ) {
@@ -167,40 +169,62 @@ export class SidemenuComponent implements OnInit {
     this.fn_shear(input.value)
   }
 
+  validaruser:any;
   updatepass(){
+    let old_pass =<HTMLInputElement> document.getElementById('pass_old');
     let btn = <HTMLInputElement> document.querySelector('.btnupdatepass');
     let msm = <HTMLInputElement> document.querySelector('.msm__pss');
-
-
-    let old_pass =<HTMLInputElement> document.getElementById('pass_old');
     let new_pass =<HTMLInputElement> document.getElementById('new_old');
+    btn.disabled = true;
+    btn.innerHTML = `Guardando... <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>`
 
-    if(old_pass.value != this.pass){
-      document.querySelector("#msm_pass").innerHTML = "La contraseña ingresada no coincide con la actual."
-    }else{
-      document.querySelector("#msm_pass").innerHTML = ""
-      btn.disabled = true;
-      btn.innerHTML = `Guardando... <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>`
+    this.validaruser =
+      {
+          "usuarioLogin": this.username,
+          "password": old_pass.value
+    }
 
-      this.datapass =
-        {
-            "usuarioId": this.userid,
-            "password": new_pass.value
-        }
-
-        this.lg.updatepass(this.datapass).subscribe(response => {
+        this.lg.validusers(this.validaruser).subscribe(response => {
           // this.ErrorText()
 
-          msm.style.display = "block";
-          btn.innerHTML = `Guardar`
-          btn.disabled = false;
+          if(response){
+            document.querySelector("#msm_pass").innerHTML = ""
+
+              this.datapass =
+                {
+                    "usuarioId": this.iduser,
+                    "password": new_pass.value
+              }
+
+              this.lg.updatepass(this.datapass).subscribe(response => {
+                // this.ErrorText()
+
+                msm.style.display = "block";
+                btn.innerHTML = `Guardar`
+                btn.disabled = false;
+
+                old_pass.value="";
+                new_pass.value="";
+              }, () => {
+                console.log(this.datapass);
+              })
+          }else{
+            btn.innerHTML = `Guardar`
+            btn.disabled = false;
+            document.querySelector("#msm_pass").innerHTML = "La contraseña ingresada no coincide con la actual."
+
+            old_pass.value="";
+            new_pass.value="";
+          }
 
 
         }, () => {
-          console.log(this.datapass);
+          console.log("error :",this.validaruser);
         })
 
-    }
+
+
+
 
   }
 }

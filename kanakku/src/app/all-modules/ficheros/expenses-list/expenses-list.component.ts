@@ -72,6 +72,8 @@ export class ExpensesListComponent implements OnInit {
    }
   listarFichero(){
     this.commonService.getFichero().subscribe(res=>{
+      console.log("sacar estado :",res
+      )
       this.ficheros=res;
       let keys= Object.keys(res);
       let i = 0;
@@ -153,6 +155,117 @@ export class ExpensesListComponent implements OnInit {
 
     }
 
+
+    buscarAll(x){
+      console.log("VVE#",this.cadena)
+      let texto = ""; //Para validar por que campo buscar
+      if(x == "nombre")
+      {
+        let nombre =<HTMLInputElement> document.getElementById('bsq_nombre');
+        texto += nombre.value.toLocaleLowerCase()
+      }
+      else{
+        let estado =<HTMLInputElement> document.getElementById('selc_estd');
+        texto += estado.value
+      }
+      let registros = this.cadena[0] //obtengo todo el registro
+      let resultado =  <HTMLInputElement> document.querySelector('#resultados_busqueda');
+      let html = "";
+      let ocultar_tabla =<HTMLInputElement> document.querySelector('#data-table'); //Tabla con registro
+      ocultar_tabla.style.display = "none"; //Ocultar Tabla con registro
+      let mostrar_tabla =<HTMLInputElement> document.querySelector('#table-data'); //Tabla para mostrar los registros de busqueda
+      mostrar_tabla.style.display = "inline-table"; //Mostrar Tabla para  los registros de busqueda
+      for(let registro of registros)
+      {
+        let buscar = "";
+
+        if(x == "nombre")
+          {
+            buscar += registro.nombre.toLocaleLowerCase();
+          }else{
+            buscar += registro.estado;
+          }
+        if(buscar.indexOf(texto) !== -1){ //lo encontró
+          let date = new Date(Date.parse(registro.fechaImportacion));
+          console.log("encontré :",registro)
+
+
+            html += `
+            <tr>
+              <td>${registro.id}</td>
+              <td>${registro.nombre}</td>
+              <td>${date.getDate()}-${date.getMonth()}-${date.getFullYear()}</td>
+              <td>${registro.cantLect}</td>
+              <td class="text-end" [ngSwitch]="expese.estado" >`
+
+
+
+              if(registro.estado == 2){
+                html += `
+                <span *ngSwitchCase="2"
+                class="badge badge-pill bg-danger-light" >Error2</span>
+
+                `
+              }else if(registro.estado == 5){
+                html += `
+
+                <span *ngSwitchCase="5"
+                class="badge badge-pill bg-success-light" >Procesado</span>
+
+                `
+
+              }else if(registro.estado == 4){
+                html += `
+
+                <span *ngSwitchCase="4"
+                class="badge badge-pill bg-danger-light" >Archivo ya ha sido procesado</span>
+                `
+
+              }else if(registro.estado == 3){
+                html += `
+
+
+                <span *ngSwitchCase="3"
+                  class="badge badge-pill bg-danger-light" >CLIENTE NO REGISTRADO</span>
+
+                `
+
+              }else if(registro.estado == 1){
+                html += `
+
+                <span *ngSwitchCase="1"
+                    class="badge badge-pill bg-warning-light"  >Procesando Calculos</span>
+                `
+
+              }else{
+                html += `
+                <span *ngSwitchCase="0"
+                      class="badge badge-pill bg-danger-light"  >Pendiente</span>
+                `
+              }
+
+              html += `
+
+              </td>
+
+              <td class="text-end">
+                <a (click)="tempId = expese.id" data-bs-toggle="modal" data-bs-target="#delete_Expenses"
+                  href="javascript:void(0);" class="btn btn-sm btn-white text-danger"><i
+                    class="far fa-trash-alt me-1"></i>Delete</a>
+              </td>
+            </tr>
+
+
+            `
+            resultado.innerHTML = html;
+        }
+        if(texto === ""){
+          ocultar_tabla.style.display = "inline-table";
+          resultado.innerHTML = "";
+          mostrar_tabla.style.display = "none";
+        }
+      }
+    }
 
 
 }

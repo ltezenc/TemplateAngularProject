@@ -60,7 +60,7 @@
               <div class="top-nav-search">
                 <form>
                   <input type="text" class="form-control" placeholder="Nombre" id="bsq_nombre">
-                  <button class="btn" type="button"><i class="fas fa-search"></i></button>
+                  <button class="btn" type="button" (click)="buscarAll('nombre')"><i class="fas fa-search"></i></button>
                 </form>
               </div>
             </div>
@@ -69,14 +69,16 @@
             <div class="form-group">
               <div class="top-nav-search">
                 <form>
-                  <select class="form-select">
+                  <select class="form-select" id="selc_estd">
                     <option>Estado</option>
-                    <option>Advertising</option>
-                    <option>Marketing</option>
-                    <option>Software</option>
-                    <option>Travel</option>
+                    <option value="2">Error 2</option>
+                    <option value="5">Procesado</option>
+                    <option value="4">Archivo ya ha sido procesado</option>
+                    <option value="3">Cliente no registrado</option>
+                    <option value="1">Procesando cálculos</option>
+                    <option value="0">Pendiente</option>
                   </select>
-                  <button class="btn" type="button"><i class="fas fa-search"></i></button>
+                  <button class="btn" type="button" (click)="buscarAll('estado')"><i class="fas fa-search"></i></button>
                 </form>
               </div>
             </div>
@@ -90,7 +92,7 @@
 
 
     <app-parametro></app-parametro>
-    <hr>
+
 
 
     <div class="row">
@@ -98,7 +100,7 @@
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable class="table table-center table-hover">
+              <table id="data-table" datatable class="table table-center table-hover">
                 <thead class="thead-light">
                   <tr>
                     <th>Id</th>
@@ -141,6 +143,23 @@
                     </td>
 
                   </tr>
+                </tbody>
+              </table>
+
+
+              <table id="table-data" style="display: none" class="table table-stripped table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>FechaImportacion</th>
+                    <th>Cantidad Lecturas</th>
+                    <th class="text-end">estado</th>
+                    <th class="text-end">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="resultados_busqueda">
+
                 </tbody>
               </table>
             </div>

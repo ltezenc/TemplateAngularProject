@@ -30,7 +30,9 @@ export class UsuariosService {
   // delete(cliente:Cliente):Observable<Cliente>{
   //   return this.http.post<Cliente>(this.url,cliente)
   // }
-
+  validusers(usuario:loginI):Observable<loginI>{
+    return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/verificar-usuario",usuario)
+  }
   updatepass(usuario:loginI):Observable<loginI>{
     return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/actualizar-password",usuario)
   }
