@@ -268,4 +268,39 @@ export class ExpensesListComponent implements OnInit {
     }
 
 
+
+    selallchech(){
+      let validar =<HTMLInputElement> document.getElementById('principalcheck');
+      let btn =<HTMLInputElement> document.getElementById('btndelall');
+      if(validar.checked==true){
+        btn.style.display="block"
+        // <HTMLInputElement>
+        let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
+        todosinput.forEach(element => {
+          console.log(element.checked=true)
+        });
+      }else{
+        btn.style.display="none"
+        // <HTMLInputElement>
+        let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
+        todosinput.forEach(element => {
+          console.log(element.checked=false)
+        });
+      }
+    }
+
+    deletesel(){
+      let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
+      todosinput.forEach(element => {
+
+        //EJECUTAR APIS
+        console.log(element.value)
+
+
+        
+      });
+
+    }
+
+
 }
