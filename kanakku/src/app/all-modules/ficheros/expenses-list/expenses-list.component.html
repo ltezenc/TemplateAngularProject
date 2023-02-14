@@ -100,6 +100,62 @@
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
+
+              <table datatable class="table table-center table-hover">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Id</th>
+                    <th>Registrado</th>
+                    <th>Modificado</th>
+                    <th>Cant. Cliente</th>
+                    <th>Estado</th>
+                    <th>Nombre</th>
+                    <th>Pfactura</th>
+                    <th>Cant. Lectura</th>
+                    <th>N° Cliente Procesado</th>
+                  </tr>
+
+
+                </thead>
+                <tbody *ngFor="let item of cadenase;let i = index">
+                  <tr *ngFor="let row of item;let i = index">
+                    <td>{{row.idsuperexcel}}</td>
+                    <td>{{row.registrado}}</td>
+                    <td>{{row.modificado}}</td>
+                    <td>{{row.cantidad_clientes}}</td>
+                    <td>{{row.estado}}</td>
+                    <td>{{row.nombre}}</td>
+                    <td>{{row.ipfacturad}}</td>
+                    <td>{{row.cant_lect}}</td>
+                    <td>{{row.nro_client_procesado}}</td>
+
+
+
+                  </tr>
+
+
+
+                </tbody>
+
+
+
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card card-table">
+          <div class="card-body">
+            <div class="table-responsive">
               <table id="data-table" datatable class="table table-center table-hover">
                 <thead class="thead-light">
                   <tr>

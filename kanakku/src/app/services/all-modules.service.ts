@@ -5,6 +5,7 @@ import { tap, catchError, map } from 'rxjs/operators';
 // import { AllModulesData } from 'src/assets/all-modules-data/all-modules-data';
 import { id } from 'src/assets/all-modules-data/id';
 import { Cliente } from '../model/cliente';
+import { Superexcel } from '../model/superexcel';
 import { Suministro } from '../model/suministro';
 import { environment } from 'src/environments/environment';
 import { tarifaI } from '../model/tarifa.interface';
@@ -90,6 +91,13 @@ export class AllModulesService {
     return this.http
       .delete<id>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
+  }
+
+
+  //traer datos superxcel
+  getSuperexcel():Observable<Superexcel[]>{
+    return this.http.get<Superexcel[]>(environment.url_global+"/clienteslibres/documentos/1/1/listar-super-excel")
+
   }
 
 }

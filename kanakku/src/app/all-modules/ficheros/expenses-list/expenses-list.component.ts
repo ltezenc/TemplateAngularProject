@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FicheroListI } from 'src/app/model/ficherolist.interface';
+import { Superexcel } from 'src/app/model/superexcel';
 import { DataService } from '../../../services/data.service'
+import { AllModulesService } from 'src/app/services/all-modules.service';
 declare var $:any;
 @Component({
   selector: 'app-expenses-list',
@@ -17,17 +19,20 @@ export class ExpensesListComponent implements OnInit {
   FileSelect;
   FileSelectAll = [];
   ficheros:FicheroListI[];
+  superexcel:Superexcel[];
    cadena=[];
+   cadenase=[];
     Object = Object;
     fileName = "";
     message = "";
     progressInfo = [];
     fileInfos: Observable<any>;
-  constructor(public commonService: DataService) { }
+  constructor(public commonService: DataService, public allmodules: AllModulesService) { }
 
   ngOnInit(): void {
     this.listarFichero()
     this.animaciones()
+    this.listarSuperexcel()
 
   }
 
@@ -81,6 +86,22 @@ export class ExpensesListComponent implements OnInit {
         this.cadena=[],
         this.cadena.push(res[prop]);
         this.cadena[i]['name'] = prop;
+        i++;
+      }
+    // console.log(this.cadena)
+   })
+  }
+  listarSuperexcel(){
+    this.allmodules.getSuperexcel().subscribe(res=>{
+      console.log("sacar estadooooooo :",res
+      )
+      this.superexcel=res;
+      let keys= Object.keys(res);
+      let i = 0;
+      for (let prop of keys ) {
+        this.cadenase=[],
+        this.cadenase.push(res[prop]);
+        this.cadenase[i]['name'] = prop;
         i++;
       }
     // console.log(this.cadena)
@@ -297,7 +318,7 @@ export class ExpensesListComponent implements OnInit {
         console.log(element.value)
 
 
-        
+
       });
 
     }
