@@ -11,6 +11,7 @@ import { FacturaListI } from 'src/app/model/facturalist.interface';
 export class ProfileComponent implements OnInit {
   changePass = false;
   personalDetails = true;
+  rpta_valid:any //valido si viene con información
   name:any
   id:any
   key:any
@@ -31,11 +32,19 @@ export class ProfileComponent implements OnInit {
 
       //obtiene valores de la factura
       this.service.getHistoricoSuministro(id).subscribe(res=>{
+        let validar_rptas =res["listarHistoricoResponses"].length;
+        // 1: con datos       0: sin datos
+        this.rpta_valid = validar_rptas != 0 ? 1 : 0;
+        console.log("var data :",this.rpta_valid);
+
+
+
         this.rs = res["listarHistoricoResponses"][0]["razonSocial"];
         this.suministro = res["listarHistoricoResponses"][0]["suministro"];
         this.dir = res["listarHistoricoResponses"][0]["direccion"];
         this.tar = res["listarHistoricoResponses"][0]["tarifa"];
         this.total = res["listarHistoricoResponses"][0]["total"];
+
 
 
 

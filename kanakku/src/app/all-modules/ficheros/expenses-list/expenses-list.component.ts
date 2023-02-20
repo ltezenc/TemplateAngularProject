@@ -309,7 +309,21 @@ export class ExpensesListComponent implements OnInit {
         });
       }
     }
-
+    selchech(){
+      let btn =<HTMLInputElement> document.getElementById('btndelall');
+      btn.style.display="none"
+      let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
+      todosinput.forEach(element => {
+        if(element.checked == true){
+          btn.style.display="block"
+        }
+      });
+      // if(btn.checked==true){
+      //   btn.style.display="block"
+      // }else{
+      //   btn.style.display="none"
+      // }
+    }
     deletesel(){
       let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
       todosinput.forEach(element => {

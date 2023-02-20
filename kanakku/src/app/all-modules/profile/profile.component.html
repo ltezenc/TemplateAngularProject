@@ -29,6 +29,24 @@
                             </div>
 
                             <div class="row">
+
+                              <div *ngIf="rpta_valid == 0" class="col-lg-12">
+
+
+                                <div class="card">
+                                  <div class="card-body">
+
+                                    <h2 style="text-align: center;"><i>No tenemos resultados</i></h2>
+
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                            </div>
+
+                            <div *ngElse class="row">
                                 <div class="col-lg-4">
                                     <div class="card">
                                         <div class="card-header">
