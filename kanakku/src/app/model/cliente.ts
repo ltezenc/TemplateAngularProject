@@ -1,5 +1,5 @@
 export class Cliente{
-    clienteId: number;
+    id: number;
     ruc: string;
     razonsocial:string;
     direccion:string;
@@ -18,4 +18,4 @@ export class Cliente{
     pgn0:number;
     comercializacion:number;
     cargoFijo:number;
-  }
+   }

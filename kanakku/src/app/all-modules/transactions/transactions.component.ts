@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { CommonServiceService } from '../../services/common-service.service';
+import { CommonServiceService } from '../../services/listar-fichero.service';
 import * as $ from 'jquery';
 
 @Component({

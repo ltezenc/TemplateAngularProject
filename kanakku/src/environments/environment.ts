@@ -5,7 +5,6 @@
 export const environment = {
   //url_global: "http://ms-clienteslibres.gescom.cloud",
   url_global: "http://localhost:8080",
-
   production: false,
 
 };

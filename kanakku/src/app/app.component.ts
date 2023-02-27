@@ -1,19 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  Inject,
-  AfterViewInit,
-} from '@angular/core';
-import {
-  Event,
-  NavigationStart,
-  Router,
-  ActivatedRoute,
-  Params,
-} from '@angular/router';
-import { DOCUMENT } from '@angular/common';
-import { CommonServiceService } from './services/common-service.service';
+import {  Component,  OnInit,  ViewEncapsulation,  Inject,  AfterViewInit,} from '@angular/core';
+import {  Router} from '@angular/router';
+import { CommonServiceService } from './services/listar-fichero.service';
 import * as Feather from 'feather-icons';
 
 @Component({
@@ -25,67 +12,8 @@ import * as Feather from 'feather-icons';
 })
 export class AppComponent implements OnInit, AfterViewInit  {
   adminShow: boolean = false;
-  constructor(
-    @Inject(DOCUMENT) private document:any,
-    public commonService: CommonServiceService,
-    private route: ActivatedRoute,
-    public Router: Router
-  ) {
-    // Router.events.subscribe((event: Event) => {
-    //   if (event instanceof NavigationStart) {
-    //     if (
-    //       event.url === '/dashboard-two' ||
-    //       event.url === '/dashboard-three' ||
-    //       event.url === '/dashboard-four' ||
-    //       event.url === '/dashboard-five' ||
-    //       event.url === '/forgot-pass' ||
-    //       event.url === '/lock-screen' ||
-    //       event.url === '/login-form' ||
-    //       event.url === '/register' ||
-    //       event.url === '/error-first' ||
-    //       event.url === '/error-second' ||
-    //       event.url === '/' ||
-    //      !localStorage.getItem('LoginData')
-    //     ) {
-    //       this.adminShow = false;
-    //     } else {
-    //       this.adminShow = true;
-    //     }
-    //     if (
-    //       event.url === '/forgot-pass' ||
-    //       event.url === '/lock-screen' ||
-    //       event.url === '/login-form' ||
-    //       event.url === '/register' ||
-    //       event.url === '/error-first' ||
-    //       event.url === '/error-second'
-    //     )
-    //     {
-    //       document.querySelector('body').classList.add('plain-page');
-    //     } else {
-    //       document.querySelector('body').classList.remove('plain-page');
-    //     }
-    //     // if (
-    //     //   event.url === '/dashboard-five'
-    //     // )
-    //     // {
-    //     //   document.querySelector('.main-wrapper').classList.add('container');
-    //     // } else {
-    //     //   document.querySelector('.main-wrapper').classList.remove('container');
-    //     // }
-    //     // if (
-    //     //   event.url === '/error-first' ||
-    //     //   event.url === '/error-second'
-    //     // ) {
-    //     //   document.querySelector('body').classList.add('error-page');
-    //     //   document.querySelector('body').classList.remove('mat-typography');
-    //     // } else {
-    //     //   document.querySelector('body').classList.remove('error-page');
-    //     //   document.querySelector('body').classList.add('mat-typography');
-    //     // }
-    //   }
+  constructor(  public commonService: CommonServiceService,    public Router: Router ) {}
 
-    // });
-  }
   ngOnInit(): void {
     // Sidebar Visible
 

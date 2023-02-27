@@ -1,9 +1,18 @@
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+.main-container{
+  display: flex;
+}
+.parametros-buton{
+  display: flex; justify-content:center; width: 1%;
+  padding-top: 50px;
+  
+}
+
 
 .slide-container{
   /* max-width: 1120px; */
-  width: 100%;
+  display: flex; justify-content: center; width: 100%;
   /* padding: 40px 0; */
 }
 .slide-content{
@@ -19,8 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 14px;
-}
+  padding: 10px 14px;}
 
 
 .swiper-navBtn{

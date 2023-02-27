@@ -1,12 +1,5 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-  TemplateRef,
-} from '@angular/core';
-import { AllModulesService } from '../../services/all-modules.service';
+import {  Component,  OnInit,} from '@angular/core';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-invoice-reports',
@@ -20,7 +13,7 @@ export class InvoiceReportsComponent implements OnInit {
   public tempId: any;
   dtOptions: any = {};
 
-  constructor(private srvModuleService: AllModulesService) {}
+  constructor() {}
 
   ngOnInit(): void {
   }

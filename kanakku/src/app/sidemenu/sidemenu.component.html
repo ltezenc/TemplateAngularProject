@@ -1,161 +1,156 @@
 <!-- Header -->
-<div class="header header-one">
+			<div class="header header-one">
 
-  <!-- Logo -->
-  <div class="header-left header-left-one">
-    <a [routerLink]="'/'" class="logo">
-      <img src="assets/img/gescom logo1.png" alt="Logo">
-    </a>
-    <a [routerLink]="'/'" class="white-logo">
-      <img src="assets/img/logo-white.png" alt="Logo">
-    </a>
-    <a [routerLink]="'/'" class="logo logo-small">
-      <img src="assets/img/gescom logo mini.png" alt="Logo" width="30" height="30">
-    </a>
-  </div>
-  <!-- /Logo -->
+				<!-- Logo -->
+				<div class="header-left header-left-one">
+					<a [routerLink]="'/'" class="logo">
+						<img src="assets/img/gescom logo1.png" alt="Logo">
+					</a>
+					<a [routerLink]="'/'" class="white-logo">
+						<img src="assets/img/logo-white.png" alt="Logo">
+					</a>
+					<a [routerLink]="'/'" class="logo logo-small">
+						<img src="assets/img/gescom logo mini.png" alt="Logo" width="30" height="30">
+					</a>
+				</div>
+				<!-- /Logo -->
 
-  <!-- Sidebar Toggle -->
-  <a href="javascript:void(0);" (click)="burgerMenu()" id="toggle_btn">
-    <i class="fas fa-bars"></i>
-  </a>
-  <!-- /Sidebar Toggle -->
+				<!-- Sidebar Toggle -->
+				<a href="javascript:void(0);" (click)="burgerMenu()" id="toggle_btn">
+					<i class="fas fa-bars"></i>
+				</a>
+				<!-- /Sidebar Toggle -->
 
-  <!-- Search -->
-  <div class="top-nav-search">
-    <form>
-      <input type="text" class="form-control" placeholder="Buscar por suministro" id="buscarsumn" (keyup)="onKeyUp($event)">
-      <button class="btn" type="button" (click)="buscarSum()"><i class="fas fa-search"></i></button>
-      <div class="card">
-        <div class="card-body" id="show_rpta" style="display: none">
-          <p>Resultados de la busqueda:</p>
-          <!-- <button class="btn btn-danger" style="border: none;position: absolute;top: 35px;right: 25px;border-radius: 50%;font-size: 10px;">X</button> -->
-          <hr>
-          <div id="rpta__a" class="vertical-scroll scroll-demo ps-theme-default ps-active-y">
-            <!--
-            -->
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  <!-- /Search -->
+				<!-- Search -->
+				<div class="top-nav-search">
+					<form>
+					  <input type="text" class="form-control" placeholder="Buscar por suministro" (keyup)="onKeyUp($event)">
+					  <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+					  <div class="card">
+						<div class="card-body" id="show_rpta" style="display: none" >
+						  <p>Resultados de la busqueda:</p>
+						  <!-- <button class="btn btn-danger" style="border: none;position: absolute;top: 35px;right: 25px;border-radius: 50%;font-size: 10px;">X</button> -->
+						  <hr>
+						  <div id="rpta__a" class="vertical-scroll scroll-demo ps-theme-default ps-active-y">
+							<!--
+							-->
+						  </div>
+						</div>
+					  </div>
+					</form>
+				  </div>
+				<!-- /Search -->
 
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fas fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
 
-
-
-  <!-- Mobile Menu Toggle -->
-  <a class="mobile_btn" id="mobile_btn">
-    <i class="fas fa-bars"></i>
-  </a>
-  <!-- /Mobile Menu Toggle -->
-
-  <!-- Header Menu -->
-  <ul class="nav nav-tabs user-menu">
+				<!-- Header Menu -->
+				<ul class="nav nav-tabs user-menu">
 
 
-    <!-- User Menu -->
-    <li class="nav-item dropdown has-arrow main-drop" id="dropdown" *ngFor="let nom of nombre">
-      <a href="javascript:void(0)" class="dropdown-toggle nav-link" aria-controls="collapseExample2"
-        data-bs-toggle="dropdown" *ngFor="let nomusuario of nom">
-        <span class="user-img">
-          <img src="assets/img/profiles/avatar-1.jpg" alt="">
-          <span class="status online"></span>
-        </span>
-        <span>{{nomusuario.nombre}}</span>
-      </a>
-      <div class="dropdown-menu" id="collapseExample2">
-        <a class="dropdown-item" [routerLink]="'/profile'"><i data-feather="user" class="me-1"></i> Profile</a>
-        <a class="dropdown-item" [routerLink]="'/setting/settings'"><i data-feather="settings" class="me-1"></i>
-          Settings</a>
-        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cambiarpassmdl"><i class="fa fa-unlock-alt"
-            class="me-1"></i> Cambiar contraseña</a>
-        <a class="dropdown-item" href="#" (click)="Logout()"><i data-feather="log-out" class="me-1"></i> Logout</a>
-      </div>
-    </li>
-    <!-- /User Menu -->
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow main-drop" id="dropdown" *ngFor="let nom of nombre">
+						<a href="javascript:void(0)" class="dropdown-toggle nav-link" aria-controls="collapseExample2" data-bs-toggle="dropdown" *ngFor="let nomusuario of nom">
+							<span class="user-img">
+								<img src="assets/img/profiles/avatar-1.jpg" alt="">
+								<span class="status online"></span>
+							</span>
+							<span>{{nomusuario.nombre}}</span>
+						</a>
+						<div class="dropdown-menu" id="collapseExample2">
+							<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#cambiarpassmdl"><i class="fa fa-unlock-alt"
+								class="me-1"></i>Cambiar Contraseña</a>				
+							<a class="dropdown-item" [routerLink]="'/setting/settings'"><i data-feather="settings" class="me-1"></i> Configuracion</a>
+							<a class="dropdown-item" (click)="Logout()"><i data-feather="log-out" class="me-1"></i>Cerrar Sesion</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
 
-  </ul>
-  <!-- /Header Menu -->
+				</ul>
+				<!-- /Header Menu -->
 
-</div>
-<!-- /Header -->
+			</div>
+			<!-- /Header -->
 
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-  <div class="sidebar-inner slimscroll">
-    <div id="sidebar-menu" class="sidebar-menu">
-      <ul>
-        <li class="menu-title"><span>Principal</span></li>
-        <li [class.active]="base === 'customers'">
-          <a [routerLink]="'/customers/customers-list'"><i data-feather="users"></i> <span>Clientes</span></a>
-        </li>
-
-        <li [class.active]="base === 'payments'">
-          <a [routerLink]="'/payments/payments-list'"><i data-feather="credit-card"></i> <span>Facturas</span></a>
-        </li>
-        <li [class.active]="base === 'expenses'">
-          <a [routerLink]="'/ficheros/expenses-list'"><i data-feather="package"></i> <span>Ficheros</span></a>
-        </li>
-        <li [class.active]="base === 'historico'">
-          <a [routerLink]="'/invoices/invoice-grid'"><i class="fas fa-signal"></i> <span>Histórico</span></a>
-        </li>
-        <li [class.active]="base === 'close-process'">
-          <a [routerLink]="'/close-process'"><i data-feather="check-circle"></i> <span>Cerrar proceso</span></a>
-        </li>
-        <li [class.active]="base === 'users'">
-          <a [routerLink]="'/users'"><i class="fas fa-users"></i> <span>Usuarios</span></a>
-        </li>
-
-
-
-
-      </ul>
-    </div>
-  </div>
+	<div class="sidebar-inner slimscroll">
+		<div id="sidebar-menu" class="sidebar-menu">
+			<ul>
+				<li class="menu-title"><span>Menu Principal</span></li>			
+				<li [class.active]="base === 'ficheros'">
+					<a [routerLink]="'/ficheros/lista-ficheros'"><i data-feather="package"></i> <span>Ficheros</span></a>
+				</li>
+				<li [class.active]="base === 'facturas'">
+					<a [routerLink]="'/facturas/lista-facturas'"><i data-feather="credit-card"></i> <span>Facturas</span></a>
+				</li>				
+				<li [class.active]="base === 'historico'">
+					<a [routerLink]="'/invoices/invoice-grid'"><i class="fas fa-signal"></i> <span>Histórico</span></a>
+				</li>
+				<li [class.active]="base === 'close-process'">
+				<a [routerLink]="'/close-process'" ><i data-feather="check-circle"></i> <span>Cerrar proceso</span></a>
+				</li>
+				
+				<li class="submenu" [class.active]="page === 'Menu Administrador'">
+					<a href="javascript:void(0)"><i data-feather="clipboard"></i> <span> Menu Administrador</span> <span class="menu-arrow"></span></a>
+					<ul>
+						<li [class.active]="page === 'customers'">
+							<a [routerLink]="'/customers/customers-list'"><i data-feather="users"></i> Clientes</a>
+						</li>
+						<li [class.active]="page === 'users'">
+							<a [routerLink]="'/users'" ><i class="fas fa-users"></i> Usuarios</a>
+						</li>											
+					</ul>
+				</li>
+			</ul>			
+		</div>
+	</div>
 </div>
 <!-- /Sidebar -->
 
-
 <div class="modal fade" id="cambiarpassmdl" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="mycambiarpassmdlLabel">Cambiar contraseña</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        <div class="alert alert-success alert-dismissible fade show msm__pss" style="display: none" role="alert">
-          Tu contraseña se actualizó <strong>correctamente!</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-
-        <div class="form-group">
-          <label>Actual contraseña</label>
-          <input type="password" class="form-control" placeholder="Ingresa tu contraseña actual" id="pass_old"
-            name="pass_old">
-          <span class="text-danger"><i id="msm_pass"></i></span>
-        </div>
-        <div class="form-group">
-          <label>Nueva contraseña</label>
-          <input type="password" class="form-control" placeholder="Ingresa tu nueva contraseña" id="new_old"
-            name="new_old">
-        </div>
-        <div class="text-end">
-
-          <!-- <button type="button" (click)="updatepass()" class="btn btn-primary">Guardando <div class="spinner-grow" role="status"></div></button> -->
-          <div class="button-list mb-1 mb-sm-0">
-            <button class="btn btn-primary btnupdatepass" (click)="updatepass()"  type="button">
-              Guardar
-              <!-- <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> -->
-            </button>
-          </div>
-        </div>
-
-
-
-      </div>
-    </div>
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h4 class="modal-title" id="mycambiarpassmdlLabel">Cambiar contraseña</h4>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+  
+		  <div class="alert alert-success alert-dismissible fade show msm__pss" style="display: none" role="alert">
+			Tu contraseña se actualizó <strong>correctamente!</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		  </div>
+  
+		  <div class="form-group">
+			<label>Actual contraseña</label>
+			<input type="password" class="form-control" placeholder="Ingresa tu contraseña actual" id="pass_old"
+			  name="pass_old">
+			<span class="text-danger"><i id="msm_pass"></i></span>
+		  </div>
+		  <div class="form-group">
+			<label>Nueva contraseña</label>
+			<input type="password" class="form-control" placeholder="Ingresa tu nueva contraseña" id="new_old"
+			  name="new_old">
+		  </div>
+		  <div class="text-end">
+  
+			<!-- <button type="button" (click)="updatepass()" class="btn btn-primary">Guardando <div class="spinner-grow" role="status"></div></button> -->
+			<div class="button-list mb-1 mb-sm-0">
+			  <button class="btn btn-primary btnupdatepass"   type="button"><!--(click)="updatepass()"-->
+				Guardar
+				<!-- <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> -->
+			  </button>
+			</div>
+		  </div>
+  
+  
+  
+		</div>
+	  </div>
+	</div>
   </div>
-</div>
+  

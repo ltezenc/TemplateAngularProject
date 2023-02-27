@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AllModulesService } from 'src/app/services/all-modules.service';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-view-historico',
@@ -12,7 +12,7 @@ export class ViewHistoricoComponent implements OnInit {
   get_url:any
   fecha:any
   cadena=[]
-  constructor(public service:AllModulesService,private Router: Router) {
+  constructor(public service:ClienteService,private Router: Router) {
     this.get_url = this.Router.parseUrl(this.Router.url);
     this.fecha = this.get_url.queryParams['fact'];
   }

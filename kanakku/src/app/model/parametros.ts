@@ -9,6 +9,8 @@ export class parametrosI{
     tipoCambio:number;
     precioEnergiahp:number;
     precioEnergiafhp:number;
-    pfactura:string;
-    empresaId:number=6;
+    pfactura:number;
+    empresaId:number=1;
+    usuarioId:number;
+    estado:boolean;
 }

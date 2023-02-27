@@ -1,9 +1,9 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Feather from 'feather-icons';
 import { Subject } from 'rxjs';
 import { Cliente } from 'src/app/model/cliente';
-import { AllModulesService } from 'src/app/services/all-modules.service';
 import { HttpClient } from '@angular/common/http';
+import { ClienteService } from 'src/app/services/cliente.service';
 @Component({
   selector: 'app-invoice-grid',
   templateUrl: './invoice-grid.component.html',
@@ -13,7 +13,7 @@ export class InvoiceGridComponent implements OnInit {
   listclientes:Cliente[];
   cadena=[];
   dtTrigger:any= new Subject();
-  constructor(private srvModuleService: AllModulesService,private http:HttpClient) { }
+  constructor(private services: ClienteService,private http:HttpClient) { }
 
   ngOnInit(): void {
      // Checkbox Select
@@ -39,7 +39,7 @@ $('.invoices-main-form .selectBox').on("click", function() {
 
   getCustomers() {
 
-    this.srvModuleService.getCliente().subscribe(res=>{
+    this.services.getCliente().subscribe(res=>{
       this.listclientes=res;
       let keys= Object.keys(res);
 

@@ -1,9 +1,7 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {  Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AllModulesService } from '../../../services/all-modules.service';
 import { DatePipe } from "@angular/common";
 import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -25,7 +23,7 @@ export class AddCustomerComponent implements OnInit {
   public pipe = new DatePipe("en-US");
   myDate = new Date();
   public addCustomerForm!: FormGroup;
-  constructor(public router: Router, location: Location,private clienteService:ClienteService ,private allModulesService: AllModulesService,private formBuilder: FormBuilder,private route: ActivatedRoute,private toastr: ToastrService) {
+  constructor(public router: Router,private clienteService:ClienteService ,private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {

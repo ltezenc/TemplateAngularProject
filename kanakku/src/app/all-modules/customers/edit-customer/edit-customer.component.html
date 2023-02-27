@@ -1,129 +1,131 @@
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-  <div class="content container-fluid">
-
-      <!-- Page Header -->
-      <div class="page-header">
-          <div class="row">
-              <div class="col-sm-12">
-                  <h3 class="page-title">Customers</h3>
-                  <ul class="breadcrumb">
-                      <li class="breadcrumb-item"><a [routerLink]="'/'">Dashboard</a></li>
-                      <li class="breadcrumb-item"><a [routerLink]="'/customers/customers-list'">Customers</a></li>
-                      <li class="breadcrumb-item active">Edit Customers</li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-      <!-- /Page Header -->
-
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                      <h4 class="card-title">Información del cliente</h4>
-                      <ng-container *ngFor="let row of cadena">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6" >
-                                    <div class="form-group">
-                                        <label>Razón social</label>
-                                        <input type="text" class="form-control" name="txt_razonSocial"  [(ngModel)]="row.razonSocial" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Dirección</label>
-                                        <input type="text" class="form-control" name="txt_direccion"  [(ngModel)]="row.direccion">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" name="txt_email"  [(ngModel)]="row.email">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Ruc</label>
-                                        <input type="text" class="form-control" name="txt_ruc"  [(ngModel)]="row.ruc">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Responsable legal</label>
-                                        <input type="text" class="form-control" name="txt_nombreResponsable"  [(ngModel)]="row.nombreResponsable">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Teléfono</label>
-                                        <input type="text" class="form-control" name="txt_telefono"  [(ngModel)]="row.telefono">
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title mt-4">Detalles de contacto</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Tarifa</label>
-                                        <!-- <input type="text" class="form-control" name="txt_tarifa" [(ngModel)]="row.tarifa"> -->
-                                        <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="row.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
-                                          <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Tipo de cambio inicio</label>
-                                        <input type="text" class="form-control" name="txt_tipoCambio" [(ngModel)]="row.tipoCambio">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Precio por Fuera Hora Punta</label>
-                                        <input type="text" class="form-control" name="txt_precioFHP" [(ngModel)]="row.precioFHP">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>PpiO</label>
-                                        <input type="text" class="form-control" name="txt_ppio" [(ngModel)]="row.ppi0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Comercialización</label>
-                                        <input type="text" class="form-control" name="txt_comerc" [(ngModel)]="row.comercializacion">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                      <label>Potencia Contratada</label>
-                                      <input type="text" class="form-control" name="txt_potenciaContratada"  [(ngModel)]="row.potenciaContratada">
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Precio por Hora Punta</label>
-                                        <input type="text" class="form-control" name="txt_precioHP" [(ngModel)]="row.precioHP">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Estado</label>
-                                        <select class="form-select" name="txt_estado">
-                                          <option value="1">Activo</option>
-                                          <option value="0">Inactivo</option>
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Customers</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="'/'">inicio</a></li>
+                        <li class="breadcrumb-item"><a [routerLink]="'/customers/customers-list'">Clientes</a></li>
+                        <li class="breadcrumb-item active">Editar Clientes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+  
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Información del cliente</h4>
+                        <ng-container *ngFor="let row of cadena">
+                          <form>
+                              <div class="row">
+                                  <div class="col-md-6" >
+                                      <div class="form-group">
+                                          <label>Razón social</label>
+                                          <input type="text" class="form-control" name="txt_razonSocial"  [(ngModel)]="row.razonSocial" >
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Dirección</label>
+                                          <input type="text" class="form-control" name="txt_direccion"  [(ngModel)]="row.direccion">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Email</label>
+                                          <input type="email" class="form-control" name="txt_email"  [(ngModel)]="row.email">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label>Ruc</label>
+                                          <input type="text" class="form-control" name="txt_ruc"  [(ngModel)]="row.ruc">
+  
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Responsable legal</label>
+                                          <input type="text" class="form-control" name="txt_nombreResponsable"  [(ngModel)]="row.nombreResponsable">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Teléfono</label>
+                                          <input type="text" class="form-control" name="txt_telefono"  [(ngModel)]="row.telefono">
+                                      </div>
+                                  </div>
+                              </div>
+                              <h4 class="card-title mt-4">Detalles de contacto</h4>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label>Tarifa</label>
+                                          
+                                          <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="row.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
+                                            <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
+                                          </select>
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Tipo de cambio inicio</label>
+                                          <input type="text" class="form-control" name="txt_tipoCambio" [(ngModel)]="row.tipoCambio">
+  
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Precio por Fuera Hora Punta</label>
+                                          <input type="text" class="form-control" name="txt_precioFHP" [(ngModel)]="row.precioFHP">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Ppi0</label>
+                                          <input type="text" class="form-control" name="txt_ppio" [(ngModel)]="row.ppi0">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Comercialización</label>
+                                          <input type="text" class="form-control" name="txt_comerc" [(ngModel)]="row.comercializacion">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                        <label>Potencia Contratada</label>
+                                        <input type="text" class="form-control" name="txt_potenciaContratada"  [(ngModel)]="row.potenciaContratada">
+  
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Precio por Hora Punta</label>
+                                          <input type="text" class="form-control" name="txt_precioHP" [(ngModel)]="row.precioHP">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Estado</label>
+                                          <select name="shred-info" id="shred-info" [(ngModel)]="row.estadoId" class="form-control" >
+                                            <option selected disabled value="">Selecciona una opción</option>
+                                          <option [value]=1>Activo</option>
+                                          <option [value]=0>Inactivo</option>
                                       </select>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>PgnO</label>
-                                        <input type="text" class="form-control" name="txt_pgn0" [(ngModel)]="row.pgn0">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Cargo Fijo</label>
-                                        <input type="text" class="form-control" name="txt_pgn0" [(ngModel)]="row.cargoFijo">
-                                    </div>
-                                </div>
-                            </div>
-                            <input type="hidden" formControlName="amount_due">
-                            <input type="hidden" formControlName="registered_on">
-                            <input type="hidden" formControlName="status">
-                            <input type="hidden" formControlName="role">
-                            <div class="text-end mt-4">
-                                <button type="button" class="btn btn-primary" (click)="updatecliente(cadena)">Update Customer</button>
-                            </div>
-                        </form>
-                      </ng-container>
-                  </div>
-              </div>
-          </div>
-      </div>
+  
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Pgn0</label>
+                                          <input type="text" class="form-control" name="txt_pgn0" [(ngModel)]="row.pgn0">
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Cargo Fijo</label>
+                                          <input type="text" class="form-control" name="txt_cargofijo" [(ngModel)]="row.cargofijo">
+                                      </div>
+                                  </div>
+                              </div>
+                              <input type="hidden" formControlName="amount_due">
+                              <input type="hidden" formControlName="registered_on">
+                              <input type="hidden" formControlName="status">
+                              <input type="hidden" formControlName="role">
+                              <div class="text-end mt-4">
+                                  <button type="button" class="btn btn-primary" (click)="updatecliente(cadena)">Actualizar Cliente</button>
+                              </div>
+                          </form>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-<!-- /Page Wrapper -->
+  <!-- /Page Wrapper -->
+  

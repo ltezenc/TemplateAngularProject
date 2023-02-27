@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FicheroListI } from '../model/ficherolist.interface';
+import { Superexcel } from '../model/superexcel';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,11 @@ export class DataService {
     return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepulsos",body)
 
   }
-  sendPostPliegoTarifario(body:FormData):Observable<any>{
-    return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepliegotarifario",body)
-
-  }
   sendPostCRCRM(body:FormData):Observable<any>{
     return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodecrcm",body)
-
+  }
+  sendPostPliegoTarifario(body:FormData):Observable<any>{
+    return this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/importar-documentodepliegotarifario",body)
   }
   suministroexist(nombre:string){
     let nom=nombre.substring(0,8);
@@ -37,6 +36,10 @@ export class DataService {
   getFichero():Observable<FicheroListI[]>{
 
     return this.http.get<FicheroListI[]>(environment.url_global+"/clienteslibres/documentos/1/1/documentodepulsosbyusuarioidandempresaid")
+
+  }
+  getSuperexcel():Observable<Superexcel[]>{
+    return this.http.get<Superexcel[]>(environment.url_global+"/clienteslibres/documentos/1/1/listar-super-excel")
 
   }
 

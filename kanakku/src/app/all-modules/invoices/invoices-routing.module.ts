@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationGuard } from 'src/app/core/auth/authentication.guard';
-
 import { InvoiceGridComponent } from './invoice-grid/invoice-grid.component';
-
 import { InvoicesComponent } from './invoices.component';
-
 import { ReportEComponent } from './report-e/report-e.component';
-
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
-
 import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
 
 const routes: Routes = [
@@ -19,13 +14,10 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     children: [
 
-      { path: "invoice-grid", component: InvoiceGridComponent },
-    
+      { path: "invoice-grid", component: InvoiceGridComponent },    
       { path: "view-invoice/:id", component: ViewInvoiceComponent },
-
-      { path: "template-invoice/:id", component: TemplateInvoiceComponent },
-      
-      { path: "report-e/:id", component:  ReportEComponent}
+      { path: "report-e/:id", component:  ReportEComponent},
+      { path: "template-invoice/:id", component: TemplateInvoiceComponent }
     ]
   },
 ];

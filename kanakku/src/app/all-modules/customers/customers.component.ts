@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AllModulesService } from '../../services/all-modules.service';
+import { Component, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-customers',
@@ -8,7 +8,7 @@ import { AllModulesService } from '../../services/all-modules.service';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private srvModuleService: AllModulesService) {}
+  constructor() {}
 
   ngOnInit(): void {
 

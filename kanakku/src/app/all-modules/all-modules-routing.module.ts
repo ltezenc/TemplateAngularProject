@@ -24,7 +24,7 @@ const routes: Routes = [
       {
         path: 'index',
         loadChildren: () =>
-          import('./ficheros/expenses-list/expenses-list.module').then((m)=>m.ExpensesListModule),
+          import('./ficheros/lista-ficheros/lista-ficheros.module').then((m)=>m.ExpensesListModule),
                   canActivate: [AuthenticationGuard],
 
       },
@@ -36,7 +36,7 @@ const routes: Routes = [
 
         },
 
-
+       
         {
           path: 'invoices',
           loadChildren: () =>
@@ -45,9 +45,9 @@ const routes: Routes = [
         },
 
         {
-          path: 'payments',
+          path: 'facturas',
           loadChildren: () =>
-            import('./payments/payments.module').then(
+            import('./facturas/facturas.module').then(
               (m) => m.PaymentsModule
             ),
           canActivate: [AuthenticationGuard],
@@ -69,7 +69,7 @@ const routes: Routes = [
           canActivate: [AuthenticationGuard],
 
         },
-
+      
         {
           path: 'setting',
           loadChildren: () =>
@@ -79,9 +79,9 @@ const routes: Routes = [
         },
 
         {
-          path: 'historio-customers',
+          path: 'historico-clientes',
           loadChildren: () =>
-            import('./profile/profile.module').then(
+            import('./HistoricoporCliente/HistoricoporCliente.module').then(
               (m) => m.ProfileModule
             ),
           canActivate: [AuthenticationGuard],
@@ -113,8 +113,6 @@ const routes: Routes = [
             import('./invoices/invoices.module').then((m) => m.InvoicesModule),
           canActivate: [AuthenticationGuard],
         },
-
-
         {
           path: 'view-historico-cliente',
           loadChildren: () =>

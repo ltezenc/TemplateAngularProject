@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacturaListI } from 'src/app/model/facturalist.interface';
 import { ListarFacturaService } from 'src/app/services/listar-factura.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-report-e',
@@ -30,5 +31,15 @@ export class ReportEComponent implements OnInit {
      },
       )
   }
+  name = 'ExcelSheet.xlsx';
+  exportToExcel(): void {
+    let element = document.getElementById('season-tble');
+    const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
+    const book: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(book, worksheet, 'Reporte NGC');
+
+    XLSX.writeFile(book, this.name);
+  }
 }
+

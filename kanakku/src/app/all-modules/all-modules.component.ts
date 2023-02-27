@@ -1,11 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  Event,
-  NavigationStart,
-  Router,
-  ActivatedRoute,
-  Params,
-} from '@angular/router';
+import {  Event,  NavigationStart,  Router,  ActivatedRoute} from '@angular/router';
 import { Component, Inject, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import * as Feather from 'feather-icons';
@@ -19,7 +13,6 @@ export class AllModulesComponent implements OnInit {
   adminShow: boolean = true;
 
   constructor(
-    @Inject(DOCUMENT) private document:any,
     public commonService: DataService,
     private route: ActivatedRoute,
     public Router: Router
@@ -56,16 +49,7 @@ export class AllModulesComponent implements OnInit {
         } else {
           document.querySelector('body').classList.remove('plain-page');
         }
-        // if (
-        //   event.url === '/error-first' ||
-        //   event.url === '/error-second'
-        // ) {
-        //   document.querySelector('body').classList.add('error-page');
-        //   document.querySelector('body').classList.remove('mat-typography');
-        // } else {
-        //   document.querySelector('body').classList.remove('error-page');
-        //   document.querySelector('body').classList.add('mat-typography');
-        // }
+      
       }
 
     });

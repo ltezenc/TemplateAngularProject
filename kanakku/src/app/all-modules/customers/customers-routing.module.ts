@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EditCustomerComponent } from 'src/app/all-modules/customers/edit-customer/edit-customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CustomerListComponent } from './customers-list/customer-list.component';
 import { CustomersComponent } from './customers.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 const routes: Routes = [
   {

@@ -44,7 +44,7 @@ url:string=environment.url_global+"/clienteslibres/usuarios/verificar-usuario"
           }
 
     NombrebyLogin(user:string):Observable<loginI>{
-        let direccion = "http://localhost:8080/clienteslibres/usuarios/nombre/"+user;
+        let direccion = environment.url_global+"/clienteslibres/usuarios/nombre/"+user;
         return this.http.get<loginI>(direccion);
          }
 
