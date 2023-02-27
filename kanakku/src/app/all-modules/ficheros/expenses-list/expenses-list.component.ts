@@ -30,11 +30,19 @@ export class ExpensesListComponent implements OnInit {
   constructor(public commonService: DataService, public allmodules: AllModulesService) { }
 
   ngOnInit(): void {
+
     this.listarFichero()
+
+    //Actualiza cada 5 segundos
+    setInterval(() => {
+      this.listarFichero();
+    }, 5000);
+
     this.animaciones()
     this.listarSuperexcel()
 
   }
+
 
   animaciones(){
     //carga de archivos
@@ -328,8 +336,13 @@ export class ExpensesListComponent implements OnInit {
       let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
       todosinput.forEach(element => {
 
-        //EJECUTAR APIS
-        console.log(element.value)
+        if(element.checked == true){
+          //EJECUTAR APIS
+          console.log(element.value)
+
+        }
+
+
 
 
 
