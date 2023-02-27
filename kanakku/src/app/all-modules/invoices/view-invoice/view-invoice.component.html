@@ -1,8 +1,14 @@
 <!-- Page Wrapper -->
-<div class="page-wrapper">
-    <div class="content container-fluid">
+<div class="page-wrapper" >  
+  
 
-        <div class="row justify-content-center">
+      
+    <div class="row justify-content-end justify-content-md-end" >   
+        <div class= "col-2">    
+            <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark" (click)="downloadPDF()"><i
+                class="far fa-file-pdf text-danger"></i> Exportar</a>
+        </div>
+        <div class="row justify-content-center" id="datafactura">
             <div class="col-xl-10">
                 <div class="card invoice-info-card" *ngFor="let row of cadena">
                     <div class="card-body" *ngFor="let col of row">
@@ -72,29 +78,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr scope="row">
-                                                    <td>PHP(Generacion)</td>
-                                                    <td>{{col.phpgConsumo}}</td>
-                                                    <td>{{col.phpgPrecio}}</td> 
-                                                    <td class="text-end">{{col.phpg}}</td> 
-                                                    <tr>
-                                                        <td>PHP(Transmision)</td>
-                                                        <td>{{col.phptConsumo}}</td>
-                                                        <td>{{col.phptPrecio}}</td>
-                                                        <td class="text-end">{{col.phpt}}</td> 
-                                                    <tr>
-                                                        <td>Pot. Uso Redes Distrib. HP</td>
-                                                        <td>{{col.potreddisthpConsumo}}</td>
-                                                        <td>{{col.potreddisthpPrecio}}</td>
-                                                        <td class="text-end">{{col.potreddisthp}}</td>
-                                                    </tr>
+                                                <tr scope="row"><td>PHP(Generacion)</td><td>{{col.phpgConsumo}}</td><td>{{col.phpgPrecio}}</td> <td class="text-end">{{col.phpg}}</td> 
+                                                    <tr><td>PHP(Transmision)</td><td>{{col.phptConsumo}}</td> <td>{{col.phptPrecio}}</td> <td class="text-end">{{col.phpt}}</td> 
+                                                    <tr><td>Pot. Uso Redes Distrib. HP</td><td>{{col.potreddisthpConsumo}}</td><td>{{col.potreddisthpPrecio}}</td> <td class="text-end">{{col.potreddisthp}}</td></tr>
                                                     <!--<tr>Exc. Uso Redes Distrib. HP</tr>-->
-                                                    <tr>
-                                                        <td>Peaje del SST y SCT en Energía</td>
-                                                        <td>{{col.peajesstsctConsumo}}</td>
-                                                        <td>{{col.peajesstsctPrecio}}</td>
-                                                        <td class="text-end">{{col.peajesstsct}}</td>
-                                                    </tr>
+                                                     <tr><td>Peaje del SST y SCT en Energía</td><td>{{col.peajesstsctConsumo}}</td><td>{{col.peajesstsctPrecio}}</td> <td class="text-end">{{col.peajesstsct}}</td></tr>
                                                     <tr><td>Exceso de Potencia Contratada</td><td>{{col.excpotreddistfhpConsumo}}</td><td>{{col.excpotreddistfhpPrecio}}</td> <td class="text-end">{{col.excpotreddistfhp}}</td></tr>
                                                     <tr><td>EAHP</td><td>{{col.eahpConsumo}}</td><td>{{col.eahpPrecio}}</td> <td class="text-end">{{col.eahp}}</td></tr>
                                                     <tr><td>EAHFP</td><td>{{col.eahfpConsumo}}</td><td>{{col.eahfpPrecio}}</td> <td class="text-end">{{col.eahfp}}</td></tr>

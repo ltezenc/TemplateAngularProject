@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cliente } from '../model/cliente';
+import { FacturaListI } from '../model/facturalist.interface';
 import { Suministro } from '../model/suministro';
 import { tarifaI } from '../model/tarifa.interface';
-import { FacturaListI } from '../model/facturalist.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +29,9 @@ export class ClienteService {
     return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar")
 
   }
-
-  // getClienteId(cliente:Cliente):Observable<Cliente>{
-  //   return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/crear",cliente)
-  // }
-
-
+  delete(id:number){
+    return this.http.delete(environment.url_global+"/clienteslibres/clientes/eliminar-clientesandsuministro/"+id)
+  }
   getClienteById(id:number):Observable<Cliente[]>{
 
     return this.http.get<Cliente[]>(environment.url_global+"/clienteslibres/clientes/listar/"+id)
@@ -43,11 +40,18 @@ export class ClienteService {
   update(cliente:Cliente):Observable<Cliente>{
     return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/actualizar",cliente)
   }
+  getsuministroCliente(id:number):Observable<Suministro[]>{
 
-  delete(cliente:Cliente):Observable<Cliente>{
-    return this.http.post<Cliente>(environment.url_global+"/clienteslibres/clientes/eliminar-clientesandsuministro",cliente)
+    return this.http.get<Suministro[]>(environment.url_global+"/clienteslibres/suministro/suministro-cliente/"+id)
+
   }
-
-
-
+  getHistoricoSuministro(suministro:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/clientes/listarhistorico/"+suministro)
+  }
+  getHistoricoSuministroFactura(id:string,fact:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/suministro/buscar-suministro-historico/"+id+"/"+fact)
+  }
+  getBuscarHistoricoSuministro(suministro:string):Observable<FacturaListI[]>{
+    return this.http.get<FacturaListI[]>(environment.url_global+"/clienteslibres/clientes/buscarhistorico/"+suministro)
+  }
 }

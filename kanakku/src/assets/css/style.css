@@ -420,7 +420,7 @@ table.table td,table.table th {
 	margin-bottom: 0;
 }
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #7638FF;
+    color: #1b39cbed;
     background: transparent;
 }
 .table .dropdown-item.active, .table .dropdown-item:active {
@@ -2754,7 +2754,7 @@ html.menu-opened body {
 	padding: 0 20px;
 }
 .sidebar-menu li a:hover {
-	color: #7638ff;
+	color: #244febf0;
 }
 .sidebar-menu > ul > li > a:hover {
 	background-color: rgba(33, 77, 201, 0.05);
@@ -2825,6 +2825,7 @@ html.menu-opened body {
 	margin-left: auto;
 }
 .sidebar-menu ul ul a {
+	margin-right: 3px;
 	display: block;
 	font-size: 15px;
 	padding: 7px 10px 7px 45px;

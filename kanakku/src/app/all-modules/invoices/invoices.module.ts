@@ -1,29 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { InvoicesRoutingModule } from './invoices-routing.module';
 import { InvoicesComponent } from './invoices.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
 import { InvoiceGridComponent } from './invoice-grid/invoice-grid.component';
 import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
 
 import { DataTablesModule } from 'angular-datatables';
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
-
 import { ReportEComponent } from './report-e/report-e.component';
 
 @NgModule({
   declarations: [
     InvoicesComponent,
-
     InvoiceGridComponent,
     ViewInvoiceComponent,
-
-    TemplateInvoiceComponent,
-      ReportEComponent
+    ReportEComponent,
+    TemplateInvoiceComponent
   ],
   imports: [
     CommonModule,

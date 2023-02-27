@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Usuarios } from '../model/usuarios';
 import { loginI } from '../model/login.interface';
+import { Usuarios } from '../model/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +15,14 @@ export class UsuariosService {
   create(usuarios:Usuarios):Observable<Usuarios>{
     return this.http.post<Usuarios>(environment.url_global+"/clienteslibres/usuarios/crear",usuarios)
   }
-  // crearsuministro(suministro:Suministro):Observable<Suministro>{
-  //   return this.http.post<Suministro>(environment.postsumunistro,suministro)
-  // }
-  // getTarifa():Observable<tarifaI[]>{
-  //   return this.http.get<tarifaI[]>("http://ms-clienteslibres.gescom.cloud/clienteslibres/tarifa/listar")
 
-  // }
   getUsuarios():Observable<Usuarios[]>{
 
     return this.http.get<Usuarios[]>(environment.url_global+"/clienteslibres/usuarios/listar-usuarios")
 
+  }
+  updatepass(usuario:loginI):Observable<loginI>{
+    return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/actualizar-password",usuario)
   }
   // delete(cliente:Cliente):Observable<Cliente>{
   //   return this.http.post<Cliente>(this.url,cliente)
@@ -33,7 +30,5 @@ export class UsuariosService {
   validusers(usuario:loginI):Observable<loginI>{
     return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/verificar-usuario",usuario)
   }
-  updatepass(usuario:loginI):Observable<loginI>{
-    return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/actualizar-password",usuario)
-  }
+
 }

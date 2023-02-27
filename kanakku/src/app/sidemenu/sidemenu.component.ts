@@ -1,9 +1,8 @@
-import { Component, ENVIRONMENT_INITIALIZER, OnInit,  } from '@angular/core';
+import { Component,  OnInit  } from '@angular/core';
 import { Event, Router,  NavigationEnd } from '@angular/router';
 import { WebStorage } from '../core/storage/web.storage';
-import { AllModulesService } from 'src/app/services/all-modules.service';
+import { ClienteService } from '../services/cliente.service';
 import { UsuariosService } from '../services/usuarios.service';
-import { loginI } from 'src/app/model/login.interface';
 declare var $: any;
 
 @Component({
@@ -21,6 +20,7 @@ export class SidemenuComponent implements OnInit {
   base = '';
   page = '';
   nombre=[];
+  validaruser:any;
   pass:any;
   username:any;
   rptavalid:any;
@@ -29,7 +29,7 @@ export class SidemenuComponent implements OnInit {
 
   constructor(
     public lg:UsuariosService,
-    public service:AllModulesService,
+    public service:ClienteService,
     public router: Router,
     private storage: WebStorage
   ) {
@@ -43,7 +43,7 @@ export class SidemenuComponent implements OnInit {
     });
 
   }
-
+  
   ngOnInit(): void {
     $(document).on('click', '#filter_search', function() {
       $('#filter_inputs').slideToggle("slow");
@@ -64,15 +64,13 @@ export class SidemenuComponent implements OnInit {
   });
 
   let user=localStorage.getItem("usuario");
+  
   this.nombreusuario(user)
   }
 
 
-  nombreusuario(user){
+  nombreusuario(user){  
     this.storage.NombrebyLogin(user).subscribe(data=>{
-      console.log("uuuuuuus: ",data["nombreusuariobyLoginResponses"][0])
-      this.username = data["nombreusuariobyLoginResponses"][0].usuario;
-      this.iduser = data["nombreusuariobyLoginResponses"][0].id;
       let keys= Object.keys(data);
       let i = 0;
       for (let prop of keys ) {
@@ -80,8 +78,11 @@ export class SidemenuComponent implements OnInit {
         this.nombre.push(data[prop]);
         this.nombre[i]['name'] = prop;
         i++;
+        localStorage.setItem("idusuario",this.nombre[0][0]['id'])
+        
       }
     })
+   
   }
   ngAfterViewInit() {
     this.loadDynmicallyScript('./../../../assets/js/script.js');
@@ -125,7 +126,6 @@ export class SidemenuComponent implements OnInit {
     localStorage.removeItem('LoginData')
     this.router.navigate(["/login-form"]);
   }
-
   fn_shear(suministro){  //Con esta función nos permitirá buscar en dos formas (Escribiendo y con click)
 
     var URLactual = window.location;
@@ -168,8 +168,6 @@ export class SidemenuComponent implements OnInit {
     let input = <HTMLInputElement> document.querySelector('#buscarsumn');
     this.fn_shear(input.value)
   }
-
-  validaruser:any;
   updatepass(){
     let old_pass =<HTMLInputElement> document.getElementById('pass_old');
     let btn = <HTMLInputElement> document.querySelector('.btnupdatepass');

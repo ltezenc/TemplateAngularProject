@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import Swal from 'sweetalert2';
+
 declare var $:any;
 @Component({
   selector: 'app-setting',
@@ -14,7 +16,7 @@ export class SettingComponent implements OnInit {
   constructor(public commonService: DataService) { }
 
   ngOnInit(): void {
-    // this.animaciones()
+    this.animaciones()
   }
   animaciones(){
     //carga de pliego
@@ -86,7 +88,24 @@ export class SettingComponent implements OnInit {
     });
     
    }
-  
+   alertCRM(){
+   Swal.fire({
+    position: 'center-end',
+    icon: 'success',
+    title: 'ARCHIVO SUBIDO CORRECTAMENTE CMR',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+alertPliego(){
+  Swal.fire({
+   position: 'center-end',
+   icon: 'success',
+   title: 'ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO',
+   showConfirmButton: false,
+   timer: 1500
+ })
+}
   selectFile(event){
     const[file] = event.target.files;
     let total_registros = event.target.files;
@@ -120,7 +139,7 @@ export class SettingComponent implements OnInit {
     all_filereg.forEach(row_reg_cmr => {
       const  bodyCMR= new FormData();
       bodyCMR.append('file',row_reg_cmr.fileRaw,row_reg_cmr.fileName);
-      this.commonService.sendPostCRCRM(bodyCMR).subscribe(res=>alert("ARCHIVO SUBIDO CORRECTAMENTE CMR"));
+      this.commonService.sendPostCRCRM(bodyCMR).subscribe(res=>this.alertCRM());
     });
   }
   sendFilepliegoTarifario():void{
@@ -129,7 +148,7 @@ export class SettingComponent implements OnInit {
       const  body= new FormData();
       body.append('file',row_reg.fileRaw,row_reg.fileName);
       this.commonService.sendPostPliegoTarifario(body).subscribe(
-        res=>alert("ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO")
+        res=>this.alertPliego()
         );
       // .subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE PLIEGO"));
     });

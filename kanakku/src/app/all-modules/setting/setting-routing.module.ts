@@ -8,13 +8,7 @@ const routes: Routes = [
     component: SettingComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      {
-        path: 'tax-types',
-        loadChildren: () =>
-          import('./tax-types/tax-types.module').then(
-            (m) => m.TaxTypesModule
-          ),
-      },
+  
       {
         path: 'delete-account',
         loadChildren: () =>

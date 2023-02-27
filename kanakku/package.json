@@ -36,6 +36,7 @@
     "feather-icons": "^4.28.0",
     "fullcalendar": "^5.1.0",
     "jquery": "^3.6.0",
+    "jspdf": "^2.5.1",
     "markers-on-map": "^1.4.0",
     "moment": "^2.27.0",
     "ng-apexcharts": "^1.7.1",
@@ -56,6 +57,7 @@
     "sweetalert2": "^11.4.33",
     "theia-sticky-sidebar": "^1.7.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

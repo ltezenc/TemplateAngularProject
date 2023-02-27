@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationGuard } from './core/auth/authentication.guard';
-import { AllModulesService } from './services/all-modules.service';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 // import { AllModulesData } from 'src/assets/all-modules-data/all-modules-data';
 import { ToastrModule } from 'ngx-toastr';
@@ -35,7 +34,6 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
   ],
   providers: [
-    AllModulesService,
     AuthenticationGuard
   ],
   bootstrap: [AppComponent],

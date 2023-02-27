@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExpensesRoutingModule } from './ficheros-routing.module';
 import { ExpensesComponent } from './ficheros.component';
-import { ExpensesListComponent } from './expenses-list/expenses-list.component';
+import { listaFicherosComponent } from './lista-ficheros/lista-ficheros.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DataTablesModule } from 'angular-datatables';
 import { ParametroComponent } from '../parametro/parametro.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -14,8 +13,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     ExpensesComponent,
-    ExpensesListComponent,
-
+    listaFicherosComponent,
     ParametroComponent
   ],
   imports: [
@@ -24,7 +22,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ExpensesRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    DataTablesModule,
     FormsModule
   ]
 })

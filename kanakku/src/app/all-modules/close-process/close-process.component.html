@@ -7,7 +7,7 @@
           <h3 class="page-title">Cerrar proceso</h3>
           <ul class="breadcrumb">
             <li class="breadcrumb-item">
-              <a [routerLink]="'/index'">index</a>
+              <a [routerLink]="'/index'">inicio</a>
             </li>
             <li class="breadcrumb-item active">Cerrar proceso</li>
           </ul>
@@ -15,13 +15,13 @@
       </div>
     </div>
 
-    <div class="row justify-content-lg-center">
-      <div class="col-lg-7 grid-item-1">
+    <div class="row justify-content-lg-center" *ngFor="let row of cadena">
+      <div class="col-lg-7 grid-item-1" *ngFor="let pfactura of row">
 
-          <h1 class="main-heading" style="transform: translate(0px, 0px); opacity: 1;">
+          <h1 class="main-heading" style="transform: translate(0px, 0px); opacity: 1;" >
             Proceso de <span>facturación.</span>
             <br>
-            (202212)
+            {{pfactura.pfactura}}
           </h1>
           <p class="info-text" style="transform: translate(0px, 0px); opacity: 1;">
             Al cerrar el proceso la data actual se pasará al histórico
@@ -29,7 +29,7 @@ y dará inicio a un nuevo mes del proceso comercial.
           </p>
 
           <div class="btn_wrapper" style="transform: translate(0px, 0px); opacity: 1;">
-            <button class="btn view_more_btn" (click)="cerrarproceso()">
+            <button class="btn view_more_btn" (click)="ConfirmarCierre()">
               CERRAR PROCESO <i class="fa fa-arrow-right"></i>
             </button>
 
