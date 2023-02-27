@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class CustomerListComponent implements OnInit {
   listclientes:Cliente[];
+  public pageclt:number;
   suministro: Suministro= new Suministro();
   cadena=[];
   errorMessage: any;

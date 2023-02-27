@@ -169,8 +169,8 @@
                     <th class="text-end">Action</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let expeses of cadena;let i = index">
-                  <tr *ngFor="let expese of expeses;let i = index">
+                <tbody>
+                  <tr *ngFor="let expese of cadena | paginate: { itemsPerPage: 10, currentPage: page }; let i = index">
                     <td><input type="checkbox" name="checkbox" class="checkall" value="{{expese.id}}" (click)="selchech()"></td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
@@ -202,9 +202,10 @@
                     </td>
 
                   </tr>
+
+
                 </tbody>
               </table>
-
 
               <table id="table-data" style="display: none" class="table table-stripped table-hover">
                 <thead class="thead-light">
@@ -221,6 +222,11 @@
 
                 </tbody>
               </table>
+
+              <pagination-controls (pageChange)="page = $event"
+              previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
+
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ export class ExpensesListComponent implements OnInit {
   expeses: any = [];
   errorMessage: any;
   url: any = "expenses";
+  public page:number = 1;
   public tempId: any;
   tamaniototal:any;  //Convertido a MB
   FileSelect;
@@ -34,9 +35,9 @@ export class ExpensesListComponent implements OnInit {
     this.listarFichero()
 
     //Actualiza cada 5 segundos
-    setInterval(() => {
-      this.listarFichero();
-    }, 5000);
+    // setInterval(() => {
+    //   this.listarFichero();
+    // }, 5000);
 
     this.animaciones()
     this.listarSuperexcel()
@@ -85,18 +86,18 @@ export class ExpensesListComponent implements OnInit {
    }
   listarFichero(){
     this.commonService.getFichero().subscribe(res=>{
-      console.log("sacar estado :",res
-      )
-      this.ficheros=res;
-      let keys= Object.keys(res);
-      let i = 0;
-      for (let prop of keys ) {
-        this.cadena=[],
-        this.cadena.push(res[prop]);
-        this.cadena[i]['name'] = prop;
-        i++;
-      }
+      this.cadena = res["documentosByUsuarioIdAndEmpresaIdResponse"];
+      // this.ficheros=res;
+      // let keys= Object.keys(res);
+      // let i = 0;
+      // for (let prop of keys ) {
+      //   this.cadena=[],
+      //   this.cadena.push(res[prop]);
+      //   this.cadena[i]['name'] = prop;
+      //   i++;
+      // }
     // console.log(this.cadena)
+      console.log("sacar estado :",this.cadena)
    })
   }
   listarSuperexcel(){

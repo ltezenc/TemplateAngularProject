@@ -78,7 +78,7 @@
                 id="data-table"
               >-->
 
-              <table id="data-table" class="table table-stripped table-hover" style="width: 100% !important;">
+              <table id="data-table" class="table table-stripped table-hover mb-3" style="width: 100% !important;">
                 <thead class="thead-light">
                   <tr>
                     <th>Id</th>
@@ -92,7 +92,7 @@
                 </thead>
                 <tbody>
                   <ng-container *ngFor="let row of cadena" >
-                    <tr *ngFor="let col of row">
+                    <tr *ngFor="let col of row | paginate: { itemsPerPage: 10, currentPage: pageclt };">
                       <td #messageEl [attr.data-message-id]="col.id">{{ col.id }}</td>
                       <td>{{ col.razonSocial }}</td>
                       <td>{{ col.prefijotarifa }}</td>
@@ -158,6 +158,12 @@
 
                 </tbody>
               </table>
+
+
+              <pagination-controls (pageChange)="pageclt = $event"
+              previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
+
 
             </div>
           </div>
