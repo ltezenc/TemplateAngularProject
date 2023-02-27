@@ -12,7 +12,7 @@
                       <li class="breadcrumb-item active">Facturas</li>
                   </ul>
               </div>
-              <div class="col-auto">                
+              <div class="col-auto">
                   <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
                       <i class="fas fa-filter"></i>
                   </a>
@@ -59,22 +59,22 @@
               <div class="card card-table">
                   <div class="card-body">
                       <div class="table-responsive">
-                          <table datatable class="table table-center table-hover">
+                          <table datatable class="table table-center table-hover mb-3">
                               <thead class="thead-light">
                                   <tr>
                                     <th>Id</th>
                                     <th>Suministro</th>
                                     <th>Cliente</th>
-                                    <th>Tarifa cliente</th>					
+                                    <th>Tarifa cliente</th>
                                     <th class="text-start">total facturado</th>
                                     <th class="text-start">Periodo factura</th>
                                       <th class="text-end">Acción</th>
                                   </tr>
                               </thead>
                               <tbody *ngFor="let payments of cadena">
-                                  <tr *ngFor="let payment of payments">
+                                  <tr *ngFor="let payment of payments | paginate: { itemsPerPage: 10, currentPage: pagefct }">
                                       <td><a>{{payment.facturacionId}}</a></td>
-                                     
+
                                       <td>{{payment.suministro}}</td>
                                       <td>{{payment.razonSocial}}</td>
                                       <td>{{payment.tarifa}}</td>
@@ -93,18 +93,23 @@
                                             <a class="dropdown-item" [routerLink]="['/invoices/view-invoice/',payment.clienteId]">
                                                 <i class="far fa-eye me-1"></i> Ver
                                             </a>
-                                            <a class="dropdown-item" [routerLink]="['/invoices/report-e/',payment.clienteId]">                                             
+                                            <a class="dropdown-item" [routerLink]="['/invoices/report-e/',payment.clienteId]">
                                                 <i class="far fa-eye me-1"></i> ReporteNGC
                                             </a>
-                                         
+
                                           </div>
                                         </div>
                                       </td>
-                  
-                                   
+
+
                                   </tr>
                               </tbody>
                           </table>
+
+
+                          <pagination-controls (pageChange)="pagefct = $event"
+                          previousLabel="Anterior"
+                          nextLabel="Siguiente"></pagination-controls>
                       </div>
                   </div>
               </div>

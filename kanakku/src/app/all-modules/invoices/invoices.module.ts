@@ -10,6 +10,7 @@ import { ViewInvoiceComponent } from './view-invoice/view-invoice.component';
 import { DataTablesModule } from 'angular-datatables';
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
 import { ReportEComponent } from './report-e/report-e.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ReportEComponent } from './report-e/report-e.component';
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     InvoicesRoutingModule,
     ReactiveFormsModule,
     FormsModule,

@@ -31,7 +31,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-striped mb-0">
+              <table class="table table-striped mb-3">
                 <thead>
                   <tr>
                     <th>Nombre</th>
@@ -44,7 +44,7 @@
                 <tbody>
 
                   <ng-container *ngFor="let row of cadena">
-                    <tr *ngFor="let col of row">
+                    <tr *ngFor="let col of row | paginate: { itemsPerPage: 3, currentPage: pageuser }">
                       <td>{{ col.nombre }}</td>
                       <td>{{ col.username }}</td>
                       <td>{{ col.email }}</td>
@@ -66,6 +66,10 @@
                   </ng-container>
                 </tbody>
               </table>
+
+              <pagination-controls (pageChange)="pageuser = $event"
+                          previousLabel="Anterior"
+                          nextLabel="Siguiente"></pagination-controls>
             </div>
           </div>
         </div>

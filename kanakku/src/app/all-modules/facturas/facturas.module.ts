@@ -6,6 +6,7 @@ import { PaymentsComponent } from './facturas.component';
 import { PaymentsListComponent } from './lista-facturas/lista-facturas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -16,11 +17,12 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     PaymentsRoutingModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    
+
   ]
 })
 export class PaymentsModule { }

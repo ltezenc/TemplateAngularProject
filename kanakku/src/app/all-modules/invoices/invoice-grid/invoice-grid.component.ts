@@ -10,6 +10,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./invoice-grid.component.css']
 })
 export class InvoiceGridComponent implements OnInit {
+  public pageht:number
   listclientes:Cliente[];
   cadena=[];
   dtTrigger:any= new Subject();

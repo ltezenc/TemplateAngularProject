@@ -15,7 +15,7 @@
         <div class="col-auto">
           <a type="button" data-bs-toggle="modal" data-bs-target="#top-modal" class="btn btn-info me-1">
             <i class="fas fa-plus"></i>
-          </a>          
+          </a>
           <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
             <i class="fas fa-filter"></i>
           </a>
@@ -120,7 +120,7 @@
                     <span *ngSwitchCase="13"
                     class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
                     <span *ngSwitchCase="8"
-                    class="badge badge-pill bg-warning-light"  >Analizando Excel</span>                    
+                    class="badge badge-pill bg-warning-light"  >Analizando Excel</span>
                     <span *ngSwitchCase="9"
                     class="badge badge-pill bg-success-light"  >Analisis terminado</span>
                   </td>
@@ -145,9 +145,13 @@
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
-              <table id="data-table" datatable class="table table-center table-hover">
+              <table id="data-table" datatable class="table table-center table-hover mb-3">
                 <thead class="thead-light">
                   <tr>
+                    <th>
+                      <input type="checkbox" name="checkbox" id="principalcheck" (click)="selallchech()">
+                      <i class="far fa-trash-alt me-1" (click)="deletesel()" id="btndelall" style="display: none;position: absolute;z-index: 99;color: rgb(205, 0, 9);margin-left: 25px;margin-top: -21px;cursor: pointer;"></i>
+                    </th>
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>FechaImportacion</th>
@@ -157,7 +161,8 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let expeses of cadena">
-                  <tr *ngFor="let expese of expeses">
+                  <tr *ngFor="let expese of expeses | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <td><input type="checkbox" name="checkbox" class="checkall" value="{{expese.id}}" (click)="selchech()"></td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd-MM-yyyy'}}</td>
@@ -177,7 +182,7 @@
 
                       <span *ngSwitchCase="1"
                           class="badge badge-pill bg-warning-light"  >Procesando Calculos</span>
-                     
+
                       <span *ngSwitchCase="7"
                             class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
                      <!-- /EXCEL MASIVO -->
@@ -206,6 +211,12 @@
 
                 </tbody>
               </table>
+
+
+              <pagination-controls (pageChange)="page = $event"
+              previousLabel="Anterior"
+              nextLabel="Siguiente"></pagination-controls>
+
             </div>
           </div>
         </div>

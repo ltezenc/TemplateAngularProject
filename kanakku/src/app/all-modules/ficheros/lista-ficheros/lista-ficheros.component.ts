@@ -11,11 +11,12 @@ declare var $:any;
 })
 export class listaFicherosComponent implements OnInit {
   public tempId: any;
+  public page:number;
   tamaniototal:any;  //Convertido a MB
   FileSelect;
   FileSelectAll = [];
   superexcel:Superexcel[];
-  ficheros:FicheroListI[];  
+  ficheros:FicheroListI[];
    cadena=[];
    cadenase=[];
    estadosuperexcel:number;
@@ -82,8 +83,8 @@ export class listaFicherosComponent implements OnInit {
         this.cadenase.push(res[prop]);
         this.cadenase[i]['name'] = prop;
         i++;
-      } 
-     
+      }
+
    })
    setTimeout(this.refresh, 13000);
   }
@@ -102,11 +103,11 @@ export class listaFicherosComponent implements OnInit {
       // console.log(this.cadena)
      })
    //   }, 15000);
-      
+
 
   }
      refresh(){
-    
+
     this.commonService.getSuperexcel().subscribe(res=>{
       let keys= Object.keys(res);
       let i = 0;
@@ -116,8 +117,8 @@ export class listaFicherosComponent implements OnInit {
         this.cadenase[i]['name'] = prop;
         i++;
       }
-      this.estadosuperexcel = res["superexcelListResponse"][0]["estado"] 
-      let interval = setInterval(this.listarFichero,15000)  
+      this.estadosuperexcel = res["superexcelListResponse"][0]["estado"]
+      let interval = setInterval(this.listarFichero,15000)
  if(this.estadosuperexcel==9){
   clearInterval(interval);
  }
@@ -125,7 +126,7 @@ export class listaFicherosComponent implements OnInit {
   }
 
 
- 
+
     selectFile(event){
       const[file] = event.target.files;
       let total_registros = event.target.files;
@@ -155,7 +156,7 @@ export class listaFicherosComponent implements OnInit {
 
     }
 
-    eliminarFichero(el):void{    
+    eliminarFichero(el):void{
 
       console.log(el)
       this.commonService.delete(el).subscribe(res=>{
@@ -307,12 +308,10 @@ export class listaFicherosComponent implements OnInit {
         }
       }
     }
-    
+
 
     selallchech(){
       let validar =<HTMLInputElement> document.getElementById('principalcheck');
-
-
       let btn =<HTMLInputElement> document.getElementById('btndelall');
       if(validar.checked==true){
         btn.style.display="block"
@@ -349,8 +348,12 @@ export class listaFicherosComponent implements OnInit {
       let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
       todosinput.forEach(element => {
 
-        //EJECUTAR APIS
-        console.log(element.value)
+        if(element.checked == true){
+          //EJECUTAR APIS
+          console.log(element.value)
+
+        }
+
 
 
 

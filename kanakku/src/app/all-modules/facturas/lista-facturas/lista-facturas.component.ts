@@ -7,6 +7,7 @@ import { ListarFacturaService } from 'src/app/services/listar-factura.service';
   styleUrls: ['./lista-facturas.component.css']
 })
 export class PaymentsListComponent implements OnInit {
+  public pagefct:number;
   payments: any = [];
   errorMessage: any;
   cadena=[]
@@ -21,9 +22,9 @@ export class PaymentsListComponent implements OnInit {
     this.facturaService.getFacturacion().subscribe(res=>{
       this.facturas=res;
       let keys= Object.keys(res);
-     
+
       let i = 0;
-      for (let prop of keys ) { 
+      for (let prop of keys ) {
       this.cadena.push(res[prop]);
       this.cadena[i]['name'] = prop;
       i++;

@@ -12,6 +12,7 @@ import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router'
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  public pageuser:number
   usuarios:Usuarios= new Usuarios();
   listusers:Usuarios[];
   cadena=[];
