@@ -16,7 +16,6 @@ import { DataTablesModule } from 'angular-datatables';
   ],
   imports: [
     CommonModule,
-
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
