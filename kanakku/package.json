@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:prod": "ng build --aot --build-optimizer --configuration production",
+    "build:prod": "ng build --configuration production",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
@@ -35,6 +35,8 @@
     "datatables.net-dt": "^1.11.3",
     "feather-icons": "^4.28.0",
     "fullcalendar": "^5.1.0",
+    "google-maps": "^4.3.2",
+    "google-maps-infowindow": "0.0.1",
     "jquery": "^3.6.0",
     "jspdf": "^2.5.1",
     "markers-on-map": "^1.4.0",

@@ -59,6 +59,7 @@
               "./src/assets/plugins/jvectormap/jquery-jvectormap-in-mill.js",
               "./src/assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js",
               "./src/assets/plugins/ion-rangeslider/js/custom-rangeslider.js",
+              "./src/assets/plugins/swiper-bundle/swiper-bundle.min.js",
               "./src/assets/js/script.js"
              
             ]
