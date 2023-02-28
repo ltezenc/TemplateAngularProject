@@ -36,18 +36,18 @@ export class ParametroComponent implements OnInit {
   constructor(private service:ParametrosService,private facturaservice:ListarFacturaService, private close:CerrarprocesoService,public router: Router, private storage: WebStorage) { }
   cadena=[]
   cadparam=[]
-  enviodatos = []
   ngOnInit(): void {
-   
+
     this.Obtenerpfactura()
     this.Obteneridfactura()
     this.listarparametros()
     }
     listarparametros(){
-    this.service.getparametrosbyfactura().subscribe(res=>{  
+    this.service.getparametrosbyfactura().subscribe(res=>{
+      this.parametro = res["parametrosResponses"][0];
+      console.log("Ver daatos :",this.parametro)
       this.cadparam=res["parametrosResponses"];
-    this.enviodatos.push(res["parametrosResponses"][0]);
-    this.pfactura=res["parametrosResponses"][0].pfactura
+      this.pfactura=res["parametrosResponses"][0].pfactura
     })
 }
  iduser=localStorage.getItem("idusuario");
@@ -82,19 +82,19 @@ CrearPeriodoFactura(){
       this.periodofactura.pfactura=pfactura
       this.periodofactura.actual=true
       this.periodofactura.estado_pliego=true
-      
+
       this.facturaservice.crearpfactura(this.periodofactura).subscribe(res=>
         err => {
           this.ErrorText()
           console.log(err.message);
         }, () => {
-          
+
           console.log('creado');
         });this.router.navigate(['/setting/settings']);
-    
+
       Swal.fire({
         title: "Periodo de Factura Creado",
-    
+
       })
       },
   })
@@ -104,7 +104,7 @@ CrearPeriodoFactura(){
 UpdateParametro(parametro){
 this.parametro.estado=false
   this.service.updateparametro(this.parametro).subscribe()
-  parametro=parametro[0] 
+  parametro=parametro[0]
   var id:number=+this.iduser// variable localstorage idusuario
 parametro.pfactura=this.idfactura
 parametro.usuarioId=id
@@ -117,26 +117,26 @@ parametro.usuarioId=id
 
 Obteneridfactura():number{
   this.close.getpfactura().subscribe(res=>{
-   
-    this.idfactura = res["periodoFacturaResponses"][0]["id"]    
+
+    this.idfactura = res["periodoFacturaResponses"][0]["id"]
     console.log(this.idfactura)
 }
 
 );return this.idfactura;
-    
+
       }
 Obtenerpfactura():number{
-  this.close.getpfactura().subscribe(res=>{    
+  this.close.getpfactura().subscribe(res=>{
     this.cadena=res["periodoFacturaResponses"];
     if(this.cadena.length==0){
       this.CrearPeriodoFactura()
     }
-    this.pfactura = res["periodoFacturaResponses"][0]["pfactura"]  
-        
-    let pliegos:string=this.pfactura    
+    this.pfactura = res["periodoFacturaResponses"][0]["pfactura"]
+
+    let pliegos:string=this.pfactura
    this.fecha= pliegos.substring(0,4)+'-'+pliegos.substring(4,6)
    this.existepliego(this.fecha)   }
-    
+
 );return this.pfactura;
 
 }
@@ -152,7 +152,7 @@ this.facturaservice.ExistePliego(fecha).subscribe(res =>   this.periodo=res,
     }
     console.log(this.periodo)
   })
- 
+
   return fecha;
   }
   alertaperiodo(){
@@ -160,26 +160,26 @@ this.facturaservice.ExistePliego(fecha).subscribe(res =>   this.periodo=res,
       title: '<strong>Pliego Tarifario no Encontrado</strong>',
       icon: 'info',
       html:
-        'Si continua se tomaran los registros del pliego anterior',       
-        
+        'Si continua se tomaran los registros del pliego anterior',
+
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
       confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Continuar!',        
+        '<i class="fa fa-thumbs-up"></i> Continuar!',
       confirmButtonAriaLabel: 'Thumbs up, great!',
       cancelButtonText:
         '<a href="//localhost:4200/setting/settings"><i class="fa fa-thumbs-down"> Cancelar</i></a> ',
-        
+
       cancelButtonAriaLabel: 'Cancelar'
-       
+
     })
-    .then((result) => { 
+    .then((result) => {
       this.periodofactura.pfactura=this.pfactura
-      if (result.isConfirmed) {      
+      if (result.isConfirmed) {
         this.facturaservice.UpdatePliego(this.periodofactura).subscribe(res=>
 {})
-        
+
       }
     })
   }
@@ -189,7 +189,7 @@ var id:number=+this.iduser// variable localstorage idusuario
 this.parametro.pfactura=this.idfactura
 this.parametro.usuarioId=id
 console.log(this.parametro)
-this.service.crearparametro(this.parametro).subscribe(response => 
+this.service.crearparametro(this.parametro).subscribe(response =>
 err => {
   this.ErrorText()
   console.log(err.message);
@@ -199,7 +199,7 @@ err => {
 })
 this.confirmText();
 ;
-    
+
 }
 
 

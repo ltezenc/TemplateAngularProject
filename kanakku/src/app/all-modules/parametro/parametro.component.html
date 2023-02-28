@@ -8,22 +8,22 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon1.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.uit}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.uit}}</div>
               </div>
             </div>
             <p class="inovices-all">UIT </p>
           </div>
         </div>
         <div class="card swiper-slide">
-  
+
           <div class="card-body">
             <div class="inovices-widget-header">
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon2.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.fose}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.fose}}</div>
               </div>
             </div>
             <p class="inovices-all">FOSE</p>
@@ -35,8 +35,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon3.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.alicuota}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.alicuota}}</div>
               </div>
             </div>
             <p class="inovices-all">Alicuota</p>
@@ -48,8 +48,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon4.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.ppi}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.ppi}}</div>
               </div>
             </div>
             <p class="inovices-all">PPI </p>
@@ -61,8 +61,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon1.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.pgn}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.pgn}}</div>
               </div>
             </div>
             <p class="inovices-all">PGN </p>
@@ -74,8 +74,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon2.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.tipoCambio}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.tipoCambio}}</div>
               </div>
             </div>
             <p class="inovices-all">Tipo Cambio</p>
@@ -87,8 +87,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon3.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.precioEnergiahp}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.precioEnergiahp}}</div>
               </div>
             </div>
             <p class="inovices-all">Precio Energia HP</p>
@@ -100,8 +100,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon4.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">S/{{row.precioEnergiafhp}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">S/{{parametro.precioEnergiafhp}}</div>
               </div>
             </div>
             <p class="inovices-all">Precio Energia FHP</p>
@@ -113,8 +113,8 @@
               <span class="inovices-widget-icon">
                 <img src="assets/img/icons/invoices-icon4.svg" alt="">
               </span>
-              <div class="inovices-dash-count" *ngFor="let row of enviodatos">
-                <div class="inovices-amount">{{row.dia}}-{{row.hora}}</div>
+              <div class="inovices-dash-count">
+                <div class="inovices-amount">{{parametro.dia}}-{{parametro.hora}}</div>
               </div>
             </div>
             <p class="inovices-all">SEIN</p>
@@ -122,114 +122,114 @@
         </div>
       </div>
     </div>
-        
+
     <!-- <div class="swiper-button-next swiper-navBtn"></div>
     <div class="swiper-button-prev swiper-navBtn"></div> -->
     <div class="swiper-pagination"></div>
   </div>
-  
-  <div class="parametros-buton">  
+
+  <div class="parametros-buton">
     <a type="button" data-bs-toggle="modal" data-bs-target="#suministroModal">
       <i class="fa fa-cog"></i>
     </a>
   </div>
-  
-  
+
+
   </div>
   <div id="suministroModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none">
     <div class="modal-dialog modal-lm">
       <div class="modal-content" *ngIf="cadparam.length==1">
-        
+
           <div class="modal-header">
             <h6 class="modal-title">Actualizar parametros</h6>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body p-4">        
-              <div class="row" *ngFor="let parametro of enviodatos">           
-            
+          <div class="modal-body p-4">
+              <div class="row">
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">UIT</label>
                     <input type="text" class="form-control"  [(ngModel)]="parametro.uit">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">FOSE</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.fose">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Alicuota</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.alicuota">
                   </div>
                 </div>
-  
-  
+
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">PPI</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.ppi">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">PGN</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.pgn">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Tipo cambio</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.tipoCambio">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Precio Energía HP</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiahp">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Precio Energía FHP</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiafhp">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">HORA</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.hora">
                   </div>
                 </div>
-  
+
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Día</label>
                     <input type="text" class="form-control" [(ngModel)]="parametro.dia">
                   </div>
                 </div>
-                
+
               </div>
           </div>
           <div class="modal-footer" >
             <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Cerrar</button>
-           <button type="button" *ngIf="cadparam.length==1" class="btn btn-info waves-effect waves-light" (click)="UpdateParametro(enviodatos)">Actualizar Parametros</button>
+           <button type="button" *ngIf="cadparam.length==1" class="btn btn-info waves-effect waves-light" (click)="UpdateParametro(parametro)">Actualizar Parametros</button>
     <!--
     <button type="button" *ngIf="cadparam.length==1" class="btn btn-info waves-effect waves-light" (click)="CrearParametro()">Actualizar Parametros</button> -->
-    
+
           </div>
-        
-        
+
+
       </div>
       <div class="modal-content" *ngIf="cadparam.length==0">
       <div class="row" >
@@ -237,73 +237,73 @@
           <h6 class="modal-title">Crear parametros</h6>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body p-4">        
-            <div class="row" >          
-          
+        <div class="modal-body p-4">
+            <div class="row" >
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">UIT</label>
                 <input type="text" class="form-control"  [(ngModel)]="parametro.uit">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">FOSE</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.fose">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">Alicuota</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.alicuota">
               </div>
             </div>
-  
-  
+
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">PPI</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.ppi">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">PGN</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.pgn">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">Tipo cambio</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.tipoCambio">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">Precio Energía HP</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiahp">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">Precio Energía FHP</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiafhp">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">HORA</label>
                 <input type="text" class="form-control" [(ngModel)]="parametro.hora">
               </div>
             </div>
-  
+
             <div class="col-md-6">
               <div class="mb-3 mt-0">
                 <label for="field-2" class="form-label">Día</label>
@@ -313,7 +313,7 @@
             <div class="modal-footer" >
               <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Cerrar</button>
               <button  [routerLink]="'/ficheros/lista-ficheros'" type="button" *ngIf="cadparam.length==0" class="btn btn-info waves-effect waves-light" (click)="CrearParametro()">crear Parametros</button>
-      
+
             </div>
           </div>
         </div>
@@ -321,9 +321,8 @@
     </div>
     </div>
   </div>
-  
+
   <div class="col-md-12 text-md-end">
     <span class="text-md-end" style="margin-right: 40px;background: #fff;font-size: 14px;color: #092C4C;border: 1px solid #F5F6FA;display: inline-block;border-radius: 5px;padding: 12px 30px;">pfactura: <b style="font-size: 15px;">{{pfactura}}</b></span>
   </div>
   <!--/Parametros-->
-  
