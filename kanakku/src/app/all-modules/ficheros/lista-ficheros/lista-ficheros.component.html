@@ -119,16 +119,18 @@
                     <td class="text-center" [ngSwitch]="row.estado">
                     <span *ngSwitchCase="13"
                     class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
-                    <span *ngSwitchCase="8"
-                    class="badge badge-pill bg-warning-light"  >Analizando Excel</span>
+
+                    <span *ngSwitchCase="8" class="badge badge-pill bg-warning-light"  >Analizando Excel <div class="spinner-border spinner-border-sm" role="status"></div> </span>
+
                     <span *ngSwitchCase="9"
                     class="badge badge-pill bg-success-light"  >Analisis terminado</span>
-                  </td>
+                    </td>
                     <td class="text-center" >{{row.nombre}}</td>
                     <td>{{row.pfactura}}</td>
                     <td class="text-center" >{{row.cant_lect}}</td>
                     <td class="text-center" >{{row.nro_client_procesado}}</td>
                   </tr>
+
                 </tbody>
               </table>
             </div>

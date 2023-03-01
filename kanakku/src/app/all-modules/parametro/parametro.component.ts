@@ -44,10 +44,14 @@ export class ParametroComponent implements OnInit {
     }
     listarparametros(){
     this.service.getparametrosbyfactura().subscribe(res=>{
-      this.parametro = res["parametrosResponses"][0];
-      console.log("Ver daatos :",this.parametro)
-      this.cadparam=res["parametrosResponses"];
-      this.pfactura=res["parametrosResponses"][0].pfactura
+      if(res["parametrosResponses"].length != 0){
+
+        this.parametro = res["parametrosResponses"][0];
+        this.cadparam=res["parametrosResponses"];
+        this.pfactura=res["parametrosResponses"][0].pfactura
+
+      }
+
     })
 }
  iduser=localStorage.getItem("idusuario");
@@ -102,14 +106,15 @@ CrearPeriodoFactura(){
 
 
 UpdateParametro(parametro){
-this.parametro.estado=false
+
+  this.parametro.estado=false
   this.service.updateparametro(this.parametro).subscribe()
   parametro=parametro[0]
   var id:number=+this.iduser// variable localstorage idusuario
-parametro.pfactura=this.idfactura
-parametro.usuarioId=id
+  parametro.pfactura=this.idfactura
+  parametro.usuarioId=id
 
-    this.service.crearparametro(parametro).subscribe(res=>{
+  this.service.crearparametro(parametro).subscribe(res=>{
     this.parametro=res;
   })
 
