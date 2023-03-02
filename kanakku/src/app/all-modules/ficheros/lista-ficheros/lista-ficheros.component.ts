@@ -158,8 +158,20 @@ export class listaFicherosComponent implements OnInit {
 
     eliminarFichero(el):void{
 
-      console.log(el)
-      this.commonService.delete(el).subscribe(res=>{
+      /*Creo un atributo en ambos buttons donde almaceno el id
+        Sólo que al buscar si lo almacena pero en el otro lo trae como vacío
+        Por eso es que valido */
+      let cls =<HTMLInputElement> document.querySelector('.getattr_id');
+      let obtengoid = cls.getAttribute('attr_id')
+      let id_add
+
+      if(obtengoid != ""){
+        id_add =Number(obtengoid) //Buscando
+      }else{
+        id_add =el  //Sin buscar
+      }
+
+      this.commonService.delete(id_add).subscribe(res=>{
 
         this.listarFichero()},
        err => {
@@ -291,8 +303,8 @@ export class listaFicherosComponent implements OnInit {
               </td>
 
               <td class="text-end">
-                <a (click)="tempId = expese.id" data-bs-toggle="modal" data-bs-target="#delete_Expenses"
-                  href="javascript:void(0);" class="btn btn-sm btn-white text-danger"><i
+                <a data-bs-toggle="modal" data-bs-target="#delete_Expenses" attr_id="${registro.id}"
+                  href="javascript:void(0);" class="btn btn-sm btn-white text-danger getattr_id"><i
                     class="far fa-trash-alt me-1"></i>Delete</a>
               </td>
             </tr>
