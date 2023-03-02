@@ -151,21 +151,24 @@
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">UIT</label>
-                    <input type="text" class="form-control"  [(ngModel)]="parametro.uit">
+                    <input type="number" class="form-control"  [(ngModel)]="parametro.uit" required #uite="ngModel">
+                    <span class="text-danger text-sm" *ngIf="uite.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">FOSE</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.fose">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.fose" required #fose="ngModel">
+                    <span class="text-danger text-sm" *ngIf="fose.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Alicuota</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.alicuota">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.alicuota" required #alicuota="ngModel">
+                    <span class="text-danger text-sm" *ngIf="alicuota.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
@@ -173,49 +176,56 @@
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">PPI</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.ppi">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.ppi" required #ppi="ngModel">
+                    <span class="text-danger text-sm" *ngIf="ppi.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">PGN</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.pgn">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.pgn" required #pgn="ngModel">
+                    <span class="text-danger text-sm" *ngIf="pgn.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Tipo cambio</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.tipoCambio">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.tipoCambio" required #tipoCambio="ngModel">
+                    <span class="text-danger text-sm" *ngIf="tipoCambio.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Precio Energía HP</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiahp">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.precioEnergiahp" required #precioEnergiahp="ngModel">
+                    <span class="text-danger text-sm" *ngIf="precioEnergiahp.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Precio Energía FHP</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiafhp">
+                    <input type="number" class="form-control" [(ngModel)]="parametro.precioEnergiafhp" required #precioEnergiafhp="ngModel">
+                    <span class="text-danger text-sm" *ngIf="precioEnergiafhp.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">HORA</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.hora">
+                    <input type="time" class="form-control" [(ngModel)]="parametro.hora" required #hora="ngModel">
+                    <span class="text-danger text-sm" *ngIf="hora.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="mb-3 mt-0">
                     <label for="field-2" class="form-label">Día</label>
-                    <input type="text" class="form-control" [(ngModel)]="parametro.dia">
+                    <input type="text" class="form-control" [(ngModel)]="parametro.dia" required #dia="ngModel">
+                    <span class="text-danger text-sm" *ngIf="dia.valid === false">Campo requerido</span>
                   </div>
                 </div>
 
@@ -238,84 +248,95 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
+          <form (ngSubmit)="CrearParametro()" #myForm="ngForm">
             <div class="row" >
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">UIT</label>
-                <input type="text" class="form-control"  [(ngModel)]="parametro.uit">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">UIT</label>
+                    <input type="number" class="form-control" name="uit" [(ngModel)]="parametro.uit" required #uite="ngModel">
+                    <span class="text-danger text-sm" *ngIf="uite.invalid && (uite.dirty || uite.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">FOSE</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.fose">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">FOSE</label>
+                    <input type="number" class="form-control" name="fose" [(ngModel)]="parametro.fose" required #fose="ngModel">
+                    <span class="text-danger text-sm" *ngIf="fose.invalid && (fose.dirty || fose.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">Alicuota</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.alicuota">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">Alicuota</label>
+                    <input type="number" class="form-control" name="alicuota"  [(ngModel)]="parametro.alicuota" required #alicuota="ngModel">
+                    <span class="text-danger text-sm" *ngIf="alicuota.invalid && (alicuota.dirty || alicuota.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">PPI</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.ppi">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">PPI</label>
+                    <input type="number" class="form-control" name="ppi" [(ngModel)]="parametro.ppi" required #ppi="ngModel">
+                    <span class="text-danger text-sm" *ngIf="ppi.invalid && (ppi.dirty || ppi.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">PGN</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.pgn">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">PGN</label>
+                    <input type="number" class="form-control" name="pgn" [(ngModel)]="parametro.pgn" required #pgn="ngModel">
+                    <span class="text-danger text-sm" *ngIf="pgn.invalid && (pgn.dirty || pgn.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">Tipo cambio</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.tipoCambio">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">Tipo cambio</label>
+                    <input type="number" class="form-control" name="tipoCambio" [(ngModel)]="parametro.tipoCambio" required #tipoCambio="ngModel">
+                    <span class="text-danger text-sm" *ngIf="tipoCambio.invalid && (tipoCambio.dirty || tipoCambio.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">Precio Energía HP</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiahp">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">Precio Energía HP</label>
+                    <input type="number" class="form-control" name="precioEnergiahp" [(ngModel)]="parametro.precioEnergiahp" required #precioEnergiahp="ngModel">
+                    <span class="text-danger text-sm" *ngIf="precioEnergiahp.invalid && (precioEnergiahp.dirty || precioEnergiahp.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">Precio Energía FHP</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.precioEnergiafhp">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">Precio Energía FHP</label>
+                    <input type="number" class="form-control" name="precioEnergiafhp"  [(ngModel)]="parametro.precioEnergiafhp" required #precioEnergiafhp="ngModel">
+                    <span class="text-danger text-sm" *ngIf="precioEnergiafhp.invalid && (precioEnergiafhp.dirty || precioEnergiafhp.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">HORA</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.hora">
-              </div>
-            </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">HORA</label>
+                    <input type="time" class="form-control" name="hora"  [(ngModel)]="parametro.hora" required #hora="ngModel">
+                    <span class="text-danger text-sm" *ngIf="hora.invalid && (hora.dirty || hora.touched)">Campo requerido</span>
+                  </div>
+                </div>
 
-            <div class="col-md-6">
-              <div class="mb-3 mt-0">
-                <label for="field-2" class="form-label">Día</label>
-                <input type="text" class="form-control" [(ngModel)]="parametro.dia">
-              </div>
+                <div class="col-md-6">
+                  <div class="mb-3 mt-0">
+                    <label for="field-2" class="form-label">Día</label>
+                    <input type="text" class="form-control" name="dia"  [(ngModel)]="parametro.dia" required #dia="ngModel">
+                    <span class="text-danger text-sm" *ngIf="dia.invalid && (dia.dirty || dia.touched)">Campo requerido</span>
+                  </div>
+                </div>
+                <div class="modal-footer" >
+                  <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                  <button   [disabled]="myForm.invalid" [routerLink]="'/ficheros/lista-ficheros'" type="submit" *ngIf="cadparam.length==0" class="btn btn-info waves-effect waves-light">crear Parametros</button>
+                </div>
             </div>
-            <div class="modal-footer" >
-              <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Cerrar</button>
-              <button  [routerLink]="'/ficheros/lista-ficheros'" type="button" *ngIf="cadparam.length==0" class="btn btn-info waves-effect waves-light" (click)="CrearParametro()">crear Parametros</button>
-
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
