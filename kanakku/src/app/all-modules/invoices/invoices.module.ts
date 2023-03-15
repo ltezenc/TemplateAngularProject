@@ -11,6 +11,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { TemplateInvoiceComponent } from './template-invoice/template-invoice.component';
 import { ReportEComponent } from './report-e/report-e.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    DataTablesModule
+    DataTablesModule,
+    NgApexchartsModule
   ],
 })
 export class InvoicesModule {}
