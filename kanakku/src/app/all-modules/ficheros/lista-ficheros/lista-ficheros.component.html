@@ -119,18 +119,16 @@
                     <td class="text-center" [ngSwitch]="row.estado">
                     <span *ngSwitchCase="13"
                     class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
-
-                    <span *ngSwitchCase="8" class="badge badge-pill bg-warning-light"  >Analizando Excel <div class="spinner-border spinner-border-sm" role="status"></div> </span>
-
+                    <span *ngSwitchCase="8"
+                    class="badge badge-pill bg-warning-light"  >Analizando Excel <div class="spinner-border spinner-border-sm" role="status"></div> </span>
                     <span *ngSwitchCase="9"
                     class="badge badge-pill bg-success-light"  >Analisis terminado</span>
-                    </td>
+                  </td>
                     <td class="text-center" >{{row.nombre}}</td>
                     <td>{{row.pfactura}}</td>
                     <td class="text-center" >{{row.cant_lect}}</td>
                     <td class="text-center" >{{row.nro_client_procesado}}</td>
                   </tr>
-
                 </tbody>
               </table>
             </div>
@@ -164,7 +162,7 @@
                 </thead>
                 <tbody *ngFor="let expeses of cadena">
                   <tr *ngFor="let expese of expeses | paginate: { itemsPerPage: 10, currentPage: page }">
-                    <td><input type="checkbox" name="checkbox" class="checkall" value="{{expese.id}}" (click)="selchech()"></td>
+                    <td><input type="checkbox" name="checkbox" class="checkall" value="{{expese.suministro}}" (click)="selchech()"></td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd-MM-yyyy'}}</td>
@@ -189,7 +187,7 @@
                             class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
                      <!-- /EXCEL MASIVO -->
                     </td>
-                    <td class="text-end">
+                    <td class="text-end" *ngIf="expese.estado==5">
                       <a  data-bs-toggle="modal" data-bs-target="#delete_Expenses"
                       (click)="tempId = expese.id"  class="btn btn-sm btn-white text-danger"><i
                           class="far fa-trash-alt me-1"   ></i>Eliminar</a>
@@ -242,7 +240,7 @@
       </div>
       <div class="modal-footer text-center">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary getattr_id" data-bs-dismiss="modal" attr_id (click)="eliminarFichero(tempId)" >Eliminar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarFichero(tempId)">Eliminar</button>
       </div>
     </div>
   </div>

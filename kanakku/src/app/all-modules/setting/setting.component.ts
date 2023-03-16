@@ -90,7 +90,7 @@ export class SettingComponent implements OnInit {
    }
    alertCRM(){
    Swal.fire({
-    position: 'center-end',
+    position: 'center',
     icon: 'success',
     title: 'ARCHIVO SUBIDO CORRECTAMENTE CMR',
     showConfirmButton: false,
@@ -99,7 +99,7 @@ export class SettingComponent implements OnInit {
 }
 alertPliego(){
   Swal.fire({
-   position: 'center-end',
+   position: 'center',
    icon: 'success',
    title: 'ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO',
    showConfirmButton: false,
@@ -139,8 +139,9 @@ alertPliego(){
     all_filereg.forEach(row_reg_cmr => {
       const  bodyCMR= new FormData();
       bodyCMR.append('file',row_reg_cmr.fileRaw,row_reg_cmr.fileName);
-      this.commonService.sendPostCRCRM(bodyCMR).subscribe(res=>this.alertCRM());
+      this.commonService.sendPostCRCRM(bodyCMR).subscribe();
     });
+    this.alertCRM()
   }
   sendFilepliegoTarifario():void{
     let all_filereg = this.FileSelectAll

@@ -1,13 +1,13 @@
-import {  Component,  OnInit, ViewChild} from '@angular/core';
+import {  Component,  OnInit, ViewChild,} from '@angular/core';
 import { FacturaListI } from 'src/app/model/facturalist.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ListarFacturaService } from 'src/app/services/listar-factura.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { ChartComponent,ApexAxisChartSeries,ApexChart,ApexXAxis,ApexDataLabels,ApexTitleSubtitle,ApexStroke,ApexGrid,ApexPlotOptions,ApexYAxis,ApexLegend,ApexTooltip,ApexFill,ApexResponsive } from "ng-apexcharts";
+import {  ApexAxisChartSeries,  ApexChart,  ApexXAxis,  ApexDataLabels,  ApexTitleSubtitle,  ApexStroke,
+  ApexGrid,  ApexPlotOptions,  ApexYAxis,  ApexLegend,  ApexTooltip,  ApexFill,  ApexResponsive, ChartComponent} from "ng-apexcharts"
+import { reportes } from 'src/app/model/reportes';
 import { ReportesService } from 'src/app/services/reportes.service';
-import { rfacturas } from 'src/app/model/r-facturas.interface';
-
 
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -33,47 +33,41 @@ export type ChartOptions = {
   styleUrls: ['./view-invoice.component.css'],
 })
 export class ViewInvoiceComponent implements OnInit {
-
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions5: Partial<ChartOptions>;
-
   invoices: any = [];
   errorMessage: any;
   dtOptions: any = {};
   facturas:FacturaListI[];
-  // private r_factura : rfacturas = new rfacturas()
-  r_factura:rfacturas[];
-  cadena=[]
-  pfactura=[]
-  total=[]
+  r_factura:reportes[];
+  cadena=[];
+  total=[];pfactura=[]
   constructor(
     public service:ListarFacturaService,private _route:ActivatedRoute,private reporte:ReportesService
-  )
-  {
-    // console.log(this._route.snapshot.paramMap.get("id"))
-
+  ) {
+    console.log(this._route.snapshot.paramMap.get("id"))
   }
 
   ngOnInit(): void {
+   
     let id= +this._route.snapshot.paramMap.get("id");
-
-        //obtiene valores de la factura
-          this.service.getFacturacionCliente(id).subscribe(res=>{
-          this.facturas=res;
-          let keys= Object.keys(res);
-
-          let i = 0;
-          for (let prop of keys ) {
-          this.cadena.push(res[prop]);
-          this.cadena[i]['name'] = prop;
-          i++;
-      } console.log(this.cadena)
-        },
-          )
-
-          this.r_facturacion();
-          this.charts();
-
+    
+    //obtiene valores de la factura
+      this.service.getFacturacionCliente(id).subscribe(res=>{
+      this.facturas=res;
+      let keys= Object.keys(res);
+     
+      let i = 0;
+      for (let prop of keys ) { 
+      this.cadena.push(res[prop]);
+      this.cadena[i]['name'] = prop;
+      i++;
+  } console.log(this.cadena)
+     },
+      )
+      this.r_facturacion();
+      this.charts();
+    
   }
   public downloadPDF(): void {
     const DATA = document.getElementById('datafactura');
@@ -97,7 +91,7 @@ export class ViewInvoiceComponent implements OnInit {
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
     });
-
+  
   }
 
   r_facturacion(){
@@ -133,32 +127,32 @@ export class ViewInvoiceComponent implements OnInit {
         width: [0, 4]
       },
       title: {
-        text: "Reporte ..."
+        text: "historial de facturacion."
       },
       dataLabels: {
         enabled: true,
         enabledOnSeries: [1]
       },
       labels: this.pfactura,
-      // xaxis: {
-      //   type: "datetime"
-      // },
+  
       yaxis: [
         {
           title: {
-            text: "Website Blog"
+            text: "Monto"
           }
         },
         {
-          opposite: true,
-          title: {
-            text: "Social Media"
-          }
-        }
-      ]
+          opposite: false,
+        
+        },
+      ],
+      xaxis: {
+        title:{
+          text: "Periodo Factura"
+        } 
+      }
     };
   }
-
 
 
 

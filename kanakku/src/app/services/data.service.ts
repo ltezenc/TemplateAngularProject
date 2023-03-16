@@ -28,8 +28,8 @@ export class DataService {
     return resp
      }
 
-     delete(id:number){
-      let resp=this.http.delete(environment.url_global+"/clienteslibres/documentos/1/1/eliminar-documentodepulsos/"+id)
+     delete(eliminado:FicheroListI){
+      let resp=this.http.post(environment.url_global+"/clienteslibres/documentos/1/1/eliminar-documentodepulsos/",eliminado)
       return resp
        }
 

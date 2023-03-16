@@ -61,7 +61,7 @@ ConfirmarCierre(){
             'Proceso Cerrado!',
             'El proceso cerrado exitosamente',
             'success'
-          );this.router.navigate(['/setting/settings']);
+          );this.router.navigate(['/setting']);
         })
         }     
       

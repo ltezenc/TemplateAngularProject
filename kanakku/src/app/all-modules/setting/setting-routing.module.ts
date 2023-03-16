@@ -23,11 +23,7 @@ const routes: Routes = [
           import('./notifications/notifications.module').then((m) => m.NotificationsModule),
       },
   
-      {
-        path: 'settings',
-        loadChildren: () =>
-          import('./settings/settings.module').then((m) => m.SettingsModule),
-      },
+     
       {
         path: 'change-password',
         loadChildren: () =>

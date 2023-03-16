@@ -141,13 +141,12 @@ export class SidemenuComponent implements OnInit {
           let validar_rpta = res["buscarHistoricoResponses"].length;
           if(validar_rpta !=0){
             res["buscarHistoricoResponses"].forEach(it__em => {
-              html += `<a href="${URLactual.origin}/historio-customers?id=${it__em.suministro}"><span>${it__em.razonSocial} - ${it__em.suministro}</span></a> <hr>`
+              html += `<a href="${URLactual.origin}/historico-clientes?id=${it__em.suministro}"><span>${it__em.razonSocial} - ${it__em.suministro}</span></a> <hr>`
               document.getElementById("rpta__a").innerHTML = html
             });
           }else{
             document.getElementById("rpta__a").innerHTML = `No se encontró resultados`
           }
-
 
         },
       )

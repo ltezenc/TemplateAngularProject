@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FicheroListI } from 'src/app/model/ficherolist.interface';
 import { Superexcel } from 'src/app/model/superexcel';
+import Swal from 'sweetalert2';
 import { DataService } from '../../../services/data.service'
 declare var $:any;
 @Component({
@@ -17,6 +18,7 @@ export class listaFicherosComponent implements OnInit {
   FileSelectAll = [];
   superexcel:Superexcel[];
   ficheros:FicheroListI[];
+  eliminado:FicheroListI= new FicheroListI()  
    cadena=[];
    cadenase=[];
    estadosuperexcel:number;
@@ -74,7 +76,7 @@ export class listaFicherosComponent implements OnInit {
 
    listarSuperexcel(){
     this.commonService.getSuperexcel().subscribe(res=>{
-      console.log(res )
+   //   console.log(res )
       this.superexcel=res;
       let keys= Object.keys(res);
       let i = 0;
@@ -83,11 +85,14 @@ export class listaFicherosComponent implements OnInit {
         this.cadenase.push(res[prop]);
         this.cadenase[i]['name'] = prop;
         i++;
+  //      this.estadosuperexcel = res["superexcelListResponse"][0].estado 
       }
-
+   //   console.log(this.estadosuperexcel) 
+    //  this.refresh();
+     
    })
-   setTimeout(this.refresh, 13000);
-  }
+
+      }
   listarFichero(){
   // let refrest= setInterval(() => {
       this.commonService.getFichero().subscribe(res=>{
@@ -103,30 +108,44 @@ export class listaFicherosComponent implements OnInit {
       // console.log(this.cadena)
      })
    //   }, 15000);
-
+      
 
   }
-     refresh(){
-
-    this.commonService.getSuperexcel().subscribe(res=>{
-      let keys= Object.keys(res);
-      let i = 0;
-      for (let prop of keys ) {
-        this.cadenase=[],
-        this.cadenase.push(res[prop]);
-        this.cadenase[i]['name'] = prop;
-        i++;
-      }
-      this.estadosuperexcel = res["superexcelListResponse"][0]["estado"]
-      let interval = setInterval(this.listarFichero,15000)
+     refresh(){    
+    /*this.commonService.getSuperexcel().subscribe(res=>{   
+      
+      this.estadosuperexcel = res["superexcelListResponse"][0].estado 
+      console.log(this.estadosuperexcel)
+      let interval = setInterval(this.listarFichero,15000)  
  if(this.estadosuperexcel==9){
   clearInterval(interval);
  }
-   })
+   })*/
+   
+   let times = 0
+
+   const intervalID = setInterval (() => {   
+    this.listarSuperexcel();
+    this.listarFichero();
+
+   console.log ('analizando')   
+   times++   
+   if (times > 18) {   
+    console.log('finalizo')
+   clearInterval (intervalID)   
+   }}, 16000)
+
+  }
+  confirmText() {
+    Swal.fire(
+      'Fichero Eliminado!',
+      'has clic para continuar!',
+      'success'
+    )  
   }
 
 
-
+ 
     selectFile(event){
       const[file] = event.target.files;
       let total_registros = event.target.files;
@@ -161,18 +180,22 @@ export class listaFicherosComponent implements OnInit {
       /*Creo un atributo en ambos buttons donde almaceno el id
         Sólo que al buscar si lo almacena pero en el otro lo trae como vacío
         Por eso es que valido */
+        let id_add
       let cls =<HTMLInputElement> document.querySelector('.getattr_id');
+      if(cls!= null){
       let obtengoid = cls.getAttribute('attr_id')
-      let id_add
-
-      if(obtengoid != ""){
+      
+      if(obtengoid != ""){        
         id_add =Number(obtengoid) //Buscando
-      }else{
-        id_add =el  //Sin buscar
+        this.eliminado.id=id_add
       }
-
-      this.commonService.delete(id_add).subscribe(res=>{
-
+    }else{
+      id_add =el 
+      this.eliminado.id=id_add //Sin buscar
+    }      
+      console.log(this.eliminado)
+      this.commonService.delete(this.eliminado).subscribe(res=>{
+      
         this.listarFichero()},
        err => {
         console.log(err.message);
@@ -187,8 +210,13 @@ export class listaFicherosComponent implements OnInit {
       all_filereg.forEach(row_reg => {
         const  body= new FormData();
         body.append('file',row_reg.fileRaw,row_reg.fileName);
-        this.commonService.sendPost(body).subscribe(res=>this.listarSuperexcel());
+        this.commonService.sendPost(body).subscribe(res=>{
+          console.log('ya subio')
+      this.refresh();
+        });
+        
       });
+    
 
 /*
       let all_filereg = this.FileSelectAll
@@ -309,7 +337,6 @@ export class listaFicherosComponent implements OnInit {
               </td>
             </tr>
 
-
             `
             resultado.innerHTML = html;
         }
@@ -320,10 +347,12 @@ export class listaFicherosComponent implements OnInit {
         }
       }
     }
-
+    
 
     selallchech(){
       let validar =<HTMLInputElement> document.getElementById('principalcheck');
+
+
       let btn =<HTMLInputElement> document.getElementById('btndelall');
       if(validar.checked==true){
         btn.style.display="block"
@@ -360,12 +389,8 @@ export class listaFicherosComponent implements OnInit {
       let todosinput = document.querySelectorAll<HTMLInputElement>('.checkall');
       todosinput.forEach(element => {
 
-        if(element.checked == true){
-          //EJECUTAR APIS
-          console.log(element.value)
-
-        }
-
+        //EJECUTAR APIS
+        console.log(element.value)
 
 
 

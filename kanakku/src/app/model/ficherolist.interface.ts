@@ -1,4 +1,4 @@
-export interface FicheroListI{
+export class FicheroListI{
     id:number
     fechaImportacion:Date
     nombre:string;

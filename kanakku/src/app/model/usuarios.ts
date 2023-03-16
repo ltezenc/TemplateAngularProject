@@ -5,4 +5,6 @@ export class Usuarios{
   correo:string;
   estado:number;
   empresaId:number=1;
+  cargo:string;
+  celular:string;
  }

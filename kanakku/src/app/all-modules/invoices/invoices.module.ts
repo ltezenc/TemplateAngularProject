@@ -30,6 +30,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     RouterModule,
     DataTablesModule,
     NgApexchartsModule
+
   ],
 })
 export class InvoicesModule {}

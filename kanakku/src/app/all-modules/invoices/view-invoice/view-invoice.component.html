@@ -1,10 +1,10 @@
 <!-- Page Wrapper -->
-<div class="page-wrapper" >
+<div class="page-wrapper" >  
+  
 
-
-
-    <div class="row justify-content-end justify-content-md-end" >
-        <div class= "col-2">
+      
+    <div class="row justify-content-end justify-content-md-end" >   
+        <div class= "col-2">    
             <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark" (click)="downloadPDF()"><i
                 class="far fa-file-pdf text-danger"></i> Exportar</a>
         </div>
@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="invoice-logo">
-                                        <img src="assets/img/gescom logo1.png" alt="logo">
+                                        <img src="assets/img/Electro norte - ensa.png" alt="logo">
                                     </div>
                                     <div class="invoice-head">
                                         <h2>Facturacion</h2>
@@ -30,17 +30,17 @@
                                         <p class="invoice-details">
                                             Suministro: {{col.suministro}} <br>
                                             Codigo: {{col.codigo}}  <br>
-                                            {{col.direccion}} <br>
-
+                                            {{col.direccion}} <br>                                            
+                                           
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <!-- Invoice Item
+                        
+                
+                        
+                        <!-- Invoice Item 
                         <div class="invoice-issues-box">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4">
@@ -73,13 +73,13 @@
                                                     <th>Barra final de Entrega</th>
                                                     <th>Consumos</th>
                                                     <th>Precios</th>
-
+                                               
                                                     <th class="text-end">Monto</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr scope="row"><td>PHP(Generacion)</td><td>{{col.phpgConsumo}}</td><td>{{col.phpgPrecio}}</td> <td class="text-end">{{col.phpg}}</td>
-                                                    <tr><td>PHP(Transmision)</td><td>{{col.phptConsumo}}</td> <td>{{col.phptPrecio}}</td> <td class="text-end">{{col.phpt}}</td>
+                                                <tr scope="row"><td>PHP(Generacion)</td><td>{{col.phpgConsumo}}</td><td>{{col.phpgPrecio}}</td> <td class="text-end">{{col.phpg}}</td> 
+                                                    <tr><td>PHP(Transmision)</td><td>{{col.phptConsumo}}</td> <td>{{col.phptPrecio}}</td> <td class="text-end">{{col.phpt}}</td> 
                                                     <tr><td>Pot. Uso Redes Distrib. HP</td><td>{{col.potreddisthpConsumo}}</td><td>{{col.potreddisthpPrecio}}</td> <td class="text-end">{{col.potreddisthp}}</td></tr>
                                                     <!--<tr>Exc. Uso Redes Distrib. HP</tr>-->
                                                      <tr><td>Peaje del SST y SCT en Energía</td><td>{{col.peajesstsctConsumo}}</td><td>{{col.peajesstsctPrecio}}</td> <td class="text-end">{{col.peajesstsct}}</td></tr>
@@ -88,7 +88,7 @@
                                                     <tr><td>EAHFP</td><td>{{col.eahfpConsumo}}</td><td>{{col.eahfpPrecio}}</td> <td class="text-end">{{col.eahfp}}</td></tr>
                                                     <tr><td>Energía Reactiva</td><td>{{col.enerReactConsumo}}</td><td>{{col.enerReactPrecio}}</td> <td class="text-end">{{col.enerReact}}</td></tr>
                                                     <tr><td>Comercializacion</td><td>{{col.comercializacionConsumo}}</td><td>{{col.comercializacionPrecio}}</td> <td class="text-end">{{col.comercializacion}}</td></tr>
-
+                                                         
                                             </tbody>
                                         </table>
                                     </div>
@@ -98,11 +98,7 @@
                         <!-- /Invoice Item -->
 
                         <div class="row align-items-center justify-content-center">
-                            <div class="col-lg-6 col-md-6">
-
-
-
-
+                            <div class="col-lg-6 col-md-6">                          
 
                               <div class="card">
                                 <div class="card-header">
@@ -125,12 +121,8 @@
                                 </div>
                               </div>
 
-
-
-
-
-
                             </div>
+
                             <div class="col-lg-6 col-md-6">
                                 <div class="invoice-total-card">
                                     <div class="invoice-total-box">
@@ -150,6 +142,7 @@
                                 </div>
                             </div>
                         </div>
+                      
                     </div>
                 </div>
             </div>

@@ -49,6 +49,7 @@ export class UsersComponent implements OnInit {
       'has clic para continuar!',
       'success'
     )
+    this.router.navigate(['/users'])
   }
   ErrorText(){
     Swal.fire({
@@ -60,9 +61,8 @@ export class UsersComponent implements OnInit {
   }
   crearUsuario():void{
     console.log(this.usuarios)
-    this.srvModuleService.create(this.usuarios).subscribe(response =>
-      this.router.navigate(['/users']
-      ),
+    this.srvModuleService.create(this.usuarios).subscribe(response =>     
+      
     err => {
       this.ErrorText()
       console.log(err.message);
