@@ -1,20 +1,22 @@
-<!-- Main Wrapper -->
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
 <div class="main-wrapper login-body">
   <div class="login-wrapper">
     <div class="container">
       <img
         class="img-fluid logo-dark mb-2"
-        src="assets/img/Electro norte - ensa.png"
+        src="assets/img/ensa_logo.png"
         alt="Logo"
       />
       <div class="loginbox">
         <div class="login-right">
           <div class="login-right-wrap">
             <h1>Inicia Sesion</h1>
-            
+
             <form [formGroup]="form" (ngSubmit)="submit(form.value)">
               <div class="form-group">
-                <label class="form-control-label">usuario</label>
+                <label class="form-control-label">Usuario</label>
                 <input
                   class="form-control"
                   type="text"
@@ -24,7 +26,7 @@
                     'is-invalid': f['usuarioLogin'].touched && f['usuarioLogin'].invalid
                   }"
                 />
-               
+
 
                 <div
                   *ngIf="f['usuarioLogin'].touched && f['usuarioLogin'].invalid"
@@ -34,7 +36,7 @@
                     *ngIf="f['usuarioLogin'].errors && f['usuarioLogin'].errors['required']"
                   >
                     usuarioLogin es requerido.
-                  </div>               
+                  </div>
                 </div>
               </div>
               <div class="form-group">
@@ -72,19 +74,24 @@
               </div>
               <div class="form-group">
                 <div class="row">
-                 
-                  
+
+
                 </div>
               </div>
               <button
                 [disabled]="form.invalid"
                 class="btn btn-lg btn-block btn-primary w-100"
-                type="submit"               
+                type="submit"
+                [disabled]="loading"
               >
-                Login
+
+              Ingresar
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
               </button>
-          
-         
+
+
+
             </form>
           </div>
         </div>

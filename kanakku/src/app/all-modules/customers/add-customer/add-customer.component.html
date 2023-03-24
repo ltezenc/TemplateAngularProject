@@ -1,303 +1,328 @@
-<!-- Page Wrapper -->
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
 <div class="page-wrapper">
-    <div class="content container-fluid">
+  <div class="content container-fluid">
 
-      <!-- Page Header -->
-      <div class="page-header">
-        <div class="row">
-          <div class="col-sm-12">
-            <h3 class="page-title">Clientes</h3>
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
-              <li class="breadcrumb-item"><a [routerLink]="'/customers/customers-list'">Clientes</a></li>
-              <li class="breadcrumb-item active">Agregar Clientes</li>
-            </ul>
-          </div>
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3 class="page-title">Clientes</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/index'">Dashboard</a></li>
+            <li class="breadcrumb-item"><a [routerLink]="'/customers/customers-list'">Clientes</a></li>
+            <li class="breadcrumb-item active">Agregar Clientes</li>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title mb-0">Crear cliente</h4>
-              </div>
-              <div class="card-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Crear cliente</h4>
+          </div>
+          <div class="card-body">
 
-                <div id="progrss-wizard" class="twitter-bs-wizard">
-                  <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                    <li class="nav-item">
-                      <a href="#progress-seller-details" class="pre__v nav-link" data-toggle="tab">
-                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Información de cliente">
-                          <i class="far fa-user"></i>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#progress-company-document" class="nex__t nav-link" data-toggle="tab">
-                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalles de contacto">
-                          <i class="fas fa-laptop"></i>
-                        </div>
-                      </a>
-                    </li>
-
-                  </ul>
-                  <!-- wizard-nav -->
-
-                  <div id="bar" class="progress mt-4">
-                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" id="porcentajenext"></div>
-                  </div>
-                  <div class="tab-content twitter-bs-wizard-tab-content">
-                    <div class="tab-pane" id="progress-seller-details">
-                      <div class="mb-4">
-                        <h5>Información del cliente</h5>
-                      </div>
-                      <form>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="form mb-3">
-                              <label for="txtrazonsocial">Razón social*:</label>
-                              <input type="text" class="form-control" [(ngModel)]="cliente.razonsocial" name="txtrazonsocial" id="txtrazonsocial" >
-                                <span class="text-danger co_rs"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label for="txtruc">Ruc*:</label>
-                              <input type="text" class="form-control" [(ngModel)]="cliente.ruc" name="txtruc" id="txtruc">
-                              <span class="text-danger co_rc"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label for="txtdireccion">Dirección*:</label>
-                              <input type="text" class="form-control"  [(ngModel)]="cliente.direccion" name="txtdireccion" id="txtdireccion">
-                              <span class="text-danger co_dir"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label for="txtresponsablelegal">Responsable legal*:</label>
-                              <input type="text" class="form-control" [(ngModel)]="cliente.nombreResponsable" name="txtresponsablelegal" id="txtresponsablelegal">
-                              <span class="text-danger co_de"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label for="txtemail">Email*:</label>
-                              <input type="email" class="form-control" [(ngModel)]="cliente.email" name="txtemail" id="txtemail">
-                              <span class="text-danger co_em"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-3"></div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              <label for="txttelefono">Teléfono*:</label>
-                              <input type="email" class="form-control" [(ngModel)]="cliente.telefono" name="txttelefono" id="txttelefono">
-                              <span class="text-danger co_tl"></span>
-                            </div>
-                          </div>
-                          <div class="col-lg-3"></div>
-                        </div>
-
-                      </form>
-                      <ul class="pager wizard twitter-bs-wizard-pager-link">
-                        <li class=""><a href="javascript: void(0);" class="btn btn-primary" (click)="nextTab()">Siguiente <i class="bx bx-chevron-right ms-1"></i></a></li>
-                        <!-- <li class="next"><a href="javascript: void(0);" class="btn btn-primary" >Siguiente <i class="bx bx-chevron-right ms-1"></i></a></li> -->
-                      </ul>
+            <div id="progrss-wizard" class="twitter-bs-wizard">
+              <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                <li class="nav-item">
+                  <a href="#progress-seller-details" class="pre__v nav-link" data-toggle="tab">
+                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                      title="Información de cliente">
+                      <i class="far fa-user"></i>
                     </div>
-                    <div class="tab-pane viewsave" id="progress-company-document">
-                      <div>
-                        <div class="mb-4">
-                          <h5>Detalles de contacto</h5>
-                        </div>
-                        <form>
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3" >
-                                <label for="txttarifa" class="form-label">Tarifa*:</label>
-                                  <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="cliente.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
-                                    <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
-                                  </select>
-                                  <span class="text-danger sv_tf"></span>
-
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                          </div>
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtpotenciaContratada" class="form-label">Potencia Contratada*:</label>
-                                <input type="text" class="form-control" name="txtpotenciaContratada" id="txtpotenciaContratada" [(ngModel)]="cliente.potenciaContratada">
-                                <span class="text-danger sv_pc"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                          </div>
-
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txttipodecambio" class="form-label">Tipo de cambio inicio*:</label>
-                                <input type="text" class="form-control" name="txttipodecambio" id="txttipodecambio" [(ngModel)]="cliente.tipoCambio" >
-                                <span class="text-danger sv_tc"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                          </div>
-
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtprecioporhorapunta" class="form-label">Precio por Hora Punta*:</label>
-                                <input type="text" class="form-control" name="txtprecioporhorapunta" id="txtprecioporhorapunta" [(ngModel)]="cliente.precioHP">
-                                <span class="text-danger sv_hp"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                          </div>
-
-
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtpreciofuerahorapunta" class="form-label">Precio por Fuera Hora Punta*:</label>
-                                <input type="text" class="form-control" name="txtpreciofuerahorapunta" id="txtpreciofuerahorapunta" [(ngModel)]="cliente.precioFHP">
-                                <span class="text-danger sv_fpc"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-
-                          </div>
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtppi" class="form-label">Ppi0*:</label>
-                                <input type="text" class="form-control" name="txtppi" id="txtppi" [(ngModel)]="cliente.ppi0">
-                                <span class="text-danger sv_ppi"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-
-                          </div>
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtpgn" class="form-label">Pgn0*:</label>
-                                <input type="text" class="form-control" name="txtpgn" id="txtpgn" [(ngModel)]="cliente.pgn0">
-                                <span class="text-danger sv_pgn"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-
-                          </div>
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtcomercializacion" class="form-label">Comercializacion*:</label>
-                                <input type="text" class="form-control" name="txtcomercializacion" id="txtcomercializacion" [(ngModel)]="cliente.comercializacion">
-                                <span class="text-danger sv_cmr"></span>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-
-                          </div>
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtcargofijo" class="form-label">CargoFijo*:</label>
-                                <input type="text" class="form-control" name="txtcargofijo" id="txtcargofijo" [(ngModel)]="cliente.cargoFijo">
-                                <span class="text-danger sv_cf"></span>
-
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-
-                          </div>
-
-
-                          <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-6">
-                              <div class="mb-3">
-                                <label for="txtestado" class="form-label">Estado*:</label>
-                                <div class="select mb-3" >
-                                  <select name="shred-info" id="shred-info" [(ngModel)]="cliente.estadoId" class="form-control" >
-                                        <option selected disabled value="">Selecciona una opción</option>
-                                      <option [value]=1>Activo</option>
-                                      <option [value]=0>Inactivo</option>
-                                  </select>
-                                  <span class="text-danger sv_est"></span>
-                              </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-3"></div>
-                          </div>
-
-                        </form>
-                        <ul class="pager wizard twitter-bs-wizard-pager-link">
-                          <li class="previous"><a href="javascript: void(0);" class="btn btn-primary me-1" (click)="prevTab()"><i class="bx bx-chevron-left me-1"></i> Regresar</a></li>
-                          <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".confirmModal" (click)="crearCliente()">Guardar</a></li>
-                        </ul>
-                      </div>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#progress-company-document" class="nex__t nav-link" data-toggle="tab">
+                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                      title="Detalles de contacto">
+                      <i class="fas fa-laptop"></i>
                     </div>
+                  </a>
+                </li>
 
-                  </div>
+              </ul>
+              <!-- wizard-nav -->
+
+              <div id="bar" class="progress mt-4">
+                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" id="porcentajenext">
                 </div>
               </div>
-              <!-- end card body -->
-            </div>
-            <!-- end card -->
-          </div>
-          <!-- end col -->
-        </div>
-            <!-- /Wizard -->
-                          <!-- Modal -->
+              <div class="tab-content twitter-bs-wizard-tab-content">
+                <div class="tab-pane" id="progress-seller-details">
+                  <div class="mb-4">
+                    <h5>Información del cliente</h5>
+                  </div>
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="form mb-3">
+                          <label for="txtrazonsocial">Razón social*:</label>
+                          <input type="text" class="form-control" [(ngModel)]="cliente.razonsocial"
+                            name="txtrazonsocial" id="txtrazonsocial">
+                          <span class="text-danger co_rs"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label for="txtruc">Ruc*:</label>
+                          <input type="text" class="form-control" [(ngModel)]="cliente.ruc" name="txtruc" id="txtruc">
+                          <span class="text-danger co_rc"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label for="txtdireccion">Dirección*:</label>
+                          <input type="text" class="form-control" [(ngModel)]="cliente.direccion" name="txtdireccion"
+                            id="txtdireccion">
+                          <span class="text-danger co_dir"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label for="txtresponsablelegal">Responsable legal*:</label>
+                          <input type="text" class="form-control" [(ngModel)]="cliente.nombreResponsable"
+                            name="txtresponsablelegal" id="txtresponsablelegal">
+                          <span class="text-danger co_de"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label for="txtemail">Email*:</label>
+                          <input type="email" class="form-control" [(ngModel)]="cliente.email" name="txtemail"
+                            id="txtemail">
+                          <span class="text-danger co_em"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3"></div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          <label for="txttelefono">Teléfono*:</label>
+                          <input type="email" class="form-control" [(ngModel)]="cliente.telefono" name="txttelefono"
+                            id="txttelefono">
+                          <span class="text-danger co_tl"></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-3"></div>
+                    </div>
 
+                  </form>
+                  <ul class="pager wizard twitter-bs-wizard-pager-link">
+                    <li class=""><a href="javascript: void(0);" class="btn btn-primary" (click)="nextTab()">Siguiente <i
+                          class="bx bx-chevron-right ms-1"></i></a></li>
+                    <!-- <li class="next"><a href="javascript: void(0);" class="btn btn-primary" >Siguiente <i class="bx bx-chevron-right ms-1"></i></a></li> -->
+                  </ul>
+                </div>
+                <div class="tab-pane viewsave" id="progress-company-document">
+                  <div>
+                    <div class="mb-4">
+                      <h5>Detalles de contacto</h5>
+                    </div>
+                    <form>
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txttarifa" class="form-label">Tarifa*:</label>
+                            <select name="miselect" id="miselect" class="form-select form-select-sm"
+                              [(ngModel)]="cliente.tarifa" aria-label=".form-select-sm example" id="txttarifa"
+                              *ngFor="let objeto of apitarifa">
+                              <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
+                            </select>
+                            <span class="text-danger sv_tf"></span>
+
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtpotenciaContratada" class="form-label">Potencia Contratada*:</label>
+                            <input type="text" class="form-control" name="txtpotenciaContratada"
+                              id="txtpotenciaContratada" [(ngModel)]="cliente.potenciaContratada">
+                            <span class="text-danger sv_pc"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                      </div>
+
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txttipodecambio" class="form-label">Tipo de cambio inicio*:</label>
+                            <input type="text" class="form-control" name="txttipodecambio" id="txttipodecambio"
+                              [(ngModel)]="cliente.tipoCambio">
+                            <span class="text-danger sv_tc"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                      </div>
+
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtprecioporhorapunta" class="form-label">Precio por Hora Punta*:</label>
+                            <input type="text" class="form-control" name="txtprecioporhorapunta"
+                              id="txtprecioporhorapunta" [(ngModel)]="cliente.precioHP">
+                            <span class="text-danger sv_hp"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                      </div>
+
+
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtpreciofuerahorapunta" class="form-label">Precio por Fuera Hora
+                              Punta*:</label>
+                            <input type="text" class="form-control" name="txtpreciofuerahorapunta"
+                              id="txtpreciofuerahorapunta" [(ngModel)]="cliente.precioFHP">
+                            <span class="text-danger sv_fpc"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtppi" class="form-label">Ppi0*:</label>
+                            <input type="text" class="form-control" name="txtppi" id="txtppi"
+                              [(ngModel)]="cliente.ppi0">
+                            <span class="text-danger sv_ppi"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtpgn" class="form-label">Pgn0*:</label>
+                            <input type="text" class="form-control" name="txtpgn" id="txtpgn"
+                              [(ngModel)]="cliente.pgn0">
+                            <span class="text-danger sv_pgn"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtcomercializacion" class="form-label">Comercializacion*:</label>
+                            <input type="text" class="form-control" name="txtcomercializacion" id="txtcomercializacion"
+                              [(ngModel)]="cliente.comercializacion">
+                            <span class="text-danger sv_cmr"></span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtcargofijo" class="form-label">CargoFijo*:</label>
+                            <input type="text" class="form-control" name="txtcargofijo" id="txtcargofijo"
+                              [(ngModel)]="cliente.cargoFijo">
+                            <span class="text-danger sv_cf"></span>
+
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label for="txtestado" class="form-label">Estado*:</label>
+                            <div class="select mb-3">
+                              <select name="shred-info" id="shred-info" [(ngModel)]="cliente.estadoId"
+                                class="form-control">
+                                <option selected disabled value="">Selecciona una opción</option>
+                                <option [value]=1>Activo</option>
+                                <option [value]=0>Inactivo</option>
+                              </select>
+                              <span class="text-danger sv_est"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                      </div>
+
+                    </form>
+                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                      <li class="previous"><a href="javascript: void(0);" class="btn btn-primary me-1"
+                          (click)="prevTab()"><i class="bx bx-chevron-left me-1"></i> Regresar</a></li>
+                      <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary"
+                          data-bs-toggle="modal" data-bs-target=".confirmModal" (click)="crearCliente()">Guardar</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- end card body -->
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
     </div>
+    <!-- /Wizard -->
+    <!-- Modal -->
+
   </div>
-  <!-- /Page Wrapper -->
+</div>

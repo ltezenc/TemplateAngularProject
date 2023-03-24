@@ -1,3 +1,35 @@
 @import './../assets/plugins/fontawesome/css/fontawesome.min.css';
 @import './../assets/plugins/fontawesome/css/all.min.css';
 
+.load_div {
+  transition: 0.3s;
+  background: #2F3337;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  animation: fadeIn 0.3s alternate;
+}
+
+.loader_spinner {
+  transition: 0.3s;
+  color: #ffff !important;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

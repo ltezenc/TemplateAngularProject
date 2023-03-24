@@ -1,3 +1,7 @@
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
+
 <div class="page-wrapper">
   <div class="content container-fluid">
     <!-- Page Header -->
@@ -31,7 +35,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-striped mb-3">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped mb-3">
                 <thead>
                   <tr>
                     <th>Nombre</th>
@@ -42,9 +46,7 @@
                   </tr>
                 </thead>
                 <tbody>
-
-                  <ng-container *ngFor="let row of cadena">
-                    <tr *ngFor="let col of row | paginate: { itemsPerPage: 5, currentPage: pageuser }">
+                    <tr *ngFor="let col of listusers">
                       <td>{{ col.nombre }}</td>
                       <td>{{ col.username }}</td>
                       <td>{{ col.email }}</td>
@@ -63,13 +65,8 @@
                         </div>
                       </td>
                     </tr>
-                  </ng-container>
                 </tbody>
               </table>
-
-              <pagination-controls (pageChange)="pageuser = $event"
-                          previousLabel="Anterior"
-                          nextLabel="Siguiente"></pagination-controls>
             </div>
           </div>
         </div>

@@ -1,23 +1,22 @@
-<!-- Page Wrapper -->
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
+
 <div class="page-wrapper">
   <div class="content container-fluid">
-
     <!-- Page Header -->
     <div class="page-header">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="page-title">Importacion de Archivos</h3>
+          <h3 class="page-title">Importación de Archivos</h3>
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="'/index'">Inicio</a></li>
-            <li class="breadcrumb-item active">Importacion de Archivos</li>
+            <li class="breadcrumb-item active">Importación de Archivos</li>
           </ul>
         </div>
         <div class="col-auto">
           <a type="button" data-bs-toggle="modal" data-bs-target="#top-modal" class="btn btn-info me-1">
             <i class="fas fa-plus"></i>
-          </a>
-          <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
-            <i class="fas fa-filter"></i>
           </a>
         </div>
       </div>
@@ -48,86 +47,43 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <!-- Search Filter -->
-    <div id="filter_inputs" class="card filter-card">
-      <div class="card-body pb-0">
-        <div class="row">
-          <div class="col-md-3 mb-4">
-            <div class="form-group">
-              <div class="top-nav-search">
-                <form>
-                  <input type="text" class="form-control" placeholder="Nombre" id="bsq_nombre">
-                  <button class="btn" type="button" (click)="buscarAll('nombre')"><i class="fas fa-search"></i></button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <div class="top-nav-search">
-                <form>
-                  <select class="form-select" id="selc_estd">
-                    <option>Estado</option>
-                    <option value="2">Error 2</option>
-                    <option value="5">Procesado</option>
-                    <option value="4">Archivo ya ha sido procesado</option>
-                    <option value="3">Cliente no registrado</option>
-                    <option value="1">Procesando cálculos</option>
-                    <option value="0">Pendiente</option>
-                  </select>
-                  <button class="btn" type="button" (click)="buscarAll('estado')"><i class="fas fa-search"></i></button>
-                </form>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!-- /Search Filter -->
-
-
     <app-parametro></app-parametro>
-    <hr>
-    <div class="row">
+    <hr *ngIf="superexcel?.length != 0">
+    <div class="row" *ngIf="superexcel?.length != 0">
       <div class="col-sm-12">
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
 
-              <table datatable class="table table-center table-hover">
+              <table class="table table-center table-hover">
                 <thead class="thead-light">
                   <tr>
                     <th>Id</th>
                     <th class="text-center">Fecha Importacion</th>
                     <th>Cant. Cliente</th>
                     <th class="text-center">Estado</th>
-                    <th class="text-center" >Nombre</th>
+                    <th class="text-center">Nombre</th>
                     <th>Pfactura</th>
                     <th>Cant. Lectura</th>
                     <th>N° Cliente Procesado</th>
                   </tr>
-
-
                 </thead>
-                <tbody *ngFor="let item of cadenase;let i = index">
-                  <tr *ngFor="let row of item;let i = index">
+                <tbody>
+                  <tr *ngFor="let row of superexcel ;let i = index">
                     <td>{{row.idsuperexcel}}</td>
-                    <td class="text-center" >{{row.registrado}}</td>
+                    <td class="text-center">{{row.registrado}}</td>
                     <td class="text-center">{{row.cantidad_clientes}}</td>
                     <td class="text-center" [ngSwitch]="row.estado">
-                    <span *ngSwitchCase="13"
-                    class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
-                    <span *ngSwitchCase="8"
-                    class="badge badge-pill bg-warning-light"  >Analizando Excel <div class="spinner-border spinner-border-sm" role="status"></div> </span>
-                    <span *ngSwitchCase="9"
-                    class="badge badge-pill bg-success-light"  >Analisis terminado</span>
-                  </td>
-                    <td class="text-center" >{{row.nombre}}</td>
+                      <span *ngSwitchCase="13" class="badge badge-pill bg-danger-light">Periodo de factura
+                        equivocado</span>
+                      <span *ngSwitchCase="8" class="badge badge-pill bg-warning-light">Analizando Excel <div
+                          class="spinner-border spinner-border-sm" role="status"></div> </span>
+                      <span *ngSwitchCase="9" class="badge badge-pill bg-success-light">Analisis terminado</span>
+                    </td>
+                    <td class="text-center">{{row.nombre}}</td>
                     <td>{{row.pfactura}}</td>
-                    <td class="text-center" >{{row.cant_lect}}</td>
-                    <td class="text-center" >{{row.nro_client_procesado}}</td>
+                    <td class="text-center">{{row.cant_lect}}</td>
+                    <td class="text-center">{{row.nro_client_procesado}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -138,19 +94,23 @@
     </div>
 
     <hr>
-   <!-- <i class="far fa-trash-alt me-1" (click)="deletesel()" id="btndelall" style="display: none;position: absolute;z-index: 99;color: #cd0009;margin-left: 45px;margin-top: 18px;cursor: pointer;"></i>
+    <!-- <i class="far fa-trash-alt me-1" (click)="deletesel()" id="btndelall" style="display: none;position: absolute;z-index: 99;color: #cd0009;margin-left: 45px;margin-top: 18px;cursor: pointer;"></i>
 -->
     <div class="row">
       <div class="col-sm-12">
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
-              <table id="data-table" datatable class="table table-center table-hover mb-3">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="data-table" datatable
+                class="table table-center table-hover mb-3">
                 <thead class="thead-light">
                   <tr>
                     <th>
-                      <input type="checkbox" name="checkbox" id="principalcheck" (click)="selallchech()">
-                      <i class="far fa-trash-alt me-1" (click)="deletesel()" id="btndelall" style="display: none;position: absolute;z-index: 99;color: rgb(205, 0, 9);margin-left: 25px;margin-top: -21px;cursor: pointer;"></i>
+                      <input *ngIf="ficheros?.length != 0" type="checkbox" name="checkbox" id="principalcheck"
+                        (click)="selallchech()">
+                      <i *ngIf="ficheros?.length != 0" class="far fa-trash-alt me-1" (click)="deletesel()"
+                        id="btndelall"
+                        style="display: none;position: absolute;z-index: 99;color: rgb(205, 0, 9);margin-left: 25px;margin-top: -21px;cursor: pointer;"></i>
                     </th>
                     <th>Id</th>
                     <th>Nombre</th>
@@ -160,72 +120,49 @@
                     <th class="text-end">Accion</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let expeses of cadena">
-                  <tr *ngFor="let expese of expeses | paginate: { itemsPerPage: 10, currentPage: page }">
-                    <td><input type="checkbox" name="checkbox" class="checkall" value="{{expese.suministro}}" (click)="selchech()"></td>
+                <tbody [style.opacity]="load_er ? '0.2' : 1">
+                  <tr *ngFor="let expese of ficheros; let i = index">
+                    <td><input type="checkbox" [disabled]="load_er" name="checkbox" class="checkall"
+                        value="{{expese.id}}" (click)="selchech()"></td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd-MM-yyyy'}}</td>
                     <td>{{expese.cantLect}}</td>
-                    <td class="text-end" [ngSwitch]="expese.estado" >
-                      <span *ngSwitchCase="2"
-                      class="badge badge-pill bg-danger-light" >Error2</span>
+                    <td class="text-end" [ngSwitch]="expese.estado">
+                      <span *ngSwitchCase="2" class="badge badge-pill bg-danger-light">Error2</span>
 
-                      <span *ngSwitchCase="5"
-                      class="badge badge-pill bg-success-light" >Procesado</span>
+                      <span *ngSwitchCase="5" class="badge badge-pill bg-success-light">Procesado</span>
 
-                      <span *ngSwitchCase="4"
-                      class="badge badge-pill bg-danger-light" >Archivo ya ha sido procesado</span>
+                      <span *ngSwitchCase="4" class="badge badge-pill bg-danger-light">Archivo ya ha sido
+                        procesado</span>
 
-                      <span *ngSwitchCase="3"
-                        class="badge badge-pill bg-danger-light" >CLIENTE NO REGISTRADO</span>
+                      <span *ngSwitchCase="3" class="badge badge-pill bg-danger-light">CLIENTE NO REGISTRADO</span>
 
-                      <span *ngSwitchCase="1"
-                          class="badge badge-pill bg-warning-light"  >Procesando Calculos</span>
+                      <span *ngSwitchCase="1" class="badge badge-pill bg-warning-light">Procesando Calculos</span>
 
-                      <span *ngSwitchCase="7"
-                            class="badge badge-pill bg-danger-light"  >Periodo de factura equivocado</span>
-                     <!-- /EXCEL MASIVO -->
+                      <span *ngSwitchCase="7" class="badge badge-pill bg-danger-light">Periodo de factura
+                        equivocado</span>
+                      <!-- /EXCEL MASIVO -->
                     </td>
                     <td class="text-end" *ngIf="expese.estado==5">
-                      <a  data-bs-toggle="modal" data-bs-target="#delete_Expenses"
-                      (click)="tempId = expese.id"  class="btn btn-sm btn-white text-danger"><i
-                          class="far fa-trash-alt me-1"   ></i>Eliminar</a>
+                      <button data-bs-toggle="modal" data-bs-target="#delete_Expenses" [disabled]="load_er"
+                        (click)="tempId = expese.id" class="btn btn-sm btn-white text-danger"><i
+                          class="far fa-trash-alt me-1"></i>Eliminar</button>
                     </td>
-
                   </tr>
                 </tbody>
               </table>
-              <table id="table-data" style="display: none" class="table table-stripped table-hover">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>FechaImportacion</th>
-                    <th>Cantidad Lecturas</th>
-                    <th class="text-end">estado</th>
-                    <th class="text-end">Action</th>
-                  </tr>
-                </thead>
-                <tbody id="resultados_busqueda">
-
-                </tbody>
-              </table>
-
-
-              <pagination-controls (pageChange)="page = $event"
-              previousLabel="Anterior"
-              nextLabel="Siguiente"></pagination-controls>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="spinner-border avatar-sm text-danger m-2" *ngIf="load_er"
+    style="position: fixed;right: 0;bottom: 2px;z-index: 99999;" role="status"></div>
 </div>
-<!-- /Page Wrapper -->
-<!-- Delete Tax Modal -->
+
 <div class="modal custom-modal fade" id="delete_Expenses" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -240,9 +177,9 @@
       </div>
       <div class="modal-footer text-center">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="eliminarFichero(tempId)">Eliminar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="eliminarFichero(tempId)">Eliminar</button>
       </div>
     </div>
   </div>
 </div>
-<!-- /Delete Tax Modal -->

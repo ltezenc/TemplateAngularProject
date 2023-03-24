@@ -15,8 +15,10 @@ export class LoginComponent implements OnInit {
   public CustomControler:any
   public subscription: Subscription;
   public Loginvalue = new BehaviorSubject<any>(0);
+  public loading:boolean;
+  public loader_general: boolean;
 
-  
+
   form = new FormGroup({
     usuarioLogin: new FormControl("", [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -32,30 +34,37 @@ export class LoginComponent implements OnInit {
         this.CustomControler = data;
       }
     });
+    this.loader_general = true;
   }
 
   ngOnInit() {
     this.storage.Checkuser();
+    setTimeout(() => {
+      this.loader_general = false;
+    }, 1000);
   }
   public Createtoken(form:loginI) {
     var result = 'ABCDEFGHI' + form.usuarioLogin + 'ghijklmnopqrs' + 'z01234567';
     localStorage.setItem('LoginData', result);
-   
- 
+
+
   }
- 
+
   submit(form) {
+    this.loading = true;
     localStorage.setItem("usuario",form.usuarioLogin)
     localStorage.setItem("password",form.password)
-   
+
     this.storage.loginby(form).subscribe(data =>{
+      this.loading = false;
       if(Boolean(data)==true){
            this.router.navigate(['/index']);
-           
+
       this.Createtoken(form);
       }else {
         document.querySelector(".log_rch").innerHTML = "* Usuario o contraseña incorrectos."
-        
+        this.loading = false;
+
       }
   })
 }

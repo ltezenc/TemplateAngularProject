@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { HttpClient } from '@angular/common/http';
 import { Usuarios } from 'src/app/model/usuarios';
+import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router';
@@ -12,36 +13,31 @@ import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router'
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  public pageuser:number
-  usuarios:Usuarios= new Usuarios();
-  listusers:Usuarios[];
-  cadena=[];
-  dtTrigger:any= new Subject();
-  constructor(public router: Router,private srvModuleService: UsuariosService,private http:HttpClient) { }
+  usuarios: Usuarios = new Usuarios();
+  listusers: Usuarios[];
+  cadena = [];
+  public loader_general: boolean;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+  @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
+  constructor(public router: Router, private srvModuleService: UsuariosService, private http: HttpClient) { this.loader_general = true; }
 
 
   ngOnInit(): void {
-    this.getCustomers();
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+      }
+    }
+    this.getUsers();
   }
-
-  getCustomers() {
-
-    this.srvModuleService.getUsuarios().subscribe(res=>{
-      this.listusers=res;
-      let keys= Object.keys(res);
-
-      let i = 0;
-      for (let prop of keys ) {
-        this.cadena=[],
-      this.cadena.push(res[prop]);
-      this.cadena[i]['name'] = prop;
-      i++;
-  } console.log("mi rptaa :",this.cadena)
-
-     },
-      )
-
-      this.dtTrigger.next();
+  getUsers() {
+    this.srvModuleService.getUsuarios().subscribe(res => {
+      this.loader_general = false;
+      this.listusers = res["usuarioResponses"]
+      this.dtTrigger.next(0);
+    })
   }
   confirmText() {
     Swal.fire(
@@ -51,7 +47,7 @@ export class UsersComponent implements OnInit {
     )
     this.router.navigate(['/users'])
   }
-  ErrorText(){
+  ErrorText() {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -59,18 +55,21 @@ export class UsersComponent implements OnInit {
       footer: '<a href="">Verifica si los Parametros son correctos?</a>'
     })
   }
-  crearUsuario():void{
+  crearUsuario(): void {
     console.log(this.usuarios)
-    this.srvModuleService.create(this.usuarios).subscribe(response =>     
-      
-    err => {
-      this.ErrorText()
-      console.log(err.message);
-    }, () => {
+    this.srvModuleService.create(this.usuarios).subscribe(response =>
 
-      console.log('completed');
-    })
+      err => {
+        this.ErrorText()
+        console.log(err.message);
+      }, () => {
+
+        console.log('completed');
+      })
     this.confirmText();
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

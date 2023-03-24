@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
@@ -12,147 +12,152 @@ export class SettingComponent implements OnInit {
   [x: string]: any;
   FileSelectAll = [];
   FileSelectAllCMR = [];
+  public loader_general: boolean;
 
-  constructor(public commonService: DataService) { }
+  constructor(public commonService: DataService) { this.loader_general=true; }
 
   ngOnInit(): void {
     this.animaciones()
+    setTimeout(() => {
+      this.loader_general = false;
+    }, 1000);
   }
-  animaciones(){
+  animaciones() {
     //carga de pliego
-    $(function() {
+    $(function () {
       var btn = $(".subirpliego");
-      btn.on("click", function() {        
+      btn.on("click", function () {
         $(this).addClass('btn-progress');
-        setTimeout(function() {
+        setTimeout(function () {
           btn.addClass('btn-fill')
         }, 500);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('btn-fill')
-        }, 4100);        
-        setTimeout(function() {
+        }, 4100);
+        setTimeout(function () {
           btn.addClass('fa-check')
         }, 4400);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('fa-check')
         }, 5500);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('btn-progress')
         }, 5700);
-      });    
+      });
     })
-    $(function() {
+    $(function () {
       var btn = $(".subircargo");
-      btn.on("click", function() {        
+      btn.on("click", function () {
         $(this).addClass('btn-progress');
-        setTimeout(function() {
+        setTimeout(function () {
           btn.addClass('btn-fill')
         }, 500);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('btn-fill')
-        }, 4100);        
-        setTimeout(function() {
+        }, 4100);
+        setTimeout(function () {
           btn.addClass('fa-check')
         }, 4400);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('fa-check')
         }, 5500);
-        setTimeout(function() {
+        setTimeout(function () {
           btn.removeClass('btn-progress')
         }, 5700);
-      });    
+      });
     })
-  
+
     $("#input-pliego").fileinput({
-        previewFileIconSettings: { // configure your icon file extensions
-          'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
-          'xls': '<i class="fas fa-file-excel text-success"></i>',
-          'xlsm': '<i class="fas fa-file-excel text-success"></i>',
-        },
-        showPreview: true,
-        showUpload: false,
-        elErrorContainer: '#kartik-file-errors',
-        allowedFileExtensions: ["xls", "xlsx","xlsm"],      
+      previewFileIconSettings: { // configure your icon file extensions
+        'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+        'xls': '<i class="fas fa-file-excel text-success"></i>',
+        'xlsm': '<i class="fas fa-file-excel text-success"></i>',
+      },
+      showPreview: true,
+      showUpload: false,
+      elErrorContainer: '#kartik-file-errors',
+      allowedFileExtensions: ["xls", "xlsx", "xlsm"],
     });
 
     $("#input-cargo").fileinput({
       previewFileIconSettings: { // configure your icon file extensions
-          'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
-          'xls': '<i class="fas fa-file-excel text-success"></i>',
-          'xlsm': '<i class="fas fa-file-excel text-success"></i>',
-        },
-        showPreview: true,
-        showUpload: false,
-        elErrorContainer: '#kartik-file-errors',
-        allowedFileExtensions: ["xls", "xlsx","xlsm"],      
+        'xlsx': '<i class="fa fa-file-excel-o text-success"></i>',
+        'xls': '<i class="fas fa-file-excel text-success"></i>',
+        'xlsm': '<i class="fas fa-file-excel text-success"></i>',
+      },
+      showPreview: true,
+      showUpload: false,
+      elErrorContainer: '#kartik-file-errors',
+      allowedFileExtensions: ["xls", "xlsx", "xlsm"],
     });
-    
-   }
-   alertCRM(){
-   Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'ARCHIVO SUBIDO CORRECTAMENTE CMR',
-    showConfirmButton: false,
-    timer: 1500
-  })
-}
-alertPliego(){
-  Swal.fire({
-   position: 'center',
-   icon: 'success',
-   title: 'ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO',
-   showConfirmButton: false,
-   timer: 1500
- })
-}
-  selectFile(event){
-    const[file] = event.target.files;
+
+  }
+  alertCRM() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'ARCHIVO SUBIDO CORRECTAMENTE CMR',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  alertPliego() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'ARCHIVO SUBIDO CORRECTAMENTE PLIEGO TARIFARIO',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  selectFile(event) {
+    const [file] = event.target.files;
     let total_registros = event.target.files;
     //Almaceno todo los ficheros
     for (let i = 0; i < total_registros.length; i++) {
       const item = total_registros[i];
 
       let dataenviar = {
-        fileRaw:item,
-        fileName:item.name
+        fileRaw: item,
+        fileName: item.name
       }
       this.FileSelectAll.push(dataenviar)
     }
   }
-  selectFileCMR(event){
-    const[filecmr] = event.target.files;
+  selectFileCMR(event) {
+    const [filecmr] = event.target.files;
     let total_registros_cmr = event.target.files;
     //Almaceno todo los ficheros
     for (let i = 0; i < total_registros_cmr.length; i++) {
       const itemcmr = total_registros_cmr[i];
 
       let dataenviarcmr = {
-        fileRaw:itemcmr,
-        fileName:itemcmr.name
+        fileRaw: itemcmr,
+        fileName: itemcmr.name
       }
       this.FileSelectAllCMR.push(dataenviarcmr)
     }
   }
-  sendFileCRCM():void{
+  sendFileCRCM(): void {
     let all_filereg = this.FileSelectAllCMR
     all_filereg.forEach(row_reg_cmr => {
-      const  bodyCMR= new FormData();
-      bodyCMR.append('file',row_reg_cmr.fileRaw,row_reg_cmr.fileName);
+      const bodyCMR = new FormData();
+      bodyCMR.append('file', row_reg_cmr.fileRaw, row_reg_cmr.fileName);
       this.commonService.sendPostCRCRM(bodyCMR).subscribe();
     });
     this.alertCRM()
   }
-  sendFilepliegoTarifario():void{
+  sendFilepliegoTarifario(): void {
     let all_filereg = this.FileSelectAll
     all_filereg.forEach(row_reg => {
-      const  body= new FormData();
-      body.append('file',row_reg.fileRaw,row_reg.fileName);
+      const body = new FormData();
+      body.append('file', row_reg.fileRaw, row_reg.fileName);
       this.commonService.sendPostPliegoTarifario(body).subscribe(
-        res=>this.alertPliego()
-        );
+        res => this.alertPliego()
+      );
       // .subscribe(res=>console.log("ARCHIVO SUBIO CORRECTAMENTE PLIEGO"));
     });
   }
+
 
 }

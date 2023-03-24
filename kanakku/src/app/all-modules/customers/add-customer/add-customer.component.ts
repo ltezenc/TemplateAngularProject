@@ -17,6 +17,7 @@ export class AddCustomerComponent implements OnInit {
   cliente:Cliente= new Cliente();
  tarifa:tarifaI[];
  apitarifa=[];
+ public loader_general: boolean;
   public id:any
   public url: any = "customers";
   page = 'Add Customer';
@@ -24,6 +25,7 @@ export class AddCustomerComponent implements OnInit {
   myDate = new Date();
   public addCustomerForm!: FormGroup;
   constructor(public router: Router,private clienteService:ClienteService ,private formBuilder: FormBuilder, private toastr: ToastrService) {
+    this.loader_general=true;
   }
 
   ngOnInit(): void {
@@ -109,6 +111,7 @@ export class AddCustomerComponent implements OnInit {
   obtenerTarifa(){
     //obtiene lista de tarifa
     this.clienteService.getTarifa().subscribe(res=>{
+    this.loader_general=false;
       this.tarifa=res;
       let keys= Object.keys(res);
 

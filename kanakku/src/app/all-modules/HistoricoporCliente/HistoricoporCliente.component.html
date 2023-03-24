@@ -1,106 +1,98 @@
-<!-- Page Wrapper -->
-            <div class="page-wrapper">
-                <div class="content container-fluid">
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
+<div class="page-wrapper">
+  <div class="content container-fluid">
 
-                    <div class="row justify-content-lg-center">
-                        <div class="col-lg-10">
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-10">
 
-                            <!-- Page Header -->
-                            <div class="page-header">
-                                <div class="row">
-                                    <div class="col">
-                                        <h3 class="page-title">Histórico Clientes</h3>
-                                        <ul class="breadcrumb">
-                                            <li class="breadcrumb-item"><a [routerLink]="'/index'">Inicio</a></li>
-                                            <li class="breadcrumb-item"><a [routerLink]="'./invoices/invoice-grid'"></a>Histórico</li>
-                                            <li class="breadcrumb-item active">Histórico Clientes</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Page Header -->
-
-                            <div class="text-center mb-5">
-                                <h2>{{rs}}</h2>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <span class="badge bg-success-light">Activo</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="row">
-                                <div *ngIf="rpta_valid == 0" class="col-lg-12">
-
-
-                                    <div class="card">
-                                      <div class="card-body">    
-                                        <h2 style="text-align: center;"><i>No Se encontraron resultados</i></h2>    
-                                      </div>
-                                    </div>    
-    
-                                  </div>    
-                                </div>
-    
-                                <div *ngIf="rpta_valid == 1" class="row">
-                                <div class="col-lg-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="card-title d-flex justify-content-between">
-                                                <span>Datos</span>
-                                            </h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="py-0">
-                                                    <small class="text-dark"><b>Suministro</b></small>
-                                                </li>
-                                                <li>
-                                                  {{suministro}}
-                                                </li>
-                                                <li class="pt-2 pb-0">
-                                                    <small class="text-dark"><b>Dirección</b></small>
-                                                </li>
-                                                <li>
-                                                  {{dir}}
-                                                </li>
-                                                <li class="pt-2 pb-0">
-                                                    <small class="text-dark"><b>Tarifa</b></small>
-                                                </li>
-                                                <li>
-                                                  {{tar}}
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-8">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5 class="card-title">Histórico</h5>
-                                        </div>
-                                        <div class="card-body card-body-height">
-                                            <ul class="activity-feed">
-
-                                              <ng-container *ngFor="let row of cadena">
-                                                <li class="feed-item" *ngFor="let col of row" >
-                                                    <div class="feed-date">{{ col.pfactura }}</div>
-                                                    <span class="feed-text"><b>{{ col.razonSocial }}</b> con un total de <a routerLink="/view-historico-cliente"[queryParams]="{ sum: col.suministro,fact: col.pfactura}">S/{{ col.total }}</a></span>
-
-                                                </li>
-                                              </ng-container>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="page-title">Histórico Clientes</h3>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/index'">Inicio</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'./invoices/invoice-grid'"></a>Histórico</li>
+                <li class="breadcrumb-item active">Histórico Clientes</li>
+              </ul>
             </div>
-            <!-- /Page Wrapper -->
+          </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="text-center mb-5" *ngIf="rpta_valid == 1" >
+          <h2>{{rs}}</h2>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <span class="badge bg-success-light">Activo</span>
+            </li>
+          </ul>
+        </div>
+
+
+
+        <div *ngIf="rpta_valid == 1" class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title d-flex justify-content-between">
+                  <span>Datos</span>
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                  <li class="py-0">
+                    <small class="text-dark"><b>Suministro</b></small>
+                  </li>
+                  <li>
+                    {{suministro}}
+                  </li>
+                  <li class="pt-2 pb-0">
+                    <small class="text-dark"><b>Dirección</b></small>
+                  </li>
+                  <li>
+                    {{dir}}
+                  </li>
+                  <li class="pt-2 pb-0">
+                    <small class="text-dark"><b>Tarifa</b></small>
+                  </li>
+                  <li>
+                    {{tar}}
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">Histórico</h5>
+              </div>
+              <div class="card-body card-body-height">
+                <ul class="activity-feed">
+
+                  <ng-container *ngFor="let row of cadena">
+                    <li class="feed-item" *ngFor="let col of row">
+                      <div class="feed-date">{{ col.pfactura }}</div>
+                      <span class="feed-text"><b>{{ col.razonSocial }}</b> con un total de <a
+                          routerLink="/view-historico-cliente"
+                          [queryParams]="{ sum: col.suministro,fact: col.pfactura}">S/{{ col.total }}</a></span>
+
+                    </li>
+                  </ng-container>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

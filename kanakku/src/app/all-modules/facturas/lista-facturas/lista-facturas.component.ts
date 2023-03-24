@@ -7,29 +7,32 @@ import { ListarFacturaService } from 'src/app/services/listar-factura.service';
   styleUrls: ['./lista-facturas.component.css']
 })
 export class PaymentsListComponent implements OnInit {
-  public pagefct:number;
+  public pagefct: number;
   payments: any = [];
   errorMessage: any;
-  cadena=[]
-  facturas:FacturaListI[];
-  constructor(public facturaService: ListarFacturaService) { }
+  public loader_general: boolean;
+  cadena = []
+  facturas: FacturaListI[];
+
+  constructor(public facturaService: ListarFacturaService) { this.loader_general = true; }
 
   ngOnInit(): void {
     this.listarFacturas();
   }
 
-  listarFacturas(){
-    this.facturaService.getFacturacion().subscribe(res=>{
-      this.facturas=res;
-      let keys= Object.keys(res);
+  listarFacturas() {
+    this.facturaService.getFacturacion().subscribe(res => {
+      this.loader_general = false;
+      this.facturas = res;
+      let keys = Object.keys(res);
 
       let i = 0;
-      for (let prop of keys ) {
-      this.cadena.push(res[prop]);
-      this.cadena[i]['name'] = prop;
-      i++;
-  } console.log(this.cadena)
-     },
+      for (let prop of keys) {
+        this.cadena.push(res[prop]);
+        this.cadena[i]['name'] = prop;
+        i++;
+      } console.log(this.cadena)
+    },
     )
   }
 

@@ -1,4 +1,6 @@
-<!-- Page Wrapper -->
+<div class="load_div" *ngIf="loader_general">
+  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+</div>
 <div class="page-wrapper">
   <div class="content container-fluid">
 
@@ -19,8 +21,8 @@
     <div class="content container-fluid">
       <div class="row justify-content-center">
         <div class="col-xl-10">
-          <div class="card invoice-info-card" *ngFor="let row of cadena">
-            <div class="card-body" *ngFor="let col of row">
+          <div class="card invoice-info-card">
+            <div class="card-body" *ngFor="let col of this.ficheros">
 
               <div class="invoice-item invoice-item-two">
                 <div class="row">

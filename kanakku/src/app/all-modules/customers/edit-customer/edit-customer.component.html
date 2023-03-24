@@ -1,7 +1,7 @@
 <!-- Page Wrapper -->
 <div class="page-wrapper">
     <div class="content container-fluid">
-  
+
         <!-- Page Header -->
         <div class="page-header">
             <div class="row">
@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- /Page Header -->
-  
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -43,7 +43,7 @@
                                       <div class="form-group">
                                           <label>Ruc</label>
                                           <input type="text" class="form-control" name="txt_ruc"  [(ngModel)]="row.ruc">
-  
+
                                       </div>
                                       <div class="form-group">
                                           <label>Responsable legal</label>
@@ -60,7 +60,7 @@
                                   <div class="col-md-6">
                                       <div class="form-group">
                                           <label>Tarifa</label>
-                                          
+
                                           <select name="miselect" id="miselect" class="form-select form-select-sm" [(ngModel)]="row.tarifa" aria-label=".form-select-sm example" id="txttarifa" *ngFor="let objeto of apitarifa">
                                             <option *ngFor="let tar of objeto" [value]="tar.id">{{tar.prefijo}}</option>
                                           </select>
@@ -68,7 +68,7 @@
                                       <div class="form-group">
                                           <label>Tipo de cambio inicio</label>
                                           <input type="text" class="form-control" name="txt_tipoCambio" [(ngModel)]="row.tipoCambio">
-  
+
                                       </div>
                                       <div class="form-group">
                                           <label>Precio por Fuera Hora Punta</label>
@@ -87,7 +87,7 @@
                                       <div class="form-group">
                                         <label>Potencia Contratada</label>
                                         <input type="text" class="form-control" name="txt_potenciaContratada"  [(ngModel)]="row.potenciaContratada">
-  
+
                                       </div>
                                       <div class="form-group">
                                           <label>Precio por Hora Punta</label>
@@ -100,7 +100,7 @@
                                           <option [value]=1>Activo</option>
                                           <option [value]=0>Inactivo</option>
                                       </select>
-  
+
                                       </div>
                                       <div class="form-group">
                                           <label>Pgn0</label>
@@ -128,4 +128,3 @@
     </div>
   </div>
   <!-- /Page Wrapper -->
-  

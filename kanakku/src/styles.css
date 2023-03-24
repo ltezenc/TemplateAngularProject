@@ -2,5 +2,7 @@
 @import "../node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css";
 .dataTables_empty{
     display: none !important;
-
-  }
+}
+@import "../node_modules/alertifyjs/build/css/alertify.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+@import "../node_modules/alertifyjs//build/css/themes/default.min.css";

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParametroComponent } from '../parametro/parametro.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DataTablesModule } from "angular-datatables";
 
 
 
@@ -22,7 +23,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ExpensesRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule
   ]
 })
 export class ExpensesModule { }
