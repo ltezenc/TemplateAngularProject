@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Cliente } from 'src/app/model/cliente';
 import { HttpClient } from '@angular/common/http';
 import { ClienteService } from 'src/app/services/cliente.service';
+import * as alertifyjs from 'alertifyjs';
 @Component({
   selector: 'app-invoice-grid',
   templateUrl: './invoice-grid.component.html',
@@ -42,11 +43,10 @@ export class InvoiceGridComponent implements OnInit {
   getCustomers() {
 
     this.services.getCliente().subscribe(res => {
+      console.log("res :",res)
       this.loader_general = false;
       this.listclientes = res["clienteResponses"];
-
-
-    },
+    },error => alertifyjs.error('Se ha producido un '+error["status"]+'')
     )
 
     this.dtTrigger.next();

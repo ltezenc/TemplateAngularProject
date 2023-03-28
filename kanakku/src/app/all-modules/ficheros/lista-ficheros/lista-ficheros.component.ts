@@ -33,9 +33,9 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
   fileInfos: Observable<any>;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  isDtInitialized: boolean = false
   @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
-
-  constructor(public commonService: DataService) { this.load_er = false; this.loader_general=true; }
+  constructor(public commonService: DataService) { this.load_er = false; this.loader_general = true; }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -96,7 +96,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       this.loader_general = false;
       this.ficheros = res["documentosByUsuarioIdAndEmpresaIdResponse"];
       this.ficherosOriginal = res["documentosByUsuarioIdAndEmpresaIdResponse"];
-      this.dtTrigger.next(null);
+      this.rerender();
     })
   }
   refresh() {
@@ -150,7 +150,6 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       this.load_er = false;
       alertifyjs.success('Fichero ' + el + ' eliminado!');
       this.listarFichero()
-      this.rerender();
     }, error => alertifyjs.error('Ocurrió un problema!'))
   }
   sendFile(): void {
@@ -241,16 +240,21 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
         });
         // let btn = <HTMLInputElement>document.getElementById('btndelall');
         // btn.style.display = "none"
-        this.rerender();
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }
     })
   }
   rerender() {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.destroy();
-    })
+    if (this.isDtInitialized) {
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        this.dtTrigger.next(null);
+      });
+    } else {
+      this.isDtInitialized = true
+      this.dtTrigger.next(null);
+    }
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

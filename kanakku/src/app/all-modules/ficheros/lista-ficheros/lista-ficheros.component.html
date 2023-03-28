@@ -105,6 +105,7 @@
                 class="table table-center table-hover mb-3">
                 <thead class="thead-light">
                   <tr>
+                    <th>#</th>
                     <th>
                       <input *ngIf="ficheros?.length != 0" type="checkbox" name="checkbox" id="principalcheck"
                         (click)="selallchech()">
@@ -122,8 +123,10 @@
                 </thead>
                 <tbody [style.opacity]="load_er ? '0.2' : 1">
                   <tr *ngFor="let expese of ficheros; let i = index">
-                    <td><input type="checkbox" [disabled]="load_er" name="checkbox" class="checkall"
-                        value="{{expese.id}}" (click)="selchech()"></td>
+                    <td>{{ i+1 }}</td>
+                    <td>
+                      <input type="checkbox" [disabled]="load_er" name="checkbox" class="checkall" value="{{expese.id}}" (click)="selchech()">
+                    </td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
                     <td>{{expese.fechaImportacion | date : 'dd-MM-yyyy'}}</td>
@@ -133,20 +136,19 @@
 
                       <span *ngSwitchCase="5" class="badge badge-pill bg-success-light">Procesado</span>
 
-                      <span *ngSwitchCase="4" class="badge badge-pill bg-danger-light">Archivo ya ha sido
-                        procesado</span>
+                      <span *ngSwitchCase="4" class="badge badge-pill bg-danger-light">Archivo ya ha sido procesado</span>
 
                       <span *ngSwitchCase="3" class="badge badge-pill bg-danger-light">CLIENTE NO REGISTRADO</span>
 
-                      <span *ngSwitchCase="1" class="badge badge-pill bg-warning-light">Procesando Calculos</span>
+                      <span *ngSwitchCase="1" class="badge badge-pill bg-warning-light">Procesando Calculos <div
+                        class="spinner-border spinner-border-sm" role="status"></div> </span>
 
                       <span *ngSwitchCase="7" class="badge badge-pill bg-danger-light">Periodo de factura
                         equivocado</span>
                       <!-- /EXCEL MASIVO -->
                     </td>
-                    <td class="text-end" *ngIf="expese.estado==5">
-                      <button data-bs-toggle="modal" data-bs-target="#delete_Expenses" [disabled]="load_er"
-                        (click)="tempId = expese.id" class="btn btn-sm btn-white text-danger"><i
+                    <td class="text-end">
+                      <button data-bs-toggle="modal" data-bs-target="#delete_Expenses" [disabled]="load_er || expese.estado !=5 " (click)="tempId = expese.id" class="btn btn-sm btn-white text-danger"><i
                           class="far fa-trash-alt me-1"></i>Eliminar</button>
                     </td>
                   </tr>

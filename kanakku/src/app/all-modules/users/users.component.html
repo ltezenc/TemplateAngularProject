@@ -38,6 +38,7 @@
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped mb-3">
                 <thead>
                   <tr>
+                    <th>#</th>
                     <th>Nombre</th>
                     <th>Usuario</th>
                     <th>Correo</th>
@@ -46,7 +47,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let col of listusers">
+                    <tr *ngFor="let col of listusers;let i = index">
+                      <td>{{ i+1 }}</td>
                       <td>{{ col.nombre }}</td>
                       <td>{{ col.username }}</td>
                       <td>{{ col.email }}</td>
@@ -61,7 +63,7 @@
                       <td>
                         <div>
                           <button class="btn btn-warning me-1"><i class="far fa-edit"></i></button>
-                          <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                          <button class="btn btn-danger" (click)="deleteuser(col.usuarioId,col.username)"><i class="far fa-trash-alt"></i></button>
                         </div>
                       </td>
                     </tr>
@@ -119,7 +121,7 @@
             </select>
           </div>
 
-          <button class="btn btn-success"  (click)="crearUsuario()">Registrar</button>
+          <button class="btn btn-success"  (click)="crearUsuario()"  data-bs-dismiss="modal">Registrar</button>
 
 
         </form>

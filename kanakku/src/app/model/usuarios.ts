@@ -1,4 +1,5 @@
 export class Usuarios{
+  usuarioId:number;
   nombreUsuario:string;
   usuarioLogin:string;
   password:string;

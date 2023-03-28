@@ -31,4 +31,7 @@ export class UsuariosService {
     return this.http.post<loginI>(environment.url_global+"/clienteslibres/usuarios/verificar-usuario",usuario)
   }
 
+  delUsuario(id:number){
+    return this.http.delete(environment.url_global+"/clienteslibres/usuarios/eliminar/"+id)
+  }
 }
