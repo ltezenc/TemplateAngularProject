@@ -1,115 +1,127 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
-</div>
+  <div class="three-body"   >
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    </div>
+  </div>
+<!-- Page Wrapper -->
 <div class="page-wrapper">
   <div class="content container-fluid">
 
-    <!-- Page Header -->
-    <div class="page-header">
-      <div class="row align-items-center">
-        <div class="col">
-          <h3 class="page-title">Facturas</h3>
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/index'">Inicio</a></li>
-            <li class="breadcrumb-item active">Facturas</li>
-          </ul>
-        </div>
-        <div class="col-auto">
-          <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
-            <i class="fas fa-filter"></i>
-          </a>
-        </div>
+      <!-- Page Header -->
+      <div class="page-header">
+          <div class="row align-items-center">
+              <div class="col">
+                  <h3 class="page-title">Facturas</h3>
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a [routerLink]="'/index'">Inicio</a></li>
+                      <li class="breadcrumb-item active">Facturas</li>
+                  </ul>
+              </div>
+              <div class="col-auto">
+                  <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+                      <i class="fas fa-filter"></i>
+                  </a>
+              </div>
+          </div>
       </div>
-    </div>
-    <!-- /Page Header -->
+      <!-- /Page Header -->
 
-    <!-- Search Filter -->
-    <div id="filter_inputs" class="card filter-card">
-      <div class="card-body pb-0">
-        <div class="row">
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Clientes</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Price</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Tarifa</label>
-              <select class="form-select">
-                <option>Payment Mode</option>
-                <option>Cash</option>
-                <option>Cheque</option>
-                <option>Card</option>
-                <option>Online</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Search Filter -->
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card card-table">
-          <div class="card-body">
-            <div class="table-responsive">
-              <table datatable class="table table-center table-hover mb-3">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Id</th>
-                    <th>Suministro</th>
-                    <th>Cliente</th>
-                    <th>Tarifa cliente</th>
-                    <th class="text-start">total facturado</th>
-                    <th class="text-start">Periodo factura</th>
-                    <th class="text-end">Acción</th>
-                  </tr>
-                </thead>
-                <tbody *ngFor="let payments of cadena">
-                  <tr *ngFor="let payment of payments | paginate: { itemsPerPage: 10, currentPage: pagefct }">
-                    <td><a>{{payment.facturacionId}}</a></td>
-
-                    <td>{{payment.suministro}}</td>
-                    <td>{{payment.razonSocial}}</td>
-                    <td>{{payment.tarifa}}</td>
-                    <td class="text-start">{{payment.total}}</td>
-                    <td class="text-start">{{payment.pfactura}}</td>
-                    <td class="text-end">
-                      <div class="dropdown dropdown-action">
-                        <a href="javascript:void(0)" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
-                          aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" [routerLink]="['/invoices/view-invoice/',payment.clienteId]">
-                            <i class="far fa-eye me-1"></i> Ver
-                          </a>
-                          <a class="dropdown-item" [routerLink]="['/invoices/report-e/',payment.clienteId]">
-                            <i class="far fa-eye me-1"></i> ReporteNGC
-                          </a>
-
-                        </div>
+      <!-- Search Filter -->
+      <div id="filter_inputs" class="card filter-card">
+          <div class="card-body pb-0">
+              <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Clientes</label>
+                          <input type="text" class="form-control">
                       </div>
-                    </td>
-
-
-                  </tr>
-                </tbody>
-              </table>
-
-
-              <pagination-controls (pageChange)="pagefct = $event" previousLabel="Anterior" nextLabel="Siguiente">
-              </pagination-controls>
-            </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Price</label>
+                          <input type="text" class="form-control">
+                      </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                      <div class="form-group">
+                          <label>Tarifa</label>
+                          <select class="form-select">
+                              <option>Payment Mode</option>
+                              <option>Cash</option>
+                              <option>Cheque</option>
+                              <option>Card</option>
+                              <option>Online</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+      <!-- /Search Filter -->
+
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card card-table">
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table datatable class="table table-center table-hover mb-3">
+                              <thead class="thead-light">
+                                  <tr>
+                                    <th>Id</th>
+                                    <th>Suministro</th>
+                                    <th>Cliente</th>
+                                    <th>Tarifa cliente</th>
+                                    <th class="text-start">total facturado</th>
+                                    <th class="text-start">Periodo factura</th>
+                                      <th class="text-end">Acción</th>
+                                  </tr>
+                              </thead>
+                              <tbody *ngFor="let payments of cadena">
+                                  <tr *ngFor="let payment of payments | paginate: { itemsPerPage: 10, currentPage: pagefct }">
+                                      <td><a>{{payment.facturacionId}}</a></td>
+
+                                      <td>{{payment.suministro}}</td>
+                                      <td>{{payment.razonSocial}}</td>
+                                      <td>{{payment.tarifa}}</td>
+                                      <td class="text-start">{{payment.total}}</td>
+                                      <td class="text-start">{{payment.pfactura}}</td>
+                                      <td class="text-end">
+                                        <div class="dropdown dropdown-action">
+                                          <a
+                                            href="javascript:void(0)"
+                                            class="action-icon dropdown-toggle"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                            ><i class="fas fa-ellipsis-h"></i
+                                          ></a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" [routerLink]="['/invoices/view-invoice/',payment.clienteId]">
+                                                <i class="far fa-eye me-1"></i> Ver
+                                            </a>
+                                            <a class="dropdown-item" [routerLink]="['/invoices/report-e/',payment.clienteId]">
+                                                <i class="far fa-eye me-1"></i> ReporteNGC
+                                            </a>
+
+                                          </div>
+                                        </div>
+                                      </td>
+
+
+                                  </tr>
+                              </tbody>
+                          </table>
+
+
+                          <pagination-controls (pageChange)="pagefct = $event"
+                          previousLabel="Anterior"
+                          nextLabel="Siguiente"></pagination-controls>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
+<!-- /Page Wrapper -->

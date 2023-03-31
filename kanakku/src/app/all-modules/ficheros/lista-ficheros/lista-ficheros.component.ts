@@ -32,10 +32,11 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
   progressInfo = [];
   fileInfos: Observable<any>;
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
   isDtInitialized: boolean = false
+  dtTrigger: Subject<any> = new Subject<any>();
   @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
-  constructor(public commonService: DataService) { this.load_er = false; this.loader_general = true; }
+
+  constructor(public commonService: DataService) { this.load_er = false; this.loader_general=true; }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -46,6 +47,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
     this.listarSuperexcel()
     this.listarFichero()
     this.animaciones()
+    this.rerender();
   }
   animaciones() {
     //carga de archivos
@@ -96,7 +98,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       this.loader_general = false;
       this.ficheros = res["documentosByUsuarioIdAndEmpresaIdResponse"];
       this.ficherosOriginal = res["documentosByUsuarioIdAndEmpresaIdResponse"];
-      this.rerender();
+      this.dtTrigger.next(null);
     })
   }
   refresh() {
@@ -150,6 +152,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       this.load_er = false;
       alertifyjs.success('Fichero ' + el + ' eliminado!');
       this.listarFichero()
+      this.rerender();
     }, error => alertifyjs.error('Ocurrió un problema!'))
   }
   sendFile(): void {
@@ -240,6 +243,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
         });
         // let btn = <HTMLInputElement>document.getElementById('btndelall');
         // btn.style.display = "none"
+        this.rerender();
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }

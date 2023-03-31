@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CustomersComponent } from './customers.component';
-import { CustomersRoutingModule } from './customers-routing.module';
 import { RouterModule } from '@angular/router';
-import { CustomerListComponent } from './customers-list/customer-list.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { DataTablesModule } from "angular-datatables";
 import {NgxPaginationModule} from 'ngx-pagination';
-import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { CustomersComponent } from './clientes.component';
+import { CustomersRoutingModule } from './clientes-routing.module';
+import { CustomerListComponent } from './listar-clientes/customer-list.component';
+import { AddCustomerComponent } from './agregar-clientes/add-customer.component';
+import { EditCustomerComponent } from './editar-clientes/edit-customer.component';
 @NgModule({
   declarations: [ CustomersComponent,CustomerListComponent,AddCustomerComponent,EditCustomerComponent],
   imports: [CommonModule, CustomersRoutingModule, RouterModule,ReactiveFormsModule,FormsModule,DataTablesModule,NgxPaginationModule],

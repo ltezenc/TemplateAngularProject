@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { HttpClient } from '@angular/common/http';
 import { Usuarios } from 'src/app/model/usuarios';
-import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router';
+import {  Router } from '@angular/router';
+import { DataTableDirective } from 'angular-datatables';
 import * as alertifyjs from 'alertifyjs';
 
 @Component({
@@ -14,19 +14,21 @@ import * as alertifyjs from 'alertifyjs';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  usuarios: Usuarios = new Usuarios();
-  listusers: Usuarios[];
-  cadena = [];
+  public pageuser:number
+  usuarios:Usuarios= new Usuarios();
+  listusers:Usuarios[];
   public loader_general: boolean;
+  cadena=[];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  isDtInitialized:boolean = false
-  dtElement: DataTableDirective;
-  // @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
-  constructor(public router: Router, private srvModuleService: UsuariosService, private http: HttpClient) { this.loader_general = true; }
+ dtElement: DataTableDirective;
+ isDtInitialized:boolean = false
+  constructor(public router: Router,private srvModuleService: UsuariosService,private http:HttpClient) {   this.loader_general = true;} 
+
+
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'simple_numbers',
+      pagingType: 'full_numbers',
       language: {
         url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
       }
@@ -40,7 +42,15 @@ export class UsersComponent implements OnInit {
       this.tblInicializer();
     })
   }
-  ErrorText() {
+  confirmText() {
+    Swal.fire(
+      'Usuario creado!',
+      'has clic para continuar!',
+      'success'
+    )
+    this.router.navigate(['/users'])
+  }
+  ErrorText(){
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
@@ -55,11 +65,26 @@ export class UsersComponent implements OnInit {
     },error => alertifyjs.error('Ocurrió '+error.message))
 
   }
+  tblInicializer(){
+    if (this.isDtInitialized) {
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        this.dtTrigger.next(null);
+      });
+    } else {
+      this.isDtInitialized = true
+      this.dtTrigger.next(null);
+    }
+  }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
+
   deleteuser(id,username){
     Swal.fire({
-      title: '¿Eliminar a '+username+'?',
-      text: "No podrá revertir esta acción!",
-      icon: 'question',
+      title: '¿Deseas eliminar a '+username+'?',
+      text: "No se podrá revertir esta acción!",
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -74,19 +99,5 @@ export class UsersComponent implements OnInit {
 
       }
     })
-  }
-  tblInicializer(){
-    if (this.isDtInitialized) {
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-        dtInstance.destroy();
-        this.dtTrigger.next(null);
-      });
-    } else {
-      this.isDtInitialized = true
-      this.dtTrigger.next(null);
-    }
-  }
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
   }
 }

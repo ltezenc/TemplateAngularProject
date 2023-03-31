@@ -13,7 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ExpensesListRoutingModule
+    ExpensesListRoutingModule,
+    
   ]
 })
 export class ExpensesListModule { }

@@ -1,6 +1,10 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
-</div>
+  <div class="three-body"   >
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    </div>
+  </div>
 
 <!-- Page Wrapper -->
 <div class="page-wrapper">
@@ -18,7 +22,7 @@
           </ul>
         </div>
         <div class="col-auto">
-          <a [routerLink]="'/customers/add-customer'" class="btn btn-primary me-2">
+          <a [routerLink]="'/clientes/agregar-clientes'" class="btn btn-primary me-2">
             <i class="fas fa-plus"></i>
           </a>
         </div>
@@ -80,7 +84,7 @@
                           ">Inactivo</span>
                     </td>
                     <td class="text-end">
-                      <a routerLink="/customers/edit-customer" [queryParams]="{ id: col.id }"
+                      <a routerLink="/clientes/editar-clientes" [queryParams]="{ id: col.id }"
                         class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i></a>
                       <a data-bs-toggle="modal" data-bs-target="#delete_customer"
                         class="btn btn-sm btn-white text-danger me-2" (click)="tempId = col.id"><i

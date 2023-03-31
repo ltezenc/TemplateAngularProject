@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClienteService } from 'src/app/services/cliente.service';
 import { FicheroListI } from 'src/app/model/ficherolist.interface';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-view-historico',
@@ -9,7 +9,6 @@ import { FicheroListI } from 'src/app/model/ficherolist.interface';
   styleUrls: ['./view-historico.component.css']
 })
 export class ViewHistoricoComponent implements OnInit {
-
   get_url: any
   fecha: any
   cadena = []

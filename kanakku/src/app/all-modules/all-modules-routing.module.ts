@@ -29,9 +29,9 @@ const routes: Routes = [
 
       },
       {
-          path: 'customers',
+          path: 'clientes',
           loadChildren: () =>
-            import('./customers/customers.module').then((m) => m.CustomersModule),
+            import('./clientes/clientes.module').then((m) => m.CustomersModule),
           canActivate: [AuthenticationGuard],
 
         },
