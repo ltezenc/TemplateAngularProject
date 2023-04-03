@@ -23,29 +23,39 @@
     </div>
     <!-- /Page Header -->
     <!-- Top modal content -->
+
+
     <div id="top-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-top">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="topModalLabel">Cargar archivo</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="file-loading">
-              <input id="input-21" name="input-21[]" multiple type="file" (change)="selectFile($event)">
-
+          <form (ngSubmit)="sendFile()" #myForm="ngForm">
+            <div class="modal-header">
+              <h4 class="modal-title" id="topModalLabel">Cargar archivo</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div id="kartik-file-errors"></div>
-          </div>
+            <div class="modal-body">
+              <div class="file-loading">
+                <input id="input-21" name="input-21[]" multiple type="file" (change)="selectFile($event)">
+              </div>
+              <div id="kartik-file-errors"></div>
+            </div>
+            <span class="msm_alert"></span>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="subir" [disabled]="myForm.invalid">Subir archivo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-          <span class="msm_alert"></span>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="subir" (click)="sendFile()">subir archivo</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+
+
+
+
+
+
+
 
     <app-parametro></app-parametro>
     <hr *ngIf="superexcel?.length != 0">
@@ -125,7 +135,8 @@
                   <tr *ngFor="let expese of ficheros; let i = index">
                     <td>{{ i+1 }}</td>
                     <td>
-                      <input type="checkbox" [disabled]="load_er" name="checkbox" class="checkall" value="{{expese.id}}" (click)="selchech()">
+                      <input type="checkbox" [disabled]="load_er" name="checkbox" class="checkall" value="{{expese.id}}"
+                        (click)="selchech()">
                     </td>
                     <td>{{expese.id}}</td>
                     <td>{{expese.nombre}}</td>
@@ -136,20 +147,22 @@
 
                       <span *ngSwitchCase="5" class="badge badge-pill bg-success-light">Procesado</span>
 
-                      <span *ngSwitchCase="4" class="badge badge-pill bg-danger-light">Archivo ya ha sido procesado</span>
+                      <span *ngSwitchCase="4" class="badge badge-pill bg-danger-light">Archivo ya ha sido
+                        procesado</span>
 
                       <span *ngSwitchCase="3" class="badge badge-pill bg-danger-light">CLIENTE NO REGISTRADO</span>
 
                       <span *ngSwitchCase="1" class="badge badge-pill bg-warning-light">Procesando Calculos <div
-                        class="spinner-border spinner-border-sm" role="status"></div> </span>
+                          class="spinner-border spinner-border-sm" role="status"></div> </span>
 
                       <span *ngSwitchCase="7" class="badge badge-pill bg-danger-light">Periodo de factura
                         equivocado</span>
                       <!-- /EXCEL MASIVO -->
                     </td>
                     <td class="text-end">
-                      <button data-bs-toggle="modal" data-bs-target="#delete_Expenses" [disabled]="load_er || expese.estado !=5 " (click)="tempId = expese.id" class="btn btn-sm btn-white text-danger"><i
-                          class="far fa-trash-alt me-1"></i>Eliminar</button>
+                      <button data-bs-toggle="modal" data-bs-target="#delete_Expenses"
+                        [disabled]="load_er || expese.estado !=5 " (click)="tempId = expese.id"
+                        class="btn btn-sm btn-white text-danger"><i class="far fa-trash-alt me-1"></i>Eliminar</button>
                     </td>
                   </tr>
                 </tbody>

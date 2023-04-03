@@ -14,48 +14,9 @@
             <li class="breadcrumb-item active">Facturas</li>
           </ul>
         </div>
-        <div class="col-auto">
-          <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
-            <i class="fas fa-filter"></i>
-          </a>
-        </div>
       </div>
     </div>
     <!-- /Page Header -->
-
-    <!-- Search Filter -->
-    <div id="filter_inputs" class="card filter-card">
-      <div class="card-body pb-0">
-        <div class="row">
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Clientes</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Price</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3">
-            <div class="form-group">
-              <label>Tarifa</label>
-              <select class="form-select">
-                <option>Payment Mode</option>
-                <option>Cash</option>
-                <option>Cheque</option>
-                <option>Card</option>
-                <option>Online</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Search Filter -->
-
     <div class="row">
       <div class="col-sm-12">
         <div class="card card-table">
@@ -74,7 +35,7 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let payments of cadena">
-                  <tr *ngFor="let payment of payments | paginate: { itemsPerPage: 10, currentPage: pagefct }">
+                  <tr *ngFor="let payment of payments">
                     <td><a>{{payment.facturacionId}}</a></td>
 
                     <td>{{payment.suministro}}</td>
@@ -102,10 +63,6 @@
                   </tr>
                 </tbody>
               </table>
-
-
-              <pagination-controls (pageChange)="pagefct = $event" previousLabel="Anterior" nextLabel="Siguiente">
-              </pagination-controls>
             </div>
           </div>
         </div>

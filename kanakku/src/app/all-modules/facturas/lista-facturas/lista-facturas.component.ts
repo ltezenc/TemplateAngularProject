@@ -7,7 +7,6 @@ import { ListarFacturaService } from 'src/app/services/listar-factura.service';
   styleUrls: ['./lista-facturas.component.css']
 })
 export class PaymentsListComponent implements OnInit {
-  public pagefct: number;
   payments: any = [];
   errorMessage: any;
   public loader_general: boolean;
