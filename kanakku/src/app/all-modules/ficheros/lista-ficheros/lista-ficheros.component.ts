@@ -16,6 +16,7 @@ declare var $: any;
 })
 export class listaFicherosComponent implements OnInit, OnDestroy {
   public tempId: any;
+  public tempName: any;
   public load_er: boolean;
   public loader_general: boolean;
   tamaniototal: any; //Convertido a MB
@@ -30,15 +31,21 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
   fileName = "";
   message = "";
   progressInfo = [];
+  public cargandobtn:boolean = true;
+  displaybtn:string = "block"
+  displaybtn2:string = "none"
   fileInfos: Observable<any>;
+
+  dtTrigger: any = new Subject();
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
-  isDtInitialized: boolean = false
-  @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
-  constructor(public commonService: DataService) { this.load_er = false; this.loader_general = true; }
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
+  isDtInitialized: boolean = false;
+
+  constructor(public commonService: DataService) { this.load_er = false; this.loader_general = true}
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'full_numbers',
+      pagingType: 'simple_numbers',
       language: {
         url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
       }
@@ -86,18 +93,17 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
     });
   }
   listarSuperexcel() {
-    .0
     this.commonService.getSuperexcel().subscribe(res => {
       this.superexcel = res["superexcelListResponse"];
-    })
+    },error => alertifyjs.error('¡Ocurrió un error '+error.status+'!'))
   }
   listarFichero() {
     this.commonService.getFichero().subscribe(res => {
       this.loader_general = false;
       this.ficheros = res["documentosByUsuarioIdAndEmpresaIdResponse"];
       this.ficherosOriginal = res["documentosByUsuarioIdAndEmpresaIdResponse"];
-      this.rerender();
-    })
+      this.initDatatable();
+    },error => alertifyjs.error('¡Ocurrió un error '+error.status+'!'))
   }
   refresh() {
     let times = 0
@@ -112,14 +118,9 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       }
     }, 16000)
   }
-  confirmText() {
-    Swal.fire(
-      'Fichero Eliminado!',
-      'has clic para continuar!',
-      'success'
-    )
-  }
   selectFile(event) {
+    this.displaybtn = "none";
+    this.displaybtn2 = "block";
     const [file] = event.target.files;
     let total_registros = event.target.files;
     //Almaceno todo los ficheros
@@ -139,7 +140,12 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
     let all_file = this.FileSelectAll
     all_file.forEach(row => {
       let no___mbre = row.fileName
-      this.commonService.suministroexist(no___mbre).subscribe(res => console.log(res))
+      this.commonService.suministroexist(no___mbre).subscribe(res => {
+        console.log(res)
+        this.displaybtn = "block";
+        this.displaybtn2 = "none";
+        this.cargandobtn = false;
+      })
     });
 
   }
@@ -148,9 +154,9 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
     this.eliminado.id = el;
     this.commonService.delete(this.eliminado).subscribe(res => {
       this.load_er = false;
-      alertifyjs.success('Fichero ' + el + ' eliminado!');
+      alertifyjs.success('Fichero ' + this.tempName + ' eliminado!');
       this.listarFichero()
-    }, error => alertifyjs.error('Ocurrió un problema!'))
+    }, error => alertifyjs.error('Ocurrió un error '+error.status))
   }
   sendFile(): void {
     let all_filereg = this.FileSelectAll
@@ -161,29 +167,10 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
         this.listarSuperexcel();
         console.log('ya subio')
         this.refresh();
-      });
+        this.cargandobtn = true;
+        $("#top-modal").modal("hide")
+      },error => alertifyjs.error('¡Ocurrió un error '+error.status+' al subir!'));
     });
-    /*
-        let all_filereg = this.FileSelectAll
-
-        all_filereg.forEach(row_reg => {
-        let tamanio =row_reg.fileRaw.size;
-        console.log("all_filereg :",tamanio)
-
-        if(tamanio > 2000000){
-          document.querySelector(".msm_alert").innerHTML = "API I"
-        }else{
-          document.querySelector(".msm_alert").innerHTML = "API II"
-        }
-
-          // const  body= new FormData();
-          // body.append('file',row_reg.fileRaw,row_reg.fileName);
-          // this.commonService.sendPost(body).subscribe(res=>this.listarFichero());
-        });
-
-        // body.append('usuario','1')
-        // body.append('empresa','1')
-    */
   }
   //Seleccionar para eliminar todo
   selallchech() {
@@ -235,7 +222,7 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
               this.listarFichero()
               this.load_er = false;
               alertifyjs.success('Fichero ' + Number(element.value) + ' eliminado!');
-            }, error => alertifyjs.error('Ocurrió un problema!'))
+            },error => alertifyjs.error('¡Ocurrió un error '+error.status+'!'))
           }
         });
         // let btn = <HTMLInputElement>document.getElementById('btndelall');
@@ -245,15 +232,15 @@ export class listaFicherosComponent implements OnInit, OnDestroy {
       }
     })
   }
-  rerender() {
+  initDatatable() {
     if (this.isDtInitialized) {
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.destroy();
-        this.dtTrigger.next(null);
+        this.dtTrigger.next();
       });
     } else {
-      this.isDtInitialized = true
-      this.dtTrigger.next(null);
+      this.isDtInitialized = true;
+      this.dtTrigger.next();
     }
   }
   ngOnDestroy(): void {

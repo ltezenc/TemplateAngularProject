@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { FacturaListI } from 'src/app/model/facturalist.interface';
 import { ListarFacturaService } from 'src/app/services/listar-factura.service';
+import { DataTableDirective } from 'angular-datatables'
+import * as alertifyjs from 'alertifyjs';
 @Component({
   selector: 'app-payments-list',
   templateUrl: './lista-facturas.component.html',
@@ -10,8 +13,13 @@ export class PaymentsListComponent implements OnInit {
   payments: any = [];
   errorMessage: any;
   public loader_general: boolean;
-  cadena = []
   facturas: FacturaListI[];
+
+  dtTrigger: any = new Subject();
+  dtOptions: DataTables.Settings = {};
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
+  isDtInitialized: boolean = false;
 
   constructor(public facturaService: ListarFacturaService) { this.loader_general = true; }
 
@@ -22,18 +30,24 @@ export class PaymentsListComponent implements OnInit {
   listarFacturas() {
     this.facturaService.getFacturacion().subscribe(res => {
       this.loader_general = false;
-      this.facturas = res;
-      let keys = Object.keys(res);
-
-      let i = 0;
-      for (let prop of keys) {
-        this.cadena.push(res[prop]);
-        this.cadena[i]['name'] = prop;
-        i++;
-      } console.log(this.cadena)
-    },
-    )
+      this.facturas = res["facturacionListResponse"];
+      this.initDatatable();
+      console.log("facturas: ", this.facturas)
+    },error => alertifyjs.error('¡Ocurrió un error '+error.status+'!'))
   }
 
-
+  initDatatable() {
+    if (this.isDtInitialized) {
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        this.dtTrigger.next();
+      });
+    } else {
+      this.isDtInitialized = true;
+      this.dtTrigger.next();
+    }
+  }
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

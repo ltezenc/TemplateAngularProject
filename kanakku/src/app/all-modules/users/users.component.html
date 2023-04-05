@@ -1,10 +1,12 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+  <div class="three-body">
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+  </div>
 </div>
-
 <div class="page-wrapper">
   <div class="content container-fluid">
-    <!-- Page Header -->
     <div class="page-header">
       <div class="row align-items-center">
         <div class="col">
@@ -16,15 +18,12 @@
             <li class="breadcrumb-item active">Gestión usuarios</li>
           </ul>
         </div>
-
         <div class="col-auto">
-          <a class="btn btn-primary me-2"  data-bs-toggle="modal"
-          data-bs-target="#bs-example-modal-sm">
+          <a class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#bs-example-modal-sm">
             <i class="fas fa-plus"></i>
           </a>
         </div>
       </div>
-
     </div>
 
     <div class="row">
@@ -46,27 +45,24 @@
                     <th>Acciones</th>
                   </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let col of listusers;let i = index">
-                      <td>{{ i+1 }}</td>
-                      <td>{{ col.nombre }}</td>
-                      <td>{{ col.username }}</td>
-                      <td>{{ col.email }}</td>
-                      <td>
-                      <span
-                        [ngClass]="
+                <tbody [style.opacity]="load_er ? '0.2' : 1">
+                  <tr *ngFor="let col of listusers;let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ col.nombre }}</td>
+                    <td>{{ col.username }}</td>
+                    <td>{{ col.email }}</td>
+                    <td>
+                      <span [ngClass]="
                           col.estado != 1 ? 'badge bg-danger' : 'badge bg-success'
-                        "
-                        >Activo</span>
-
-                      </td>
-                      <td>
-                        <div>
-                          <button class="btn btn-warning me-1"><i class="far fa-edit"></i></button>
-                          <button class="btn btn-danger" (click)="deleteuser(col.usuarioId,col.username)"><i class="far fa-trash-alt"></i></button>
-                        </div>
-                      </td>
-                    </tr>
+                        ">Activo</span>
+                    </td>
+                    <td>
+                      <div>
+                        <button class="btn btn-warning me-1"><i class="far fa-edit"></i></button>
+                        <button class="btn btn-danger" (click)="deleteuser(col.usuarioId,col.username)" [disabled]="load_er"><i class="far fa-trash-alt"></i></button>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -77,55 +73,90 @@
   </div>
 </div>
 
+<div class="spinner-border avatar-sm text-danger m-2" *ngIf="load_er" style="position: fixed;right: 0;bottom: 2px;z-index: 99999;" role="status"> </div>
 
-<div class="modal fade" id="bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+
+<div id="bs-example-modal-sm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="mySmallModalLabel">Registar Usuario</h4>
+        <h4 class="modal-title">Registar Usuario</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form action="#">
-          <div class="form-group mb-3">
-            <label>Nombre</label>
-            <input type="text" id="usnombre" name="usnombre" class="form-control" [(ngModel)]="usuarios.nombreUsuario">
-          </div>
-          <div class="form-group mb-3">
-            <label>Cargo</label>
-            <input type="text" id="cargo" name="cargo" class="form-control" [(ngModel)]="usuarios.cargo">
-          </div>
-          <div class="form-group mb-3">
-            <label>Usuario.</label>
-            <input type="text" id="ususuario" name="ususuario" class="form-control"  [(ngModel)]="usuarios.usuarioLogin">
-          </div>
-          <div class="form-group mb-3">
-            <label>Contraseña</label>
-            <input type="password" id="uspass" name="uspass" class="form-control" [(ngModel)]="usuarios.password">
-          </div>
-          <div class="form-group mb-3">
-            <label>Correo Electrónico.</label>
-            <input type="text" id="ususuario" name="ususuario" class="form-control"  [(ngModel)]="usuarios.correo">
-          </div>
-          <div class="form-group mb-3">
-            <label>Celular.</label>
-            <input type="text" id="celular" name="celular" class="form-control"  [(ngModel)]="usuarios.celular">
-          </div>
-          <div class="form-group mb-3">
-            <label>Estado</label>
-            <select class="form-select" name="usestado" [(ngModel)]="usuarios.estado">
-              <option value="" selected disabled>-- Select --</option>
-              <option value="1">Activo</option>
-              <option  value="0">Inactivo</option>
-            </select>
-          </div>
 
-          <button class="btn btn-success"  (click)="crearUsuario()"  data-bs-dismiss="modal">Registrar</button>
+      <form (ngSubmit)="crearUsuario()" #myForm="ngForm" id="formRegistrarUsuario">
+        <div class="modal-body p-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label>Nombre</label>
+                <input type="text" id="usnombre" name="usnombre" class="form-control" placeholder="Nombre y Apellidos" [(ngModel)]="usuarios.nombreUsuario" required #nombre="ngModel">
+                <code *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">Campo requerido</code>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Usuario</label>
+                <input type="text" id="ususuario" name="ususuario" class="form-control" placeholder="Usuario" [(ngModel)]="usuarios.usuarioLogin" required #usuario="ngModel">
+                <code *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">Campo requerido</code>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label>Contraseña</label>
+                <input type="password" id="uspass" name="uspass" class="form-control" placeholder="Contraseña" [(ngModel)]="usuarios.password" required #password="ngModel">
+                <code *ngIf="password.invalid && (password.dirty || password.touched)">Campo requerido</code>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label>Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" class="form-control" placeholder="Dirección de Correo Electrónico" [(ngModel)]="usuarios.correo" required #correo="ngModel">
+                <code *ngIf="correo.invalid && (correo.dirty || correo.touched)">Campo requerido</code>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label>Cargo</label>
+                <input type="text" id="cargo" name="cargo" class="form-control" placeholder="Cargo" [(ngModel)]="usuarios.cargo" required #cargo="ngModel">
+                <code *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)">Campo requerido</code>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label>Celular</label>
+                <input type="number" id="celular" name="celular" class="form-control" placeholder="N° de Celular" [(ngModel)]="usuarios.celular" required #celular="ngModel">
+                <code *ngIf="celular.invalid && (celular.dirty || celular.touched)">Campo requerido</code>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label>Estado</label>
+                <select class="form-select" name="usestado" [(ngModel)]="usuarios.estado" required #estado="ngModel">
+                  <option value="" selected disabled>-- Select --</option>
+                  <option value="1">Activo</option>
+                  <option value="0">Inactivo</option>
+                </select>
+                <code *ngIf="estado.invalid && (estado.dirty || estado.touched)">Seleccione una opción</code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-info waves-effect waves-light colorall" [disabled]="myForm.invalid">Registrar</button>
+        </div>
+      </form>
 
 
-        </form>
-      </div>
+
     </div>
   </div>
-</div>
+</div><!-- /.modal -->

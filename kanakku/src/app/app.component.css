@@ -24,6 +24,11 @@
 }
 
 
+.colorall{
+  color: #fff
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;

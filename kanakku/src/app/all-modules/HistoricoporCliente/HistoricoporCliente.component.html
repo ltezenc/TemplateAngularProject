@@ -1,5 +1,9 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+  <div class="three-body">
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+  </div>
 </div>
 <div class="page-wrapper">
   <div class="content container-fluid">
@@ -22,7 +26,7 @@
         </div>
         <!-- /Page Header -->
 
-        <div class="text-center mb-5" *ngIf="rpta_valid == 1" >
+        <div class="text-center mb-5" *ngIf="rpta_valid == 1">
           <h2>{{rs}}</h2>
           <ul class="list-inline">
             <li class="list-inline-item">

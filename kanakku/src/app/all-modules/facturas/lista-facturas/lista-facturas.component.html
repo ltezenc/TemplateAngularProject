@@ -1,6 +1,11 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
-</div>
+  <div class="three-body"   >
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    </div>
+  </div>
+<!-- Page Wrapper -->
 <div class="page-wrapper">
   <div class="content container-fluid">
 
@@ -22,9 +27,10 @@
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable class="table table-center table-hover mb-3">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-center table-hover mb-3">
                 <thead class="thead-light">
                   <tr>
+                    <th>N°</th>
                     <th>Id</th>
                     <th>Suministro</th>
                     <th>Cliente</th>
@@ -34,10 +40,10 @@
                     <th class="text-end">Acción</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let payments of cadena">
-                  <tr *ngFor="let payment of payments">
+                <tbody>
+                  <tr *ngFor="let payment of facturas; let i = index">
+                    <td>{{i+1}}</td>
                     <td><a>{{payment.facturacionId}}</a></td>
-
                     <td>{{payment.suministro}}</td>
                     <td>{{payment.razonSocial}}</td>
                     <td>{{payment.tarifa}}</td>
@@ -65,8 +71,7 @@
               </table>
             </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
 </div>
+<!-- /Page Wrapper -->

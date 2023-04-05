@@ -1,8 +1,10 @@
 <div class="load_div" *ngIf="loader_general">
-  <div class="spinner-border avatar-lg loader_spinner" role="status"></div>
+  <div class="three-body">
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+    <div class="three-body__dot" role="status"></div>
+  </div>
 </div>
-
-<!-- Page Wrapper -->
 <div class="page-wrapper">
   <div class="content container-fluid">
     <!-- Page Header -->
@@ -18,7 +20,7 @@
           </ul>
         </div>
         <div class="col-auto">
-          <a [routerLink]="'/customers/add-customer'" class="btn btn-primary me-2">
+          <a [routerLink]="'/clientes/agregar-clientes'" class="btn btn-primary me-2">
             <i class="fas fa-plus"></i>
           </a>
         </div>
@@ -32,10 +34,11 @@
           <div class="card-body">
             <div class="table-responsive">
 
-              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-stripped table-hover mb-3">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="table table-stripped table-hover mb-3">
                 <thead class="thead-light">
                   <tr>
-                    <th>Id</th>
+                    <th>N°</th>
                     <th>Nombre</th>
                     <th>Tarifa</th>
                     <th>potenciaContratada</th>
@@ -46,7 +49,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let col of listclientes; let i = index">
-                    <td #messageEl [attr.data-message-id]="col.id">{{ col.id }}</td>
+                    <td #messageEl [attr.data-message-id]="col.id">{{ i+1 }}</td>
                     <td>{{ col.razonSocial }}</td>
                     <td>{{ col.prefijotarifa }}</td>
                     <td>{{ col.potenciaContratada }}</td>
@@ -80,12 +83,10 @@
                           ">Inactivo</span>
                     </td>
                     <td class="text-end">
-                      <a routerLink="/customers/edit-customer" [queryParams]="{ id: col.id }"
-                        class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i></a>
-                      <a data-bs-toggle="modal" data-bs-target="#delete_customer"
-                        class="btn btn-sm btn-white text-danger me-2" (click)="tempId = col.id"><i
+                      <button type="button" class="btn btn-sm btn-white text-info me-2" data-bs-toggle="modal" data-bs-target="#info-alert-modal" (click)="cargarinfoclientes(col.id)"><i class="far fa-eye me-1"></i></button>
+                      <a routerLink="/clientes/editar-clientes" [queryParams]="{ id: col.id }" class="btn btn-sm btn-white text-success me-2"><i class="far fa-edit me-1"></i></a>
+                      <a data-bs-toggle="modal" data-bs-target="#delete_customer" class="btn btn-sm btn-white text-danger me-2" (click)="tempId = col.id; name=col.razonSocial"><i
                           class="far fa-trash-alt me-1"></i></a>
-
                     </td>
                   </tr>
                 </tbody>
@@ -102,8 +103,6 @@
     </div>
   </div>
 </div>
-<!-- /Page Wrapper -->
-<!-- Delete Tax Modal -->
 <div class="modal custom-modal fade" id="delete_customer" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -118,17 +117,15 @@
       </div>
       <div class="modal-footer text-center">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancel
+          Cancelar
         </button>
-        <button type="button" class="btn btn-primary" (click)="deleteCustomer(tempId)" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-danger" (click)="deleteCustomer(tempId,name)" data-bs-dismiss="modal">
           Eliminar
         </button>
       </div>
     </div>
   </div>
 </div>
-<!-- /Delete Tax Modal -->
-<!-- Modal suministro -->
 <div class="modal fade" id="suministroModal" tabindex="-1" aria-labelledby="suministroModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -155,6 +152,56 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancelar</button>
         <button type="button" class="btn btn-primary" (click)="crearSuministro()"
           data-bs-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para mostrar datos completos -->
+<div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <span class="badge badge-pill bg-success-light" *ngIf="listClt.estadoId === 1">Activo</span>
+        <span class="badge badge-pill bg-danger-light" *ngIf="listClt.estadoId === 0">Inactivo</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+          <i class="dripicons-information h1 text-info"></i>
+          <h4 class="mt-2 text-center">Información del cliente</h4>
+          <div class="inv-to-address">
+            <b>Razón social :</b> {{listClt.razonSocial}}
+            <hr>
+            <b>Ruc :</b> {{listClt.ruc}}
+            <hr>
+            <b>Dirección :</b> {{listClt.direccion}}
+            <hr>
+            <b>Responsable legal :</b> {{listClt.nombreResponsable}}
+            <hr>
+            <b>Email :</b> {{listClt.email}}
+            <hr>
+            <b>Teléfono :</b> {{listClt.telefono}}
+            <hr>
+            <h4 class="mt-2 text-center">Detalles de contacto</h4>
+            <b>Tarifa :</b> {{listClt.tarifa}}
+            <hr>
+            <b>Potencia Contratada :</b> {{listClt.potenciaContratada}}
+            <hr>
+            <b>Tipo de cambio inicio :</b> {{listClt.tipoCambio}}
+            <hr>
+            <b>Precio por Hora Punta :</b> {{listClt.precioHP}}
+            <hr>
+            <b>Precio por Fuera Hora Punta :</b> {{listClt.precioFHP}}
+            <hr>
+            <b>Ppi0 :</b> {{listClt.ppi0}}
+            <hr>
+            <b>Pgn0 :</b> {{listClt.pgn0}}
+            <hr>
+            <b>Comercialización :</b> {{listClt.comercializacion}}
+            <hr>
+            <b>Cargo Fijo :</b> {{listClt.cargofijo}}
+            <hr>
+          </div>
       </div>
     </div>
   </div>

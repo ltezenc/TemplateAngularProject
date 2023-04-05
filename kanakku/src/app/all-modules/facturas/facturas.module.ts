@@ -7,6 +7,7 @@ import { PaymentsListComponent } from './lista-facturas/lista-facturas.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    DataTablesModule
 
   ]
 })

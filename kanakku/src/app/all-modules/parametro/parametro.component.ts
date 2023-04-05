@@ -140,6 +140,7 @@ export class ParametroComponent implements OnInit {
 
       let pliegos: string = this.pfactura
       this.fecha = pliegos.substring(0, 4) + '-' + pliegos.substring(4, 6)
+      console.log(this.pliego)
       if (this.pliego == true) {
 
         this.existepliego(this.fecha)
@@ -167,20 +168,15 @@ export class ParametroComponent implements OnInit {
     Swal.fire({
       title: '<strong>Pliego Tarifario no Encontrado</strong>',
       icon: 'info',
-      html:
-        'Si continua se tomaran los registros del pliego anterior',
-
+      html: 'Si continua se tomaran los registros del pliego anterior',
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
       confirmButtonText:
         '<i class="fa fa-thumbs-up"></i> Continuar!',
       confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<a href="//localhost:4200/setting/settings"><i class="fa fa-thumbs-down"> Cancelar</i></a> ',
-
+      cancelButtonText: '<a href="'+document.location.origin+'/setting"><i class="fa fa-thumbs-down" style="color:#ffffff"></i></a> Cancelar',
       cancelButtonAriaLabel: 'Cancelar'
-
     })
       .then((result) => {
         this.periodofactura.pfactura = this.pfactura

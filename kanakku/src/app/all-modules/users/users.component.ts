@@ -1,29 +1,31 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { HttpClient } from '@angular/common/http';
 import { Usuarios } from 'src/app/model/usuarios';
-import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Event, Router, NavigationStart, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { DataTableDirective } from 'angular-datatables';
 import * as alertifyjs from 'alertifyjs';
-
+declare var $: any;
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  public pageuser: number
   usuarios: Usuarios = new Usuarios();
   listusers: Usuarios[];
-  cadena = [];
   public loader_general: boolean;
+  public load_er: boolean = false;
+  cadena = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  isDtInitialized:boolean = false
   dtElement: DataTableDirective;
-  // @ViewChild(DataTableDirective, { static: false }) dtElement: DataTableDirective;
+  isDtInitialized: boolean = false
   constructor(public router: Router, private srvModuleService: UsuariosService, private http: HttpClient) { this.loader_general = true; }
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'simple_numbers',
@@ -37,45 +39,20 @@ export class UsersComponent implements OnInit {
     this.srvModuleService.getUsuarios().subscribe(res => {
       this.loader_general = false;
       this.listusers = res["usuarioResponses"]
+      console.log("users :",res["usuarioResponses"])
       this.tblInicializer();
-    })
-  }
-  ErrorText() {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Ocurrio un Error!',
-      footer: '<a href="">Verifica si los Parametros son correctos?</a>'
-    })
+    },error => alertifyjs.error('¡Ocurrió un '+error.status+'!'))
   }
   crearUsuario(): void {
-    this.srvModuleService.create(this.usuarios).subscribe(response =>{
+    this.srvModuleService.create(this.usuarios).subscribe(response => {
       this.getUsers();
       alertifyjs.success('Usuario registrado!');
-    },error => alertifyjs.error('Ocurrió '+error.message))
+      $("#bs-example-modal-sm").modal("hide")
+      $("#formRegistrarUsuario").trigger("reset");
+    }, error => alertifyjs.error('Ocurrió ' + error.message))
 
   }
-  deleteuser(id,username){
-    Swal.fire({
-      title: '¿Eliminar a '+username+'?',
-      text: "No podrá revertir esta acción!",
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        this.srvModuleService.delUsuario(id).subscribe(response =>{
-          this.getUsers();
-          alertifyjs.success('Usuario ' + username + ' eliminado!');
-        },error => alertifyjs.error('Ocurrió un problema al eliminar!'))
-
-      }
-    })
-  }
-  tblInicializer(){
+  tblInicializer() {
     if (this.isDtInitialized) {
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.destroy();
@@ -88,5 +65,28 @@ export class UsersComponent implements OnInit {
   }
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+  deleteuser(id, username) {
+    Swal.fire({
+      title: '¿Deseas eliminar a ' + username + '?',
+      text: "No se podrá revertir esta acción!",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.load_er = true;
+        this.srvModuleService.delUsuario(id).subscribe(response => {
+          this.load_er = false;
+          this.getUsers();
+          alertifyjs.success('Usuario ' + username + ' eliminado!');
+        }, error => {
+          this.load_er = false;
+          alertifyjs.error('Ocurrió un error '+error.status+' al eliminar!')
+        })
+      }
+    })
   }
 }
