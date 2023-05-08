@@ -52,6 +52,10 @@ export class UsersComponent implements OnInit {
     }, error => alertifyjs.error('Ocurrió ' + error.message))
 
   }
+
+  editarUsuario(){
+
+  };
   tblInicializer() {
     if (this.isDtInitialized) {
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {

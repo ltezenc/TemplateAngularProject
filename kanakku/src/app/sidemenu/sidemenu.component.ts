@@ -43,7 +43,7 @@ export class SidemenuComponent implements OnInit {
     });
 
   }
-  
+
   ngOnInit(): void {
     $(document).on('click', '#filter_search', function() {
       $('#filter_inputs').slideToggle("slow");
@@ -64,12 +64,12 @@ export class SidemenuComponent implements OnInit {
   });
 
   let user=localStorage.getItem("usuario");
-  
+
   this.nombreusuario(user)
   }
 
 
-  nombreusuario(user){  
+  nombreusuario(user){
     this.storage.NombrebyLogin(user).subscribe(data=>{
       let keys= Object.keys(data);
       let i = 0;
@@ -79,10 +79,10 @@ export class SidemenuComponent implements OnInit {
         this.nombre[i]['name'] = prop;
         i++;
         localStorage.setItem("idusuario",this.nombre[0][0]['id'])
-        
+
       }
     })
-   
+
   }
   ngAfterViewInit() {
     this.loadDynmicallyScript('./../../../assets/js/script.js');

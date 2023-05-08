@@ -24,6 +24,12 @@ export class PaymentsListComponent implements OnInit {
   constructor(public facturaService: ListarFacturaService) { this.loader_general = true; }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'simple_numbers',
+      language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json'
+      }
+    }
     this.listarFacturas();
   }
 

@@ -27,7 +27,7 @@
         <div class="card card-table">
           <div class="card-body">
             <div class="table-responsive">
-              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-center table-hover mb-3">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-center table-hover mb-3 table-striped">
                 <thead class="thead-light">
                   <tr>
                     <th>N°</th>
@@ -49,7 +49,7 @@
                     <td>{{payment.tarifa}}</td>
                     <td class="text-start">{{payment.total}}</td>
                     <td class="text-start">{{payment.pfactura}}</td>
-                    <td class="text-end">
+                    <td class="text-center">
                       <div class="dropdown dropdown-action">
                         <a href="javascript:void(0)" class="action-icon dropdown-toggle" data-bs-toggle="dropdown"
                           aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
@@ -60,7 +60,6 @@
                           <a class="dropdown-item" [routerLink]="['/invoices/report-e/',payment.clienteId]">
                             <i class="far fa-eye me-1"></i> ReporteNGC
                           </a>
-
                         </div>
                       </div>
                     </td>
